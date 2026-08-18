@@ -1,0 +1,10 @@
+{
+  "collection": "statistiques_menus",
+  "exemple_document": {
+    "menu_id": 1,
+    "titre": "Menu de Noël",
+    "nombre_commandes": 12,
+    "chiffre_affaires": 2400,
+    "periode": "2026-10"
+  }
+}
