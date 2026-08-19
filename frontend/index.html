@@ -4,23 +4,131 @@
     <meta charset="UTF-8">
     <title>Vite & Gourmand</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <header>
+    <img class="logo" src="assets/images/etat-logo/logo-principal.png" alt="Logo Vite & Gourmand">
     <nav>
         <a href="index.html">Accueil</a>
         <a href="menus.html">Menus</a>
+        <a href="apropos.html">À propos</a>
         <a href="contact.html">Contact</a>
-        <a href="connexion.html">Connexion</a>
+        
     </nav>
+
+    <div class="header-actions">
+        <a href="connexion.html">Connexion</a>
+        <img class="icon-shopping" src="assets/icons/icone-shopping.png" alt="panier">
+    </div>
 </header>
 
 <main>
-    <section>
-        <h1>Vite & Gourmand</h1>
-        <p>Traiteur à Bordeaux depuis 25 ans.</p>
+    <section class="hero">
+
+        <div class="hero-content">
+            <p class="hero-badge">
+                <img src="assets/icons/icone-feuille.png" alt="" class="hero-badge-icon">
+                Traiteur événementiel à Bordeaux depuis 25 ans
+            </p>
+
+            <h1>Découvrez des menus fais maison pour tous vos événements</h1>
+
+            <div class="hero-separator">
+                <span></span>
+                <img src="assets/icons/icone-feuille.png" alt="">
+                <span></span>
+            </div>
+
+            <p class="hero-text">
+                Mariages, anniversaires, repas d'entreprise ou événements privés :
+                nous créons des menus sur-mesure avec des produits frais et de saison.
+            </p>
+
+            <a href="menus.html" class="hero-button">Découvrir les menus</a>
+        </div>
+
+        <div class="hero-image">
+            <img src="assets/images/image-hero.png" alt="Plat traiteur Vite & Gourmand">
+        </div>
+    </section>
+
+    <section class="features">
+
+        <div class="feature-item">
+            <img src="assets/icons/icone-feuille2.png" alt="">
+            <div>
+                <h3>Fait maison</h3>
+                <p>Des recettes préparées avec passion chaque jour.</p>
+            </div>
+        </div>
+
+        <div class="feature-item">
+            <img src="assets/icons/icone-localisation.png" alt="">
+            <div>
+                <h3>À Bordeaux</h3>
+                <p>Basés à Bordeaux, nous nous déplaçons pour vos événements.</p>
+            </div>
+        </div>
+
+        <div class="feature-item">
+            <img src="assets/icons/icone-etoile.png" alt="">
+            <div>
+                <h3>Sur-mesure</h3>
+                <p>Des menus personnalisés selon vos envies et votre budget.</p>
+            </div>
+        </div>
+
+        <div class="feature-item">
+            <img src="assets/icons/icone-personnes.png" alt="">
+            <div>
+                <h3>Expérience</h3>
+                <p>Plus de 25 ans d’expérience à votre service.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="about">
+
+        <div class="about-image">
+            <img src="assets/images/image-jose-julie.png"
+                alt="Julie et José de Vite & Gourmand">
+        </div>
+
+        <div class="about-content">
+
+            <p class="about-label">Julie & José</p>
+
+            <h2>
+                Notre passion à votre service<br>
+                depuis plus de 25 ans.
+            </h2>
+
+            <p class="about-text">
+                Julie et José mettent tout leur savoir-faire et leur créativité au service
+                de vos événements. Basés à Bordeaux, nous sélectionnons chaque jour
+                des produits frais et locaux pour vous proposer des menus savoureux,
+                équilibrés et élégants.
+            </p>
+
+            <p class="about-text">
+                Notre priorité : vous offrir une expérience culinaire unique
+                et un service attentionné.
+            </p>
+
+            <a href="apropos.html" class="about-button">
+                En savoir plus sur nous →
+            </a>
+
+        </div>
+
     </section>
 </main>
 

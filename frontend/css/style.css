@@ -1,0 +1,305 @@
+.logo {
+    width: 188px;
+    height: 72px;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 40px;
+    height: 90px;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 75px;
+    padding: 10px;
+    flex: 1;
+    justify-content: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #3F5540;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 10px;
+    justify-content: center;
+}
+
+
+.header-actions a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: #3F5540;
+    padding: 16px 10px;
+    display: flex;
+    width: 150px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+.icon-shopping {
+    width: 30px;
+    height: 30px;
+}
+
+.hero {
+    display: flex;
+    width: 100%;
+    background-color: #FAF8F3;
+}
+
+.hero-content {
+    flex: 0 0 645px;
+    padding: 80px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.hero-content p,
+.hero-content h1 {
+    margin: O;
+}
+
+.hero-content h1 {
+    font-family: "Playfair Display", serif;
+    font-size: 44px;
+    font-weight: 600;
+    line-height: 52px;
+    letter-spacing: 0;
+    width: 458px;
+}
+
+.hero-badge {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    
+    background-color: #E8EEE5;
+    padding: 6px 12px;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+}
+
+.hero-badge-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.hero-image {
+    flex: 1;
+    margin-top: 24px;
+    margin-right: 40px;
+}
+
+.hero-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.hero-separator {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.hero-separator span {
+    width: 185px;
+    height: 1px;
+    background-color: #D8D9D4;
+    flex: none;
+}
+
+.hero-separator img {
+    width: 20px;
+    height: 20px;
+}
+
+.hero-text {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 468px;
+    color: #000000;
+}
+
+.hero-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+
+    border-radius: 8px;
+    padding: 10px 16px;
+
+    color: #FFFFFF;
+    text-decoration: none;
+    background-color: #6F8464;
+    align-self: flex-start;
+}
+
+.features {
+    width: calc(100% - 160px);
+    min-height: 83px;
+    margin: 40px auto 0;
+    padding: 10px;
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    background-color: #E8EEE5;
+    border-radius: 8px;
+}
+
+.feature-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.feature-item img {
+    width: 40px;
+    height: 40px;
+    margin: 0 15px;
+}
+
+.feature-item h3,
+.feature-item p {
+    margin: 0;
+    color: #000000;
+}
+
+.feature-item h3 {
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.feature-item p {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.about {
+    width: 100%;
+    max-width: 1440px;
+    min-height: 458px;
+
+    display: flex;
+    align-items: center;
+    gap: 109px;
+
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.about-image {
+    flex: 0 0 480px;
+    height: 425px;
+}
+
+.about-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.about-content {
+    flex: 1;
+    min-height: 458px;
+
+    padding: 30px 10px;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.about-label {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.about-content h2 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px;
+}
+
+.about-text {
+    margin: 0;
+    max-width: 540px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.about-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 16px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+
+    color: #FFFFFF;
+    background-color: #6F8464;
+
+    border-radius: 8px;
+    text-decoration: none;
+}
