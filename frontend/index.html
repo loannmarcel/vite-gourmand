@@ -1,142 +1,919 @@
 <!DOCTYPE html>
-<html lang="fr">   
+<html lang="fr">
+
 <head>
     <meta charset="UTF-8">
-    <title>Vite & Gourmand</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <meta
+        name="description"
+        content="Vite & Gourmand, traiteur événementiel à Bordeaux depuis plus de 25 ans. Découvrez nos menus faits maison pour vos événements."
+    >
 
+    <title>Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
 </head>
+
+
 <body>
 
-<header>
-    <img class="logo" src="assets/images/etat-logo/logo-principal.png" alt="Logo Vite & Gourmand">
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="menus.html">Menus</a>
-        <a href="apropos.html">À propos</a>
-        <a href="contact.html">Contact</a>
-        
-    </nav>
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-    <div class="header-actions">
-        <a href="connexion.html">Connexion</a>
-        <img class="icon-shopping" src="assets/icons/icone-shopping.png" alt="panier">
-    </div>
-</header>
+    <header class="site-header">
 
-<main>
-    <section class="hero">
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
 
-        <div class="hero-content">
-            <p class="hero-badge">
-                <img src="assets/icons/icone-feuille.png" alt="" class="hero-badge-icon">
-                Traiteur événementiel à Bordeaux depuis 25 ans
-            </p>
 
-            <h1>Découvrez des menus fais maison pour tous vos événements</h1>
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
-            <div class="hero-separator">
-                <span></span>
-                <img src="assets/icons/icone-feuille.png" alt="">
-                <span></span>
-            </div>
 
-            <p class="hero-text">
-                Mariages, anniversaires, repas d'entreprise ou événements privés :
-                nous créons des menus sur-mesure avec des produits frais et de saison.
-            </p>
+        <nav id="main-navigation" class="main-nav">
 
-            <a href="menus.html" class="hero-button">Découvrir les menus</a>
-        </div>
+            <a href="index.html" class="active">Accueil</a>
 
-        <div class="hero-image">
-            <img src="assets/images/image-hero.png" alt="Plat traiteur Vite & Gourmand">
-        </div>
-    </section>
+            <a href="menus.html">Menus</a>
 
-    <section class="features">
+            <a href="apropos.html">À propos</a>
 
-        <div class="feature-item">
-            <img src="assets/icons/icone-feuille2.png" alt="">
-            <div>
-                <h3>Fait maison</h3>
-                <p>Des recettes préparées avec passion chaque jour.</p>
-            </div>
-        </div>
+            <a href="contact.html">Contact</a>
 
-        <div class="feature-item">
-            <img src="assets/icons/icone-localisation.png" alt="">
-            <div>
-                <h3>À Bordeaux</h3>
-                <p>Basés à Bordeaux, nous nous déplaçons pour vos événements.</p>
-            </div>
-        </div>
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
 
-        <div class="feature-item">
-            <img src="assets/icons/icone-etoile.png" alt="">
-            <div>
-                <h3>Sur-mesure</h3>
-                <p>Des menus personnalisés selon vos envies et votre budget.</p>
-            </div>
-        </div>
+        </nav>
 
-        <div class="feature-item">
-            <img src="assets/icons/icone-personnes.png" alt="">
-            <div>
-                <h3>Expérience</h3>
-                <p>Plus de 25 ans d’expérience à votre service.</p>
-            </div>
-        </div>
 
-    </section>
+        <div class="header-actions">
 
-    <section class="about">
+            <a href="connexion.html" class="login-button">
+                Connexion
+            </a>
 
-        <div class="about-image">
-            <img src="assets/images/image-jose-julie.png"
-                alt="Julie et José de Vite & Gourmand">
-        </div>
-
-        <div class="about-content">
-
-            <p class="about-label">Julie & José</p>
-
-            <h2>
-                Notre passion à votre service<br>
-                depuis plus de 25 ans.
-            </h2>
-
-            <p class="about-text">
-                Julie et José mettent tout leur savoir-faire et leur créativité au service
-                de vos événements. Basés à Bordeaux, nous sélectionnons chaque jour
-                des produits frais et locaux pour vous proposer des menus savoureux,
-                équilibrés et élégants.
-            </p>
-
-            <p class="about-text">
-                Notre priorité : vous offrir une expérience culinaire unique
-                et un service attentionné.
-            </p>
-
-            <a href="apropos.html" class="about-button">
-                En savoir plus sur nous →
+            <a href="panier.html" class="cart-link" aria-label="Voir le panier">
+                <img
+                    class="icon-shopping"
+                    src="assets/icons/icone-shopping.png"
+                    alt=""
+                >
             </a>
 
         </div>
 
-    </section>
-</main>
+    </header>
 
-<footer>
-    <p>Horaires à compléter</p>
-    <a href="mentions-legales.html">Mentions légales</a>
-    <a href="cgv.html">CGV</a>
-</footer>
+
+    <!-- =====================================================
+         CONTENU PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             HERO
+        ================================================== -->
+
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="hero-badge">
+
+                    <img
+                        src="assets/icons/icone-feuille.png"
+                        alt=""
+                        class="hero-badge-icon"
+                    >
+
+                    Traiteur événementiel à Bordeaux depuis 25 ans
+
+                </p>
+
+
+                <h1>
+                    Découvrez des menus faits maison pour tous vos événements
+                </h1>
+
+
+                <div class="hero-separator" aria-hidden="true">
+
+                    <span></span>
+
+                    <img
+                        src="assets/icons/icone-feuille.png"
+                        alt=""
+                    >
+
+                    <span></span>
+
+                </div>
+
+
+                <p class="hero-text">
+
+                    Mariages, anniversaires, repas d'entreprise ou événements
+                    privés : nous créons des menus sur-mesure avec des produits
+                    frais et de saison.
+
+                </p>
+
+
+                <a href="menus.html" class="primary-button">
+
+                    Découvrir les menus
+
+                </a>
+
+            </div>
+
+
+            <div class="hero-image">
+
+                <img
+                    src="assets/images/image-hero.png"
+                    alt="Plat préparé par Vite & Gourmand"
+                >
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             BANDE AVANTAGES
+        ================================================== -->
+
+        <section
+            class="features section-container"
+            aria-label="Nos engagements"
+        >
+
+            <article class="feature-item">
+
+                <img
+                    src="assets/icons/icone-feuille2.png"
+                    alt=""
+                >
+
+                <div>
+
+                    <h2>Fait maison</h2>
+
+                    <p>
+                        Des recettes préparées avec passion chaque jour.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="feature-item">
+
+                <img
+                    src="assets/icons/icone-localisation.png"
+                    alt=""
+                >
+
+                <div>
+
+                    <h2>À Bordeaux</h2>
+
+                    <p>
+                        Basés à Bordeaux, nous nous déplaçons pour vos événements.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="feature-item">
+
+                <img
+                    src="assets/icons/icone-etoile.png"
+                    alt=""
+                >
+
+                <div>
+
+                    <h2>Sur-mesure</h2>
+
+                    <p>
+                        Des menus personnalisés selon vos envies et votre budget.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <article class="feature-item">
+
+                <img
+                    src="assets/icons/icone-personnes.png"
+                    alt=""
+                >
+
+                <div>
+
+                    <h2>Expérience</h2>
+
+                    <p>
+                        Plus de 25 ans d'expérience à votre service.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             JULIE & JOSÉ
+        ================================================== -->
+
+        <section class="about section-container">
+
+            <div class="about-image">
+
+                <img
+                    src="assets/images/image-jose-julie.png"
+                    alt="Julie et José de Vite & Gourmand"
+                >
+
+            </div>
+
+
+            <div class="about-content">
+
+                <p class="section-label">
+                    Julie & José
+                </p>
+
+
+                <h2>
+                    Notre passion à votre service depuis plus de 25 ans.
+                </h2>
+
+
+                <p>
+
+                    Julie et José mettent tout leur savoir-faire et leur
+                    créativité au service de vos événements. Basés à Bordeaux,
+                    nous sélectionnons chaque jour des produits frais et locaux
+                    pour vous proposer des menus savoureux, équilibrés et
+                    élégants.
+
+                </p>
+
+
+                <p>
+
+                    Notre priorité : vous offrir une expérience culinaire
+                    unique et un service attentionné.
+
+                </p>
+
+
+                <a href="apropos.html" class="primary-button">
+
+                    En savoir plus sur nous →
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NOS MENUS
+        ================================================== -->
+
+        <section class="menus-section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    NOS MENUS
+                </p>
+
+                <h2>
+                    Des menus pour chaque occasion
+                </h2>
+
+                <p class="section-intro">
+
+                    Découvrez une sélection de menus faits maison imaginés
+                    pour s'adapter à vos envies, à votre événement et à votre
+                    budget.
+
+                </p>
+
+            </div>
+
+
+            <div class="menu-grid section-container">
+
+
+                <!-- MENU HEALTHY -->
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-healthy.jpg"
+                            alt="Menu Healthy"
+                        >
+
+                    </div>
+
+
+                    <div class="menu-card-content">
+
+                        <span class="menu-tag">
+                            Équilibré
+                        </span>
+
+
+                        <h3>
+                            Menu Healthy
+                        </h3>
+
+
+                        <p>
+
+                            Des recettes fraîches et gourmandes pensées pour
+                            une cuisine légère et équilibrée.
+
+                        </p>
+
+
+                        <div class="menu-card-footer">
+
+                            <div class="menu-card-price">
+                                <span>À partir de</span>
+                                <strong>89,00 €</strong>
+                            </div>
+
+
+                            <a href="detail-menu.html">
+                                Voir le détail →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- MENU TRADITION -->
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-tradition.jpg"
+                            alt="Menu Tradition"
+                        >
+
+                    </div>
+
+
+                    <div class="menu-card-content">
+
+                        <span class="menu-tag">
+                            Tradition
+                        </span>
+
+
+                        <h3>
+                            Menu Tradition
+                        </h3>
+
+
+                        <p>
+
+                            Une cuisine généreuse inspirée des grands
+                            classiques et réalisée avec des produits de saison.
+
+                        </p>
+
+
+                        <div class="menu-card-footer">
+
+                            <div class="menu-card-price">
+                                <span>À partir de</span>
+                                <strong>65,00 €</strong>
+                            </div>
+
+
+                            <a href="detail-menu.html">
+                                Voir le détail →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- MENU ÉVÉNEMENT -->
+
+                <article class="menu-card">
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-evenement.jpg"
+                            alt="Menu Événement"
+                        >
+
+                    </div>
+
+
+                    <div class="menu-card-content">
+
+                        <span class="menu-tag">
+                            Événement
+                        </span>
+
+
+                        <h3>
+                            Menu Événement
+                        </h3>
+
+
+                        <p>
+
+                            Une formule élégante et complète pour vos mariages,
+                            réceptions et grands événements.
+
+                        </p>
+
+
+                        <div class="menu-card-footer">
+
+                            <div class="menu-card-price">
+                                <span>À partir de</span>
+                                <strong>120,00 €</strong>
+                            </div>
+
+
+                            <a href="detail-menu.html">
+                                Voir le détail →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div class="menus-action">
+
+                <a href="menus.html" class="primary-button">
+                    Voir tous les menus
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             AVIS CLIENTS
+        ================================================== -->
+
+        <section class="reviews-section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    ILS NOUS FONT CONFIANCE
+                </p>
+
+                <h2>
+                    Avis de nos clients
+                </h2>
+
+            </div>
+
+
+            <div class="reviews-grid section-container">
+
+
+                <article class="review-card">
+
+                    <div class="review-header">
+
+                        <div class="review-avatar">
+                            ML
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Marie L.
+                            </h3>
+
+                            <div
+                                class="stars"
+                                aria-label="5 étoiles sur 5"
+                            >
+                                ★★★★★
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Un service impeccable et des plats délicieux.
+                        Nos invités se sont régalés du début à la fin.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="review-card">
+
+                    <div class="review-header">
+
+                        <div class="review-avatar">
+                            PD
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Pierre D.
+                            </h3>
+
+                            <div
+                                class="stars"
+                                aria-label="5 étoiles sur 5"
+                            >
+                                ★★★★★
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Julie et José ont parfaitement compris nos attentes.
+                        Tout était très bien organisé et vraiment excellent.
+
+                    </p>
+
+                </article>
+
+
+
+                <article class="review-card">
+
+                    <div class="review-header">
+
+                        <div class="review-avatar">
+                            SB
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Sophie B.
+                            </h3>
+
+                            <div
+                                class="stars"
+                                aria-label="5 étoiles sur 5"
+                            >
+                                ★★★★★
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+
+                        Une très belle expérience pour notre événement.
+                        Produits frais, présentation soignée et équipe
+                        attentionnée.
+
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png"
+                        alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png"
+                        alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png"
+                        alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MENU MOBILE
+    ====================================================== -->
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+    </nav>
+
+    <script>
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".main-nav");
+
+
+        menuToggle.addEventListener("click", () => {
+
+            const menuIsOpen =
+                navigation.classList.toggle("is-open");
+
+
+            menuToggle.classList.toggle(
+                "is-open",
+                menuIsOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+        });
+
+
+        document
+            .querySelectorAll(".main-nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navigation.classList.remove("is-open");
+
+                    menuToggle.classList.remove("is-open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+
+    </script>
 
 </body>
+
 </html>
