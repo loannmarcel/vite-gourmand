@@ -1078,6 +1078,396 @@ select {
     display: none;
 }
 
+/* =========================================================
+   PAGE MENUS - HERO
+========================================================= */
+
+.menus-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    width: 100%;
+    background-color: var(--cream);
+}
+
+.menus-hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 56px 40px;
+    min-width: 0;
+}
+
+.menus-hero-eyebrow {
+    margin: 0 0 28px;
+    color: var(--green);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.menus-hero-content h1 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 48px;
+    line-height: 1.08;
+    font-weight: 700;
+}
+
+.menus-hero-text {
+    margin: 28px 0 0;
+    max-width: 520px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.menus-hero-image {
+    min-width: 0;
+    margin: 24px 40px 24px 0;
+    overflow: hidden;
+    border-radius: 12px;
+    align-self: center;
+}
+
+.menus-hero-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 460px;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* Séparateur du Hero Menus */
+
+.menus-hero .hero-separator {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    width: 100%;
+    max-width: 420px;
+
+    margin: 28px 0 0;
+
+    transform: none;
+}
+
+.menus-hero .hero-separator-line {
+    flex: 1;
+    height: 1px;
+
+    background-color: #d6d6d0;
+}
+
+.menus-hero .hero-separator-icon {
+    width: 20px;
+    height: 20px;
+
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* ==========================================
+   PAGE MENUS - FILTRES
+========================================== */
+
+.menu-filters {
+    background-color: #ffffff;
+    padding: 24px 40px;
+}
+
+.filters-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 16px 24px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) auto;
+    gap: 16px;
+    align-items: end;
+
+    background-color: #f4f5f1;
+    border-radius: 8px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222222;
+}
+
+.filter-group select {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    background-color: #ffffff;
+    border: 1px solid #d9ddd5;
+    border-radius: 4px;
+
+    cursor: pointer;
+}
+
+.filter-reset {
+    height: 44px;
+    padding: 0 24px;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #3f5540;
+    background-color: #ffffff;
+
+    border: 1px solid #809374;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+/* ==========================================
+   PAGE MENUS - CARTES DÉTAILLÉES
+========================================== */
+
+.menus-list-section {
+    padding: 32px 40px 48px;
+    background-color: #ffffff;
+}
+
+.menus-grid {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 64px;
+    align-items: stretch;
+}
+
+
+/* CARTE */
+
+.menu-card-detailed {
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+
+/* IMAGE */
+
+.menu-card-detailed .menu-card-image {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.menu-card-detailed .menu-card-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* BADGE SUR L'IMAGE */
+
+.menu-card-detailed .menu-card-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+
+    padding: 6px 10px;
+
+    color: #ffffff;
+    background-color: var(--green);
+
+    font-size: 10px;
+    font-weight: 500;
+
+    border-radius: 4px;
+}
+
+
+/* CONTENU */
+
+.menu-card-detailed .menu-card-body {
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.menu-card-detailed h2 {
+    margin: 0 0 4px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 26px;
+    line-height: 1.2;
+}
+
+
+/* AVIS */
+
+.menu-card-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    margin-bottom: 12px;
+}
+
+.menu-stars {
+    color: #d69b2d;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.menu-reviews {
+    color: #777777;
+    font-size: 11px;
+}
+
+
+/* DESCRIPTION */
+
+.menu-card-description {
+    margin: 0;
+
+    color: #666666;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.menu-card-divider {
+    width: 100%;
+    height: 1px;
+
+    margin: 14px 0;
+
+    background-color: #e2e2e2;
+}
+
+
+/* PRIX */
+
+.menu-card-price-label {
+    margin: 0 0 8px;
+
+    color: #777777;
+    font-size: 12px;
+}
+
+.menu-card-price {
+    margin: 0 0 12px;
+
+    color: var(--green);
+    font-size: 26px;
+    font-weight: 600;
+}
+
+
+/* NOMBRE DE PERSONNES */
+
+.menu-card-people {
+    margin: 0 0 14px;
+
+    color: #777777;
+    font-size: 12px;
+}
+
+
+/* PRÉPARATION + DISPONIBILITÉ */
+
+.menu-card-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+
+    padding: 12px 0;
+
+    border-top: 1px solid #e2e2e2;
+    border-bottom: 1px solid #e2e2e2;
+
+    color: #555555;
+    font-size: 10px;
+}
+
+
+/* ALLERGÈNES */
+
+.menu-card-allergens {
+    margin-top: 12px;
+}
+
+.menu-card-allergens p {
+    margin: 0 0 8px;
+
+    color: #777777;
+    font-size: 12px;
+}
+
+.allergen-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.allergen-list span {
+    padding: 5px 9px;
+
+    color: var(--green);
+    background-color: #edf2e9;
+
+    font-size: 11px;
+
+    border-radius: 12px;
+}
+
+
+/* BOUTON */
+
+.menu-card-button {
+    margin-top: auto;
+    padding: 11px 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    color: #ffffff;
+    background-color: var(--green);
+
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+
+    border-radius: 7px;
+}
+
+.menu-card-button span {
+    font-size: 20px;
+    line-height: 1;
+}
+
 
 /* =========================================================
    RESPONSIVE : PETITS ORDINATEURS / TABLETTES
