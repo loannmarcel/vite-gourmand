@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Vite & Gourmand, traiteur événementiel à Bordeaux depuis plus de 25 ans. Découvrez nos menus faits maison pour vos événements."
+    >
+
+    <title>Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="index.html">Accueil</a>
+
+            <a href="menus.html" class="active">Menus</a>
+
+            <a href="apropos.html">À propos</a>
+
+            <a href="contact.html">Contact</a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <a href="connexion.html" class="login-button">
+                Connexion
+            </a>
+
+            <a href="panier.html" class="cart-link" aria-label="Voir le panier">
+                <img
+                    class="icon-shopping"
+                    src="assets/icons/icone-shopping.png"
+                    alt=""
+                >
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTENU PRINCIPAL
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- ==========================================
+        HERO PAGE MENUS
+        =========================================== -->
+
+        <section class="menus-hero">
+
+            <div class="menus-hero-content">
+
+                <p class="menus-hero-eyebrow">
+                    Nos menus
+                </p>
+
+                <h1>
+                    Des menus pensés<br>
+                    pour chaque occasion
+                </h1>
+
+                <div class="hero-separator" aria-hidden="true">
+
+                    <span class="hero-separator-line"></span>
+
+                    <img
+                        src="assets/icons/icone-feuille.png"
+                        alt=""
+                        class="hero-separator-icon"
+                    >
+
+                    <span class="hero-separator-line"></span>
+
+                </div>
+
+                <p class="menus-hero-text">
+                    Mariages, anniversaires, repas d'entreprise ou événements privés :
+                    découvrez notre sélection de menus faits maison, élaborés avec des
+                    produits frais et de saison.
+                </p>
+
+            </div>
+
+
+            <div class="menus-hero-image">
+
+                <img
+                    src="assets/images/menu-hero.png"
+                    alt="Plat préparé par Vite & Gourmand"
+                >
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+        FILTRES DES MENUS
+        =========================================== -->
+
+        <section class="menu-filters">
+
+            <div class="filters-container">
+
+                <!-- Prix -->
+                <div class="filter-group filter-price">
+
+                    <label for="price-toggle">
+                        Prix
+                    </label>
+
+                    <button
+                        class="filter-select filter-price-toggle"
+                        id="price-toggle"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="price-panel"
+                    >
+                        <span class="filter-select-value">
+                            0 € - 150 €
+                        </span>
+
+                    </button>
+
+                    <div
+                        class="price-panel"
+                        id="price-panel"
+                        hidden
+                    >
+
+                        <p class="price-panel-title">
+                            Sélectionner une fourchette de prix
+                        </p>
+
+                        <div class="price-range">
+
+                            <div class="price-range-track">
+                                <input
+                                    type="range"
+                                    id="price-min-range"
+                                    min="0"
+                                    max="150"
+                                    value="0"
+                                    step="5"
+                                    aria-label="Prix minimum"
+                                >
+
+                                <input
+                                    type="range"
+                                    id="price-max-range"
+                                    min="0"
+                                    max="150"
+                                    value="150"
+                                    step="5"
+                                    aria-label="Prix maximum"
+                                >
+                            </div>
+
+                            <div class="price-range-values">
+                                <span>0 €</span>
+                                <span>150 €</span>
+                            </div>
+
+                        </div>
+
+                        <div class="price-inputs">
+
+                            <div class="price-input-group">
+
+                                <label for="price-min">
+                                    Prix minimum
+                                </label>
+
+                                <div class="price-input-wrapper">
+                                    <input
+                                        type="number"
+                                        id="price-min"
+                                        name="price-min"
+                                        min="0"
+                                        max="150"
+                                        value="0"
+                                        step="5"
+                                    >
+
+                                    <span>€</span>
+                                </div>
+
+                            </div>
+
+                            <div class="price-input-group">
+
+                                <label for="price-max">
+                                    Prix maximum
+                                </label>
+
+                                <div class="price-input-wrapper">
+                                    <input
+                                        type="number"
+                                        id="price-max"
+                                        name="price-max"
+                                        min="0"
+                                        max="150"
+                                        value="150"
+                                        step="5"
+                                    >
+
+                                    <span>€</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <button
+                            class="price-apply"
+                            type="button"
+                        >
+                            Appliquer
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Thème -->
+                <div class="filter-group">
+
+                    <label for="theme-filter">
+                        Thème
+                    </label>
+
+                    <select id="theme-filter" name="theme">
+                        <option value="">Tous les thèmes</option>
+                        <option value="healthy">Healthy</option>
+                        <option value="tradition">Tradition</option>
+                        <option value="evenement">Événement</option>
+                        <option value="vegetarien">Végétarien</option>
+                        <option value="mediterraneen">Méditerranéen</option>
+                        <option value="brunch">Brunch</option>
+                    </select>
+
+                </div>
+
+
+                <!-- Régime -->
+                <div class="filter-group">
+
+                    <label for="diet-filter">
+                        Régime
+                    </label>
+
+                    <select id="diet-filter" name="diet">
+                        <option value="">Tous les régimes</option>
+                        <option value="equilibre">Équilibré</option>
+                        <option value="classique">Classique</option>
+                        <option value="festif">Festif</option>
+                        <option value="vegetarien">Végétarien</option>
+                        <option value="mediterraneen">Méditerranéen</option>
+                    </select>
+
+                </div>
+
+
+                <!-- Nombre de personnes -->
+                <div class="filter-group">
+
+                    <label for="people-filter">
+                        Nombre de personnes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="people-filter"
+                        name="people"
+                        min="1"
+                        step="1"
+                        placeholder="Nombre de personnes"
+                    >
+
+                </div>
+
+
+                <!-- Réinitialiser -->
+                <button
+                    class="filter-reset"
+                    type="button"
+                >
+                    Réinitialiser
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- ==========================================
+        LISTE DES MENUS
+        =========================================== -->
+
+        <section class="menus-list-section">
+
+            <div class="menus-grid">
+
+                <!-- MENU HEALTHY -->
+                <article class="menu-card menu-card-detailed" 
+                    data-price="89" 
+                    data-people="2"
+                    data-theme="healthy"
+                    data-diet="equilibre"
+                >
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-healthy.jpg"
+                            alt="Menu Healthy"
+                        >
+
+                        <span class="menu-card-badge">
+                            ÉQUILIBRÉ
+                        </span>
+
+                    </div>
+
+                    <div class="menu-card-body">
+
+                        <h2>Menu Healthy</h2>
+
+                        <div class="menu-card-rating">
+                            <span class="menu-stars">★★★★★</span>
+                            <span class="menu-reviews">(216 avis)</span>
+                        </div>
+
+                        <p class="menu-card-description">
+                            Un menu équilibré préparé avec des produits frais et de saison.
+                        </p>
+
+                        <div class="menu-card-divider"></div>
+
+                        <div class="menu-card-price-row">
+
+                            <div class="menu-card-price-content">
+
+                                <p class="menu-card-price-label">
+                                    À partir de
+                                </p>
+
+                                <p class="menu-card-price">
+                                    89,00 €
+                                </p>
+
+                            </div>
+
+                            <div class="menu-card-diet">
+
+                                <img
+                                    src="assets/icons/icone-feuille.png"
+                                    alt=""
+                                    class="menu-card-diet-icon"
+                                >
+
+                                <div class="menu-card-diet-text">
+
+                                    <span class="menu-card-diet-label">
+                                        Régime
+                                    </span>
+
+                                    <span class="menu-card-diet-value">
+                                        Équilibré
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <p class="menu-card-people">
+                            <img 
+                                src="assets/icons/icone-personnes.png"
+                                alt="" 
+                                class="menu-card-icon"
+                            >
+                            Minimum 2 personnes
+                        </p>
+
+                        <div class="menu-card-info">
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-horloge.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Préparation : 1 à 2 h
+                            </span>
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-valide.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Disponible aujourd'hui
+                            </span>
+
+                        </div>
+
+                        <div class="menu-card-allergens">
+
+                            <p>Allergènes</p>
+
+                            <div class="allergen-list">
+                                <span>Gluten</span>
+                                <span>Lait</span>
+                                <span>Fruits à coque</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="menu-card-button">
+                            Voir le détail
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU TRADITION -->
+                <article class="menu-card menu-card-detailed" 
+                    data-price="65" 
+                    data-people="2"
+                    data-theme="tradition"
+                    data-diet="classique"
+                >
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-tradition.jpg"
+                            alt="Menu Tradition"
+                        >
+
+                        <span class="menu-card-badge">
+                            GOURMAND
+                        </span>
+
+                    </div>
+
+                    <div class="menu-card-body">
+
+                        <h2>Menu Tradition</h2>
+
+                        <div class="menu-card-rating">
+                            <span class="menu-stars">★★★★★</span>
+                            <span class="menu-reviews">(148 avis)</span>
+                        </div>
+
+                        <p class="menu-card-description">
+                            Une cuisine traditionnelle, élaborée avec des produits frais et de qualité.
+                        </p>
+
+                        <div class="menu-card-divider"></div>
+
+                        <div class="menu-card-price-row">
+
+                            <div class="menu-card-price-content">
+
+                                <p class="menu-card-price-label">
+                                    À partir de
+                                </p>
+
+                                <p class="menu-card-price">
+                                    65,00 €
+                                </p>
+
+                            </div>
+
+                            <div class="menu-card-diet">
+
+                                <img
+                                    src="assets/icons/icone-feuille.png"
+                                    alt=""
+                                    class="menu-card-diet-icon"
+                                >
+
+                                <div class="menu-card-diet-text">
+
+                                    <span class="menu-card-diet-label">
+                                        Régime
+                                    </span>
+
+                                    <span class="menu-card-diet-value">
+                                        Classique
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <p class="menu-card-people">
+                            <img 
+                                src="assets/icons/icone-personnes.png"
+                                alt="" 
+                                class="menu-card-icon"
+                            >
+                            Minimum 2 personnes
+                        </p>
+
+                        <div class="menu-card-info">
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-horloge.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Préparation : 1 à 2 h
+                            </span>
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-valide.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Disponible aujourd'hui
+                            </span>
+
+                        </div>
+
+                        <div class="menu-card-allergens">
+
+                            <p>Allergènes</p>
+
+                            <div class="allergen-list">
+                                <span>Gluten</span>
+                                <span>Lait</span>
+                                <span>Œufs</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="menu-card-button">
+                            Voir le détail
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU ÉVÉNEMENT -->
+                <article class="menu-card menu-card-detailed" 
+                    data-price="120" 
+                    data-people="4"
+                    data-theme="evenement"
+                    data-diet="festif"
+                >
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-evenement.jpg"
+                            alt="Menu Événement"
+                        >
+
+                        <span class="menu-card-badge">
+                            POUR VOS ÉVÉNEMENTS
+                        </span>
+
+                    </div>
+
+                    <div class="menu-card-body">
+
+                        <h2>Menu Événement</h2>
+
+                        <div class="menu-card-rating">
+                            <span class="menu-stars">★★★★★</span>
+                            <span class="menu-reviews">(87 avis)</span>
+                        </div>
+
+                        <p class="menu-card-description">
+                            Un menu pensé pour vos événements, élaboré avec des produits frais.
+                        </p>
+
+                        <div class="menu-card-divider"></div>
+
+                        <div class="menu-card-price-row">
+
+                            <div class="menu-card-price-content">
+
+                                <p class="menu-card-price-label">
+                                    À partir de
+                                </p>
+
+                                <p class="menu-card-price">
+                                    120,00 €
+                                </p>
+
+                            </div>
+
+                            <div class="menu-card-diet">
+
+                                <img
+                                    src="assets/icons/icone-feuille.png"
+                                    alt=""
+                                    class="menu-card-diet-icon"
+                                >
+
+                                <div class="menu-card-diet-text">
+
+                                    <span class="menu-card-diet-label">
+                                        Régime
+                                    </span>
+
+                                    <span class="menu-card-diet-value">
+                                        Festif
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <p class="menu-card-people">
+                            <img 
+                                src="assets/icons/icone-personnes.png"
+                                alt="" 
+                                class="menu-card-icon"
+                            >
+                            Minimum 4 personnes
+                        </p>
+
+                        <div class="menu-card-info">
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-horloge.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Préparation : 24 h
+                            </span>
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-valide.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Sur réservation
+                            </span>
+
+                        </div>
+
+                        <div class="menu-card-allergens">
+
+                            <p>Allergènes</p>
+
+                            <div class="allergen-list">
+                                <span>Gluten</span>
+                                <span>Lait</span>
+                                <span>Crustacés</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="menu-card-button">
+                            Voir le détail
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+                <!-- MENU VÉGÉTARIEN -->
+                <article class="menu-card menu-card-detailed" 
+                    data-price="75" 
+                    data-people="2"
+                    data-theme="vegetarien"
+                    data-diet="vegetarien"
+                >
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-vegetarien.png"
+                            alt="Menu Végétarien"
+                        >
+
+                        <span class="menu-card-badge">
+                            VÉGÉTARIEN
+                        </span>
+
+                    </div>
+
+                    <div class="menu-card-body">
+
+                        <h2>Menu Végétarien</h2>
+
+                        <div class="menu-card-rating">
+                            <span class="menu-stars">★★★★★</span>
+                            <span class="menu-reviews">(132 avis)</span>
+                        </div>
+
+                        <p class="menu-card-description">
+                            Des recettes végétariennes colorées et généreuses, préparées avec des produits frais et de saison.
+                        </p>
+
+                        <div class="menu-card-divider"></div>
+
+                        <div class="menu-card-price-row">
+
+                            <div class="menu-card-price-content">
+
+                                <p class="menu-card-price-label">
+                                    À partir de
+                                </p>
+
+                                <p class="menu-card-price">
+                                    75,00 €
+                                </p>
+
+                            </div>
+
+                            <div class="menu-card-diet">
+
+                                <img
+                                    src="assets/icons/icone-feuille.png"
+                                    alt=""
+                                    class="menu-card-diet-icon"
+                                >
+
+                                <div class="menu-card-diet-text">
+
+                                    <span class="menu-card-diet-label">
+                                        Régime
+                                    </span>
+
+                                    <span class="menu-card-diet-value">
+                                        Végétarien
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <p class="menu-card-people">
+                            <img
+                                src="assets/icons/icone-personnes.png"
+                                alt=""
+                                class="menu-card-icon"
+                            >
+                            Minimum 2 personnes
+                        </p>
+
+                        <div class="menu-card-info">
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-horloge.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Préparation : 1 à 2 h
+                            </span>
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-valide.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Disponible aujourd'hui
+                            </span>
+
+                        </div>
+
+                        <div class="menu-card-allergens">
+
+                            <p>Allergènes</p>
+
+                            <div class="allergen-list">
+                                <span>Lait</span>
+                                <span>Fruits à coque</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="menu-card-button">
+                            Voir le détail
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU MÉDITERRANÉEN -->
+                <article class="menu-card menu-card-detailed" 
+                    data-price="95" 
+                    data-people="2"
+                    data-theme="mediterraneen"
+                    data-diet="mediterraneen"
+                >
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-mediterraneen.png"
+                            alt="Menu Méditerranéen"
+                        >
+
+                        <span class="menu-card-badge">
+                            MÉDITERRANÉEN
+                        </span>
+
+                    </div>
+
+                    <div class="menu-card-body">
+
+                        <h2>Menu Méditerranéen</h2>
+
+                        <div class="menu-card-rating">
+                            <span class="menu-stars">★★★★★</span>
+                            <span class="menu-reviews">(101 avis)</span>
+                        </div>
+
+                        <p class="menu-card-description">
+                            Un voyage en Méditerranée autour de recettes fraîches, parfumées et inspirées des saveurs du soleil.
+                        </p>
+
+                        <div class="menu-card-divider"></div>
+
+                        <div class="menu-card-price-row">
+
+                            <div class="menu-card-price-content">
+
+                                <p class="menu-card-price-label">
+                                    À partir de
+                                </p>
+
+                                <p class="menu-card-price">
+                                    95,00 €
+                                </p>
+
+                            </div>
+
+                            <div class="menu-card-diet">
+
+                                <img
+                                    src="assets/icons/icone-feuille.png"
+                                    alt=""
+                                    class="menu-card-diet-icon"
+                                >
+
+                                <div class="menu-card-diet-text">
+
+                                    <span class="menu-card-diet-label">
+                                        Régime
+                                    </span>
+
+                                    <span class="menu-card-diet-value">
+                                        Méditerranéen
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <p class="menu-card-people">
+                            <img
+                                src="assets/icons/icone-personnes.png"
+                                alt=""
+                                class="menu-card-icon"
+                            >
+                            Minimum 2 personnes
+                        </p>
+
+                        <div class="menu-card-info">
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-horloge.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Préparation : 2 h
+                            </span>
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-valide.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Disponible aujourd'hui
+                            </span>
+
+                        </div>
+
+                        <div class="menu-card-allergens">
+
+                            <p>Allergènes</p>
+
+                            <div class="allergen-list">
+                                <span>Poissons</span>
+                                <span>Gluten</span>
+                                <span>Lait</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="menu-card-button">
+                            Voir le détail
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU BRUNCH -->
+                <article class="menu-card menu-card-detailed" 
+                    data-price="55"
+                    data-people="2"
+                    data-theme="brunch"
+                    data-diet="classique"
+                >
+
+                    <div class="menu-card-image">
+
+                        <img
+                            src="assets/images/menu-brunch.png"
+                            alt="Menu Brunch"
+                        >
+
+                        <span class="menu-card-badge">
+                            BRUNCH
+                        </span>
+
+                    </div>
+
+                    <div class="menu-card-body">
+
+                        <h2>Menu Brunch</h2>
+
+                        <div class="menu-card-rating">
+                            <span class="menu-stars">★★★★★</span>
+                            <span class="menu-reviews">(64 avis)</span>
+                        </div>
+
+                        <p class="menu-card-description">
+                            Une sélection généreuse de recettes sucrées et salées pour partager un brunch gourmand et convivial.
+                        </p>
+
+                        <div class="menu-card-divider"></div>
+
+                        <div class="menu-card-price-row">
+
+                            <div class="menu-card-price-content">
+
+                                <p class="menu-card-price-label">
+                                    À partir de
+                                </p>
+
+                                <p class="menu-card-price">
+                                    55,00 €
+                                </p>
+
+                            </div>
+
+                            <div class="menu-card-diet">
+
+                                <img
+                                    src="assets/icons/icone-feuille.png"
+                                    alt=""
+                                    class="menu-card-diet-icon"
+                                >
+
+                                <div class="menu-card-diet-text">
+
+                                    <span class="menu-card-diet-label">
+                                        Régime
+                                    </span>
+
+                                    <span class="menu-card-diet-value">
+                                        Classique
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <p class="menu-card-people">
+                            <img
+                                src="assets/icons/icone-personnes.png"
+                                alt=""
+                                class="menu-card-icon"
+                            >
+                            Minimum 2 personnes
+                        </p>
+
+                        <div class="menu-card-info">
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-horloge.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Préparation : 30 à 60 min
+                            </span>
+
+                            <span class="menu-card-info-item">
+                                <img
+                                    src="assets/icons/icone-valide.png"
+                                    alt=""
+                                    class="menu-card-icon"
+                                >
+                                Disponible aujourd'hui
+                            </span>
+
+                        </div>
+
+                        <div class="menu-card-allergens">
+
+                            <p>Allergènes</p>
+
+                            <div class="allergen-list">
+                                <span>Œufs</span>
+                                <span>Lait</span>
+                                <span>Gluten</span>
+                            </div>
+
+                        </div>
+
+                        <a href="#" class="menu-card-button">
+                            Voir le détail
+                            <span>→</span>
+                        </a>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <div class="menus-empty" id="menus-empty" hidden>
+
+                <img
+                    src="assets/icons/icone-menu-vide.svg"
+                    alt=""
+                    class="menus-empty-icon"
+                >
+
+                <h2>Aucun menu ne correspond à vos critères</h2>
+
+                <p>
+                    Modifiez vos filtres ou réinitialisez-les
+                    pour découvrir nos autres menus.
+                </p>
+
+                <button
+                    class="menus-empty-reset"
+                    type="button"
+                >
+                    <img
+                        src="assets/icons/icone-reset.png"
+                        alt=""
+                        class="menus-empty-reset-icon"
+                    >
+
+                    Réinitialiser les filtres
+                </button>
+
+            </div>
+
+        </section>
+
+        <section class="custom-menu-section">
+
+            <div class="custom-menu-container">
+
+                <div class="custom-menu-icon">
+                    <img
+                        src="assets/icons/icone-couverts.png"
+                        alt=""
+                    >
+                </div>
+
+                <div class="custom-menu-content">
+
+                    <h2>
+                        Besoin d’un menu sur mesure ?
+                    </h2>
+
+                    <p>
+                        Contactez-nous, nous créons le menu adapté
+                        à votre événement.
+                    </p>
+
+                </div>
+
+                <a
+                    href="#"
+                    class="custom-menu-button"
+                >
+                    Nous contacter
+                </a>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png"
+                        alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png"
+                        alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png"
+                        alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MENU MOBILE
+    ====================================================== -->
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+    </nav>
+
+    <script>
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".main-nav");
+
+
+        menuToggle.addEventListener("click", () => {
+
+            const menuIsOpen =
+                navigation.classList.toggle("is-open");
+
+
+            menuToggle.classList.toggle(
+                "is-open",
+                menuIsOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+        });
+
+
+        document
+            .querySelectorAll(".main-nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navigation.classList.remove("is-open");
+
+                    menuToggle.classList.remove("is-open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+
+    </script>
+
+    <script src="js/menus.js"></script>
+</body>
+
+</html>
