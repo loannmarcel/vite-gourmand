@@ -2288,12 +2288,27 @@ select {
     /* FOOTER */
 
     .footer-content {
-        grid-template-columns:
-            1.5fr
-            repeat(
-                2,
-                1fr
-            );
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 40px;
+        row-gap: 40px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        justify-self: start;
+        text-align: left;
+    }
+
+    .footer-brand .social-links {
+        justify-content: flex-start;
+    }
+
+
+    /* MENUS */
+
+    .menus-grid {
+        grid-template-columns: repeat(2, 320px);
+        gap: 32px;
     }
 
 }
@@ -2501,7 +2516,7 @@ select {
     }
 
 
-    .menu-card:last-child {
+    .menu-grid .menu-card:last-child {
         grid-column:
             1 / -1;
 
@@ -2535,6 +2550,80 @@ select {
     .footer-brand {
         grid-column:
             1 / -1;
+    }
+
+    /* FILTRES PAGE MENUS */
+
+    .filters-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .filter-reset {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    /* FOOTER TABLETTE */
+
+    .footer-content {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: 64px;
+        row-gap: 28px;
+    }
+
+    .footer-brand {
+        grid-column: 1 / -1;
+        justify-self: center;
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .footer-brand .social-links {
+        justify-content: center;
+    }
+
+    .footer-column {
+        width: 200px;
+        justify-self: center;
+    }
+
+    /* MENU SUR MESURE */
+
+    .custom-menu-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        justify-items: center;
+        gap: 24px;
+    }
+
+    .custom-menu-content {
+        text-align: center;
+        max-width: 500px;
+    }
+
+    .custom-menu-button {
+        width: 100%;
+        max-width: 320px;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE : PETITE TABLETTE 
+   ====================================================== */
+
+@media (max-width: 700px) {
+
+    .menus-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .menu-card-detailed {
+        width: 100%;
+        max-width: 360px;
+        justify-self: center;
     }
 
 }
@@ -2758,6 +2847,96 @@ select {
         margin-top: 32px;
 
         text-align: left;
+    }
+
+    /* HERO PAGE MENUS */
+
+    .menus-hero {
+        grid-template-columns: 1fr;
+    }
+
+    .menus-hero-content {
+        padding: 32px 24px;
+    }
+
+    .menus-hero h1 {
+        font-size: 32px;
+        line-height: 1.1;
+    }
+
+    .menus-hero-image {
+        width: calc(100% - 48px);
+        height: 200px;
+        margin: 0 24px 32px;
+        padding: 0;
+        min-height: 0;
+    }
+
+    .menus-hero-image img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    /* FILTRES PAGE MENUS */
+
+    .menu-filters {
+        padding: 24px 16px;
+    }
+
+    .filters-container {
+        grid-template-columns: 1fr;
+        padding: 16px;
+        gap: 16px;
+    }
+
+    .filter-reset {
+        width: 100%;
+    }
+
+    /* CARTES PAGE MENUS */
+
+    .menus-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .menu-card-detailed {
+        width: 100%;
+        max-width: 360px;
+        justify-self: center;
+    }
+
+    /* MENU SUR MESURE */
+
+    .custom-menu-section {
+        padding: 32px 16px;
+    }
+
+    .custom-menu-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 32px 24px;
+        text-align: center;
+    }
+
+    .custom-menu-icon img {
+        width: 80px;
+        height: auto;
+    }
+
+    .custom-menu-content h2 {
+        font-size: 22px;
+        line-height: 1.2;
+    }
+
+    .custom-menu-button {
+        width: 100%;
+        text-align: center;
     }
 
     /* =========================
