@@ -2180,6 +2180,821 @@ select {
     background-color: #304431;
 }
 
+/* =========================================================
+   PAGE DÉTAIL MENU
+   FIL D'ARIANE + HERO
+========================================================= */
+
+
+/* =========================================================
+   FIL D'ARIANE
+========================================================= */
+
+.breadcrumb-wrapper {
+    width: 100%;
+    padding: 18px 40px 10px;
+
+    background-color: var(--cream);
+}
+
+.breadcrumb {
+    max-width: 1440px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+}
+
+.breadcrumb a {
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.menu-detail-hero {
+    width: 100%;
+
+    padding: 20px 40px 40px;
+
+    background-color: var(--cream);
+}
+
+.menu-detail-hero-content {
+    width: 100%;
+    max-width: 1440px;
+    min-height: 460px;
+
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 38% 62%;
+
+    background-color: var(--cream);
+}
+
+
+/* =========================================================
+   COLONNE GAUCHE
+========================================================= */
+
+.menu-detail-info {
+    padding: 38px 56px 38px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background-color: var(--cream);
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.menu-detail-badges {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.menu-detail-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 10px;
+
+    border-radius: 4px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+
+    text-transform: uppercase;
+}
+
+.menu-detail-badge-green {
+    background-color: var(--green);
+    color: #ffffff;
+}
+
+.menu-detail-badge-orange {
+    background-color: #d89a3a;
+    color: #ffffff;
+
+    border: none;
+}
+
+
+/* =========================================================
+   TITRE
+========================================================= */
+
+.menu-detail-info h1 {
+    margin: 0 0 16px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 42px;
+    line-height: 1.1;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   AVIS
+========================================================= */
+
+.menu-detail-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-top: 6px;
+    margin-bottom: 22px;
+}
+
+.menu-detail-stars {
+    color: #d99a28;
+
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 1;
+}
+
+.menu-detail-reviews {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+
+    color: #666666;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.menu-detail-description {
+    max-width: 360px;
+
+    margin: 0 0 26px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    line-height: 1.55;
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   INFORMATIONS PRATIQUES
+========================================================= */
+
+.menu-detail-features {
+    margin: 4px 0 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    list-style: none;
+}
+
+.menu-detail-feature {
+    display: grid;
+    grid-template-columns: 46px 1fr;
+    align-items: center;
+    column-gap: 16px;
+}
+
+.menu-detail-feature-icon {
+    width: 46px;
+    height: 46px;
+
+    display: block;
+    object-fit: contain;
+}
+
+.menu-detail-feature-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
+    font-family: "Inter", sans-serif;
+}
+
+.menu-detail-feature-label {
+    font-size: 12px;
+    line-height: 1.2;
+
+    color: #666666;
+}
+
+.menu-detail-feature-content strong {
+    font-size: 14px;
+    line-height: 1.25;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   PRIX
+========================================================= */
+
+.menu-detail-price-line {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+
+.menu-detail-feature-content strong.menu-detail-price {
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--green);
+}
+
+.menu-detail-price-info {
+    font-size: 10px;
+    line-height: 1.2;
+
+    color: #78906f;
+}
+
+
+/* =========================================================
+   ZONE IMAGE
+========================================================= */
+
+.menu-detail-image {
+    min-width: 0;
+
+    margin: 12px 20px 12px 0;
+    padding: 0;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.menu-detail-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    aspect-ratio: 892 / 587;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 12px;
+}
+
+/* =========================================================
+   PAGE DÉTAIL MENU
+   CONTENU PRINCIPAL + CARTE DE COMMANDE
+========================================================= */
+
+
+/* =========================================================
+   STRUCTURE GÉNÉRALE
+========================================================= */
+
+.menu-detail-body {
+    width: 100%;
+    padding: 72px 40px 80px;
+
+    background-color: #ffffff;
+}
+
+.menu-detail-body-content {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 80px;
+
+    align-items: start;
+}
+
+.menu-detail-main {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   PRÉSENTATION DU MENU
+========================================================= */
+
+.menu-presentation {
+    max-width: 760px;
+}
+
+.menu-presentation h2 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   DÉCORATION SOUS LE TITRE
+========================================================= */
+
+.section-title-decoration {
+    width: 320px;
+    height: 24px;
+
+    margin: 12px 0 30px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title-line {
+    height: 1px;
+    flex: 1;
+
+    background-color: var(--green);
+}
+
+.section-title-icon {
+    width: 22px;
+    height: 22px;
+
+    display: block;
+    object-fit: contain;
+}
+
+
+/* =========================================================
+   TEXTES DE PRÉSENTATION
+========================================================= */
+
+.menu-presentation > p {
+    max-width: 720px;
+
+    margin: 0 0 18px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    line-height: 1.75;
+
+    color: var(--text-primary);
+}
+
+.menu-presentation > p:last-of-type {
+    margin-bottom: 32px;
+}
+
+
+/* =========================================================
+   BANDEAU FAIT MAISON
+========================================================= */
+
+.menu-presentation-highlight {
+    max-width: 720px;
+
+    padding: 20px 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    background-color: var(--cream);
+
+    border-radius: 8px;
+}
+
+.menu-presentation-highlight-icon {
+    width: 42px;
+    height: 42px;
+
+    flex: 0 0 42px;
+
+    border: 2px solid var(--green);
+    border-radius: 50%;
+}
+
+.menu-presentation-highlight p {
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    font-family: "Inter", sans-serif;
+}
+
+.menu-presentation-highlight strong {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.menu-presentation-highlight span {
+    font-size: 12px;
+    line-height: 1.5;
+
+    color: #666666;
+}
+
+/* =========================================================
+   COMPOSITION DU MENU
+========================================================= */
+
+.menu-composition {
+    max-width: 760px;
+    margin-top: 64px;
+}
+
+.menu-composition h2 {
+    margin: 0;
+
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.menu-composition-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+
+    margin-top: 8px;
+}
+.menu-composition-item {
+    padding: 0 18px;
+
+    text-align: center;
+}
+
+.menu-composition-item h3 {
+    margin: 0 0 12px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    line-height: 30px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.menu-composition-item p {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+
+    color: var(--text-primary);
+}
+
+/* =========================================================
+   CARTE COMMANDER CE MENU
+========================================================= */
+
+.order-card {
+    width: 100%;
+
+    padding: 28px;
+
+    background-color: #ffffff;
+
+    border: 1px solid var(--green);
+    border-radius: 10px;
+
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.order-card h2 {
+    margin: 0 0 22px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   PRIX DE LA COMMANDE
+========================================================= */
+
+.order-price {
+    margin-bottom: 26px;
+}
+
+.order-price-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+
+    color: #666666;
+}
+
+.order-price-values {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-old-price {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+
+    color: #888888;
+
+    text-decoration: line-through;
+}
+
+.order-current-price {
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 600;
+
+    color: var(--green);
+}
+
+.order-discount-badge {
+    padding: 4px 7px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+
+    color: #ffffff;
+    background-color: var(--green);
+
+    border-radius: 4px;
+}
+
+
+/* =========================================================
+   CHAMPS
+========================================================= */
+
+.order-field {
+    margin-bottom: 22px;
+}
+
+.order-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    color: var(--text-primary);
+}
+
+
+/* =========================================================
+   NOMBRE DE PERSONNES
+========================================================= */
+
+.order-quantity {
+    width: 100%;
+    height: 44px;
+
+    display: grid;
+    grid-template-columns: 44px 1fr 44px;
+
+    overflow: hidden;
+
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+}
+
+.order-quantity-button {
+    padding: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+
+    color: var(--text-primary);
+    background-color: #ffffff;
+
+    border: none;
+
+    cursor: pointer;
+}
+
+.order-quantity-button:first-child {
+    border-right: 1px solid #d6d6d6;
+}
+
+.order-quantity-button:last-child {
+    border-left: 1px solid #d6d6d6;
+}
+
+.order-quantity input {
+    width: 100%;
+    min-width: 0;
+
+    padding: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    text-align: center;
+
+    color: var(--text-primary);
+    background-color: #ffffff;
+
+    border: none;
+    outline: none;
+
+    appearance: textfield;
+}
+
+.order-quantity input::-webkit-outer-spin-button,
+.order-quantity input::-webkit-inner-spin-button {
+    margin: 0;
+
+    -webkit-appearance: none;
+}
+
+
+/* =========================================================
+   MESSAGES SOUS LE NOMBRE DE PERSONNES
+========================================================= */
+
+.order-minimum {
+    margin: 7px 0 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+
+    color: #777777;
+}
+
+.order-discount-message {
+    margin: 7px 0 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+
+    color: var(--green);
+}
+
+
+/* =========================================================
+   DATE + HEURE
+========================================================= */
+
+.order-field > input[type="date"],
+.order-field > input[type="time"] {
+    width: 100%;
+    height: 44px;
+
+    padding: 0 12px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+
+    color: var(--text-primary);
+    background-color: #ffffff;
+
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+
+    outline: none;
+}
+
+.order-field > input[type="date"]:focus,
+.order-field > input[type="time"]:focus {
+    border-color: var(--green);
+}
+
+
+/* =========================================================
+   AVANTAGES
+========================================================= */
+
+.order-benefits {
+    margin: 6px 0 24px;
+    padding: 18px 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    list-style: none;
+
+    border-top: 1px solid #eeeeee;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.order-benefits li {
+    position: relative;
+
+    padding-left: 22px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    line-height: 1.4;
+
+    color: #555555;
+}
+
+.order-benefits li::before {
+    content: "✓";
+
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    font-weight: 600;
+
+    color: var(--green);
+}
+
+
+/* =========================================================
+   BOUTON AJOUTER AU PANIER
+========================================================= */
+
+.order-add-button {
+    width: 100%;
+    min-height: 46px;
+
+    padding: 12px 18px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: #ffffff;
+    background-color: var(--green);
+
+    border: none;
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.order-add-button:hover {
+    background-color: var(--green-dark);
+}
+
+.order-add-button:active {
+    transform: translateY(1px);
+}
 
 /* =========================================================
    RESPONSIVE : PETITS ORDINATEURS / TABLETTES
