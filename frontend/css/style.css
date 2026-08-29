@@ -2541,7 +2541,7 @@ select {
     width: 320px;
     height: 24px;
 
-    margin: 12px 0 30px;
+    margin: 22px 0 22px;
 
     display: flex;
     align-items: center;
@@ -2590,7 +2590,7 @@ select {
 ========================================================= */
 
 .menu-presentation-highlight {
-    max-width: 720px;
+    max-width: 600px;
 
     padding: 20px 24px;
 
@@ -2598,7 +2598,7 @@ select {
     align-items: center;
     gap: 18px;
 
-    background-color: var(--cream);
+    background-color: #EEF3EA;
 
     border-radius: 8px;
 }
@@ -2608,9 +2608,6 @@ select {
     height: 42px;
 
     flex: 0 0 42px;
-
-    border: 2px solid var(--green);
-    border-radius: 50%;
 }
 
 .menu-presentation-highlight p {
@@ -2647,6 +2644,11 @@ select {
     margin-top: 64px;
 }
 
+.menu-composition .section-title-decoration {
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
 .menu-composition h2 {
     margin: 0;
 
@@ -2663,7 +2665,7 @@ select {
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
 
-    margin-top: 8px;
+    margin-top: 60px;
 }
 .menu-composition-item {
     padding: 0 18px;
@@ -2688,6 +2690,81 @@ select {
     font-family: "Inter", sans-serif;
     font-size: 13px;
     line-height: 1.5;
+
+    color: var(--text-primary);
+}
+
+/* ========================================
+   ALLERGÈNES & INFORMATIONS IMPORTANTES
+======================================== */
+
+.menu-allergens {
+    margin-top: 56px;
+}
+
+.menu-allergens-content {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+
+    padding: 20px 24px;
+
+    background: var(--cream);
+    border-radius: 10px;
+}
+
+.allergens-block {
+    padding-right: 32px;
+}
+
+.allergens-block h2,
+.important-info-block h2 {
+    margin: 0 0 16px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 500;
+
+    color: var(--green-dark);
+}
+
+.allergens-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.allergens-list span {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 10px;
+
+    background: #e7ece3;
+    border-radius: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 400;
+
+    color: var(--green-dark);
+}
+
+.important-info-block {
+    padding-left: 32px;
+    border-left: 1px solid #d7d7d2;
+}
+
+.important-info-block p {
+    margin: 0;
+
+    max-width: 500px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    font-weight: 400;
 
     color: var(--text-primary);
 }
@@ -2937,9 +3014,9 @@ select {
 }
 
 .order-benefits li {
-    position: relative;
-
-    padding-left: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
     font-family: "Inter", sans-serif;
     font-size: 11px;
@@ -2948,21 +3025,18 @@ select {
     color: #555555;
 }
 
-.order-benefits li::before {
-    content: "✓";
+.order-benefits li img {
+    width: 20px;
+    height: 20px;
 
-    position: absolute;
-    left: 0;
-    top: 0;
+    flex: 0 0 20px;
 
-    font-weight: 600;
-
-    color: var(--green);
+    object-fit: contain;
 }
 
 
 /* =========================================================
-   BOUTON AJOUTER AU PANIER
+   BOUTON COMMANDER CE MENU
 ========================================================= */
 
 .order-add-button {
@@ -2994,6 +3068,278 @@ select {
 
 .order-add-button:active {
     transform: translateY(1px);
+}
+
+/* ========================================
+   VOUS AIMEREZ AUSSI
+======================================== */
+
+.menu-recommendations {
+    padding: 34px 0 65px;
+
+    background-color: var(--cream);
+}
+
+.menu-recommendations-container {
+    width: calc(100% - 80px);
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.menu-recommendations h2 {
+    margin: 0 0 30px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--green-dark);
+}
+
+
+/* ========================================
+   GRILLE DES RECOMMANDATIONS
+======================================== */
+
+.menu-recommendations-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    align-items: center;
+    column-gap: 40px;
+}
+
+
+/* ========================================
+   CARTE
+======================================== */
+
+.menu-recommendation-card {
+    position: relative;
+
+    display: grid;
+    grid-template-columns: 175px 1fr;
+
+    width: 520px;
+    height: 145px;
+
+    background-color: var(--white);
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ========================================
+   IMAGE
+======================================== */
+
+.menu-recommendation-image {
+    position: relative;
+    width: 175px;
+    height: 145px;
+}
+
+.menu-recommendation-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* Badge sur l'image */
+
+.menu-recommendation-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+
+    padding: 7px 10px;
+
+    background-color: var(--green-dark);
+    border-radius: 6px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 500;
+
+    color: var(--white);
+
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+
+/* ========================================
+   CONTENU
+======================================== */
+
+.menu-recommendation-content {
+    position: relative;
+
+    padding: 12px 34px 10px 14px;
+}
+
+.menu-recommendation-content h3 {
+    margin: 0 0 10px;
+
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+
+/* Prix */
+
+.menu-recommendation-price {
+    margin: 0 0 7px;
+    padding-bottom: 7px;
+
+    border-bottom: 1px solid #dddddd;
+
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+
+    color: var(--green-dark);
+}
+
+.menu-recommendation-price span {
+    margin-left: 3px;
+
+    font-size: 9px;
+    font-weight: 500;
+
+    color: #666666;
+}
+
+
+/* Disponible */
+
+.menu-recommendation-status {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 5px;
+    padding: 4px 10px;
+
+    background-color: var(--green-dark);
+    border-radius: 6px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    line-height: 1;
+    font-weight: 500;
+
+    color: var(--white);
+
+    text-transform: uppercase;
+}
+
+
+/* Minimum de personnes */
+
+.menu-recommendation-minimum {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 9px;
+    line-height: 1.3;
+    font-weight: 400;
+
+    color: #666666;
+}
+
+
+/* ========================================
+   FLÈCHE
+======================================== */
+
+.menu-recommendation-link {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: "Inter", sans-serif;
+    font-size: 28px;
+    line-height: 1;
+
+    color: var(--green-dark);
+
+    text-decoration: none;
+
+    transition: transform 0.2s ease;
+}
+
+.menu-recommendation-link:hover {
+    transform: translate(4px, -50%);
+}
+
+.menu-recommendations-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    justify-self: end;
+
+    padding: 12px 20px;
+
+    border: 1px solid var(--green-dark);
+    border-radius: 7px;
+
+    background-color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+
+    color: var(--green-dark);
+    text-decoration: none;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.menu-recommendations-button:hover {
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+/* =========================================================
+   RESPONSIVE : 1181px À 1320px
+========================================================= */
+
+@media (max-width: 1320px) and (min-width: 1181px) {
+
+    .menu-recommendations-grid {
+        grid-template-columns: repeat(2, 520px);
+        justify-content: space-between;
+
+        column-gap: 40px;
+        row-gap: 40px;
+    }
+
+    .menu-recommendations-button {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
 }
 
 /* =========================================================
@@ -3124,6 +3470,95 @@ select {
     .menus-grid {
         grid-template-columns: repeat(2, 320px);
         gap: 32px;
+    }
+
+
+    /* ========================================
+       DÉTAIL MENU
+    ======================================== */
+
+    .menu-detail-hero {
+        padding-left: 24px;
+        padding-right: 24px;
+
+        grid-template-columns:
+            minmax(340px, 44%)
+            minmax(0, 56%);
+
+        gap: 32px;
+    }
+
+
+    .menu-detail-body-content {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+
+    .menu-detail-main {
+        grid-template-columns:
+            minmax(0, 1fr)
+            300px;
+
+        gap: 40px;
+    }
+
+
+    .menu-presentation,
+    .menu-composition,
+    .menu-allergens {
+        max-width: 100%;
+    }
+
+
+    .menu-composition-grid {
+        gap: 20px;
+    }
+
+
+    .menu-composition-item {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .order-card {
+        width: 100%;
+        max-width: 300px;
+    }
+
+
+    /* VOUS AIMEREZ AUSSI */
+
+    .menu-recommendations-container {
+        width: calc(100% - 128px);
+        max-width: none;
+        margin: 0 auto;
+    }
+
+    .menu-recommendations-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        column-gap: 30px;
+        row-gap: 40px;
+    }
+
+    .menu-recommendation-card {
+        width: 100%;
+    }
+
+    .menu-recommendations-button {
+        grid-column: 1 / -1;
+        justify-self: center;
+    }
+
+    .menu-recommendation-image {
+        width: 145px;
+        height: 145px;
+    }
+
+    .menu-recommendation-badge {
+        display: none;
     }
 
 }
@@ -3419,6 +3854,69 @@ select {
     .custom-menu-button {
         width: 100%;
         max-width: 320px;
+    }
+
+    /* ========================================
+       DÉTAIL MENU - TABLETTE
+    ======================================== */
+
+    .menu-detail-body-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+
+    .order-card {
+        width: 100%;
+        max-width: 520px;
+        justify-self: center;
+    }
+
+    .menu-composition-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .menu-composition-item {
+        padding: 0;
+    }
+
+    .menu-allergens-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .important-info-block {
+        padding-left: 0;
+        border-left: none;
+        padding-top: 20px;
+        border-top: 1px solid #d7d7d2;
+    }
+
+    .menu-recommendations-container {
+        width: calc(100% - 48px);
+        max-width: none;
+        margin: 0 auto;
+    }
+
+    .menu-recommendations-grid {
+        grid-template-columns: 1fr;
+        row-gap: 28px;
+    }
+
+    .menu-recommendation-card {
+        width: 100%;
+        max-width: 520px;
+        justify-self: start;
+    }
+
+    .menu-recommendations-button {
+        grid-column: auto;
+        justify-self: center;
+        margin-top: 8px;
+    }
+
+    .menu-recommendation-badge {
+        display: none;
     }
 
 }
@@ -3754,6 +4252,42 @@ select {
         text-align: center;
     }
 
+    /* ========================================
+    DÉTAIL MENU - MOBILE
+    ======================================== */
+
+    .menu-detail-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-bottom: 32px;
+
+        gap: 24px;
+    }
+
+    .menu-detail-hero-content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .menu-detail-info {
+        width: 100%;
+    }
+
+    .menu-detail-image {
+        width: 100%;
+        height: 320px;
+    }
+
+    .menu-detail-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
     /* =========================
    NAVIGATION MOBILE BASSE
     ========================= */
@@ -3857,6 +4391,58 @@ select {
         align-items: flex-start;
 
         flex-direction: column;
+    }
+
+    /* ========================================
+    DÉTAIL MENU - PETIT MOBILE
+    ======================================== */
+
+    .menu-detail-body {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .menu-detail-body-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .order-card {
+        width: 100%;
+        max-width: none;
+    }
+
+    .menu-detail-features {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+
+        width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+
+        column-gap: 32px;
+        row-gap: 26px;
+
+        transform: translateX(-30px);
+    }
+
+    .menu-detail-feature:first-child .menu-detail-feature-label {
+        white-space: nowrap;
+    }
+
+    .menu-detail-feature {
+        min-width: 0;
+    }
+
+    .menu-detail-feature img {
+        width: 34px;
+        height: 34px;
+        object-fit: contain;
+    }
+
+    .menu-detail-price {
+        white-space: nowrap;
     }
 
 }

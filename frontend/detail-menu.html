@@ -110,14 +110,6 @@
 
             <nav class="breadcrumb" aria-label="Fil d'Ariane">
 
-                <a href="index.html">
-                    Accueil
-                </a>
-
-                <span aria-hidden="true">
-                    &gt;
-                </span>
-
                 <a href="menus.html">
                     Menu
                 </a>
@@ -385,8 +377,8 @@
 
                         <div class="menu-presentation-highlight">
 
-                            <div class="menu-presentation-highlight-icon"
-                                aria-hidden="true">
+                            <div class="menu-presentation-highlight-icon" aria-hidden="true">
+                                <img src="assets/icons/icone-medaille.png" alt="">
                             </div>
 
 
@@ -481,7 +473,40 @@
 
                     </section>
 
+                    <!-- Allergènes et informations importantes -->
+                    <section class="menu-allergens">
+
+                        <div class="menu-allergens-content">
+
+                            <!-- Allergènes -->
+                            <div class="allergens-block">
+                                <h2>Allergènes</h2>
+
+                                <div class="allergens-list">
+                                    <span>Gluten</span>
+                                    <span>Lait</span>
+                                    <span>Fruits à coque</span>
+                                </div>
+                            </div>
+
+                            <!-- Informations importantes -->
+                            <div class="important-info-block">
+                                <h2>Informations importantes</h2>
+
+                                <p>
+                                    Si vous ou l’un de vos invités avez des allergies ou des restrictions
+                                    alimentaires, merci de nous en informer lors de votre commande.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
                 </div>
+
+
 
 
 
@@ -495,6 +520,7 @@
                     data-min-people="2"
                     data-discount-offset="5"
                     data-discount-rate="10"
+                    data-preparation-hours="2"
                 >
 
                     <h2>
@@ -504,34 +530,41 @@
 
                     <!-- PRIX -->
 
-                    <div class="order-price">
+                    <div
+                        class="order-price"
+                        data-min-people="2"
+                        data-min-price="89"
+                    >
 
                         <span class="order-price-label">
                             Prix pour
-                            <span id="order-people-label">7</span>
+                            <span id="order-people-label">2</span>
                             personnes
                         </span>
 
-
-                        <div class="order-price-values">
+                        <div class="order-price-values" 
+                            aria-live="polite"
+                            aria-atomic="true"
+                        >
 
                             <span
                                 class="order-old-price"
                                 id="order-old-price"
                             >
-                                311,50 €
+                                89,00 €
                             </span>
 
                             <strong
                                 class="order-current-price"
                                 id="order-current-price"
                             >
-                                280,35 €
+                                89,00 €
                             </strong>
 
                             <span
                                 class="order-discount-badge"
                                 id="order-discount-badge"
+                                hidden
                             >
                                 -10 %
                             </span>
@@ -565,7 +598,7 @@
                                 type="number"
                                 id="order-people"
                                 name="people"
-                                value="7"
+                                value="2"
                                 min="2"
                                 readonly
                             >
@@ -589,6 +622,7 @@
                         <p
                             class="order-discount-message"
                             id="order-discount-message"
+                            hidden
                         >
                             Réduction groupe de -10 % appliquée
                         </p>
@@ -608,6 +642,7 @@
                             type="date"
                             id="order-date"
                             name="delivery-date"
+                            required
                         >
 
                     </div>
@@ -625,6 +660,7 @@
                             type="time"
                             id="order-time"
                             name="delivery-time"
+                            required
                         >
 
                     </div>
@@ -635,15 +671,30 @@
                     <ul class="order-benefits">
 
                         <li>
-                            Livraison à domicile
+                            <img
+                                src="assets/icons/icone-detail-menu-livraison.svg"
+                                alt=""
+                                aria-hidden="true"
+                            >
+                            <span>Livraison à domicile</span>
                         </li>
 
                         <li>
-                            Produits frais et de saison
+                            <img
+                                src="assets/icons/icone-detail-menu-feuille.svg"
+                                alt=""
+                                aria-hidden="true"
+                            >
+                            <span>Produits frais et de saison</span>
                         </li>
 
                         <li>
-                            Paiement sécurisé
+                            <img
+                                src="assets/icons/icone-detail-menu-securite.svg"
+                                alt=""
+                                aria-hidden="true"
+                            >
+                            <span>Paiement sécurisé</span>
                         </li>
 
                     </ul>
@@ -654,11 +705,125 @@
                     <button
                         type="button"
                         class="order-add-button"
+                        id="order-button"
                     >
-                        Ajouter au panier
+                        Commander ce menu
                     </button>
 
                 </aside>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+            VOUS AIMEREZ AUSSI
+        ========================================= -->
+
+        <section class="menu-recommendations">
+
+            <div class="menu-recommendations-container">
+
+                <h2>Vous aimerez aussi</h2>
+
+                <div class="menu-recommendations-grid">
+
+                    <!-- Menu Tradition -->
+                    <article class="menu-recommendation-card">
+
+                        <div class="menu-recommendation-image">
+                            <img
+                                src="assets/images/menu-tradition.jpg"
+                                alt="Menu Tradition"
+                            >
+
+                            <span class="menu-recommendation-badge">
+                                Gourmand
+                            </span>
+                        </div>
+
+                        <div class="menu-recommendation-content">
+
+                            <h3>Menu Tradition</h3>
+
+                            <p class="menu-recommendation-price">
+                                65,00 €
+                                <span>/ menu</span>
+                            </p>
+
+                            <span class="menu-recommendation-status">
+                                Disponible
+                            </span>
+
+                            <p class="menu-recommendation-minimum">
+                                Pour 2 personnes minimum
+                            </p>
+
+                            <a
+                                href="detail-menu.html"
+                                class="menu-recommendation-link"
+                                aria-label="Voir le détail du Menu Tradition"
+                            >
+                                →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Menu Événement -->
+                    <article class="menu-recommendation-card">
+
+                        <div class="menu-recommendation-image">
+                            <img
+                                src="assets/images/menu-evenement.jpg"
+                                alt="Menu Événement"
+                            >
+
+                            <span class="menu-recommendation-badge">
+                                Pour vos événements
+                            </span>
+                        </div>
+
+                        <div class="menu-recommendation-content">
+
+                            <h3>Menu Événement</h3>
+
+                            <p class="menu-recommendation-price">
+                                120,00 €
+                                <span>/ menu</span>
+                            </p>
+
+                            <span class="menu-recommendation-status">
+                                Disponible
+                            </span>
+
+                            <p class="menu-recommendation-minimum">
+                                Pour 4 personnes minimum
+                            </p>
+
+                            <a
+                                href="detail-menu.html"
+                                class="menu-recommendation-link"
+                                aria-label="Voir le détail du Menu Événement"
+                            >
+                                →
+                            </a>
+
+                        </div>
+
+                    </article>
+
+                    <!-- Bouton vers tous les menus -->
+                    <a
+                        href="menus.html"
+                        class="menu-recommendations-button"
+                    >
+                        Voir nos menus
+                    </a>
+
+                </div>
 
             </div>
 
@@ -826,6 +991,35 @@
         </div>
 
     </footer>
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+    </nav>
+
+    <script src="js/detail-menu.js"></script>
 
 </body>
 
