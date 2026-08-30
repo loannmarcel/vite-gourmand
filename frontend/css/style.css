@@ -3919,6 +3919,28 @@ select {
         display: none;
     }
 
+    .menu-detail-hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        gap: 32px;
+    }
+
+    .menu-detail-hero-content {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .menu-detail-hero-image {
+        width: 100%;
+        height: 420px;
+    }
+
+    .menu-detail-hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
 }
 
 
@@ -4358,6 +4380,10 @@ select {
         padding-bottom: 76px;
     }
 
+    menu-recommendation-content {
+        padding-right: 42px;
+    }
+
 }
 
 
@@ -4442,6 +4468,14 @@ select {
     }
 
     .menu-detail-price {
+        white-space: nowrap;
+    }
+
+    .menu-recommendation-link {
+        right: 6px;
+    }
+
+    .menu-recommendation-price {
         white-space: nowrap;
     }
 
