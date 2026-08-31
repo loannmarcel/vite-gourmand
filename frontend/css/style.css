@@ -3322,6 +3322,591 @@ select {
     color: var(--white);
 }
 
+/* =====================================================
+   PAGE CONNEXION
+===================================================== */
+
+.login-page {
+    width: 100%;
+    background-color: var(--cream);
+}
+
+.login-section {
+    width: 100%;
+    padding: 80px 40px;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 40px;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.login-heading {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.login-heading h1 {
+    margin: 0 0 12px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.login-heading p {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: #666666;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.login-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.login-field label {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.login-field input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+    background-color: #ffffff;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.login-field input:focus {
+    border-color: var(--green-dark);
+    box-shadow: 0 0 0 3px rgba(63, 85, 64, 0.12);
+}
+
+.login-forgot {
+    margin-top: -6px;
+    margin-bottom: 24px;
+    text-align: right;
+}
+
+.login-forgot a {
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    color: var(--green-dark);
+    text-decoration: none;
+}
+
+.login-forgot a:hover {
+    text-decoration: underline;
+}
+
+.login-submit {
+    width: 100%;
+    min-height: 48px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #ffffff;
+    background-color: var(--green-dark);
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.login-submit:hover {
+    opacity: 0.9;
+}
+
+.login-register {
+    margin: 24px 0 0;
+    text-align: center;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: #666666;
+}
+
+.login-register a {
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+}
+
+.login-register a:hover {
+    text-decoration: underline;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input {
+    padding-right: 48px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 14px;
+    transform: translateY(-50%);
+
+    padding: 0;
+
+    font-size: 18px;
+    line-height: 1;
+
+    color: #666666;
+    background: none;
+
+    border: none;
+    cursor: pointer;
+}
+
+.password-toggle img {
+    display: block;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.login-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: -8px 0 24px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+
+    color: #666666;
+    cursor: pointer;
+}
+
+.login-remember input {
+    width: 16px;
+    height: 16px;
+
+    accent-color: var(--green-dark);
+    cursor: pointer;
+}
+
+/* =====================================================
+   PAGE COMMANDE
+===================================================== */
+
+.order-page {
+    width: 100%;
+    background-color: var(--cream);
+}
+
+.order-checkout {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 64px 40px 80px;
+}
+
+.order-checkout-heading {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.order-checkout-heading h1 {
+    margin: 0 0 12px;
+    font-family: "Inter", sans-serif;
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.order-checkout-heading p {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+
+/* =====================================================
+   LAYOUT
+===================================================== */
+
+.order-checkout-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 48px;
+    align-items: start;
+}
+
+.order-checkout-main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+/* =====================================================
+   CARTES
+===================================================== */
+
+.order-checkout-card,
+.order-checkout-summary {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.order-checkout-card h2,
+.order-checkout-summary h2 {
+    margin: 0 0 24px;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+
+/* =====================================================
+   INFORMATIONS COMMANDE
+===================================================== */
+
+.order-summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid #e5e5e5;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+}
+
+.order-summary-row:last-child {
+    border-bottom: none;
+}
+
+.order-summary-row span {
+    color: #666666;
+}
+
+.order-summary-row strong {
+    text-align: right;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+
+/* =====================================================
+   ADRESSE
+===================================================== */
+
+.order-checkout-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.order-checkout-field:first-child {
+    grid-column: 1 / -1;
+}
+
+.order-checkout-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.order-checkout-field label {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.order-checkout-field input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+    background-color: #ffffff;
+
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+    outline: none;
+}
+
+.order-checkout-field input:focus {
+    border-color: var(--green-dark);
+}
+
+
+/* =====================================================
+   RÉCAPITULATIF
+===================================================== */
+
+.order-checkout-summary {
+    position: sticky;
+    top: 24px;
+}
+
+.order-summary-price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.order-summary-divider {
+    width: 100%;
+    height: 1px;
+    margin: 22px 0;
+    background-color: #dddddd;
+}
+
+.order-summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 28px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.order-summary-total strong {
+    font-size: 24px;
+    color: var(--green-dark);
+}
+
+
+/* =====================================================
+   BOUTON
+===================================================== */
+
+.order-checkout-submit {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 18px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    color: #ffffff;
+    background-color: var(--green-dark);
+
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: opacity 0.2s ease;
+}
+
+.order-checkout-submit:hover {
+    opacity: 0.9;
+}
+
+/* =====================================================
+   PAGE CONFIRMATION DE COMMANDE
+===================================================== */
+
+.confirmation-page {
+    width: 100%;
+    background-color: var(--cream);
+}
+
+.confirmation-section {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 40px 80px;
+}
+
+.confirmation-card {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px;
+
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+}
+
+.confirmation-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-family: "Inter", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+
+    color: #ffffff;
+    background-color: var(--green-dark);
+}
+
+.confirmation-icon img {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.confirmation-heading {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.confirmation-heading h1 {
+    margin: 0 0 12px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 34px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    color: var(--text-primary);
+}
+
+.confirmation-heading p {
+    margin: 0;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: var(--text-primary);
+}
+
+.confirmation-summary {
+    margin-bottom: 32px;
+}
+
+.confirmation-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 14px 0;
+
+    border-bottom: 1px solid #e5e5e5;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+}
+
+.confirmation-row:last-child {
+    border-bottom: none;
+}
+
+.confirmation-row span {
+    color: #666666;
+}
+
+.confirmation-row strong {
+    text-align: right;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.confirmation-row:last-child strong {
+    color: var(--green-dark);
+    font-size: 18px;
+}
+
+.confirmation-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 48px;
+
+    padding: 12px 18px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    color: #ffffff;
+    background-color: var(--green-dark);
+
+    border-radius: 8px;
+
+    transition: opacity 0.2s ease;
+}
+
+.confirmation-button:hover {
+    opacity: 0.9;
+}
+
 /* =========================================================
    RESPONSIVE : 1181px À 1320px
 ========================================================= */
@@ -3941,6 +4526,28 @@ select {
         object-fit: cover;
     }
 
+    /* =====================================================
+    PAGE COMMANDE - TABLETTE
+    ===================================================== */
+
+    .order-checkout {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .order-checkout-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .order-checkout-summary {
+        position: static;
+    }
+
+    .order-checkout-fields {
+        grid-template-columns: 1fr 1fr;
+    }
+
 }
 
 
@@ -4477,6 +5084,10 @@ select {
 
     .menu-recommendation-price {
         white-space: nowrap;
+    }
+
+    .login-register {
+        line-height: 1.4;
     }
 
 }

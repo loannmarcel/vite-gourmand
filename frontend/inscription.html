@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Créez votre compte Vite & Gourmand pour commander vos menus et gérer vos commandes."
+    >
+
+    <title>Inscription | Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="index.html">Accueil</a>
+
+            <a href="menus.html">Menus</a>
+
+            <a href="apropos.html">À propos</a>
+
+            <a href="contact.html">Contact</a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <a href="connexion.html" class="login-button">
+                Connexion
+            </a>
+
+            <a href="panier.html" class="cart-link" aria-label="Voir le panier">
+                <img
+                    class="icon-shopping"
+                    src="assets/icons/icone-shopping.png"
+                    alt=""
+                >
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- =====================================================
+        HERO
+    ====================================================== -->
+
+    <main class="login-page">
+
+        <section class="login-section">
+
+            <div class="login-container">
+
+                <div class="login-heading">
+
+                    <h1>
+                        Inscription
+                    </h1>
+
+                    <p>
+                        Créez votre compte Vite & Gourmand.
+                    </p>
+
+                </div>
+
+
+                <form class="login-form">
+
+                    <!-- NOM -->
+
+                    <div class="login-field">
+
+                        <label for="register-lastname">
+                            Nom
+                        </label>
+
+                        <input
+                            type="text"
+                            id="register-lastname"
+                            name="lastname"
+                            placeholder="Votre nom"
+                            autocomplete="family-name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PRÉNOM -->
+
+                    <div class="login-field">
+
+                        <label for="register-firstname">
+                            Prénom
+                        </label>
+
+                        <input
+                            type="text"
+                            id="register-firstname"
+                            name="firstname"
+                            placeholder="Votre prénom"
+                            autocomplete="given-name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="login-field">
+
+                        <label for="register-email">
+                            Adresse e-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="register-email"
+                            name="email"
+                            placeholder="exemple@email.com"
+                            autocomplete="email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- MOT DE PASSE -->
+
+                    <div class="login-field">
+
+                        <label for="register-password">
+                            Mot de passe
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="register-password"
+                                name="password"
+                                placeholder="Votre mot de passe"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="register-password-toggle"
+                                aria-label="Afficher le mot de passe"
+                            >
+                                <img
+                                    src="assets/icons/icone-oeil.png"
+                                    alt=""
+                                    aria-hidden="true"
+                                >
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRMATION MOT DE PASSE -->
+
+                    <div class="login-field">
+
+                        <label for="register-password-confirm">
+                            Confirmer le mot de passe
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="register-password-confirm"
+                                name="password-confirm"
+                                placeholder="Confirmez votre mot de passe"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="register-password-confirm-toggle"
+                                aria-label="Afficher le mot de passe"
+                            >
+                                <img
+                                    src="assets/icons/icone-oeil.png"
+                                    alt=""
+                                    aria-hidden="true"
+                                >
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONDITIONS -->
+
+                    <label class="login-remember">
+
+                        <input
+                            type="checkbox"
+                            name="terms"
+                            required
+                        >
+
+                        <span>
+                            J’accepte les conditions générales.
+                        </span>
+
+                    </label>
+
+
+                    <!-- BOUTON -->
+
+                    <button
+                        type="submit"
+                        class="login-submit"
+                    >
+                        Créer mon compte
+                    </button>
+
+
+                    <!-- CONNEXION -->
+
+                    <p class="login-register">
+                        Déjà un compte ?
+                        <a href="connexion.html">
+                            Se connecter
+                        </a>
+                    </p>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+     <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png"
+                        alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png"
+                        alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png"
+                        alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+    </nav>
+
+    <script src="js/inscription.js"></script>
+
+</body>
+
+</html>

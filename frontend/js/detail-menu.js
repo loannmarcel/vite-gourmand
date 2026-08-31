@@ -398,7 +398,7 @@ orderButton.addEventListener("click", function () {
 
 
     const orderData = {
-        menu: "Menu Healthy",
+        menu: orderCard.dataset.menuName,
         people: people,
         deliveryDate: dateInput.value,
         deliveryTime: timeInput.value,
@@ -416,4 +416,6 @@ orderButton.addEventListener("click", function () {
     );
 
     console.log("Commande préparée :", orderData);
+
+    window.location.href = "connexion.html";
 });
