@@ -4,6 +4,10 @@ const passwordToggle = document.getElementById("register-password-toggle");
 const passwordConfirmInput = document.getElementById("register-password-confirm");
 const passwordConfirmToggle = document.getElementById("register-password-confirm-toggle");
 
+const lastnameInput = document.getElementById("register-lastname");
+const firstnameInput = document.getElementById("register-firstname");
+const emailInput = document.getElementById("register-email");
+const phoneInput = document.getElementById("register-phone");
 
 function togglePassword(input, button) {
 
@@ -42,6 +46,17 @@ registerForm.addEventListener("submit", (event) => {
     // Pour le moment, l'inscription est simulée.
     // La création réelle du compte sera gérée avec le back-end.
 
+    const user = {
+        lastname: lastnameInput.value.trim(),
+        firstname: firstnameInput.value.trim(),
+        email: emailInput.value.trim(),
+        phone: phoneInput.value.trim()
+    };
+
+    localStorage.setItem(
+        "viteGourmandUser",
+        JSON.stringify(user)
+    );
+
     window.location.href = "confirmation-inscription.html";
-    
 });

@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Vite & Gourmand, traiteur événementiel à Bordeaux depuis plus de 25 ans. Découvrez nos menus faits maison pour vos événements."
+    >
+
+    <title>Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+        HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="menus.html" class="active">
+                Menus
+            </a>
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about">
+                À propos
+            </a>
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
+                Connexion
+            </a>
+
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
+                >
+                    <span class="header-account-avatar">
+                        L
+                    </span>
+
+                    <span class="header-account-text">
+                        Mon compte
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <script src="js/auth-ui.js"></script>
+
+    <!-- =====================================================
+        MON COMPTE
+    ====================================================== -->
+
+    <main class="account-page">
+
+        <section class="account-section">
+
+            <div class="account-heading">
+
+                <p class="account-eyebrow">
+                    Votre espace
+                </p>
+
+                <h1>
+                    Mon compte
+                </h1>
+
+                <p>
+                    Consultez et modifiez vos informations personnelles.
+                </p>
+
+            </div>
+
+
+            <!-- INFORMATIONS PERSONNELLES -->
+
+            <div class="account-block">
+
+                <div class="account-block-heading">
+
+                    <div>
+                        <h2>
+                            Mes informations
+                        </h2>
+
+                        <p>
+                            Informations associées à votre compte Vite & Gourmand.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="account-edit-button"
+                        id="account-edit-button"
+                    >
+                        Modifier
+                    </button>
+
+                </div>
+
+
+                <div class="account-information">
+
+                    <div class="account-information-item">
+                        <span>Nom</span>
+                        <strong id="account-lastname">
+                            Marcel
+                        </strong>
+                    </div>
+
+                    <div class="account-information-item">
+                        <span>Prénom</span>
+                        <strong id="account-firstname">
+                            Loann
+                        </strong>
+                    </div>
+
+                    <div class="account-information-item">
+                        <span>Adresse e-mail</span>
+                        <strong id="account-email">
+                            loann@example.com
+                        </strong>
+                    </div>
+
+                    <div class="account-information-item">
+                        <span>Téléphone</span>
+                        <strong id="account-phone">
+                            Non renseigné
+                        </strong>
+                    </div>
+
+                </div>
+
+                <!-- FORMULAIRE DE MODIFICATION -->
+
+                <form
+                    class="account-edit-form"
+                    id="account-edit-form"
+                    hidden
+                >
+
+                    <div class="account-edit-fields">
+
+                        <div class="account-edit-field">
+                            <label for="edit-lastname">
+                                Nom
+                            </label>
+
+                            <input
+                                type="text"
+                                id="edit-lastname"
+                                name="lastname"
+                                autocomplete="family-name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="account-edit-field">
+                            <label for="edit-firstname">
+                                Prénom
+                            </label>
+
+                            <input
+                                type="text"
+                                id="edit-firstname"
+                                name="firstname"
+                                autocomplete="given-name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="account-edit-field">
+                            <label for="edit-email">
+                                Adresse e-mail
+                            </label>
+
+                            <input
+                                type="email"
+                                id="edit-email"
+                                name="email"
+                                autocomplete="email"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="account-edit-field">
+                            <label for="edit-phone">
+                                Téléphone
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="edit-phone"
+                                name="phone"
+                                autocomplete="tel"
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="account-edit-actions">
+
+                        <button
+                            type="button"
+                            class="account-cancel-button"
+                            id="account-cancel-button"
+                        >
+                            Annuler
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="account-save-button"
+                        >
+                            Enregistrer
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+            <!-- COMMANDES -->
+
+            <div class="account-block account-orders">
+
+                <div>
+
+                    <h2>
+                        Mes commandes
+                    </h2>
+
+                    <p>
+                        Consultez vos commandes à venir et votre historique.
+                    </p>
+
+                </div>
+
+                <a
+                    href="mes-commandes.html"
+                    class="account-orders-link"
+                >
+                    Voir mes commandes
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png"
+                        alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png"
+                        alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png"
+                        alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+    </nav>
+
+    <script src="js/mon-compte.js"></script>
+
+</body>
+
+</html>

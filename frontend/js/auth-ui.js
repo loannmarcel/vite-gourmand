@@ -1,6 +1,18 @@
 const userConnected =
     sessionStorage.getItem("viteGourmandUserConnected") === "true";
 
+const savedUser = localStorage.getItem("viteGourmandUser");
+
+if (savedUser) {
+    const user = JSON.parse(savedUser);
+    const accountAvatar = document.querySelector(".header-account-avatar");
+
+    if (accountAvatar && user.firstname) {
+        accountAvatar.textContent =
+            user.firstname.trim().charAt(0).toUpperCase();
+    }
+}
+
 const loginButton = document.getElementById("header-login");
 const aboutLink = document.getElementById("header-about");
 const ordersLink = document.getElementById("header-orders");
