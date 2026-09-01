@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalElement = document.getElementById("confirmation-total");
 
     menuElement.textContent = order.menu;
+
     peopleElement.textContent =
         `${order.people} ${order.people > 1 ? "personnes" : "personne"}`;
 
@@ -27,4 +28,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     totalElement.textContent =
         `${Number(order.totalPrice).toFixed(2).replace(".", ",")} €`;
+
+
+    // =====================================================
+    // ENREGISTREMENT DANS L'HISTORIQUE
+    // =====================================================
+
+    const savedOrders =
+        JSON.parse(localStorage.getItem("viteGourmandOrders")) || [];
+
+    const orderToSave = {
+        ...order,
+        id: `VG${Date.now()}`,
+        status: "Confirmée",
+        createdAt: new Date().toISOString()
+    };
+
+    savedOrders.unshift(orderToSave);
+
+    localStorage.setItem(
+        "viteGourmandOrders",
+        JSON.stringify(savedOrders)
+    );
+
+
+    // La commande temporaire n'est plus nécessaire
+    sessionStorage.removeItem("viteGourmandOrder");
 });

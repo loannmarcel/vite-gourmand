@@ -8,10 +8,10 @@
 
     <meta
         name="description"
-        content="Réinitialisez le mot de passe de votre compte Vite & Gourmand."
+        content="Vite & Gourmand, traiteur événementiel à Bordeaux depuis plus de 25 ans. Découvrez nos menus faits maison pour vos événements."
     >
 
-    <title>Mot de passe oublié | Vite & Gourmand</title>
+    <title>Vite & Gourmand</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +34,7 @@
 <body>
 
     <!-- =====================================================
-         HEADER
+        HEADER
     ====================================================== -->
 
     <header class="site-header">
@@ -63,13 +63,31 @@
 
         <nav id="main-navigation" class="main-nav">
 
-            <a href="index.html">Accueil</a>
+            <a href="index.html">
+                Accueil
+            </a>
 
-            <a href="menus.html">Menus</a>
+            <a href="menus.html" class="active">
+                Menus
+            </a>
 
-            <a href="apropos.html">À propos</a>
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about">
+                À propos
+            </a>
 
-            <a href="contact.html">Contact</a>
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
 
             <a href="connexion.html" class="mobile-login">
                 Connexion
@@ -80,90 +98,122 @@
 
         <div class="header-actions">
 
-            <a href="connexion.html" class="login-button">
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
                 Connexion
             </a>
+
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
+                >
+                    <span class="header-account-avatar">
+                        L
+                    </span>
+
+                    <span class="header-account-text">
+                        Mon compte
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
 
         </div>
 
     </header>
 
+    <script src="js/auth-ui.js"></script>
+
     <!-- =====================================================
-        HERO - MOT DE PAS OUBLIÉ
+         CONTENU PRINCIPAL
     ====================================================== -->
 
-    <main class="login-page">
+    <main class="orders-page">
 
-        <section class="login-section">
+        <section class="orders-section">
 
-            <div class="login-container">
+            <div class="orders-heading">
 
-                <div class="login-heading">
+                <p class="orders-eyebrow">
+                    Votre espace
+                </p>
 
-                    <h1>
-                        Mot de passe oublié
-                    </h1>
+                <h1>
+                    Mes commandes
+                </h1>
 
-                    <p>
-                        Saisissez votre adresse e-mail pour recevoir
-                        un lien de réinitialisation.
-                    </p>
+                <p>
+                    Retrouvez ici vos commandes à venir ainsi que
+                    l'historique de vos précédentes commandes.
+                </p>
 
-                </div>
-
-
-                <form class="login-form">
-
-                    <!-- EMAIL -->
-
-                    <div class="login-field">
-
-                        <label for="reset-email">
-                            Adresse e-mail
-                        </label>
-
-                        <input
-                            type="email"
-                            id="reset-email"
-                            name="email"
-                            placeholder="exemple@email.com"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
+            </div>
 
 
-                    <!-- BOUTON -->
+            <div class="orders-block">
 
-                    <button
-                        type="submit"
-                        class="login-submit"
-                    >
-                        Envoyer le lien
-                    </button>
+                <h2>
+                    Commandes à venir
+                </h2>
+
+                <div id="upcoming-orders"></div>
+
+            </div>
 
 
-                    <!-- RETOUR CONNEXION -->
+            <div class="orders-block">
 
-                    <p class="login-register">
+                <h2>
+                    Historique
+                </h2>
 
-                        <a href="connexion.html">
-                            Retour à la connexion
-                        </a>
-
-                    </p>
-
-                </form>
+                <div id="past-orders"></div>
 
             </div>
 
         </section>
 
     </main>
-    
 
-     <!-- =====================================================
+    <!-- =====================================================
          FOOTER
     ====================================================== -->
 
@@ -350,6 +400,8 @@
             <small>Profil</small>
         </a>
     </nav>
+
+    <script src="js/mes-commandes.js"></script>
 
 </body>
 

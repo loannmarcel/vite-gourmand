@@ -34,7 +34,7 @@
 <body>
 
     <!-- =====================================================
-         HEADER
+        HEADER
     ====================================================== -->
 
     <header class="site-header">
@@ -63,13 +63,31 @@
 
         <nav id="main-navigation" class="main-nav">
 
-            <a href="index.html">Accueil</a>
+            <a href="index.html">
+                Accueil
+            </a>
 
-            <a href="menus.html" class="active">Menus</a>
+            <a href="menus.html" class="active">
+                Menus
+            </a>
 
-            <a href="apropos.html">À propos</a>
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about">
+                À propos
+            </a>
 
-            <a href="contact.html">Contact</a>
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
 
             <a href="connexion.html" class="mobile-login">
                 Connexion
@@ -80,21 +98,69 @@
 
         <div class="header-actions">
 
-            <a href="connexion.html" class="login-button">
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
                 Connexion
             </a>
 
-            <a href="panier.html" class="cart-link" aria-label="Voir le panier">
-                <img
-                    class="icon-shopping"
-                    src="assets/icons/icone-shopping.png"
-                    alt=""
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
                 >
-            </a>
+                    <span class="header-account-avatar">
+                        L
+                    </span>
+
+                    <span class="header-account-text">
+                        Mon compte
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
 
         </div>
 
     </header>
+
+    <script src="js/auth-ui.js"></script>
 
     <!-- =====================================================
      MAIN

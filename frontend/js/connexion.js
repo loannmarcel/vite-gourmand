@@ -15,3 +15,22 @@ passwordToggle.addEventListener("click", () => {
     );
 
 });
+
+const loginForm = document.querySelector(".login-form");
+
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    // Pour le moment, la connexion est simulée.
+    // La véritable authentification sera gérée avec le back-end.
+
+    sessionStorage.setItem("viteGourmandUserConnected", "true");
+
+    const pendingOrder = sessionStorage.getItem("viteGourmandOrder");
+
+    if (pendingOrder) {
+        window.location.href = "commande.html";
+    } else {
+        window.location.href = "index.html";
+    }
+});

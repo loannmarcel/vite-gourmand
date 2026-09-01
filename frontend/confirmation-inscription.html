@@ -8,10 +8,10 @@
 
     <meta
         name="description"
-        content="Réinitialisez le mot de passe de votre compte Vite & Gourmand."
+        content="Connectez-vous à votre compte Vite & Gourmand pour accéder à votre espace personnel et gérer vos commandes."
     >
 
-    <title>Mot de passe oublié | Vite & Gourmand</title>
+    <title>Connexion | Vite & Gourmand</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,79 +89,40 @@
     </header>
 
     <!-- =====================================================
-        HERO - MOT DE PAS OUBLIÉ
+        CONFIRMATION INSCRIPTION
     ====================================================== -->
 
-    <main class="login-page">
+    <main class="confirmation-page">
 
-        <section class="login-section">
+        <section class="confirmation-section">
 
-            <div class="login-container">
+            <div class="confirmation-card">
 
-                <div class="login-heading">
-
-                    <h1>
-                        Mot de passe oublié
-                    </h1>
-
-                    <p>
-                        Saisissez votre adresse e-mail pour recevoir
-                        un lien de réinitialisation.
-                    </p>
-
+                <div class="confirmation-icon">
+                    <img src="assets/icons/icone-valide-commande.svg" alt="">
                 </div>
 
+                <div class="confirmation-heading">
+                    <h1>Inscription réussie</h1>
 
-                <form class="login-form">
-
-                    <!-- EMAIL -->
-
-                    <div class="login-field">
-
-                        <label for="reset-email">
-                            Adresse e-mail
-                        </label>
-
-                        <input
-                            type="email"
-                            id="reset-email"
-                            name="email"
-                            placeholder="exemple@email.com"
-                            autocomplete="email"
-                            required
-                        >
-
-                    </div>
-
-
-                    <!-- BOUTON -->
-
-                    <button
-                        type="submit"
-                        class="login-submit"
-                    >
-                        Envoyer le lien
-                    </button>
-
-
-                    <!-- RETOUR CONNEXION -->
-
-                    <p class="login-register">
-
-                        <a href="connexion.html">
-                            Retour à la connexion
-                        </a>
-
+                    <p>
+                        Votre compte Vite & Gourmand a bien été créé.
+                        Vous pouvez maintenant vous connecter.
                     </p>
+                </div>
 
-                </form>
+                <a
+                    href="connexion.html"
+                    class="confirmation-button"
+                >
+                    Se connecter
+                </a>
 
             </div>
 
         </section>
 
     </main>
-    
 
      <!-- =====================================================
          FOOTER

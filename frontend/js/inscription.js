@@ -28,3 +28,20 @@ passwordToggle.addEventListener("click", () => {
 passwordConfirmToggle.addEventListener("click", () => {
     togglePassword(passwordConfirmInput, passwordConfirmToggle);
 });
+
+const registerForm = document.querySelector(".login-form");
+
+registerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (passwordInput.value !== passwordConfirmInput.value) {
+        alert("Les mots de passe ne correspondent pas.");
+        return;
+    }
+
+    // Pour le moment, l'inscription est simulée.
+    // La création réelle du compte sera gérée avec le back-end.
+
+    window.location.href = "confirmation-inscription.html";
+    
+});
