@@ -4427,6 +4427,20 @@ select {
     color: var(--white);
 }
 
+/* =====================================================
+   Texte sous MOT DE PASSE
+====================================================== */
+
+.password-requirements {
+    margin: 7px 0 0;
+
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 400;
+
+    color: #777777;
+}
+
 /* =========================================================
    RESPONSIVE : 1181px À 1320px
 ========================================================= */
@@ -5134,7 +5148,28 @@ select {
     }
 
     .header-account-wrapper {
-        display: none !important;
+        display: block;
+        transform: translateX(12px);
+    }
+
+    .header-account-text,
+    .header-account-arrow {
+        display: none;
+    }
+
+    .header-account {
+        gap: 0;
+    }
+
+    .header-account-avatar {
+        width: 42px;
+        height: 42px;
+
+        font-size: 17px;
+    }
+
+    .account-dropdown {
+        right: 0;
     }
 
     /* HERO */
@@ -5545,6 +5580,19 @@ select {
 
     .order-card-actions {
         margin-top: 24px;
+    }
+
+    /* =====================================================
+    MON COMPTE - MODIF
+    ====================================================== */
+
+    .account-edit-fields {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .account-edit-field input {
+        width: 100%;
     }
 
 }

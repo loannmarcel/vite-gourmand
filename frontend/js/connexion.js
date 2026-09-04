@@ -28,9 +28,21 @@ loginForm.addEventListener("submit", (event) => {
 
     const pendingOrder = sessionStorage.getItem("viteGourmandOrder");
 
+    const redirectAfterLogin =
+        sessionStorage.getItem("viteGourmandRedirectAfterLogin");
+
     if (pendingOrder) {
+
+        sessionStorage.removeItem("viteGourmandRedirectAfterLogin");
         window.location.href = "commande.html";
+
+    } else if (redirectAfterLogin) {
+
+        sessionStorage.removeItem("viteGourmandRedirectAfterLogin");
+        window.location.href = redirectAfterLogin;
+
     } else {
+
         window.location.href = "index.html";
     }
 });

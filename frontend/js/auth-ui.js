@@ -1,6 +1,22 @@
 const userConnected =
     sessionStorage.getItem("viteGourmandUserConnected") === "true";
 
+const privatePages = [
+"mon-compte.html",
+"mes-commandes.html"
+];
+
+const currentPage = window.location.pathname.split("/").pop();
+
+if (privatePages.includes(currentPage) && !userConnected) {
+    sessionStorage.setItem(
+        "viteGourmandRedirectAfterLogin",
+        currentPage
+    );
+
+    window.location.replace("connexion.html");
+}
+
 const savedUser = localStorage.getItem("viteGourmandUser");
 
 if (savedUser) {
