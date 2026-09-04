@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Espace employé Vite & Gourmand."
+    >
+
+    <title>Espace employé - Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+        HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="menus.html">
+                Menus
+            </a>
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about">
+                À propos
+            </a>
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
+                Connexion
+            </a>
+
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
+                >
+                    <span class="header-account-avatar">
+                        L
+                    </span>
+
+                    <span class="header-account-text">
+                        Mon compte
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <script src="js/auth-ui.js"></script>
+
+    <!-- =====================================================
+        COMMANDES - ESPACE EMPLOYÉ
+    ====================================================== -->
+
+    <main class="employee-orders">
+
+        <section class="employee-orders-section section-container">
+
+            <div class="employee-orders-heading">
+
+                <p class="employee-orders-eyebrow">
+                    Espace employé
+                </p>
+
+                <h1>
+                    Gestion des commandes
+                </h1>
+
+                <p>
+                    Retrouvez les commandes clients et suivez leur avancement.
+                </p>
+
+            </div>
+
+
+            <!-- FILTRES -->
+
+            <div class="employee-orders-filters">
+
+                <div class="employee-orders-filter">
+
+                    <label for="employee-order-search">
+                        Rechercher un client
+                    </label>
+
+                    <input
+                        type="search"
+                        id="employee-order-search"
+                        placeholder="Nom, prénom ou e-mail"
+                    >
+
+                </div>
+
+
+                <div class="employee-orders-filter">
+
+                    <label for="employee-order-status">
+                        Statut
+                    </label>
+
+                    <select id="employee-order-status">
+
+                        <option value="all">
+                            Tous les statuts
+                        </option>
+
+                        <option value="pending">
+                            En attente
+                        </option>
+
+                        <option value="accepted">
+                            Acceptée
+                        </option>
+
+                        <option value="preparation">
+                            En préparation
+                        </option>
+
+                        <option value="delivery">
+                            En cours de livraison
+                        </option>
+
+                        <option value="delivered">
+                            Livrée
+                        </option>
+
+                        <option value="equipment">
+                            En attente du retour de matériel
+                        </option>
+
+                        <option value="completed">
+                            Terminée
+                        </option>
+
+                        <option value="cancelled">
+                            Annulée
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- LISTE DES COMMANDES -->
+
+            <div class="employee-orders-list">
+
+                <article
+                    class="employee-order-card"
+                    data-client="jean dupont jean.dupont@example.com"
+                    data-status="pending"
+                >
+
+                    <div class="employee-order-card-header">
+
+                        <div>
+                            <span class="employee-order-reference">
+                                Commande #VG2026001
+                            </span>
+
+                            <h2>
+                                Jean Dupont
+                            </h2>
+
+                            <p>
+                                jean.dupont@example.com
+                            </p>
+                        </div>
+
+                        <span class="employee-order-status employee-order-status-pending">
+                            En attente
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-order-information">
+
+                        <div>
+                            <span>Menu</span>
+                            <strong>Menu Tradition</strong>
+                        </div>
+
+                        <div>
+                            <span>Date</span>
+                            <strong>10 septembre 2026</strong>
+                        </div>
+
+                        <div>
+                            <span>Heure</span>
+                            <strong>17:05</strong>
+                        </div>
+
+                        <div>
+                            <span>Personnes</span>
+                            <strong>8</strong>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <strong>234,00 €</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="employee-order-details" hidden>
+
+                        <div class="employee-order-details-grid">
+
+                            <div>
+                                <span>Adresse de livraison</span>
+                                <strong>24 rue Sainte-Catherine, 33000 Bordeaux</strong>
+                            </div>
+
+                            <div>
+                                <span>Téléphone</span>
+                                <strong>06 12 34 56 78</strong>
+                            </div>
+
+                            <div>
+                                <span>Mode de récupération</span>
+                                <strong>Livraison à domicile</strong>
+                            </div>
+
+                            <div>
+                                <span>Commentaire client</span>
+                                <strong>Aucun commentaire</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="employee-order-cancellation-summary" hidden>
+
+                            <div>
+                                <span>Client contacté par</span>
+                                <strong class="employee-order-cancellation-contact"></strong>
+                            </div>
+
+                            <div>
+                                <span>Motif de l'annulation</span>
+                                <strong class="employee-order-cancellation-reason"></strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="employee-order-actions">
+
+                        <button
+                            type="button"
+                            class="employee-order-secondary-button employee-order-detail-button"
+                            aria-expanded="false"
+                        >
+                            Voir le détail
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-order-primary-button employee-order-manage-button"
+                            aria-expanded="false"
+                        >
+                            Gérer la commande
+                        </button>
+
+                    </div>
+
+                    <div class="employee-order-management" hidden>
+
+                        <div class="employee-order-management-heading">
+                            <h3>Gérer la commande</h3>
+
+                            <p>
+                                Modifiez le statut de cette commande ou procédez à son annulation.
+                            </p>
+                        </div>
+
+                        <div class="employee-order-management-field">
+                            <label for="order-status-jean">
+                                Nouveau statut
+                            </label>
+
+                            <select id="order-status-jean">
+                                <option value="">
+                                    Sélectionner un statut
+                                </option>
+
+                                <option value="accepted">
+                                    Acceptée
+                                </option>
+
+                                <option value="preparation">
+                                    En préparation
+                                </option>
+
+                                <option value="delivery">
+                                    En cours de livraison
+                                </option>
+
+                                <option value="delivered">
+                                    Livrée
+                                </option>
+
+                                <option value="equipment">
+                                    En attente du retour de matériel
+                                </option>
+
+                                <option value="completed">
+                                    Terminée
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="employee-order-management-actions">
+
+                            <button
+                                type="button"
+                                class="employee-order-cancel-button"
+                            >
+                                Annuler la commande
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-order-status-button"
+                            >
+                                Mettre à jour le statut
+                            </button>
+
+                        </div>
+
+                        <div class="employee-order-cancellation" hidden>
+
+                            <div class="employee-order-cancellation-heading">
+                                <h4>Annulation de la commande</h4>
+
+                                <p>
+                                    Indiquez comment le client a été contacté
+                                    ainsi que le motif de l'annulation.
+                                </p>
+                            </div>
+
+                            <div class="employee-order-cancellation-fields">
+
+                                <div class="employee-order-cancellation-field">
+                                    <label for="order-contact-jean">
+                                        Mode de contact
+                                    </label>
+
+                                    <select id="order-contact-jean">
+                                        <option value="">
+                                            Sélectionner un mode de contact
+                                        </option>
+
+                                        <option value="phone">
+                                            Téléphone
+                                        </option>
+
+                                        <option value="email">
+                                            E-mail
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="employee-order-cancellation-field">
+                                    <label for="order-cancellation-reason-jean">
+                                        Motif de l'annulation
+                                    </label>
+
+                                    <textarea
+                                        id="order-cancellation-reason-jean"
+                                        rows="4"
+                                        placeholder="Indiquez le motif de l'annulation"
+                                    ></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="employee-order-cancellation-actions">
+
+                                <button
+                                    type="button"
+                                    class="employee-order-cancellation-back-button"
+                                >
+                                    Retour
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-order-cancellation-confirm-button"
+                                >
+                                    Confirmer l'annulation
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article
+                    class="employee-order-card"
+                    data-client="claire martin claire.martin@example.com"
+                    data-status="preparation"
+                >
+
+                    <div class="employee-order-card-header">
+
+                        <div>
+                            <span class="employee-order-reference">
+                                Commande #VG2026002
+                            </span>
+
+                            <h2>
+                                Claire Martin
+                            </h2>
+
+                            <p>
+                                claire.martin@example.com
+                            </p>
+                        </div>
+
+                        <span class="employee-order-status employee-order-status-preparation">
+                            En préparation
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-order-information">
+
+                        <div>
+                            <span>Menu</span>
+                            <strong>Menu Healthy</strong>
+                        </div>
+
+                        <div>
+                            <span>Date</span>
+                            <strong>12 septembre 2026</strong>
+                        </div>
+
+                        <div>
+                            <span>Heure</span>
+                            <strong>12:30</strong>
+                        </div>
+
+                        <div>
+                            <span>Personnes</span>
+                            <strong>4</strong>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <strong>178,00 €</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="employee-order-details" hidden>
+
+                        <div class="employee-order-details-grid">
+
+                            <div>
+                                <span>Adresse de livraison</span>
+                                <strong>8 rue Judaïque, 33000 Bordeaux</strong>
+                            </div>
+
+                            <div>
+                                <span>Téléphone</span>
+                                <strong>06 98 76 54 32</strong>
+                            </div>
+
+                            <div>
+                                <span>Mode de récupération</span>
+                                <strong>Livraison à domicile</strong>
+                            </div>
+
+                            <div>
+                                <span>Commentaire client</span>
+                                <strong>Merci de sonner à l'interphone.</strong>
+                            </div>
+
+                        </div>
+
+                        <div class="employee-order-cancellation-summary" hidden>
+
+                            <div>
+                                <span>Client contacté par</span>
+                                <strong class="employee-order-cancellation-contact"></strong>
+                            </div>
+
+                            <div>
+                                <span>Motif de l'annulation</span>
+                                <strong class="employee-order-cancellation-reason"></strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-order-actions">
+
+                        <button
+                            type="button"
+                            class="employee-order-secondary-button employee-order-detail-button"
+                            aria-expanded="false"
+                        >
+                            Voir le détail
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-order-primary-button employee-order-manage-button"
+                            aria-expanded="false"
+                        >
+                            Gérer la commande
+                        </button>
+
+                    </div>
+
+                    <div class="employee-order-management" hidden>
+
+                        <div class="employee-order-management-heading">
+                            <h3>Gérer la commande</h3>
+
+                            <p>
+                                Modifiez le statut de cette commande ou procédez à son annulation.
+                            </p>
+                        </div>
+
+                        <div class="employee-order-management-field">
+                            <label for="order-status-claire">
+                                Nouveau statut
+                            </label>
+
+                            <select id="order-status-claire">
+                                <option value="">
+                                    Sélectionner un statut
+                                </option>
+
+                                <option value="accepted">
+                                    Acceptée
+                                </option>
+
+                                <option value="preparation">
+                                    En préparation
+                                </option>
+
+                                <option value="delivery">
+                                    En cours de livraison
+                                </option>
+
+                                <option value="delivered">
+                                    Livrée
+                                </option>
+
+                                <option value="equipment">
+                                    En attente du retour de matériel
+                                </option>
+
+                                <option value="completed">
+                                    Terminée
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="employee-order-management-actions">
+
+                            <button
+                                type="button"
+                                class="employee-order-cancel-button"
+                            >
+                                Annuler la commande
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-order-status-button"
+                            >
+                                Mettre à jour le statut
+                            </button>
+
+                        </div>
+
+                        <div class="employee-order-cancellation" hidden>
+
+                            <div class="employee-order-cancellation-heading">
+                                <h4>Annulation de la commande</h4>
+
+                                <p>
+                                    Indiquez comment le client a été contacté
+                                    ainsi que le motif de l'annulation.
+                                </p>
+                            </div>
+
+                            <div class="employee-order-cancellation-fields">
+
+                                <div class="employee-order-cancellation-field">
+                                    <label for="order-contact-claire">
+                                        Mode de contact
+                                    </label>
+
+                                    <select id="order-contact-claire">
+                                        <option value="">
+                                            Sélectionner un mode de contact
+                                        </option>
+
+                                        <option value="phone">
+                                            Téléphone
+                                        </option>
+
+                                        <option value="email">
+                                            E-mail
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="employee-order-cancellation-field">
+                                    <label for="order-cancellation-reason-claire">
+                                        Motif de l'annulation
+                                    </label>
+
+                                    <textarea
+                                        id="order-cancellation-reason-claire"
+                                        rows="4"
+                                        placeholder="Indiquez le motif de l'annulation"
+                                    ></textarea>
+                                </div>
+
+                            </div>
+
+                            <div class="employee-order-cancellation-actions">
+
+                                <button
+                                    type="button"
+                                    class="employee-order-cancellation-back-button"
+                                >
+                                    Retour
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-order-cancellation-confirm-button"
+                                >
+                                    Confirmer l'annulation
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <p
+                class="employee-orders-empty"
+                id="employee-orders-empty"
+                hidden
+            >
+                Aucune commande ne correspond à votre recherche.
+            </p>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png" alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png" alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png" alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <nav class="mobile-bottom-nav">
+
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img
+                src="assets/icons/icone-personnes.png"
+                alt=""
+                class="mobile-nav-icon-about"
+            >
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+
+    </nav>
+
+    <script src="js/commandes-employe.js"></script>
+
+</body>
+
+</html>

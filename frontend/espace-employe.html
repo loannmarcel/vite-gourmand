@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Espace employé Vite & Gourmand."
+    >
+
+    <title>Espace employé - Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+        HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="menus.html">
+                Menus
+            </a>
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about">
+                À propos
+            </a>
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
+                Connexion
+            </a>
+
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
+                >
+                    <span class="header-account-avatar">
+                        L
+                    </span>
+
+                    <span class="header-account-text">
+                        Mon compte
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <script src="js/auth-ui.js"></script>
+
+
+    <!-- =====================================================
+        ESPACE EMPLOYÉ
+    ====================================================== -->
+
+    <main class="employee-dashboard">
+
+        <section class="employee-dashboard-section section-container">
+
+            <div class="employee-dashboard-heading">
+
+                <p class="employee-dashboard-eyebrow">
+                    Espace employé
+                </p>
+
+                <h1>
+                    Tableau de bord
+                </h1>
+
+                <p>
+                    Gérez les commandes, les menus, les avis clients
+                    et les horaires de Vite & Gourmand.
+                </p>
+
+            </div>
+
+
+            <div class="employee-dashboard-grid">
+
+                <a
+                    href="commandes-employe.html"
+                    class="employee-dashboard-card"
+                >
+                    <div class="employee-dashboard-card-content">
+
+                        <span class="employee-dashboard-card-number">
+                            01
+                        </span>
+
+                        <h2>
+                            Commandes
+                        </h2>
+
+                        <p>
+                            Consultez les commandes, filtrez-les par statut
+                            ou par client et mettez à jour leur avancement.
+                        </p>
+
+                        <span class="employee-dashboard-card-link">
+                            Gérer les commandes →
+                        </span>
+
+                    </div>
+                </a>
+
+
+                <a
+                    href="gestion-menus.html"
+                    class="employee-dashboard-card"
+                >
+                    <div class="employee-dashboard-card-content">
+
+                        <span class="employee-dashboard-card-number">
+                            02
+                        </span>
+
+                        <h2>
+                            Menus & plats
+                        </h2>
+
+                        <p>
+                            Modifiez ou supprimez les menus et les plats
+                            proposés par Vite & Gourmand.
+                        </p>
+
+                        <span class="employee-dashboard-card-link">
+                            Gérer les menus →
+                        </span>
+
+                    </div>
+                </a>
+
+
+                <a
+                    href="avis-employe.html"
+                    class="employee-dashboard-card"
+                >
+                    <div class="employee-dashboard-card-content">
+
+                        <span class="employee-dashboard-card-number">
+                            03
+                        </span>
+
+                        <h2>
+                            Avis clients
+                        </h2>
+
+                        <p>
+                            Consultez les avis reçus et choisissez
+                            ceux qui peuvent être publiés sur l'accueil.
+                        </p>
+
+                        <span class="employee-dashboard-card-link">
+                            Gérer les avis →
+                        </span>
+
+                    </div>
+                </a>
+
+
+                <a
+                    href="horaires-employe.html"
+                    class="employee-dashboard-card"
+                >
+                    <div class="employee-dashboard-card-content">
+
+                        <span class="employee-dashboard-card-number">
+                            04
+                        </span>
+
+                        <h2>
+                            Horaires
+                        </h2>
+
+                        <p>
+                            Consultez et modifiez les horaires
+                            d'ouverture de l'entreprise.
+                        </p>
+
+                        <span class="employee-dashboard-card-link">
+                            Gérer les horaires →
+                        </span>
+
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png" alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png" alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png" alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <nav class="mobile-bottom-nav">
+
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img
+                src="assets/icons/icone-personnes.png"
+                alt=""
+                class="mobile-nav-icon-about"
+            >
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+
+    </nav>
+
+</body>
+
+</html>

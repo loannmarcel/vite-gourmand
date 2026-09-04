@@ -4441,6 +4441,770 @@ select {
     color: #777777;
 }
 
+/* =====================================================
+   ESPACE EMPLOYÉ - TABLEAU DE BORD
+===================================================== */
+
+.employee-dashboard {
+    background-color: var(--cream);
+    min-height: 650px;
+}
+
+.employee-dashboard-section {
+    padding-top: 70px;
+    padding-bottom: 90px;
+}
+
+.employee-dashboard-heading {
+    max-width: 720px;
+    margin-bottom: 48px;
+}
+
+.employee-dashboard-eyebrow {
+    margin: 0 0 10px;
+
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    color: var(--green-dark);
+}
+
+.employee-dashboard-heading h1 {
+    margin: 0 0 16px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 42px;
+    line-height: 1.15;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-dashboard-heading > p:last-child {
+    margin: 0;
+
+    max-width: 620px;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: var(--text-primary);
+}
+
+.employee-dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.employee-dashboard-card {
+    display: block;
+    min-height: 220px;
+    padding: 32px;
+
+    background-color: var(--white);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    color: var(--text-primary);
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.employee-dashboard-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--green-dark);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.employee-dashboard-card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.employee-dashboard-card-number {
+    margin-bottom: 24px;
+
+    font-size: 13px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    color: var(--green-dark);
+}
+
+.employee-dashboard-card h2 {
+    margin: 0 0 12px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 23px;
+    line-height: 1.25;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-dashboard-card p {
+    margin: 0 0 28px;
+
+    max-width: 480px;
+
+    font-size: 15px;
+    line-height: 1.65;
+
+    color: var(--text-primary);
+}
+
+.employee-dashboard-card-link {
+    margin-top: auto;
+
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+
+    color: var(--green-dark);
+}
+
+/* =====================================================
+   ESPACE EMPLOYÉ - GESTION DES COMMANDES
+===================================================== */
+
+.employee-orders {
+    background-color: var(--cream);
+    min-height: 650px;
+}
+
+.employee-orders-section {
+    padding-top: 70px;
+    padding-bottom: 90px;
+}
+
+
+/* TITRE */
+
+.employee-orders-heading {
+    max-width: 720px;
+    margin-bottom: 42px;
+}
+
+.employee-orders-eyebrow {
+    margin: 0 0 10px;
+
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    color: var(--green-dark);
+}
+
+.employee-orders-heading h1 {
+    margin: 0 0 16px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 42px;
+    line-height: 1.15;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-orders-heading > p:last-child {
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: var(--text-primary);
+}
+
+
+/* FILTRES */
+
+.employee-orders-filters {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) 320px;
+    gap: 24px;
+
+    margin-bottom: 32px;
+    padding: 24px;
+
+    background-color: var(--white);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+.employee-orders-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.employee-orders-filter label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-orders-filter input,
+.employee-orders-filter select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    background-color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+}
+
+.employee-orders-filter select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-right: 42px;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233F5540' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+}
+
+
+/* LISTE */
+
+.employee-orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.employee-order-card {
+    padding: 28px 30px;
+
+    background-color: var(--white);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+
+/* EN-TÊTE DE LA COMMANDE */
+
+.employee-order-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding-bottom: 22px;
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.employee-order-reference {
+    display: block;
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #777777;
+}
+
+.employee-order-card-header h2 {
+    margin: 0 0 6px;
+
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-order-card-header p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: #666666;
+}
+
+
+/* STATUT */
+
+.employee-order-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 34px;
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+.employee-order-status-pending {
+    background-color: #f4ead5;
+    color: #7a5b20;
+}
+
+.employee-order-status-preparation {
+    background-color: #e4eee4;
+    color: var(--green-dark);
+}
+
+.employee-order-status-accepted {
+    background-color: #e3edf5;
+    color: #355d7a;
+}
+
+.employee-order-status-delivery {
+    background-color: #eee7f5;
+    color: #654b7a;
+}
+
+.employee-order-status-delivered {
+    background-color: #e1efe6;
+    color: #356246;
+}
+
+.employee-order-status-equipment {
+    background-color: #f5eadf;
+    color: #805a35;
+}
+
+.employee-order-status-completed {
+    background-color: #e7e7e7;
+    color: #555555;
+}
+
+
+/* INFORMATIONS */
+
+.employee-order-information {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 24px;
+
+    margin-bottom: 28px;
+}
+
+.employee-order-information div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.employee-order-information span {
+    font-size: 13px;
+
+    color: #777777;
+}
+
+.employee-order-information strong {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+/* DÉTAIL DE LA COMMANDE */
+
+.employee-order-details {
+    margin-bottom: 28px;
+}
+
+.employee-order-details-grid {
+    display: grid;
+    grid-template-columns: 360px 260px;
+    gap: 18px 48px;
+
+    margin-top: 52px;
+}
+
+.employee-order-details-grid > div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.employee-order-details-grid span {
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 400;
+
+    color: #777777;
+}
+
+.employee-order-details-grid strong {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+/* RÉSUMÉ DE L'ANNULATION */
+
+.employee-order-cancellation-summary {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 24px;
+
+    margin-top: 28px;
+    padding: 18px 20px;
+
+    background-color: #fff8f8;
+    border: 1px solid #ecd3d3;
+    border-radius: 8px;
+}
+
+.employee-order-cancellation-summary > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.employee-order-cancellation-summary span {
+    font-size: 13px;
+    line-height: 1.4;
+    font-weight: 400;
+
+    color: #777777;
+}
+
+.employee-order-cancellation-summary strong {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+/* PANNEAU DE GESTION DE LA COMMANDE */
+
+.employee-order-management {
+    margin-top: 32px;
+    padding-top: 28px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+.employee-order-management-heading {
+    margin-bottom: 24px;
+}
+
+.employee-order-management-heading h3 {
+    margin: 0 0 8px;
+
+    font-size: 18px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-order-management-heading p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: #666666;
+}
+
+
+/* CHAMP STATUT */
+
+.employee-order-management-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+
+    max-width: 380px;
+    margin-bottom: 26px;
+}
+
+.employee-order-management-field label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-order-management-field select {
+    width: 100%;
+    height: 48px;
+    padding: 0 42px 0 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    background-color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233F5540' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+}
+
+
+/* ACTIONS DU PANNEAU */
+
+.employee-order-management-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+}
+
+.employee-order-cancel-button,
+.employee-order-status-button {
+    min-height: 44px;
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.employee-order-cancel-button {
+    border: 1px solid #a44747;
+
+    background-color: transparent;
+    color: #a44747;
+}
+
+.employee-order-status-button {
+    border: 1px solid var(--green-dark);
+
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+/* ANNULATION DE LA COMMANDE */
+
+.employee-order-cancellation {
+    margin-top: 30px;
+    padding: 26px;
+
+    background-color: #fafafa;
+    border: 1px solid #e2e2e2;
+    border-radius: 10px;
+}
+
+.employee-order-cancellation-heading {
+    margin-bottom: 22px;
+}
+
+.employee-order-cancellation-heading h4 {
+    margin: 0 0 8px;
+
+    font-size: 17px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-order-cancellation-heading p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: #666666;
+}
+
+
+/* CHAMPS D'ANNULATION */
+
+.employee-order-cancellation-fields {
+    display: grid;
+    grid-template-columns: 280px minmax(0, 1fr);
+    gap: 24px;
+
+    margin-bottom: 24px;
+}
+
+.employee-order-cancellation-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.employee-order-cancellation-field label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-order-cancellation-field select,
+.employee-order-cancellation-field textarea {
+    width: 100%;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    background-color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+}
+
+.employee-order-cancellation-field select {
+    height: 48px;
+    padding: 0 42px 0 14px;
+
+    appearance: none;
+    -webkit-appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233F5540' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+}
+
+.employee-order-cancellation-field textarea {
+    min-height: 100px;
+    padding: 13px 14px;
+
+    line-height: 1.5;
+    resize: vertical;
+}
+
+
+/* BOUTONS D'ANNULATION */
+
+.employee-order-cancellation-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.employee-order-cancellation-back-button,
+.employee-order-cancellation-confirm-button {
+    min-height: 44px;
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.employee-order-cancellation-back-button {
+    border: 1px solid #cccccc;
+
+    background-color: var(--white);
+    color: var(--text-primary);
+}
+
+.employee-order-cancellation-confirm-button {
+    border: 1px solid #a44747;
+
+    background-color: #a44747;
+    color: var(--white);
+}
+
+.employee-order-status-cancelled {
+    background-color: #f5e2e2;
+    color: #a44747;
+}
+
+/* ACTIONS */
+
+.employee-order-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.employee-order-secondary-button,
+.employee-order-primary-button {
+    min-height: 44px;
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.employee-order-secondary-button {
+    border: 1px solid var(--green-dark);
+
+    background-color: transparent;
+    color: var(--green-dark);
+}
+
+.employee-order-primary-button {
+    border: 1px solid var(--green-dark);
+
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+.employee-orders-empty {
+    margin: 32px 0 0;
+    padding: 28px;
+
+    background-color: var(--white);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    text-align: center;
+
+    font-size: 15px;
+    line-height: 1.5;
+
+    color: #666666;
+}
+
 /* =========================================================
    RESPONSIVE : 1181px À 1320px
 ========================================================= */
@@ -5082,8 +5846,25 @@ select {
         grid-template-columns: 1fr 1fr;
     }
 
+    .employee-order-details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px 24px;
+    }
+
 }
 
+/* =========================================================
+   RESPONSIVE : PETITE TABLETTE 
+   ====================================================== */
+
+@media (max-width: 720px) {
+
+    .employee-orders-filters {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+}
 
 /* =========================================================
    RESPONSIVE : PETITE TABLETTE 
@@ -5593,6 +6374,154 @@ select {
 
     .account-edit-field input {
         width: 100%;
+    }
+
+    /* Espace employé */
+
+    .employee-dashboard-section {
+        padding-top: 48px;
+        padding-bottom: 80px;
+    }
+
+    .employee-dashboard-heading {
+        margin-bottom: 36px;
+    }
+
+    .employee-dashboard-heading h1 {
+        font-size: 34px;
+    }
+
+    .employee-dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .employee-dashboard-card {
+        min-height: 0;
+        padding: 26px 24px;
+    }
+
+    .employee-dashboard-card-number {
+        margin-bottom: 18px;
+    }
+
+    .employee-dashboard-card p {
+        margin-bottom: 24px;
+    }
+
+    /* =====================================================
+    ESPACE EMPLOYÉ - COMMANDES
+    ===================================================== */
+
+    .employee-orders-section {
+        padding-top: 48px;
+        padding-bottom: 80px;
+    }
+
+    .employee-orders-heading {
+        margin-bottom: 36px;
+    }
+
+    .employee-orders-heading h1 {
+        font-size: 34px;
+    }
+
+
+    /* Filtres */
+
+    .employee-orders-filters {
+        grid-template-columns: 1fr;
+        gap: 18px;
+
+        padding: 20px;
+        margin-bottom: 24px;
+    }
+
+
+    /* Cartes */
+
+    .employee-order-card {
+        padding: 24px;
+    }
+
+    .employee-order-card-header {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .employee-order-status {
+        align-self: flex-start;
+    }
+
+
+    /* Informations */
+
+    .employee-order-information {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px 16px;
+    }
+
+
+    /* Boutons */
+
+    .employee-order-actions {
+        flex-direction: column;
+    }
+
+    .employee-order-secondary-button,
+    .employee-order-primary-button {
+        width: 100%;
+    }
+
+    .employee-order-details-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 34px;
+    }
+
+    /* Gestion de commande */
+
+    .employee-order-management-field {
+        max-width: 100%;
+    }
+
+    .employee-order-management-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .employee-order-cancel-button,
+    .employee-order-status-button {
+        width: 100%;
+    }
+
+
+    /* Annulation */
+
+    .employee-order-cancellation {
+        padding: 20px;
+    }
+
+    .employee-order-cancellation-fields {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .employee-order-cancellation-actions {
+        flex-direction: column;
+    }
+
+    .employee-order-cancellation-back-button,
+    .employee-order-cancellation-confirm-button {
+        width: 100%;
+    }
+
+
+    /* Résumé de l'annulation */
+
+    .employee-order-cancellation-summary {
+        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
 }

@@ -38,15 +38,23 @@ const registerForm = document.querySelector(".login-form");
 registerForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    const passwordValue = passwordInput.value;
+   const passwordValue = passwordInput.value;
 
-    const hasMinimumLength = passwordValue.length >= 8;
+    const hasMinimumLength = passwordValue.length >= 10;
     const hasUppercase = /[A-Z]/.test(passwordValue);
+    const hasLowercase = /[a-z]/.test(passwordValue);
+    const hasNumber = /[0-9]/.test(passwordValue);
     const hasSpecialCharacter = /[^A-Za-z0-9]/.test(passwordValue);
 
-    if (!hasMinimumLength || !hasUppercase || !hasSpecialCharacter) {
+    if (
+        !hasMinimumLength ||
+        !hasUppercase ||
+        !hasLowercase ||
+        !hasNumber ||
+        !hasSpecialCharacter
+    ) {
         alert(
-            "Le mot de passe doit contenir au moins 8 caractères, une majuscule et un caractère spécial."
+            "Le mot de passe doit contenir au moins 10 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial."
         );
         return;
     }
