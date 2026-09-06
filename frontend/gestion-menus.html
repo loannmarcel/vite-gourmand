@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Espace employé Vite & Gourmand."
+    >
+
+    <title>Espace employé - Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+        HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="menus.html">
+                Menus
+            </a>
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about">
+                À propos
+            </a>
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
+                Connexion
+            </a>
+
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
+                >
+                    <span class="header-account-avatar">
+                        L
+                    </span>
+
+                    <span class="header-account-text">
+                        Mon compte
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+    <script src="js/auth-ui.js"></script>
+
+    <!-- =====================================================
+        GESTION MENUS - ESPACE EMPLOYÉ
+    ====================================================== -->
+
+    <main class="employee-menus">
+
+        <section class="employee-menus-section section-container">
+
+            <div class="employee-menus-heading">
+
+                <p class="employee-menus-eyebrow">
+                    Espace employé
+                </p>
+
+                <div class="employee-menus-heading-row">
+
+                    <div>
+                        <h1>
+                            Gestion des menus
+                        </h1>
+
+                        <p>
+                            Consultez, modifiez ou supprimez les menus proposés
+                            par Vite & Gourmand.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="employee-menu-add-button"
+                        id="employee-menu-add-button"
+                        aria-expanded="false"
+                    >
+                        Ajouter un menu
+                    </button>
+
+                </div>
+
+            </div>
+
+            <section
+                class="employee-menu-add-panel"
+                id="employee-menu-add-panel"
+                hidden
+            >
+
+                <h2>
+                    Ajouter un menu
+                </h2>
+
+                <div class="employee-menu-edit-grid">
+
+                    <div class="employee-menu-edit-field">
+                        <label for="new-menu-name">
+                            Nom du menu
+                        </label>
+                        <input
+                            type="text"
+                            id="new-menu-name"
+                        >
+                    </div>
+
+                    <div class="employee-menu-edit-field">
+                        <label for="new-menu-theme">
+                            Thème
+                        </label>
+                        <select id="new-menu-theme">
+                            <option value="classique">Classique</option>
+                            <option value="evenement">Évènement</option>
+                            <option value="brunch">Brunch</option>
+                        </select>
+                    </div>
+
+                    <div class="employee-menu-edit-field">
+                        <label for="new-menu-regime">
+                            Régime
+                        </label>
+                        <input
+                            type="text"
+                            id="new-menu-regime"
+                        >
+                    </div>
+
+                    <div class="employee-menu-edit-field">
+                        <label for="new-menu-minimum">
+                            Minimum de personnes
+                        </label>
+                        <input
+                            type="number"
+                            id="new-menu-minimum"
+                            min="1"
+                            value="2"
+                        >
+                    </div>
+
+                    <div class="employee-menu-edit-field">
+                        <label for="new-menu-price">
+                            Prix
+                        </label>
+                        <input
+                            type="number"
+                            id="new-menu-price"
+                            min="0"
+                            step="0.01"
+                        >
+                    </div>
+
+                    <div class="employee-menu-edit-field">
+                        <label for="new-menu-stock">
+                            Stock disponible
+                        </label>
+                        <input
+                            type="number"
+                            id="new-menu-stock"
+                            min="0"
+                            value="0"
+                        >
+                    </div>
+
+                </div>
+
+                <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                    <label for="new-menu-description">
+                        Description
+                    </label>
+
+                    <textarea
+                        id="new-menu-description"
+                        rows="4"
+                    ></textarea>
+
+                </div>
+
+                <div class="employee-menu-edit-grid">
+
+                    <div class="employee-menu-edit-field">
+
+                        <label for="new-menu-conditions">
+                            Conditions
+                        </label>
+
+                        <textarea
+                            id="new-menu-conditions"
+                            rows="4"
+                        ></textarea>
+
+                    </div>
+
+                    <div class="employee-menu-edit-field">
+
+                        <label for="new-menu-allergens">
+                            Allergènes
+                        </label>
+
+                        <textarea
+                            id="new-menu-allergens"
+                            rows="4"
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+                <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                    <label for="new-menu-dishes">
+                        Plats du menu
+                    </label>
+
+                    <textarea
+                        id="new-menu-dishes"
+                        rows="5"
+                    ></textarea>
+
+                </div>
+
+                <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                    <label for="new-menu-images">
+                        Galerie d'images
+                    </label>
+
+                    <input
+                        type="file"
+                        id="new-menu-images"
+                        accept="image/*"
+                        multiple
+                    >
+
+                    <small class="employee-menu-edit-help">
+                        Vous pouvez sélectionner plusieurs images.
+                    </small>
+
+                </div>
+
+                <div class="employee-menu-edit-actions">
+
+                    <button
+                        type="button"
+                        class="employee-menu-edit-cancel"
+                        id="employee-menu-add-cancel"
+                    >
+                        Annuler
+                    </button>
+
+                    <button
+                        type="button"
+                        class="employee-menu-add-save"
+                        id="employee-menu-add-save"
+                    >
+                        Ajouter le menu
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <div class="employee-menus-filters">
+
+                <div class="employee-menus-filter">
+
+                    <label for="employee-menu-search">
+                        Rechercher un menu
+                    </label>
+
+                    <input
+                        type="search"
+                        id="employee-menu-search"
+                        placeholder="Nom du menu"
+                    >
+
+                </div>
+
+                <div class="employee-menus-filter">
+
+                    <label for="employee-menu-theme">
+                        Thème
+                    </label>
+
+                    <select id="employee-menu-theme">
+
+                        <option value="all">
+                            Tous les thèmes
+                        </option>
+
+                        <option value="classique">
+                            Classique
+                        </option>
+
+                        <option value="evenement">
+                            Évènement
+                        </option>
+
+                        <option value="brunch">
+                            Brunch
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="employee-menus-list">
+
+                <!-- MENU TRADITION -->
+
+                <article
+                    class="employee-menu-card"
+                    data-menu-id="tradition"
+                    data-name="menu tradition"
+                    data-theme="classique"
+                >
+
+                    <div class="employee-menu-card-header">
+
+                        <div class="employee-menu-card-main">
+
+                            <div class="employee-menu-thumbnail">
+                                <img
+                                    src="assets/images/menu-tradition.jpg"
+                                    alt="Menu Tradition"
+                                >
+                            </div>
+
+                            <div class="employee-menu-card-content">
+
+                                <span class="employee-menu-reference">
+                                    Menu #01
+                                </span>
+
+                                <h2>
+                                    Menu Tradition
+                                </h2>
+
+                                <p>
+                                    Une cuisine traditionnelle et généreuse.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="employee-menu-status">
+                            Disponible
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-menu-information">
+
+                        <div>
+                            <span>Thème</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Régime</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Minimum</span>
+                            <strong>2 personnes</strong>
+                        </div>
+
+                        <div>
+                            <span>Prix</span>
+                            <strong>65,00 €</strong>
+                        </div>
+
+                        <div>
+                            <span>Stock disponible</span>
+                            <strong>5 commandes</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-menu-actions">
+
+                        <button
+                            type="button"
+                            class="employee-menu-secondary-button employee-menu-edit-button"
+                            aria-expanded="false"
+                        >
+                            Modifier
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-menu-delete-button"
+                        >
+                            Supprimer
+                        </button>
+
+                    </div>
+
+                    <div class="employee-menu-edit-panel" hidden>
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-name">Nom du menu</label>
+                                <input
+                                    type="text"
+                                    id="tradition-name"
+                                    value="Menu Tradition"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-theme">Thème</label>
+                                <select id="tradition-theme">
+                                    <option value="classique" selected>Classique</option>
+                                    <option value="evenement">Évènement</option>
+                                    <option value="brunch">Brunch</option>
+                                </select>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-regime">Régime</label>
+                                <input
+                                    type="text"
+                                    id="tradition-regime"
+                                    value="Classique"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-minimum">Minimum de personnes</label>
+                                <input
+                                    type="number"
+                                    id="tradition-minimum"
+                                    min="1"
+                                    value="2"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-price">Prix</label>
+                                <input
+                                    type="number"
+                                    id="tradition-price"
+                                    min="0"
+                                    step="0.01"
+                                    value="65"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-stock">Stock disponible</label>
+                                <input
+                                    type="number"
+                                    id="tradition-stock"
+                                    min="0"
+                                    value="5"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                            <label for="tradition-description">Description</label>
+                            <textarea
+                                id="tradition-description"
+                                rows="4"
+                            >Une cuisine traditionnelle et généreuse.</textarea>
+                        </div>
+
+                        <!-- INFORMATIONS COMPLÉMENTAIRES -->
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-conditions">
+                                    Conditions
+                                </label>
+
+                                <textarea
+                                    id="tradition-conditions"
+                                    rows="4"
+                                >1 à 2 h de préparation</textarea>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="tradition-allergens">
+                                    Allergènes
+                                </label>
+
+                                <textarea
+                                    id="tradition-allergens"
+                                    rows="4"
+                                    placeholder="Ex. gluten, lait, œufs..."
+                                ></textarea>
+                            </div>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="tradition-dishes">
+                                Plats du menu
+                            </label>
+
+                            <textarea
+                                id="tradition-dishes"
+                                rows="5"
+                                placeholder="Indiquez les plats composant ce menu"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="tradition-images">
+                                Galerie d'images
+                            </label>
+
+                            <div class="employee-menu-current-images">
+
+                                <div class="employee-menu-current-image">
+                                    <img
+                                        src="assets/images/menu-tradition.jpg"
+                                        alt="Image actuelle du Menu Tradition"
+                                    >
+                                </div>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="tradition-images"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <small class="employee-menu-edit-help">
+                                Vous pouvez sélectionner plusieurs images.
+                            </small>
+
+                        </div>
+
+                        <div class="employee-menu-edit-actions">
+                            <button
+                                type="button"
+                                class="employee-menu-edit-cancel"
+                            >
+                                Annuler
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-save"
+                            >
+                                Enregistrer
+                            </button>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU HEALTHY -->
+
+                <article
+                    class="employee-menu-card"
+                    data-menu-id="healthy"
+                    data-name="menu healthy"
+                    data-theme="classique"
+                >
+
+                    <div class="employee-menu-card-header">
+
+                        <div class="employee-menu-card-main">
+
+                            <div class="employee-menu-thumbnail">
+                                <img
+                                    src="assets/images/menu-healthy.jpg"
+                                    alt="Menu Healthy"
+                                >
+                            </div>
+
+                            <div class="employee-menu-card-content">
+
+                                <span class="employee-menu-reference">
+                                    Menu #02
+                                </span>
+
+                                <h2>
+                                    Menu Healthy
+                                </h2>
+
+                                <p>
+                                    Une cuisine équilibrée et gourmande.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="employee-menu-status">
+                            Disponible
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-menu-information">
+
+                        <div>
+                            <span>Thème</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Régime</span>
+                            <strong>Équilibré</strong>
+                        </div>
+
+                        <div>
+                            <span>Minimum</span>
+                            <strong>2 personnes</strong>
+                        </div>
+
+                        <div>
+                            <span>Prix</span>
+                            <strong>89,00 €</strong>
+                        </div>
+
+                        <div>
+                            <span>Stock disponible</span>
+                            <strong>7 commandes</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-menu-actions">
+
+                        <button
+                            type="button"
+                            class="employee-menu-secondary-button employee-menu-edit-button"
+                            aria-expanded="false"
+                        >
+                            Modifier
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-menu-delete-button"
+                        >
+                            Supprimer
+                        </button>
+
+                    </div>
+
+                    <div class="employee-menu-edit-panel" hidden>
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-name">Nom du menu</label>
+                                <input
+                                    type="text"
+                                    id="healthy-name"
+                                    value="Menu Healthy"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-theme">Thème</label>
+                                <select id="healthy-theme">
+                                    <option value="classique" selected>Classique</option>
+                                    <option value="evenement">Évènement</option>
+                                    <option value="brunch">Brunch</option>
+                                </select>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-regime">Régime</label>
+                                <input
+                                    type="text"
+                                    id="healthy-regime"
+                                    value="Équilibré"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-minimum">Minimum de personnes</label>
+                                <input
+                                    type="number"
+                                    id="healthy-minimum"
+                                    min="1"
+                                    value="2"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-price">Prix</label>
+                                <input
+                                    type="number"
+                                    id="healthy-price"
+                                    min="0"
+                                    step="0.01"
+                                    value="89"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-stock">Stock disponible</label>
+                                <input
+                                    type="number"
+                                    id="healthy-stock"
+                                    min="0"
+                                    value="7"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                            <label for="healthy-description">Description</label>
+                            <textarea
+                                id="healthy-description"
+                                rows="4"
+                            >Une cuisine équilibrée et gourmande.</textarea>
+                        </div>
+
+
+                        <!-- INFORMATIONS COMPLÉMENTAIRES -->
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-conditions">
+                                    Conditions
+                                </label>
+
+                                <textarea
+                                    id="healthy-conditions"
+                                    rows="4"
+                                >1 à 2 h de préparation</textarea>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="healthy-allergens">
+                                    Allergènes
+                                </label>
+
+                                <textarea
+                                    id="healthy-allergens"
+                                    rows="4"
+                                    placeholder="Ex. gluten, lait, œufs..."
+                                ></textarea>
+                            </div>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="healthy-dishes">
+                                Plats du menu
+                            </label>
+
+                            <textarea
+                                id="healthy-dishes"
+                                rows="5"
+                                placeholder="Indiquez les plats composant ce menu"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="healthy-images">
+                                Galerie d'images
+                            </label>
+
+                            <div class="employee-menu-current-images">
+
+                                <div class="employee-menu-current-image">
+                                    <img
+                                        src="assets/images/menu-healthy.jpg"
+                                        alt="Image actuelle du Menu Healthy"
+                                    >
+                                </div>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="healthy-images"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <small class="employee-menu-edit-help">
+                                Vous pouvez sélectionner plusieurs images.
+                            </small>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-actions">
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-cancel"
+                            >
+                                Annuler
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-save"
+                            >
+                                Enregistrer
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- MENU VÉGÉTARIEN -->
+
+                <article
+                    class="employee-menu-card"
+                    data-menu-id="vegetarien"
+                    data-name="menu vegetarien"
+                    data-theme="classique"
+                >
+
+                    <div class="employee-menu-card-header">
+
+                        <div class="employee-menu-card-main">
+
+                            <div class="employee-menu-thumbnail">
+                                <img
+                                    src="assets/images/menu-vegetarien.png"
+                                    alt="Menu Végétarien"
+                                >
+                            </div>
+
+                            <div class="employee-menu-card-content">
+
+                                <span class="employee-menu-reference">
+                                    Menu #03
+                                </span>
+
+                                <h2>
+                                    Menu Végétarien
+                                </h2>
+
+                                <p>
+                                    Une cuisine végétarienne savoureuse et équilibrée.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="employee-menu-status">
+                            Disponible
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-menu-information">
+
+                        <div>
+                            <span>Thème</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Régime</span>
+                            <strong>Végétarien</strong>
+                        </div>
+
+                        <div>
+                            <span>Minimum</span>
+                            <strong>2 personnes</strong>
+                        </div>
+
+                        <div>
+                            <span>Prix</span>
+                            <strong>75,00 €</strong>
+                        </div>
+
+                        <div>
+                            <span>Stock disponible</span>
+                            <strong>6 commandes</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-menu-actions">
+
+                        <button
+                            type="button"
+                            class="employee-menu-secondary-button employee-menu-edit-button"
+                            aria-expanded="false"
+                        >
+                            Modifier
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-menu-delete-button"
+                        >
+                            Supprimer
+                        </button>
+
+                    </div>
+
+                    <div class="employee-menu-edit-panel" hidden>
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-name">Nom du menu</label>
+                                <input
+                                    type="text"
+                                    id="vegetarien-name"
+                                    value="Menu Végétarien"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-theme">Thème</label>
+                                <select id="vegetarien-theme">
+                                    <option value="classique" selected>Classique</option>
+                                    <option value="evenement">Évènement</option>
+                                    <option value="brunch">Brunch</option>
+                                </select>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-regime">Régime</label>
+                                <input
+                                    type="text"
+                                    id="vegetarien-regime"
+                                    value="Végétarien"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-minimum">Minimum de personnes</label>
+                                <input
+                                    type="number"
+                                    id="vegetarien-minimum"
+                                    min="1"
+                                    value="2"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-price">Prix</label>
+                                <input
+                                    type="number"
+                                    id="vegetarien-price"
+                                    min="0"
+                                    step="0.01"
+                                    value="75"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-stock">Stock disponible</label>
+                                <input
+                                    type="number"
+                                    id="vegetarien-stock"
+                                    min="0"
+                                    value="6"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                            <label for="vegetarien-description">Description</label>
+                            <textarea
+                                id="vegetarien-description"
+                                rows="4"
+                            >Une cuisine végétarienne savoureuse et équilibrée.</textarea>
+                        </div>
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-conditions">Conditions</label>
+                                <textarea
+                                    id="vegetarien-conditions"
+                                    rows="4"
+                                    placeholder="Indiquez les conditions du menu"
+                                ></textarea>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="vegetarien-allergens">Allergènes</label>
+                                <textarea
+                                    id="vegetarien-allergens"
+                                    rows="4"
+                                    placeholder="Ex. gluten, lait, œufs..."
+                                ></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="vegetarien-dishes">Plats du menu</label>
+
+                            <textarea
+                                id="vegetarien-dishes"
+                                rows="5"
+                                placeholder="Indiquez les plats composant ce menu"
+                            ></textarea>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="vegetarien-images">Galerie d'images</label>
+
+                            <div class="employee-menu-current-images">
+
+                                <div class="employee-menu-current-image">
+                                    <img
+                                        src="assets/images/menu-vegetarien.png"
+                                        alt="Image actuelle du Menu Végétarien"
+                                    >
+                                </div>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="vegetarien-images"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <small class="employee-menu-edit-help">
+                                Vous pouvez sélectionner plusieurs images.
+                            </small>
+
+                        </div>
+
+                        <div class="employee-menu-edit-actions">
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-cancel"
+                            >
+                                Annuler
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-save"
+                            >
+                                Enregistrer
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU MÉDITERRANÉEN -->
+
+                <article
+                    class="employee-menu-card"
+                    data-menu-id="mediterraneen"
+                    data-name="menu mediterraneen"
+                    data-theme="classique"
+                >
+
+                    <div class="employee-menu-card-header">
+
+                        <div class="employee-menu-card-main">
+
+                            <div class="employee-menu-thumbnail">
+                                <img
+                                    src="assets/images/menu-mediterraneen.png"
+                                    alt="Menu Méditerranéen"
+                                >
+                            </div>
+
+                            <div class="employee-menu-card-content">
+
+                                <span class="employee-menu-reference">
+                                    Menu #04
+                                </span>
+
+                                <h2>
+                                    Menu Méditerranéen
+                                </h2>
+
+                                <p>
+                                    Une cuisine ensoleillée aux saveurs méditerranéennes.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="employee-menu-status">
+                            Disponible
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-menu-information">
+
+                        <div>
+                            <span>Thème</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Régime</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Minimum</span>
+                            <strong>2 personnes</strong>
+                        </div>
+
+                        <div>
+                            <span>Prix</span>
+                            <strong>95,00 €</strong>
+                        </div>
+
+                        <div>
+                            <span>Stock disponible</span>
+                            <strong>4 commandes</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-menu-actions">
+
+                        <button
+                            type="button"
+                            class="employee-menu-secondary-button employee-menu-edit-button"
+                            aria-expanded="false"
+                        >
+                            Modifier
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-menu-delete-button"
+                        >
+                            Supprimer
+                        </button>
+
+                    </div>
+
+                    <div class="employee-menu-edit-panel" hidden>
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="mediterraneen-name">Nom du menu</label>
+                                <input
+                                    type="text"
+                                    id="mediterraneen-name"
+                                    value="Menu Méditerranéen"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="mediterraneen-theme">Thème</label>
+                                <select id="mediterraneen-theme">
+                                    <option value="classique" selected>Classique</option>
+                                    <option value="evenement">Évènement</option>
+                                    <option value="brunch">Brunch</option>
+                                </select>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="mediterraneen-regime">Régime</label>
+                                <input
+                                    type="text"
+                                    id="mediterraneen-regime"
+                                    value="Classique"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="mediterraneen-minimum">Minimum de personnes</label>
+                                <input
+                                    type="number"
+                                    id="mediterraneen-minimum"
+                                    min="1"
+                                    value="2"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="mediterraneen-price">Prix</label>
+                                <input
+                                    type="number"
+                                    id="mediterraneen-price"
+                                    min="0"
+                                    step="0.01"
+                                    value="95"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="mediterraneen-stock">Stock disponible</label>
+                                <input
+                                    type="number"
+                                    id="mediterraneen-stock"
+                                    min="0"
+                                    value="4"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="mediterraneen-description">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="mediterraneen-description"
+                                rows="4"
+                            >Une cuisine ensoleillée aux saveurs méditerranéennes.</textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+
+                                <label for="mediterraneen-conditions">
+                                    Conditions
+                                </label>
+
+                                <textarea
+                                    id="mediterraneen-conditions"
+                                    rows="4"
+                                >2 h de préparation</textarea>
+
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+
+                                <label for="mediterraneen-allergens">
+                                    Allergènes
+                                </label>
+
+                                <textarea
+                                    id="mediterraneen-allergens"
+                                    rows="4"
+                                    placeholder="Ex. gluten, lait, œufs..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="mediterraneen-dishes">
+                                Plats du menu
+                            </label>
+
+                            <textarea
+                                id="mediterraneen-dishes"
+                                rows="5"
+                                placeholder="Indiquez les plats composant ce menu"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="mediterraneen-images">
+                                Galerie d'images
+                            </label>
+
+                            <div class="employee-menu-current-images">
+
+                                <div class="employee-menu-current-image">
+                                    <img
+                                        src="assets/images/menu-mediterraneen.png"
+                                        alt="Image actuelle du Menu Méditerranéen"
+                                    >
+                                </div>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="mediterraneen-images"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <small class="employee-menu-edit-help">
+                                Vous pouvez sélectionner plusieurs images.
+                            </small>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-actions">
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-cancel"
+                            >
+                                Annuler
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-save"
+                            >
+                                Enregistrer
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU BRUNCH -->
+
+                <article
+                    class="employee-menu-card"
+                    data-menu-id="brunch"
+                    data-name="menu brunch"
+                    data-theme="brunch"
+                >
+
+                    <div class="employee-menu-card-header">
+
+                        <div class="employee-menu-card-main">
+
+                            <div class="employee-menu-thumbnail">
+                                <img
+                                    src="assets/images/menu-brunch.png"
+                                    alt="Menu Brunch"
+                                >
+                            </div>
+
+                            <div class="employee-menu-card-content">
+
+                                <span class="employee-menu-reference">
+                                    Menu #05
+                                </span>
+
+                                <h2>
+                                    Menu Brunch
+                                </h2>
+
+                                <p>
+                                    Une formule conviviale et gourmande pour vos brunchs.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="employee-menu-status">
+                            Disponible
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-menu-information">
+
+                        <div>
+                            <span>Thème</span>
+                            <strong>Brunch</strong>
+                        </div>
+
+                        <div>
+                            <span>Régime</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Minimum</span>
+                            <strong>2 personnes</strong>
+                        </div>
+
+                        <div>
+                            <span>Prix</span>
+                            <strong>55,00 €</strong>
+                        </div>
+
+                        <div>
+                            <span>Stock disponible</span>
+                            <strong>8 commandes</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-menu-actions">
+
+                        <button
+                            type="button"
+                            class="employee-menu-secondary-button employee-menu-edit-button"
+                            aria-expanded="false"
+                        >
+                            Modifier
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-menu-delete-button"
+                        >
+                            Supprimer
+                        </button>
+
+                    </div>
+
+                    <div class="employee-menu-edit-panel" hidden>
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="brunch-name">Nom du menu</label>
+                                <input
+                                    type="text"
+                                    id="brunch-name"
+                                    value="Menu Brunch"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="brunch-theme">Thème</label>
+                                <select id="brunch-theme">
+                                    <option value="classique">Classique</option>
+                                    <option value="evenement">Évènement</option>
+                                    <option value="brunch" selected>Brunch</option>
+                                </select>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="brunch-regime">Régime</label>
+                                <input
+                                    type="text"
+                                    id="brunch-regime"
+                                    value="Classique"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="brunch-minimum">Minimum de personnes</label>
+                                <input
+                                    type="number"
+                                    id="brunch-minimum"
+                                    min="1"
+                                    value="2"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="brunch-price">Prix</label>
+                                <input
+                                    type="number"
+                                    id="brunch-price"
+                                    min="0"
+                                    step="0.01"
+                                    value="55"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="brunch-stock">Stock disponible</label>
+                                <input
+                                    type="number"
+                                    id="brunch-stock"
+                                    min="0"
+                                    value="8"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="brunch-description">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="brunch-description"
+                                rows="4"
+                            >Une formule conviviale et gourmande pour vos brunchs.</textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+
+                                <label for="brunch-conditions">
+                                    Conditions
+                                </label>
+
+                                <textarea
+                                    id="brunch-conditions"
+                                    rows="4"
+                                >30 à 60 min de préparation</textarea>
+
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+
+                                <label for="brunch-allergens">
+                                    Allergènes
+                                </label>
+
+                                <textarea
+                                    id="brunch-allergens"
+                                    rows="4"
+                                    placeholder="Ex. gluten, lait, œufs..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="brunch-dishes">
+                                Plats du menu
+                            </label>
+
+                            <textarea
+                                id="brunch-dishes"
+                                rows="5"
+                                placeholder="Indiquez les plats composant ce menu"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="brunch-images">
+                                Galerie d'images
+                            </label>
+
+                            <div class="employee-menu-current-images">
+
+                                <div class="employee-menu-current-image">
+                                    <img
+                                        src="assets/images/menu-brunch.png"
+                                        alt="Image actuelle du Menu Brunch"
+                                    >
+                                </div>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="brunch-images"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <small class="employee-menu-edit-help">
+                                Vous pouvez sélectionner plusieurs images.
+                            </small>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-actions">
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-cancel"
+                            >
+                                Annuler
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-save"
+                            >
+                                Enregistrer
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- MENU ÉVÈNEMENT -->
+
+                <article
+                    class="employee-menu-card"
+                    data-menu-id="evenement"
+                    data-name="menu evenement"
+                    data-theme="evenement"
+                >
+
+                   <div class="employee-menu-card-header">
+
+                        <div class="employee-menu-card-main">
+
+                            <div class="employee-menu-thumbnail">
+                                <img
+                                    src="assets/images/menu-evenement.jpg"
+                                    alt="Menu Évènement"
+                                >
+                            </div>
+
+                            <div class="employee-menu-card-content">
+
+                                <span class="employee-menu-reference">
+                                    Menu #06
+                                </span>
+
+                                <h2>
+                                    Menu Évènement
+                                </h2>
+
+                                <p>
+                                    Une formule généreuse pensée pour vos grands évènements.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <span class="employee-menu-status">
+                            Disponible
+                        </span>
+
+                    </div>
+
+
+                    <div class="employee-menu-information">
+
+                        <div>
+                            <span>Thème</span>
+                            <strong>Évènement</strong>
+                        </div>
+
+                        <div>
+                            <span>Régime</span>
+                            <strong>Classique</strong>
+                        </div>
+
+                        <div>
+                            <span>Minimum</span>
+                            <strong>2 personnes</strong>
+                        </div>
+
+                        <div>
+                            <span>Prix</span>
+                            <strong>120,00 €</strong>
+                        </div>
+
+                        <div>
+                            <span>Stock disponible</span>
+                            <strong>3 commandes</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="employee-menu-actions">
+
+                        <button
+                            type="button"
+                            class="employee-menu-secondary-button employee-menu-edit-button"
+                            aria-expanded="false"
+                        >
+                            Modifier
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-menu-delete-button"
+                        >
+                            Supprimer
+                        </button>
+
+                    </div>
+
+                    <div class="employee-menu-edit-panel" hidden>
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+                                <label for="evenement-name">Nom du menu</label>
+                                <input
+                                    type="text"
+                                    id="evenement-name"
+                                    value="Menu Évènement"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="evenement-theme">Thème</label>
+                                <select id="evenement-theme">
+                                    <option value="classique">Classique</option>
+                                    <option value="evenement" selected>Évènement</option>
+                                    <option value="brunch">Brunch</option>
+                                </select>
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="evenement-regime">Régime</label>
+                                <input
+                                    type="text"
+                                    id="evenement-regime"
+                                    value="Classique"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="evenement-minimum">Minimum de personnes</label>
+                                <input
+                                    type="number"
+                                    id="evenement-minimum"
+                                    min="1"
+                                    value="2"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="evenement-price">Prix</label>
+                                <input
+                                    type="number"
+                                    id="evenement-price"
+                                    min="0"
+                                    step="0.01"
+                                    value="120"
+                                >
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+                                <label for="evenement-stock">Stock disponible</label>
+                                <input
+                                    type="number"
+                                    id="evenement-stock"
+                                    min="0"
+                                    value="3"
+                                >
+                            </div>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="evenement-description">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="evenement-description"
+                                rows="4"
+                            >Une formule généreuse pensée pour vos grands évènements.</textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-grid">
+
+                            <div class="employee-menu-edit-field">
+
+                                <label for="evenement-conditions">
+                                    Conditions
+                                </label>
+
+                                <textarea
+                                    id="evenement-conditions"
+                                    rows="4"
+                                    placeholder="Indiquez les conditions du menu"
+                                ></textarea>
+
+                            </div>
+
+                            <div class="employee-menu-edit-field">
+
+                                <label for="evenement-allergens">
+                                    Allergènes
+                                </label>
+
+                                <textarea
+                                    id="evenement-allergens"
+                                    rows="4"
+                                    placeholder="Ex. gluten, lait, œufs..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="evenement-dishes">
+                                Plats du menu
+                            </label>
+
+                            <textarea
+                                id="evenement-dishes"
+                                rows="5"
+                                placeholder="Indiquez les plats composant ce menu"
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="evenement-images">
+                                Galerie d'images
+                            </label>
+
+                            <div class="employee-menu-current-images">
+
+                                <div class="employee-menu-current-image">
+                                    <img
+                                        src="assets/images/menu-evenement.jpg"
+                                        alt="Image actuelle du Menu Évènement"
+                                    >
+                                </div>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="evenement-images"
+                                accept="image/*"
+                                multiple
+                            >
+
+                            <small class="employee-menu-edit-help">
+                                Vous pouvez sélectionner plusieurs images.
+                            </small>
+
+                        </div>
+
+
+                        <div class="employee-menu-edit-actions">
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-cancel"
+                            >
+                                Annuler
+                            </button>
+
+                            <button
+                                type="button"
+                                class="employee-menu-edit-save"
+                            >
+                                Enregistrer
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <p
+                class="employee-menus-empty"
+                id="employee-menus-empty"
+                hidden
+            >
+                Aucun menu ne correspond à votre recherche.
+            </p>
+            </div>
+
+        </section>
+
+    </main>    
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png" alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png" alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png" alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <nav class="mobile-bottom-nav">
+
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img
+                src="assets/icons/icone-personnes.png"
+                alt=""
+                class="mobile-nav-icon-about"
+            >
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+
+    </nav>
+
+    <script src="js/gestion-menus.js"></script>
+
+</body>
+
+</html>

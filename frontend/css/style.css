@@ -5205,6 +5205,486 @@ select {
     color: #666666;
 }
 
+/* =====================================================
+   ESPACE EMPLOYÉ - GESTION DES MENUS
+===================================================== */
+
+.employee-menus {
+    background-color: var(--cream);
+    min-height: 650px;
+}
+
+.employee-menus-section {
+    padding-top: 70px;
+    padding-bottom: 90px;
+}
+
+
+/* TITRE */
+
+.employee-menus-heading {
+    margin-bottom: 42px;
+}
+
+.employee-menus-eyebrow {
+    margin: 0 0 10px;
+
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+
+    color: var(--green-dark);
+}
+
+.employee-menus-heading-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.employee-menus-heading-row h1 {
+    margin: 0 0 16px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 42px;
+    line-height: 1.15;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-menus-heading-row p {
+    max-width: 650px;
+    margin: 0;
+
+    font-size: 16px;
+    line-height: 1.7;
+
+    color: var(--text-primary);
+}
+
+.employee-menu-add-button {
+    flex-shrink: 0;
+
+    min-height: 46px;
+    padding: 11px 20px;
+
+    border: 1px solid var(--green-dark);
+    border-radius: 8px;
+
+    background-color: var(--green-dark);
+    color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+/* FILTRES */
+
+.employee-menus-filters {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) 320px;
+    gap: 24px;
+
+    margin-bottom: 32px;
+    padding: 24px;
+
+    background-color: var(--white);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+.employee-menus-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.employee-menus-filter label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-menus-filter input,
+.employee-menus-filter select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    background-color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+}
+
+.employee-menus-filter select {
+    appearance: none;
+    -webkit-appearance: none;
+
+    padding-right: 42px;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%233F5540' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 16px;
+}
+
+/* LISTE DES MENUS */
+
+.employee-menus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.employee-menu-card {
+    padding: 28px 30px;
+
+    background-color: var(--white);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+
+/* EN-TÊTE DU MENU */
+
+.employee-menu-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding-bottom: 22px;
+    margin-bottom: 24px;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.employee-menu-reference {
+    display: block;
+    margin-bottom: 8px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    color: #777777;
+}
+
+.employee-menu-card-header h2 {
+    margin: 0 0 6px;
+
+    font-size: 21px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.employee-menu-card-header p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.5;
+
+    color: #666666;
+}
+
+.employee-menu-card-main {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    min-width: 0;
+}
+
+.employee-menu-card-content {
+    min-width: 0;
+}
+
+/* IMAGE DU MENU */
+
+.employee-menu-thumbnail {
+    flex-shrink: 0;
+    width: 120px;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.employee-menu-thumbnail img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* DISPONIBILITÉ */
+
+.employee-menu-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 34px;
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    background-color: #e4eee4;
+    color: var(--green-dark);
+
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* INFORMATIONS */
+
+.employee-menu-information {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 24px;
+
+    margin-bottom: 28px;
+}
+
+.employee-menu-information div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.employee-menu-information span {
+    font-size: 13px;
+
+    color: #777777;
+}
+
+.employee-menu-information strong {
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+
+/* ACTIONS */
+
+.employee-menu-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.employee-menu-secondary-button,
+.employee-menu-delete-button {
+    min-height: 44px;
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.employee-menu-secondary-button {
+    border: 1px solid var(--green-dark);
+
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+.employee-menu-delete-button {
+    border: 1px solid #c96b6b;
+
+    background-color: transparent;
+    color: #a94b4b;
+}
+
+/* FORMULAIRE D'AJOUT D'UN MENU */
+
+.employee-menu-add-panel {
+    margin-bottom: 32px;
+    padding: 30px;
+    background-color: var(--white);
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+}
+
+.employee-menu-add-panel h2 {
+    margin: 0 0 28px;
+    font-family: "Inter", sans-serif;
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* FORMULAIRE DE MODIFICATION DU MENU */
+
+.employee-menu-edit-panel {
+    margin-top: 28px;
+    padding-top: 28px;
+    border-top: 1px solid #e5e5e5;
+}
+
+.employee-menu-edit-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 24px;
+    margin-bottom: 22px;
+}
+
+.employee-menu-edit-field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.employee-menu-edit-field label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.employee-menu-edit-field input,
+.employee-menu-edit-field select,
+.employee-menu-edit-field textarea {
+    width: 100%;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    background-color: var(--white);
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    color: var(--text-primary);
+}
+
+.employee-menu-edit-field input,
+.employee-menu-edit-field select {
+    height: 48px;
+    padding: 0 14px;
+}
+
+.employee-menu-edit-field textarea {
+    min-height: 110px;
+    padding: 13px 14px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.employee-menu-edit-field-full {
+    margin-bottom: 24px;
+}
+
+.employee-menu-edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.employee-menu-edit-cancel,
+.employee-menu-edit-save,
+.employee-menu-add-save {
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.employee-menu-edit-cancel {
+    border: 1px solid #cccccc;
+    background-color: var(--white);
+    color: var(--text-primary);
+}
+
+.employee-menu-edit-save,
+.employee-menu-add-save {
+    border: 1px solid var(--green-dark);
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+/* CHAMP GALERIE D'IMAGES */
+
+.employee-menu-edit-field input[type="file"] {
+    height: auto;
+    min-height: 48px;
+    padding: 7px;
+}
+
+.employee-menu-edit-field input[type="file"]::file-selector-button {
+    min-height: 32px;
+    margin-right: 12px;
+    padding: 6px 12px;
+
+    border: 1px solid var(--green-dark);
+    border-radius: 6px;
+
+    background-color: var(--white);
+    color: var(--green-dark);
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.employee-menu-edit-help {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #777777;
+}
+
+/* APERÇU DES IMAGES ACTUELLES */
+
+.employee-menu-current-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.employee-menu-current-image {
+    width: 110px;
+    height: 80px;
+    overflow: hidden;
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    background-color: var(--white);
+}
+
+.employee-menu-current-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* =========================================================
    RESPONSIVE : 1181px À 1320px
 ========================================================= */
