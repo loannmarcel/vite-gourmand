@@ -63,7 +63,7 @@
 
         <nav id="main-navigation" class="main-nav">
 
-            <a href="espace-employe.html" class="active">
+            <a href="espace-employe.html">
                 Tableau de bord
             </a>
 
@@ -75,7 +75,7 @@
                 Menus
             </a>
 
-            <a href="avis-employe.html">
+            <a href="avis-employe.html" class="active">
                 Avis
             </a>
 
@@ -136,148 +136,266 @@
 
     <script src="js/employee-header.js"></script>
 
-
     <!-- =====================================================
-        ESPACE EMPLOYÉ
+         AVIS EMPLOYÉ
     ====================================================== -->
 
-    <main class="employee-dashboard">
+    <main class="employee-reviews">
 
-        <section class="employee-dashboard-section section-container">
+        <section class="employee-reviews-section section-container">
 
-            <div class="employee-dashboard-heading">
+            <div class="employee-reviews-heading">
 
-                <p class="employee-dashboard-eyebrow">
+                <p class="employee-reviews-eyebrow">
                     Espace employé
                 </p>
 
-                <h1>
-                    Tableau de bord
-                </h1>
+                <div class="employee-reviews-heading-row">
 
-                <p>
-                    Gérez les commandes, les menus, les avis clients
-                    et les horaires de Vite & Gourmand.
-                </p>
+                    <div>
+                        <h1>
+                            Gestion des avis clients
+                        </h1>
+
+                        <p>
+                            Consultez les avis laissés par les clients
+                            et validez ceux qui peuvent être publiés.
+                        </p>
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <div class="employee-dashboard-grid">
+            <div class="employee-reviews-filters">
 
-                <a
-                    href="commandes-employe.html"
-                    class="employee-dashboard-card"
+                <div class="employee-reviews-filter employee-review-status-field">
+                    <label for="employee-review-status">
+                        Statut
+                    </label>
+
+                    <select id="employee-review-status">
+                        <option value="all">
+                            Tous les avis
+                        </option>
+
+                        <option value="pending" selected>
+                            En attente
+                        </option>
+
+                        <option value="approved">
+                            Validés
+                        </option>
+
+                        <option value="rejected">
+                            Refusés
+                        </option>
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="employee-reviews-list">
+
+                <!-- AVIS 01 -->
+
+                <article
+                    class="employee-review-card"
+                    data-status="pending"
                 >
-                    <div class="employee-dashboard-card-content">
 
-                        <span class="employee-dashboard-card-number">
-                            01
-                        </span>
+                    <div class="employee-review-header">
 
-                        <h2>
-                            Commandes
-                        </h2>
+                        <div>
+                            <span class="employee-review-reference">
+                                Avis #01
+                            </span>
 
-                        <p>
-                            Consultez les commandes, filtrez-les par statut
-                            ou par client et mettez à jour leur avancement.
-                        </p>
+                            <h2>
+                                Marie Dupont
+                            </h2>
 
-                        <span class="employee-dashboard-card-link">
-                            Gérer les commandes →
+                            <p class="employee-review-menu">
+                                Menu Healthy
+                            </p>
+                        </div>
+
+                        <span class="employee-review-status employee-review-status-pending">
+                            En attente
                         </span>
 
                     </div>
-                </a>
 
 
-                <a
-                    href="gestion-menus.html"
-                    class="employee-dashboard-card"
-                >
-                    <div class="employee-dashboard-card-content">
-
-                        <span class="employee-dashboard-card-number">
-                            02
+                    <div class="employee-review-rating">
+                        <span aria-label="5 étoiles sur 5">
+                            ★★★★★
                         </span>
+                    </div>
 
-                        <h2>
-                            Menus & plats
-                        </h2>
 
-                        <p>
-                            Modifiez ou supprimez les menus et les plats
-                            proposés par Vite & Gourmand.
-                        </p>
+                    <p class="employee-review-text">
+                        Très bon menu, les produits étaient frais
+                        et les portions généreuses. Toute la famille
+                        a apprécié.
+                    </p>
 
-                        <span class="employee-dashboard-card-link">
-                            Gérer les menus →
+
+                    <div class="employee-review-actions">
+
+                        <button
+                            type="button"
+                            class="employee-review-approve"
+                        >
+                            Valider
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-review-reject"
+                        >
+                            Refuser
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- AVIS 02 -->
+
+                <article
+                    class="employee-review-card"
+                    data-status="pending"
+                >
+
+                    <div class="employee-review-header">
+
+                        <div>
+                            <span class="employee-review-reference">
+                                Avis #02
+                            </span>
+
+                            <h2>
+                                Thomas Bernard
+                            </h2>
+
+                            <p class="employee-review-menu">
+                                Menu Tradition
+                            </p>
+                        </div>
+
+                        <span class="employee-review-status employee-review-status-pending">
+                            En attente
                         </span>
 
                     </div>
-                </a>
 
 
-                <a
-                    href="avis-employe.html"
-                    class="employee-dashboard-card"
-                >
-                    <div class="employee-dashboard-card-content">
-
-                        <span class="employee-dashboard-card-number">
-                            03
+                    <div class="employee-review-rating">
+                        <span aria-label="4 étoiles sur 5">
+                            ★★★★☆
                         </span>
+                    </div>
 
-                        <h2>
-                            Avis clients
-                        </h2>
 
-                        <p>
-                            Consultez les avis reçus et choisissez
-                            ceux qui peuvent être publiés sur l'accueil.
-                        </p>
+                    <p class="employee-review-text">
+                        Livraison ponctuelle et repas apprécié.
+                        Le plat principal était très bon.
+                    </p>
 
-                        <span class="employee-dashboard-card-link">
-                            Gérer les avis →
+
+                    <div class="employee-review-actions">
+
+                        <button
+                            type="button"
+                            class="employee-review-approve"
+                        >
+                            Valider
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-review-reject"
+                        >
+                            Refuser
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- AVIS 03 -->
+
+                <article
+                    class="employee-review-card"
+                    data-status="pending"
+                >
+
+                    <div class="employee-review-header">
+
+                        <div>
+                            <span class="employee-review-reference">
+                                Avis #03
+                            </span>
+
+                            <h2>
+                                Sophie Martin
+                            </h2>
+
+                            <p class="employee-review-menu">
+                                Menu Brunch
+                            </p>
+                        </div>
+
+                        <span class="employee-review-status employee-review-status-pending">
+                            En attente
                         </span>
 
                     </div>
-                </a>
 
 
-                <a
-                    href="horaires-employe.html"
-                    class="employee-dashboard-card"
-                >
-                    <div class="employee-dashboard-card-content">
-
-                        <span class="employee-dashboard-card-number">
-                            04
+                    <div class="employee-review-rating">
+                        <span aria-label="5 étoiles sur 5">
+                            ★★★★★
                         </span>
+                    </div>
 
-                        <h2>
-                            Horaires
-                        </h2>
 
-                        <p>
-                            Consultez et modifiez les horaires
-                            d'ouverture de l'entreprise.
-                        </p>
+                    <p class="employee-review-text">
+                        Une très belle présentation et un brunch
+                        gourmand. Nous commanderons de nouveau.
+                    </p>
 
-                        <span class="employee-dashboard-card-link">
-                            Gérer les horaires →
-                        </span>
+
+                    <div class="employee-review-actions">
+
+                        <button
+                            type="button"
+                            class="employee-review-approve"
+                        >
+                            Valider
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-review-reject"
+                        >
+                            Refuser
+                        </button>
 
                     </div>
-                </a>
+
+                </article>
 
             </div>
 
         </section>
 
     </main>
-
 
     <!-- =====================================================
          FOOTER
@@ -464,6 +582,9 @@
         </a>
 
     </nav>
+
+    <script src="js/avis-employe.js"></script>
+
 
 </body>
 

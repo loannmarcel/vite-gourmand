@@ -63,34 +63,24 @@
 
         <nav id="main-navigation" class="main-nav">
 
-            <a href="index.html">
-                Accueil
+            <a href="espace-employe.html">
+                Tableau de bord
             </a>
 
-            <a href="menus.html">
+            <a href="commandes-employe.html">
+                Commandes
+            </a>
+
+            <a href="gestion-menus.html" class="active">
                 Menus
             </a>
 
-            <!-- VISITEUR NON CONNECTÉ -->
-            <a href="apropos.html" id="header-about">
-                À propos
+            <a href="avis-employe.html">
+                Avis
             </a>
 
-            <!-- UTILISATEUR CONNECTÉ -->
-            <a
-                href="mes-commandes.html"
-                id="header-orders"
-                hidden
-            >
-                Mes commandes
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-            <a href="connexion.html" class="mobile-login">
-                Connexion
+            <a href="horaires-employe.html">
+                Horaires
             </a>
 
         </nav>
@@ -98,22 +88,8 @@
 
         <div class="header-actions">
 
-            <!-- VISITEUR NON CONNECTÉ -->
-            <a
-                href="connexion.html"
-                class="login-button"
-                id="header-login"
-            >
-                Connexion
-            </a>
+            <div class="header-account-wrapper" id="header-account">
 
-
-            <!-- UTILISATEUR CONNECTÉ -->
-            <div
-                class="header-account-wrapper"
-                id="header-account"
-                hidden
-            >
                 <button
                     type="button"
                     class="header-account"
@@ -122,11 +98,11 @@
                     aria-controls="account-menu"
                 >
                     <span class="header-account-avatar">
-                        L
+                        E
                     </span>
 
                     <span class="header-account-text">
-                        Mon compte
+                        Espace employé
                     </span>
 
                     <span class="header-account-arrow" aria-hidden="true">
@@ -134,17 +110,14 @@
                     </span>
                 </button>
 
+
                 <div
                     class="account-dropdown"
                     id="account-menu"
                     hidden
                 >
-                    <a href="mon-compte.html">
-                        Mon compte
-                    </a>
-
-                    <a href="mes-commandes.html">
-                        Mes commandes
+                    <a href="espace-employe.html">
+                        Tableau de bord
                     </a>
 
                     <button
@@ -154,13 +127,14 @@
                         Se déconnecter
                     </button>
                 </div>
+
             </div>
 
         </div>
 
     </header>
 
-    <script src="js/auth-ui.js"></script>
+    <script src="js/employee-header.js"></script>
 
     <!-- =====================================================
         GESTION MENUS - ESPACE EMPLOYÉ
@@ -224,15 +198,51 @@
                         >
                     </div>
 
-                    <div class="employee-menu-edit-field">
+                    <div class="employee-menu-edit-field employee-menu-theme-field">
+
                         <label for="new-menu-theme">
                             Thème
                         </label>
+
                         <select id="new-menu-theme">
-                            <option value="classique">Classique</option>
-                            <option value="evenement">Évènement</option>
-                            <option value="brunch">Brunch</option>
+
+                            <option value="classique">
+                                Classique
+                            </option>
+
+                            <option value="evenement">
+                                Évènement
+                            </option>
+
+                            <option value="brunch">
+                                Brunch
+                            </option>
+
+                            <option value="new">
+                                + Nouveau thème
+                            </option>
+
                         </select>
+
+                    </div>
+
+
+                    <div
+                        class="employee-menu-edit-field"
+                        id="new-menu-theme-custom-field"
+                        hidden
+                    >
+
+                        <label for="new-menu-theme-custom">
+                            Nom du nouveau thème
+                        </label>
+
+                        <input
+                            type="text"
+                            id="new-menu-theme-custom"
+                            placeholder="Ex. Mariage"
+                        >
+
                     </div>
 
                     <div class="employee-menu-edit-field">
@@ -326,16 +336,93 @@
 
                 </div>
 
-                <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                <!-- PLATS DU NOUVEAU MENU -->
 
-                    <label for="new-menu-dishes">
-                        Plats du menu
-                    </label>
+                <span class="employee-menu-dishes-title">
+                    Plats du menu
+                </span>
 
-                    <textarea
-                        id="new-menu-dishes"
-                        rows="5"
-                    ></textarea>
+                <div
+                    class="employee-menu-dishes-list"
+                    id="new-menu-dishes-list"
+                >
+                    <!-- Les plats ajoutés apparaîtront ici -->
+                </div>
+
+
+                <button
+                    type="button"
+                    class="employee-menu-dish-add"
+                    id="new-menu-dish-add"
+                    aria-expanded="false"
+                >
+                    Ajouter un plat
+                </button>
+
+
+                <div
+                    class="employee-menu-dish-add-panel"
+                    id="new-menu-dish-add-panel"
+                    hidden
+                >
+
+                    <div class="employee-menu-dish-edit-field">
+
+                        <label for="new-menu-dish-type">
+                            Type
+                        </label>
+
+                        <select id="new-menu-dish-type">
+                            <option value="entree">
+                                Entrée
+                            </option>
+
+                            <option value="plat">
+                                Plat
+                            </option>
+
+                            <option value="dessert">
+                                Dessert
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <div class="employee-menu-dish-edit-field">
+
+                        <label for="new-menu-dish-name">
+                            Nom du plat
+                        </label>
+
+                        <input
+                            type="text"
+                            id="new-menu-dish-name"
+                            placeholder="Ex. Salade de saison"
+                        >
+
+                    </div>
+
+
+                    <div class="employee-menu-dish-edit-actions">
+
+                        <button
+                            type="button"
+                            class="employee-menu-dish-add-cancel"
+                            id="new-menu-dish-add-cancel"
+                        >
+                            Annuler
+                        </button>
+
+                        <button
+                            type="button"
+                            class="employee-menu-dish-add-save"
+                            id="new-menu-dish-add-save"
+                        >
+                            Ajouter le plat
+                        </button>
+
+                    </div>
 
                 </div>
 
@@ -537,7 +624,7 @@
                                 >
                             </div>
 
-                            <div class="employee-menu-edit-field">
+                            <div class="employee-menu-edit-field employee-menu-theme-field">
                                 <label for="tradition-theme">Thème</label>
                                 <select id="tradition-theme">
                                     <option value="classique" selected>Classique</option>
@@ -628,15 +715,362 @@
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
-                            <label for="tradition-dishes">
+                            <span class="employee-menu-dishes-title">
                                 Plats du menu
-                            </label>
+                            </span>
 
-                            <textarea
-                                id="tradition-dishes"
-                                rows="5"
-                                placeholder="Indiquez les plats composant ce menu"
-                            ></textarea>
+                            <div
+                                class="employee-menu-dishes-list"
+                                id="tradition-dishes-list"
+                            >
+
+                                <!-- PLAT 01 -->
+
+                                <div
+                                    class="employee-menu-dish-item"
+                                    data-dish-id="tradition-entree"
+                                >
+
+                                    <div class="employee-menu-dish-content">
+
+                                        <span class="employee-menu-dish-type">
+                                            Entrée
+                                        </span>
+
+                                        <strong>
+                                            Salade composée de saison
+                                        </strong>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit"
+                                            aria-expanded="false"
+                                        >
+                                            Modifier
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-delete"
+                                        >
+                                            Supprimer
+                                        </button>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-panel" hidden>
+
+                                        <div class="employee-menu-dish-edit-field">
+
+                                            <label for="tradition-entree-type">
+                                                Type
+                                            </label>
+
+                                            <select id="tradition-entree-type">
+                                                <option value="entree" selected>
+                                                    Entrée
+                                                </option>
+
+                                                <option value="plat">
+                                                    Plat
+                                                </option>
+
+                                                <option value="dessert">
+                                                    Dessert
+                                                </option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="employee-menu-dish-edit-field">
+
+                                            <label for="tradition-entree-name">
+                                                Nom du plat
+                                            </label>
+
+                                            <input
+                                                type="text"
+                                                id="tradition-entree-name"
+                                                value="Salade composée de saison"
+                                            >
+
+                                        </div>
+
+                                        <div class="employee-menu-dish-edit-actions">
+
+                                            <button
+                                                type="button"
+                                                class="employee-menu-dish-edit-cancel"
+                                            >
+                                                Annuler
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="employee-menu-dish-edit-save"
+                                            >
+                                                Enregistrer
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- PLAT 02 -->
+
+                                <div
+                                    class="employee-menu-dish-item"
+                                    data-dish-id="tradition-main"
+                                >
+
+                                    <div class="employee-menu-dish-content">
+
+                                        <span class="employee-menu-dish-type">
+                                            Plat
+                                        </span>
+
+                                        <strong>
+                                            Poulet rôti et légumes de saison
+                                        </strong>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit"
+                                            aria-expanded="false"
+                                        >
+                                            Modifier
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-delete"
+                                        >
+                                            Supprimer
+                                        </button>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-panel" hidden>
+
+                                        <div class="employee-menu-dish-edit-field">
+
+                                            <label for="tradition-main-type">
+                                                Type
+                                            </label>
+
+                                            <select id="tradition-main-type">
+                                                <option value="entree">Entrée</option>
+                                                <option value="plat" selected>Plat</option>
+                                                <option value="dessert">Dessert</option>
+                                            </select>
+
+                                        </div>
+
+                                        <div class="employee-menu-dish-edit-field">
+
+                                            <label for="tradition-main-name">
+                                                Nom du plat
+                                            </label>
+
+                                            <input
+                                                type="text"
+                                                id="tradition-main-name"
+                                                value="Poulet rôti et légumes de saison"
+                                            >
+
+                                        </div>
+
+                                        <div class="employee-menu-dish-edit-actions">
+
+                                            <button
+                                                type="button"
+                                                class="employee-menu-dish-edit-cancel"
+                                            >
+                                                Annuler
+                                            </button>
+
+                                            <button
+                                                type="button"
+                                                class="employee-menu-dish-edit-save"
+                                            >
+                                                Enregistrer
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- PLAT 03 -->
+
+                                <div
+                                    class="employee-menu-dish-item"
+                                    data-dish-id="tradition-dessert"
+                                >
+
+                                    <div class="employee-menu-dish-content">
+
+                                        <span class="employee-menu-dish-type">
+                                            Dessert
+                                        </span>
+
+                                        <strong>
+                                            Tarte aux pommes maison
+                                        </strong>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit"
+                                            aria-expanded="false"
+                                        >
+                                            Modifier
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-delete"
+                                        >
+                                            Supprimer
+                                        </button>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-panel" hidden>
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label for="tradition-dessert-type">
+                                            Type
+                                        </label>
+
+                                        <select id="tradition-dessert-type">
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert" selected>Dessert</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label for="tradition-dessert-name">
+                                            Nom du plat
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            id="tradition-dessert-name"
+                                            value="Tarte aux pommes maison"
+                                        >
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="employee-menu-dish-add"
+                                id="tradition-dish-add"
+                                aria-expanded="false"
+                            >
+                                Ajouter un plat
+                            </button>
+
+                            <div
+                                class="employee-menu-dish-add-panel"
+                                id="tradition-dish-add-panel"
+                                hidden
+                            >
+
+                                <div class="employee-menu-dish-edit-field">
+
+                                    <label for="tradition-new-dish-type">
+                                        Type
+                                    </label>
+
+                                    <select id="tradition-new-dish-type">
+                                        <option value="entree">Entrée</option>
+                                        <option value="plat">Plat</option>
+                                        <option value="dessert">Dessert</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="employee-menu-dish-edit-field">
+
+                                    <label for="tradition-new-dish-name">
+                                        Nom du plat
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="tradition-new-dish-name"
+                                        placeholder="Ex. Gratin de légumes"
+                                    >
+
+                                </div>
+
+                                <div class="employee-menu-dish-edit-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-add-cancel"
+                                        id="tradition-dish-add-cancel"
+                                    >
+                                        Annuler
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-add-save"
+                                        id="tradition-dish-add-save"
+                                    >
+                                        Ajouter le plat
+                                    </button>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
@@ -690,7 +1124,6 @@
                     </div>
 
                 </article>
-
 
                 <!-- MENU HEALTHY -->
 
@@ -786,12 +1219,16 @@
 
                     </div>
 
+
                     <div class="employee-menu-edit-panel" hidden>
 
                         <div class="employee-menu-edit-grid">
 
                             <div class="employee-menu-edit-field">
-                                <label for="healthy-name">Nom du menu</label>
+                                <label for="healthy-name">
+                                    Nom du menu
+                                </label>
+
                                 <input
                                     type="text"
                                     id="healthy-name"
@@ -799,17 +1236,33 @@
                                 >
                             </div>
 
-                            <div class="employee-menu-edit-field">
-                                <label for="healthy-theme">Thème</label>
+
+                            <div class="employee-menu-edit-field employee-menu-theme-field">
+                                <label for="healthy-theme">
+                                    Thème
+                                </label>
+
                                 <select id="healthy-theme">
-                                    <option value="classique" selected>Classique</option>
-                                    <option value="evenement">Évènement</option>
-                                    <option value="brunch">Brunch</option>
+                                    <option value="classique" selected>
+                                        Classique
+                                    </option>
+
+                                    <option value="evenement">
+                                        Évènement
+                                    </option>
+
+                                    <option value="brunch">
+                                        Brunch
+                                    </option>
                                 </select>
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="healthy-regime">Régime</label>
+                                <label for="healthy-regime">
+                                    Régime
+                                </label>
+
                                 <input
                                     type="text"
                                     id="healthy-regime"
@@ -817,8 +1270,12 @@
                                 >
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="healthy-minimum">Minimum de personnes</label>
+                                <label for="healthy-minimum">
+                                    Minimum de personnes
+                                </label>
+
                                 <input
                                     type="number"
                                     id="healthy-minimum"
@@ -827,8 +1284,12 @@
                                 >
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="healthy-price">Prix</label>
+                                <label for="healthy-price">
+                                    Prix
+                                </label>
+
                                 <input
                                     type="number"
                                     id="healthy-price"
@@ -838,8 +1299,12 @@
                                 >
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="healthy-stock">Stock disponible</label>
+                                <label for="healthy-stock">
+                                    Stock disponible
+                                </label>
+
                                 <input
                                     type="number"
                                     id="healthy-stock"
@@ -850,12 +1315,18 @@
 
                         </div>
 
+
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
-                            <label for="healthy-description">Description</label>
+
+                            <label for="healthy-description">
+                                Description
+                            </label>
+
                             <textarea
                                 id="healthy-description"
                                 rows="4"
                             >Une cuisine équilibrée et gourmande.</textarea>
+
                         </div>
 
 
@@ -864,6 +1335,7 @@
                         <div class="employee-menu-edit-grid">
 
                             <div class="employee-menu-edit-field">
+
                                 <label for="healthy-conditions">
                                     Conditions
                                 </label>
@@ -872,9 +1344,12 @@
                                     id="healthy-conditions"
                                     rows="4"
                                 >1 à 2 h de préparation</textarea>
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
+
                                 <label for="healthy-allergens">
                                     Allergènes
                                 </label>
@@ -882,27 +1357,424 @@
                                 <textarea
                                     id="healthy-allergens"
                                     rows="4"
-                                    placeholder="Ex. gluten, lait, œufs..."
-                                ></textarea>
+                                >Gluten, lait, fruits à coque</textarea>
+
                             </div>
 
                         </div>
 
 
-                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                        <!-- PLATS DU MENU -->
 
-                            <label for="healthy-dishes">
-                                Plats du menu
-                            </label>
+                        <span class="employee-menu-dishes-title">
+                            Plats du menu
+                        </span>
 
-                            <textarea
-                                id="healthy-dishes"
-                                rows="5"
-                                placeholder="Indiquez les plats composant ce menu"
-                            ></textarea>
+
+                        <div
+                            class="employee-menu-dishes-list"
+                            id="healthy-dishes-list"
+                        >
+
+                            <!-- ENTRÉE -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="healthy-entree"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Entrée
+                                    </span>
+
+                                    <strong>
+                                        Bowl de quinoa aux légumes de saison, avocat, graines et sauce yaourt citronnée.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Type
+                                        </label>
+
+                                        <select>
+                                            <option value="entree" selected>
+                                                Entrée
+                                            </option>
+
+                                            <option value="plat">
+                                                Plat
+                                            </option>
+
+                                            <option value="dessert">
+                                                Dessert
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Nom du plat
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            value="Bowl de quinoa aux légumes de saison, avocat, graines et sauce yaourt citronnée."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PLAT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="healthy-main"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Plat
+                                    </span>
+
+                                    <strong>
+                                        Saumon grillé accompagné de pois chiches, concombre, tomates cerises, chou rouge, œuf, salade et herbes fraîches.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Type
+                                        </label>
+
+                                        <select>
+                                            <option value="entree">
+                                                Entrée
+                                            </option>
+
+                                            <option value="plat" selected>
+                                                Plat
+                                            </option>
+
+                                            <option value="dessert">
+                                                Dessert
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Nom du plat
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            value="Saumon grillé accompagné de pois chiches, concombre, tomates cerises, chou rouge, œuf, salade et herbes fraîches."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DESSERT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="healthy-dessert"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Dessert
+                                    </span>
+
+                                    <strong>
+                                        Mousse au chocolat noir accompagnée de fruits rouges et d'éclats de noisettes.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Type
+                                        </label>
+
+                                        <select>
+                                            <option value="entree">
+                                                Entrée
+                                            </option>
+
+                                            <option value="plat">
+                                                Plat
+                                            </option>
+
+                                            <option value="dessert" selected>
+                                                Dessert
+                                            </option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Nom du plat
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            value="Mousse au chocolat noir accompagnée de fruits rouges et d'éclats de noisettes."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
+
+                        <!-- AJOUTER UN PLAT -->
+
+                        <button
+                            type="button"
+                            class="employee-menu-dish-add"
+                            id="healthy-dish-add"
+                            aria-expanded="false"
+                        >
+                            Ajouter un plat
+                        </button>
+
+
+                        <div
+                            class="employee-menu-dish-add-panel"
+                            id="healthy-dish-add-panel"
+                            hidden
+                        >
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="healthy-new-dish-type">
+                                    Type
+                                </label>
+
+                                <select id="healthy-new-dish-type">
+
+                                    <option value="entree">
+                                        Entrée
+                                    </option>
+
+                                    <option value="plat">
+                                        Plat
+                                    </option>
+
+                                    <option value="dessert">
+                                        Dessert
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="healthy-new-dish-name">
+                                    Nom du plat
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="healthy-new-dish-name"
+                                    placeholder="Ex. Salade de légumes"
+                                >
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-actions">
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-cancel"
+                                    id="healthy-dish-add-cancel"
+                                >
+                                    Annuler
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-save"
+                                    id="healthy-dish-add-save"
+                                >
+                                    Ajouter le plat
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GALERIE D'IMAGES -->
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
@@ -913,10 +1785,12 @@
                             <div class="employee-menu-current-images">
 
                                 <div class="employee-menu-current-image">
+
                                     <img
                                         src="assets/images/menu-healthy.jpg"
                                         alt="Image actuelle du Menu Healthy"
                                     >
+
                                 </div>
 
                             </div>
@@ -1051,12 +1925,16 @@
 
                     </div>
 
+
                     <div class="employee-menu-edit-panel" hidden>
 
                         <div class="employee-menu-edit-grid">
 
                             <div class="employee-menu-edit-field">
-                                <label for="vegetarien-name">Nom du menu</label>
+                                <label for="vegetarien-name">
+                                    Nom du menu
+                                </label>
+
                                 <input
                                     type="text"
                                     id="vegetarien-name"
@@ -1064,17 +1942,31 @@
                                 >
                             </div>
 
-                            <div class="employee-menu-edit-field">
-                                <label for="vegetarien-theme">Thème</label>
+
+                            <div class="employee-menu-edit-field employee-menu-theme-field">
+                                <label for="vegetarien-theme">
+                                    Thème
+                                </label>
+
                                 <select id="vegetarien-theme">
-                                    <option value="classique" selected>Classique</option>
-                                    <option value="evenement">Évènement</option>
-                                    <option value="brunch">Brunch</option>
+                                    <option value="classique" selected>
+                                        Classique
+                                    </option>
+                                    <option value="evenement">
+                                        Évènement
+                                    </option>
+                                    <option value="brunch">
+                                        Brunch
+                                    </option>
                                 </select>
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="vegetarien-regime">Régime</label>
+                                <label for="vegetarien-regime">
+                                    Régime
+                                </label>
+
                                 <input
                                     type="text"
                                     id="vegetarien-regime"
@@ -1082,8 +1974,12 @@
                                 >
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="vegetarien-minimum">Minimum de personnes</label>
+                                <label for="vegetarien-minimum">
+                                    Minimum de personnes
+                                </label>
+
                                 <input
                                     type="number"
                                     id="vegetarien-minimum"
@@ -1092,8 +1988,12 @@
                                 >
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="vegetarien-price">Prix</label>
+                                <label for="vegetarien-price">
+                                    Prix
+                                </label>
+
                                 <input
                                     type="number"
                                     id="vegetarien-price"
@@ -1103,8 +2003,12 @@
                                 >
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="vegetarien-stock">Stock disponible</label>
+                                <label for="vegetarien-stock">
+                                    Stock disponible
+                                </label>
+
                                 <input
                                     type="number"
                                     id="vegetarien-stock"
@@ -1115,59 +2019,439 @@
 
                         </div>
 
+
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
-                            <label for="vegetarien-description">Description</label>
+
+                            <label for="vegetarien-description">
+                                Description
+                            </label>
+
                             <textarea
                                 id="vegetarien-description"
                                 rows="4"
                             >Une cuisine végétarienne savoureuse et équilibrée.</textarea>
+
                         </div>
+
 
                         <div class="employee-menu-edit-grid">
 
                             <div class="employee-menu-edit-field">
-                                <label for="vegetarien-conditions">Conditions</label>
+
+                                <label for="vegetarien-conditions">
+                                    Conditions
+                                </label>
+
                                 <textarea
                                     id="vegetarien-conditions"
                                     rows="4"
                                     placeholder="Indiquez les conditions du menu"
                                 ></textarea>
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="vegetarien-allergens">Allergènes</label>
+
+                                <label for="vegetarien-allergens">
+                                    Allergènes
+                                </label>
+
                                 <textarea
                                     id="vegetarien-allergens"
                                     rows="4"
-                                    placeholder="Ex. gluten, lait, œufs..."
-                                ></textarea>
+                                >Lait, fruits à coque</textarea>
+
                             </div>
 
                         </div>
 
-                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
-                            <label for="vegetarien-dishes">Plats du menu</label>
+                        <!-- PLATS DU MENU -->
 
-                            <textarea
-                                id="vegetarien-dishes"
-                                rows="5"
-                                placeholder="Indiquez les plats composant ce menu"
-                            ></textarea>
+                        <span class="employee-menu-dishes-title">
+                            Plats du menu
+                        </span>
+
+
+                        <div
+                            class="employee-menu-dishes-list"
+                            id="vegetarien-dishes-list"
+                        >
+
+                            <!-- ENTRÉE -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="vegetarien-entree"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Entrée
+                                    </span>
+
+                                    <strong>
+                                        Velouté de légumes de saison accompagné de graines torréfiées.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Type
+                                        </label>
+
+                                        <select>
+                                            <option value="entree" selected>Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Nom du plat
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            value="Velouté de légumes de saison accompagné de graines torréfiées."
+                                        >
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PLAT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="vegetarien-main"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Plat
+                                    </span>
+
+                                    <strong>
+                                        Assiette de légumes rôtis, quinoa et pois chiches, accompagnée d’une sauce aux herbes.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Type
+                                        </label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat" selected>Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Nom du plat
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            value="Assiette de légumes rôtis, quinoa et pois chiches, accompagnée d’une sauce aux herbes."
+                                        >
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DESSERT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="vegetarien-dessert"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Dessert
+                                    </span>
+
+                                    <strong>
+                                        Panna cotta à la vanille accompagnée de fruits frais et d’amandes.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Type
+                                        </label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert" selected>Dessert</option>
+                                        </select>
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>
+                                            Nom du plat
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            value="Panna cotta à la vanille accompagnée de fruits frais et d’amandes."
+                                        >
+
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
+
+                        <!-- AJOUTER UN PLAT -->
+
+                        <button
+                            type="button"
+                            class="employee-menu-dish-add"
+                            id="vegetarien-dish-add"
+                            aria-expanded="false"
+                        >
+                            Ajouter un plat
+                        </button>
+
+
+                        <div
+                            class="employee-menu-dish-add-panel"
+                            id="vegetarien-dish-add-panel"
+                            hidden
+                        >
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="vegetarien-new-dish-type">
+                                    Type
+                                </label>
+
+                                <select id="vegetarien-new-dish-type">
+                                    <option value="entree">Entrée</option>
+                                    <option value="plat">Plat</option>
+                                    <option value="dessert">Dessert</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="vegetarien-new-dish-name">
+                                    Nom du plat
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="vegetarien-new-dish-name"
+                                    placeholder="Ex. Gratin de légumes"
+                                >
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-actions">
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-cancel"
+                                >
+                                    Annuler
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-save"
+                                >
+                                    Ajouter le plat
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GALERIE D'IMAGES -->
+
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
-                            <label for="vegetarien-images">Galerie d'images</label>
+                            <label for="vegetarien-images">
+                                Galerie d'images
+                            </label>
 
                             <div class="employee-menu-current-images">
 
                                 <div class="employee-menu-current-image">
+
                                     <img
                                         src="assets/images/menu-vegetarien.png"
                                         alt="Image actuelle du Menu Végétarien"
                                     >
+
                                 </div>
 
                             </div>
@@ -1184,6 +2468,7 @@
                             </small>
 
                         </div>
+
 
                         <div class="employee-menu-edit-actions">
 
@@ -1206,7 +2491,6 @@
                     </div>
 
                 </article>
-
 
                 <!-- MENU MÉDITERRANÉEN -->
 
@@ -1302,12 +2586,15 @@
 
                     </div>
 
+
                     <div class="employee-menu-edit-panel" hidden>
 
                         <div class="employee-menu-edit-grid">
 
                             <div class="employee-menu-edit-field">
-                                <label for="mediterraneen-name">Nom du menu</label>
+                                <label for="mediterraneen-name">
+                                    Nom du menu
+                                </label>
                                 <input
                                     type="text"
                                     id="mediterraneen-name"
@@ -1315,8 +2602,10 @@
                                 >
                             </div>
 
-                            <div class="employee-menu-edit-field">
-                                <label for="mediterraneen-theme">Thème</label>
+                            <div class="employee-menu-edit-field employee-menu-theme-field">
+                                <label for="mediterraneen-theme">
+                                    Thème
+                                </label>
                                 <select id="mediterraneen-theme">
                                     <option value="classique" selected>Classique</option>
                                     <option value="evenement">Évènement</option>
@@ -1325,7 +2614,9 @@
                             </div>
 
                             <div class="employee-menu-edit-field">
-                                <label for="mediterraneen-regime">Régime</label>
+                                <label for="mediterraneen-regime">
+                                    Régime
+                                </label>
                                 <input
                                     type="text"
                                     id="mediterraneen-regime"
@@ -1334,7 +2625,9 @@
                             </div>
 
                             <div class="employee-menu-edit-field">
-                                <label for="mediterraneen-minimum">Minimum de personnes</label>
+                                <label for="mediterraneen-minimum">
+                                    Minimum de personnes
+                                </label>
                                 <input
                                     type="number"
                                     id="mediterraneen-minimum"
@@ -1344,7 +2637,9 @@
                             </div>
 
                             <div class="employee-menu-edit-field">
-                                <label for="mediterraneen-price">Prix</label>
+                                <label for="mediterraneen-price">
+                                    Prix
+                                </label>
                                 <input
                                     type="number"
                                     id="mediterraneen-price"
@@ -1355,7 +2650,9 @@
                             </div>
 
                             <div class="employee-menu-edit-field">
-                                <label for="mediterraneen-stock">Stock disponible</label>
+                                <label for="mediterraneen-stock">
+                                    Stock disponible
+                                </label>
                                 <input
                                     type="number"
                                     id="mediterraneen-stock"
@@ -1365,6 +2662,7 @@
                             </div>
 
                         </div>
+
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
@@ -1404,28 +2702,348 @@
                                 <textarea
                                     id="mediterraneen-allergens"
                                     rows="4"
-                                    placeholder="Ex. gluten, lait, œufs..."
-                                ></textarea>
+                                >Poisson, gluten, lait</textarea>
 
                             </div>
 
                         </div>
 
 
-                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                        <!-- PLATS DU MENU -->
 
-                            <label for="mediterraneen-dishes">
-                                Plats du menu
-                            </label>
+                        <span class="employee-menu-dishes-title">
+                            Plats du menu
+                        </span>
 
-                            <textarea
-                                id="mediterraneen-dishes"
-                                rows="5"
-                                placeholder="Indiquez les plats composant ce menu"
-                            ></textarea>
+                        <div
+                            class="employee-menu-dishes-list"
+                            id="mediterraneen-dishes-list"
+                        >
+
+                            <!-- ENTRÉE -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="mediterraneen-entree"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Entrée
+                                    </span>
+
+                                    <strong>
+                                        Bruschetta aux tomates fraîches, olives et herbes méditerranéennes.
+                                    </strong>
+
+                                </div>
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree" selected>Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-field">
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Bruschetta aux tomates fraîches, olives et herbes méditerranéennes."
+                                        >
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PLAT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="mediterraneen-main"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Plat
+                                    </span>
+
+                                    <strong>
+                                        Poisson grillé accompagné de légumes méditerranéens, d’olives et d’une sauce citronnée aux herbes.
+                                    </strong>
+
+                                </div>
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat" selected>Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-field">
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Poisson grillé accompagné de légumes méditerranéens, d’olives et d’une sauce citronnée aux herbes."
+                                        >
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DESSERT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="mediterraneen-dessert"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Dessert
+                                    </span>
+
+                                    <strong>
+                                        Yaourt à la grecque accompagné de miel et de fruits frais.
+                                    </strong>
+
+                                </div>
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert" selected>Dessert</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-field">
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Yaourt à la grecque accompagné de miel et de fruits frais."
+                                        >
+                                    </div>
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
+
+                        <!-- AJOUTER UN PLAT -->
+
+                        <button
+                            type="button"
+                            class="employee-menu-dish-add"
+                            id="mediterraneen-dish-add"
+                            aria-expanded="false"
+                        >
+                            Ajouter un plat
+                        </button>
+
+                        <div
+                            class="employee-menu-dish-add-panel"
+                            id="mediterraneen-dish-add-panel"
+                            hidden
+                        >
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="mediterraneen-new-dish-type">
+                                    Type
+                                </label>
+
+                                <select id="mediterraneen-new-dish-type">
+                                    <option value="entree">Entrée</option>
+                                    <option value="plat">Plat</option>
+                                    <option value="dessert">Dessert</option>
+                                </select>
+
+                            </div>
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="mediterraneen-new-dish-name">
+                                    Nom du plat
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="mediterraneen-new-dish-name"
+                                    placeholder="Ex. Salade méditerranéenne"
+                                >
+
+                            </div>
+
+                            <div class="employee-menu-dish-edit-actions">
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-cancel"
+                                >
+                                    Annuler
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-save"
+                                >
+                                    Ajouter le plat
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GALERIE D'IMAGES -->
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
@@ -1436,10 +3054,12 @@
                             <div class="employee-menu-current-images">
 
                                 <div class="employee-menu-current-image">
+
                                     <img
                                         src="assets/images/menu-mediterraneen.png"
                                         alt="Image actuelle du Menu Méditerranéen"
                                     >
+
                                 </div>
 
                             </div>
@@ -1479,7 +3099,6 @@
                     </div>
 
                 </article>
-
 
                 <!-- MENU BRUNCH -->
 
@@ -1575,49 +3194,78 @@
 
                     </div>
 
+
                     <div class="employee-menu-edit-panel" hidden>
 
                         <div class="employee-menu-edit-grid">
 
                             <div class="employee-menu-edit-field">
-                                <label for="brunch-name">Nom du menu</label>
+
+                                <label for="brunch-name">
+                                    Nom du menu
+                                </label>
+
                                 <input
                                     type="text"
                                     id="brunch-name"
                                     value="Menu Brunch"
                                 >
+
                             </div>
 
-                            <div class="employee-menu-edit-field">
-                                <label for="brunch-theme">Thème</label>
+
+                            <div class="employee-menu-edit-field employee-menu-theme-field">
+
+                                <label for="brunch-theme">
+                                    Thème
+                                </label>
+
                                 <select id="brunch-theme">
                                     <option value="classique">Classique</option>
                                     <option value="evenement">Évènement</option>
                                     <option value="brunch" selected>Brunch</option>
                                 </select>
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="brunch-regime">Régime</label>
+
+                                <label for="brunch-regime">
+                                    Régime
+                                </label>
+
                                 <input
                                     type="text"
                                     id="brunch-regime"
                                     value="Classique"
                                 >
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="brunch-minimum">Minimum de personnes</label>
+
+                                <label for="brunch-minimum">
+                                    Minimum de personnes
+                                </label>
+
                                 <input
                                     type="number"
                                     id="brunch-minimum"
                                     min="1"
                                     value="2"
                                 >
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="brunch-price">Prix</label>
+
+                                <label for="brunch-price">
+                                    Prix
+                                </label>
+
                                 <input
                                     type="number"
                                     id="brunch-price"
@@ -1625,19 +3273,27 @@
                                     step="0.01"
                                     value="55"
                                 >
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="brunch-stock">Stock disponible</label>
+
+                                <label for="brunch-stock">
+                                    Stock disponible
+                                </label>
+
                                 <input
                                     type="number"
                                     id="brunch-stock"
                                     min="0"
                                     value="8"
                                 >
+
                             </div>
 
                         </div>
+
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
@@ -1668,6 +3324,7 @@
 
                             </div>
 
+
                             <div class="employee-menu-edit-field">
 
                                 <label for="brunch-allergens">
@@ -1677,28 +3334,376 @@
                                 <textarea
                                     id="brunch-allergens"
                                     rows="4"
-                                    placeholder="Ex. gluten, lait, œufs..."
-                                ></textarea>
+                                >Œufs, lait, gluten</textarea>
 
                             </div>
 
                         </div>
 
 
-                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                        <!-- PLATS DU MENU -->
 
-                            <label for="brunch-dishes">
-                                Plats du menu
-                            </label>
+                        <span class="employee-menu-dishes-title">
+                            Plats du menu
+                        </span>
 
-                            <textarea
-                                id="brunch-dishes"
-                                rows="5"
-                                placeholder="Indiquez les plats composant ce menu"
-                            ></textarea>
+
+                        <div
+                            class="employee-menu-dishes-list"
+                            id="brunch-dishes-list"
+                        >
+
+                            <!-- ENTRÉE -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="brunch-entree"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Entrée
+                                    </span>
+
+                                    <strong>
+                                        Salade de fruits frais accompagnée d’amandes et d’un filet de miel.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree" selected>Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Salade de fruits frais accompagnée d’amandes et d’un filet de miel."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PLAT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="brunch-main"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Plat
+                                    </span>
+
+                                    <strong>
+                                        Pancakes aux fruits rouges accompagnés d’un avocado toast à l’œuf.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat" selected>Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Pancakes aux fruits rouges accompagnés d’un avocado toast à l’œuf."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DESSERT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="brunch-dessert"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Dessert
+                                    </span>
+
+                                    <strong>
+                                        Sélection de douceurs maison accompagnée d’une boisson chaude.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert" selected>Dessert</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Sélection de douceurs maison accompagnée d’une boisson chaude."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
+
+                        <!-- AJOUTER UN PLAT -->
+
+                        <button
+                            type="button"
+                            class="employee-menu-dish-add"
+                            id="brunch-dish-add"
+                            aria-expanded="false"
+                        >
+                            Ajouter un plat
+                        </button>
+
+
+                        <div
+                            class="employee-menu-dish-add-panel"
+                            id="brunch-dish-add-panel"
+                            hidden
+                        >
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="brunch-new-dish-type">
+                                    Type
+                                </label>
+
+                                <select id="brunch-new-dish-type">
+                                    <option value="entree">Entrée</option>
+                                    <option value="plat">Plat</option>
+                                    <option value="dessert">Dessert</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="brunch-new-dish-name">
+                                    Nom du plat
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="brunch-new-dish-name"
+                                    placeholder="Ex. Tartine gourmande"
+                                >
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-actions">
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-cancel"
+                                >
+                                    Annuler
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-save"
+                                >
+                                    Ajouter le plat
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GALERIE D'IMAGES -->
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
@@ -1709,10 +3714,12 @@
                             <div class="employee-menu-current-images">
 
                                 <div class="employee-menu-current-image">
+
                                     <img
                                         src="assets/images/menu-brunch.png"
                                         alt="Image actuelle du Menu Brunch"
                                     >
+
                                 </div>
 
                             </div>
@@ -1753,7 +3760,6 @@
 
                 </article>
 
-
                 <!-- MENU ÉVÈNEMENT -->
 
                 <article
@@ -1763,7 +3769,7 @@
                     data-theme="evenement"
                 >
 
-                   <div class="employee-menu-card-header">
+                    <div class="employee-menu-card-header">
 
                         <div class="employee-menu-card-main">
 
@@ -1813,12 +3819,12 @@
 
                         <div>
                             <span>Minimum</span>
-                            <strong>2 personnes</strong>
+                            <strong>6 personnes</strong>
                         </div>
 
                         <div>
                             <span>Prix</span>
-                            <strong>120,00 €</strong>
+                            <strong>180,00 €</strong>
                         </div>
 
                         <div>
@@ -1848,69 +3854,106 @@
 
                     </div>
 
+
                     <div class="employee-menu-edit-panel" hidden>
 
                         <div class="employee-menu-edit-grid">
 
                             <div class="employee-menu-edit-field">
-                                <label for="evenement-name">Nom du menu</label>
+
+                                <label for="evenement-name">
+                                    Nom du menu
+                                </label>
+
                                 <input
                                     type="text"
                                     id="evenement-name"
                                     value="Menu Évènement"
                                 >
+
                             </div>
 
-                            <div class="employee-menu-edit-field">
-                                <label for="evenement-theme">Thème</label>
+
+                            <div class="employee-menu-edit-field employee-menu-theme-field">
+
+                                <label for="evenement-theme">
+                                    Thème
+                                </label>
+
                                 <select id="evenement-theme">
                                     <option value="classique">Classique</option>
                                     <option value="evenement" selected>Évènement</option>
                                     <option value="brunch">Brunch</option>
                                 </select>
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="evenement-regime">Régime</label>
+
+                                <label for="evenement-regime">
+                                    Régime
+                                </label>
+
                                 <input
                                     type="text"
                                     id="evenement-regime"
                                     value="Classique"
                                 >
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="evenement-minimum">Minimum de personnes</label>
+
+                                <label for="evenement-minimum">
+                                    Minimum de personnes
+                                </label>
+
                                 <input
                                     type="number"
                                     id="evenement-minimum"
                                     min="1"
-                                    value="2"
+                                    value="6"
                                 >
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="evenement-price">Prix</label>
+
+                                <label for="evenement-price">
+                                    Prix
+                                </label>
+
                                 <input
                                     type="number"
                                     id="evenement-price"
                                     min="0"
                                     step="0.01"
-                                    value="120"
+                                    value="180"
                                 >
+
                             </div>
 
+
                             <div class="employee-menu-edit-field">
-                                <label for="evenement-stock">Stock disponible</label>
+
+                                <label for="evenement-stock">
+                                    Stock disponible
+                                </label>
+
                                 <input
                                     type="number"
                                     id="evenement-stock"
                                     min="0"
                                     value="3"
                                 >
+
                             </div>
 
                         </div>
+
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
@@ -1942,6 +3985,7 @@
 
                             </div>
 
+
                             <div class="employee-menu-edit-field">
 
                                 <label for="evenement-allergens">
@@ -1959,20 +4003,369 @@
                         </div>
 
 
-                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+                        <!-- PLATS DU MENU -->
 
-                            <label for="evenement-dishes">
-                                Plats du menu
-                            </label>
+                        <span class="employee-menu-dishes-title">
+                            Plats du menu
+                        </span>
 
-                            <textarea
-                                id="evenement-dishes"
-                                rows="5"
-                                placeholder="Indiquez les plats composant ce menu"
-                            ></textarea>
+
+                        <div
+                            class="employee-menu-dishes-list"
+                            id="evenement-dishes-list"
+                        >
+
+                            <!-- ENTRÉE -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="evenement-entree"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Entrée
+                                    </span>
+
+                                    <strong>
+                                        Assortiment de bouchées apéritives maison à partager.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree" selected>Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Assortiment de bouchées apéritives maison à partager."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- PLAT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="evenement-main"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Plat
+                                    </span>
+
+                                    <strong>
+                                        Mini feuilletés garnis et pièces salées accompagnés de légumes de saison.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat" selected>Plat</option>
+                                            <option value="dessert">Dessert</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Mini feuilletés garnis et pièces salées accompagnés de légumes de saison."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DESSERT -->
+
+                            <div
+                                class="employee-menu-dish-item"
+                                data-dish-id="evenement-dessert"
+                            >
+
+                                <div class="employee-menu-dish-content">
+
+                                    <span class="employee-menu-dish-type">
+                                        Dessert
+                                    </span>
+
+                                    <strong>
+                                        Assortiment de mignardises sucrées et gourmandes.
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="employee-menu-dish-actions">
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit"
+                                        aria-expanded="false"
+                                    >
+                                        Modifier
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-delete"
+                                    >
+                                        Supprimer
+                                    </button>
+
+                                </div>
+
+
+                                <div
+                                    class="employee-menu-dish-edit-panel"
+                                    hidden
+                                >
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Type</label>
+
+                                        <select>
+                                            <option value="entree">Entrée</option>
+                                            <option value="plat">Plat</option>
+                                            <option value="dessert" selected>Dessert</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-field">
+
+                                        <label>Nom du plat</label>
+
+                                        <input
+                                            type="text"
+                                            value="Assortiment de mignardises sucrées et gourmandes."
+                                        >
+
+                                    </div>
+
+
+                                    <div class="employee-menu-dish-edit-actions">
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-cancel"
+                                        >
+                                            Annuler
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            class="employee-menu-dish-edit-save"
+                                        >
+                                            Enregistrer
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                         </div>
 
+
+                        <!-- AJOUTER UN PLAT -->
+
+                        <button
+                            type="button"
+                            class="employee-menu-dish-add"
+                            id="evenement-dish-add"
+                            aria-expanded="false"
+                        >
+                            Ajouter un plat
+                        </button>
+
+
+                        <div
+                            class="employee-menu-dish-add-panel"
+                            id="evenement-dish-add-panel"
+                            hidden
+                        >
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="evenement-new-dish-type">
+                                    Type
+                                </label>
+
+                                <select id="evenement-new-dish-type">
+                                    <option value="entree">Entrée</option>
+                                    <option value="plat">Plat</option>
+                                    <option value="dessert">Dessert</option>
+                                </select>
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-field">
+
+                                <label for="evenement-new-dish-name">
+                                    Nom du plat
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="evenement-new-dish-name"
+                                    placeholder="Ex. Bouchées apéritives"
+                                >
+
+                            </div>
+
+
+                            <div class="employee-menu-dish-edit-actions">
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-cancel"
+                                >
+                                    Annuler
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-add-save"
+                                >
+                                    Ajouter le plat
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- GALERIE D'IMAGES -->
 
                         <div class="employee-menu-edit-field employee-menu-edit-field-full">
 
@@ -1983,10 +4376,12 @@
                             <div class="employee-menu-current-images">
 
                                 <div class="employee-menu-current-image">
+
                                     <img
                                         src="assets/images/menu-evenement.jpg"
                                         alt="Image actuelle du Menu Évènement"
                                     >
+
                                 </div>
 
                             </div>

@@ -63,34 +63,24 @@
 
         <nav id="main-navigation" class="main-nav">
 
-            <a href="index.html">
-                Accueil
+            <a href="espace-employe.html">
+                Tableau de bord
             </a>
 
-            <a href="menus.html">
+            <a href="commandes-employe.html" class="active">
+                Commandes
+            </a>
+
+            <a href="gestion-menus.html">
                 Menus
             </a>
 
-            <!-- VISITEUR NON CONNECTÉ -->
-            <a href="apropos.html" id="header-about">
-                À propos
+            <a href="avis-employe.html">
+                Avis
             </a>
 
-            <!-- UTILISATEUR CONNECTÉ -->
-            <a
-                href="mes-commandes.html"
-                id="header-orders"
-                hidden
-            >
-                Mes commandes
-            </a>
-
-            <a href="contact.html">
-                Contact
-            </a>
-
-            <a href="connexion.html" class="mobile-login">
-                Connexion
+            <a href="horaires-employe.html">
+                Horaires
             </a>
 
         </nav>
@@ -98,22 +88,8 @@
 
         <div class="header-actions">
 
-            <!-- VISITEUR NON CONNECTÉ -->
-            <a
-                href="connexion.html"
-                class="login-button"
-                id="header-login"
-            >
-                Connexion
-            </a>
+            <div class="header-account-wrapper" id="header-account">
 
-
-            <!-- UTILISATEUR CONNECTÉ -->
-            <div
-                class="header-account-wrapper"
-                id="header-account"
-                hidden
-            >
                 <button
                     type="button"
                     class="header-account"
@@ -122,11 +98,11 @@
                     aria-controls="account-menu"
                 >
                     <span class="header-account-avatar">
-                        L
+                        E
                     </span>
 
                     <span class="header-account-text">
-                        Mon compte
+                        Espace employé
                     </span>
 
                     <span class="header-account-arrow" aria-hidden="true">
@@ -134,17 +110,14 @@
                     </span>
                 </button>
 
+
                 <div
                     class="account-dropdown"
                     id="account-menu"
                     hidden
                 >
-                    <a href="mon-compte.html">
-                        Mon compte
-                    </a>
-
-                    <a href="mes-commandes.html">
-                        Mes commandes
+                    <a href="espace-employe.html">
+                        Tableau de bord
                     </a>
 
                     <button
@@ -154,13 +127,14 @@
                         Se déconnecter
                     </button>
                 </div>
+
             </div>
 
         </div>
 
     </header>
 
-    <script src="js/auth-ui.js"></script>
+    <script src="js/employee-header.js"></script>
 
     <!-- =====================================================
         COMMANDES - ESPACE EMPLOYÉ

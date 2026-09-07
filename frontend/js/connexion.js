@@ -21,10 +21,40 @@ const loginForm = document.querySelector(".login-form");
 loginForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    const emailInput =
+        document.querySelector("#login-email");
+
+    const passwordInput =
+        document.querySelector("#login-password");
+
+    const email =
+        emailInput.value.trim();
+
+    const password =
+        passwordInput.value;
+
     // Pour le moment, la connexion est simulée.
     // La véritable authentification sera gérée avec le back-end.
 
-    sessionStorage.setItem("viteGourmandUserConnected", "true");
+    if (
+        email === "employe@vite-gourmand.fr" &&
+        password === "Employe123!"
+    ) {
+        sessionStorage.setItem(
+            "viteGourmandEmployeeConnected",
+            "true"
+        );
+
+        window.location.href =
+            "espace-employe.html";
+
+        return;
+    }
+
+    sessionStorage.setItem(
+        "viteGourmandUserConnected",
+        "true"
+    );
 
     const pendingOrder = sessionStorage.getItem("viteGourmandOrder");
 
