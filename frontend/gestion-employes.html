@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="gestion-employés - Vite & Gourmand."
+    >
+
+    <title>Gestion employés - Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+        HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="espace-admin.html">
+                Tableau de bord
+            </a>
+
+            <a href="commandes-employe.html">
+                Commandes
+            </a>
+
+            <a href="gestion-menus.html">
+                Menus
+            </a>
+
+            <a href="avis-employe.html">
+                Avis
+            </a>
+
+            <a href="horaires-employe.html">
+                Horaires
+            </a>
+
+        </nav>
+
+        <div class="header-actions">
+
+            <div class="header-account-wrapper" id="header-account">
+
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
+                >
+                    <span class="header-account-avatar">
+                        A
+                    </span>
+
+                    <span class="header-account-text">
+                        Espace administrateur
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="espace-admin.html">
+                        Tableau de bord
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <script src="js/admin-header.js"></script>
+
+    <!-- =====================================================
+         GESTION EMPLOYÉS - ADMIN
+    ====================================================== -->
+
+    <main class="admin-employees">
+
+        <section class="admin-employees-section section-container">
+
+            <!-- EN-TÊTE -->
+
+            <div class="admin-employees-heading">
+
+                <p class="admin-employees-eyebrow">
+                    Espace administrateur
+                </p>
+
+                <div class="admin-employees-heading-row">
+
+                    <div>
+                        <h1>
+                            Gestion des employés
+                        </h1>
+
+                        <p>
+                            Créez et gérez les comptes employés
+                            de Vite & Gourmand.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        class="admin-employees-add-button"
+                        id="admin-employees-add-button"
+                    >
+                        + Créer un employé
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORMULAIRE DE CRÉATION -->
+
+            <div
+                class="admin-employee-create"
+                id="admin-employee-create"
+                hidden
+            >
+
+                <div class="admin-employee-create-heading">
+
+                    <h2>
+                        Créer un compte employé
+                    </h2>
+
+                    <p>
+                        Renseignez les identifiants du nouvel employé.
+                    </p>
+
+                </div>
+
+
+                <div class="admin-employee-create-fields">
+
+                    <div class="admin-employee-field">
+
+                        <label for="employee-email">
+                            Adresse e-mail
+                        </label>
+
+                        <input
+                            type="email"
+                            id="employee-email"
+                            placeholder="employe@vite-gourmand.fr"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="admin-employee-field">
+
+                        <label for="employee-password">
+                            Mot de passe
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input
+                                type="password"
+                                id="employee-password"
+                                placeholder="Mot de passe"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="employee-password-toggle"
+                                aria-label="Afficher le mot de passe"
+                            >
+                                <img
+                                    src="assets/icons/icone-oeil.png"
+                                    alt=""
+                                    aria-hidden="true"
+                                >
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-employee-create-actions">
+
+                    <button
+                        type="button"
+                        class="admin-employee-cancel"
+                        id="admin-employee-cancel"
+                    >
+                        Annuler
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-employee-save"
+                        id="admin-employee-save"
+                    >
+                        Créer le compte
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- LISTE DES EMPLOYÉS -->
+
+            <div class="admin-employees-list">
+
+                <article
+                    class="admin-employee-card"
+                    data-status="active"
+                >
+
+                    <div class="admin-employee-info">
+
+                        <div class="admin-employee-avatar">
+                            E
+                        </div>
+
+                        <div>
+                            <h2>
+                                employe@vite-gourmand.fr
+                            </h2>
+
+                            <p>
+                                Compte employé
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="admin-employee-status">
+
+                        <span class="admin-employee-status-badge active">
+                            Actif
+                        </span>
+
+                        <button
+                            type="button"
+                            class="admin-employee-toggle"
+                        >
+                            Désactiver le compte
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png" alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png" alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png" alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <nav class="mobile-bottom-nav">
+
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img
+                src="assets/icons/icone-personnes.png"
+                alt=""
+                class="mobile-nav-icon-about"
+            >
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+
+    </nav>
+
+    <script src="js/gestion-employes.js"></script>
+
+
+</body>
+
+</html>

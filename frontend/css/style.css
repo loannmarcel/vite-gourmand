@@ -6345,6 +6345,585 @@ select {
     cursor: pointer;
 }
 
+/* =====================================================
+   ADMIN - GESTION DES EMPLOYÉS
+===================================================== */
+
+.admin-employees {
+    min-height: 100vh;
+    background-color: var(--cream);
+}
+
+.admin-employees-section {
+    padding-top: 70px;
+    padding-bottom: 90px;
+}
+
+
+/* EN-TÊTE */
+
+.admin-employees-heading {
+    margin-bottom: 40px;
+}
+
+.admin-employees-eyebrow {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    color: var(--green-dark);
+}
+
+.admin-employees-heading-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.admin-employees-heading h1 {
+    margin: 0 0 12px;
+
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.admin-employees-heading p {
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: var(--text-primary);
+}
+
+
+/* BOUTON CRÉATION */
+
+.admin-employees-add-button {
+    flex-shrink: 0;
+
+    padding: 13px 18px;
+
+    border: 1px solid var(--green-dark);
+    border-radius: 8px;
+
+    background-color: var(--green-dark);
+    color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+/* FORMULAIRE */
+
+.admin-employee-create {
+    margin-bottom: 32px;
+    padding: 28px;
+
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    background-color: var(--white);
+}
+
+.admin-employee-create-heading {
+    margin-bottom: 24px;
+}
+
+.admin-employee-create-heading h2 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.admin-employee-create-heading p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: var(--text-primary);
+}
+
+.admin-employee-create-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.admin-employee-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-employee-field label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.admin-employee-field input {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    background-color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+}
+
+.admin-employee-field input:focus {
+    outline: 2px solid var(--green-dark);
+    outline-offset: 2px;
+}
+
+
+/* ACTIONS DU FORMULAIRE */
+
+.admin-employee-create-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+
+    margin-top: 24px;
+}
+
+.admin-employee-cancel,
+.admin-employee-save {
+    padding: 12px 16px;
+
+    border-radius: 8px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.admin-employee-cancel {
+    border: 1px solid #cccccc;
+    background-color: var(--white);
+    color: var(--text-primary);
+}
+
+.admin-employee-save {
+    border: 1px solid var(--green-dark);
+    background-color: var(--green-dark);
+    color: var(--white);
+}
+
+
+/* LISTE */
+
+.admin-employees-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.admin-employee-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+
+    padding: 24px 28px;
+
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    background-color: var(--white);
+}
+
+.admin-employee-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.admin-employee-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background-color: var(--green-dark);
+    color: var(--white);
+
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.admin-employee-info h2 {
+    margin: 0 0 5px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.admin-employee-info p {
+    margin: 0;
+
+    font-size: 14px;
+
+    color: var(--text-primary);
+}
+
+
+/* STATUT */
+
+.admin-employee-status {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.admin-employee-status-badge {
+    display: inline-flex;
+
+    padding: 6px 10px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.admin-employee-status-badge.active {
+    background-color: #e8f1e8;
+    color: var(--green-dark);
+}
+
+.admin-employee-status-badge.inactive {
+    background-color: #eeeeee;
+    color: #666666;
+}
+
+.admin-employee-toggle {
+    padding: 10px 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    background-color: var(--white);
+    color: var(--text-primary);
+
+    font-family: "Inter", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+/* ========================================
+   ADMIN - STATISTIQUES
+======================================== */
+
+.admin-stats {
+    min-height: 100vh;
+    background-color: var(--cream);
+}
+
+.admin-stats-section {
+    padding-top: 70px;
+    padding-bottom: 90px;
+}
+
+.admin-stats-heading {
+    margin-bottom: 40px;
+}
+
+.admin-stats-eyebrow {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    color: var(--green-dark);
+}
+
+.admin-stats-heading h1 {
+    margin: 0 0 12px;
+
+    font-size: 36px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.admin-stats-heading > p:last-child {
+    margin: 0;
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: var(--text-primary);
+}
+
+
+/* CARTES */
+
+.admin-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.admin-stats-card {
+    padding: 28px;
+
+    border: 1px solid #dddddd;
+    border-radius: 12px;
+
+    background-color: var(--white);
+}
+
+.admin-stats-card-heading {
+    margin-bottom: 28px;
+}
+
+.admin-stats-card-heading h2 {
+    margin: 0 0 8px;
+
+    font-size: 20px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.admin-stats-card-heading p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: var(--text-primary);
+}
+
+
+/* ZONE DU FUTUR GRAPHIQUE */
+
+.admin-stats-chart {
+    min-height: 300px;
+
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+
+    background-color: var(--white);
+}
+
+/* GRAPHIQUE DES COMMANDES */
+
+.admin-chart-bars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 14px;
+
+    height: 100%;
+    min-height: 270px;
+    padding: 24px 20px 18px;
+}
+
+.admin-chart-item {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+
+    height: 100%;
+    min-width: 0;
+}
+
+.admin-chart-bar-wrapper {
+    display: flex;
+    align-items: flex-end;
+
+    width: 100%;
+    max-width: 48px;
+    height: 200px;
+}
+
+.admin-chart-bar {
+    width: 100%;
+
+    border-radius: 6px 6px 0 0;
+
+    background-color: var(--green-dark);
+}
+
+.admin-chart-item:nth-child(1) .admin-chart-bar {
+    height: 60%;
+}
+
+.admin-chart-item:nth-child(2) .admin-chart-bar {
+    height: 80%;
+}
+
+.admin-chart-item:nth-child(3) .admin-chart-bar {
+    height: 47%;
+}
+
+.admin-chart-item:nth-child(4) .admin-chart-bar {
+    height: 70%;
+}
+
+.admin-chart-item:nth-child(5) .admin-chart-bar {
+    height: 90%;
+}
+
+.admin-chart-item:nth-child(6) .admin-chart-bar {
+    height: 30%;
+}
+
+.admin-chart-item span {
+    font-size: 11px;
+    line-height: 1.3;
+    text-align: center;
+
+    color: var(--text-primary);
+}
+
+
+/* FILTRES CHIFFRE D'AFFAIRES */
+
+.admin-stats-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+
+    margin-bottom: 32px;
+}
+
+.admin-stats-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-stats-filter label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.admin-stats-filter select {
+    width: 100%;
+    min-width: 0;
+
+    padding: 12px 14px;
+
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+
+    background-color: var(--white);
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+
+    cursor: pointer;
+
+    appearance: none;
+-webkit-appearance: none;
+
+padding-right: 48px;
+}
+
+.admin-stats-select-wrapper {
+    position: relative;
+}
+
+.admin-stats-select-wrapper::after {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    right: 18px;
+
+    width: 8px;
+    height: 8px;
+
+    border-right: 2px solid var(--green-dark);
+    border-bottom: 2px solid var(--green-dark);
+
+    transform: translateY(-70%) rotate(45deg);
+
+    pointer-events: none;
+}
+
+.admin-stats-filter select:focus {
+    outline: 2px solid var(--green-dark);
+    outline-offset: 2px;
+}
+
+
+/* CHIFFRE D'AFFAIRES */
+
+.admin-stats-revenue {
+    padding: 24px;
+
+    border-radius: 10px;
+
+    background-color: var(--cream);
+}
+
+.admin-stats-revenue p {
+    margin: 0 0 8px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    color: var(--text-primary);
+}
+
+.admin-stats-revenue strong {
+    display: block;
+
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+
+    color: var(--green-dark);
+}
+
 /* =========================================================
    RESPONSIVE : 1181px À 1320px
 ========================================================= */
@@ -6582,6 +7161,12 @@ select {
 
     .menu-recommendation-badge {
         display: none;
+    }
+
+    /* ADMIN - STATISTIQUES */
+
+    .admin-stats-grid {
+        grid-template-columns: 1fr;
     }
 
 }
@@ -7055,6 +7640,66 @@ select {
         justify-self: center;
     }
 
+}
+
+/* =========================================================
+   RESPONSIVE : PETITE TABLETTE 
+====================================================== */
+
+@media (max-width: 640px) {
+
+    /* ADMIN - GESTION DES EMPLOYÉS */
+
+    .admin-employees-section {
+        padding-top: 48px;
+        padding-bottom: 70px;
+    }
+
+    .admin-employees-heading-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .admin-employees-heading h1 {
+        font-size: 32px;
+    }
+
+    .admin-employees-add-button {
+        align-self: flex-start;
+    }
+
+    .admin-employee-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding: 22px;
+    }
+
+    .admin-employee-info {
+        min-width: 0;
+    }
+
+    .admin-employee-info > div:last-child {
+        min-width: 0;
+    }
+
+    .admin-employee-info h2 {
+        overflow-wrap: anywhere;
+    }
+
+    .admin-employee-status {
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .admin-employee-create-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-employee-create {
+        padding: 22px;
+    }
 }
 
 
@@ -7737,6 +8382,73 @@ select {
         flex-wrap: wrap;
     }
 
+    /* STATISTIQUES - GRAPHIQUE MOBILE */
+
+    .admin-chart-bars {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+
+        min-height: 0;
+        padding: 20px;
+    }
+
+    .admin-chart-item {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        align-items: center;
+        gap: 12px;
+
+        height: auto;
+    }
+
+    .admin-chart-item span {
+        grid-column: 1;
+        grid-row: 1;
+
+        font-size: 11px;
+        text-align: left;
+    }
+
+    .admin-chart-bar-wrapper {
+        grid-column: 2;
+        grid-row: 1;
+
+        width: 100%;
+        max-width: none;
+        height: 22px;
+    }
+
+    .admin-chart-bar {
+        height: 100% !important;
+
+        border-radius: 0 6px 6px 0;
+    }
+
+    .admin-chart-item:nth-child(1) .admin-chart-bar {
+        width: 60%;
+    }
+
+    .admin-chart-item:nth-child(2) .admin-chart-bar {
+        width: 80%;
+    }
+
+    .admin-chart-item:nth-child(3) .admin-chart-bar {
+        width: 47%;
+    }
+
+    .admin-chart-item:nth-child(4) .admin-chart-bar {
+        width: 70%;
+    }
+
+    .admin-chart-item:nth-child(5) .admin-chart-bar {
+        width: 90%;
+    }
+
+    .admin-chart-item:nth-child(6) .admin-chart-bar {
+        width: 30%;
+    }
+
 }
 
 /* ======================================
@@ -7813,6 +8525,10 @@ select {
 
     .employee-menus-add-button {
         align-self: flex-start;
+    }
+
+    .admin-stats-filters {
+        grid-template-columns: 1fr;
     }
 
 }
