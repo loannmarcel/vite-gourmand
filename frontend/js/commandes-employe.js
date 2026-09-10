@@ -166,6 +166,24 @@ employeeOrderStatusButtons.forEach((button) => {
 
         orderCard.dataset.status = selectedValue;
 
+        const managementPanel =
+            orderCard.querySelector(".employee-order-management");
+
+        const manageButton =
+            orderCard.querySelector(".employee-order-manage-button");
+
+        if (managementPanel && manageButton) {
+            managementPanel.hidden = true;
+
+            manageButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            manageButton.textContent =
+                "Gérer la commande";
+        }
+
     });
 
 });

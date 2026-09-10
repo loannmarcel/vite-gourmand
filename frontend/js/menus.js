@@ -81,8 +81,8 @@ maxInput.addEventListener("input", () => {
 
     let value = Number(maxInput.value);
 
-    if (value > 150) {
-        value = 150;
+    if (value > 200) {
+        value = 200;
     }
 
     if (value < Number(minRange.value) + minimumGap) {
@@ -195,12 +195,12 @@ resetButton.addEventListener("click", () => {
 
     // Réinitialisation du prix
     minRange.value = 0;
-    maxRange.value = 150;
+    maxRange.value = 200;
 
     minInput.value = 0;
-    maxInput.value = 150;
+    maxInput.value = 200;
 
-    priceValue.textContent = "0 € - 150 €";
+    priceValue.textContent = "0 € - 200 €";
 
 
     // Réinitialisation des autres filtres

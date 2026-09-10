@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Vite & Gourmand, traiteur événementiel à Bordeaux depuis plus de 25 ans. Découvrez nos menus faits maison pour vos événements."
+    >
+
+    <title>Vite & Gourmand</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo-link" aria-label="Retour à l'accueil">
+            <img
+                class="logo"
+                src="assets/images/etat-logo/logo-principal.png"
+                alt="Logo Vite & Gourmand"
+            >
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+            aria-controls="main-navigation"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+
+        <nav id="main-navigation" class="main-nav">
+
+            <a href="index.html">
+                Accueil
+            </a>
+
+            <a href="menus.html">
+                Menus
+            </a>
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about" class="active">
+                À propos
+            </a>
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
+            </a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
+                Connexion
+            </a>
+
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
+                <button
+                    type="button"
+                    class="header-account"
+                    id="account-menu-toggle"
+                    aria-expanded="false"
+                    aria-controls="account-menu"
+                >
+                    <span class="header-account-avatar">
+                        L
+                    </span>
+
+                    <span class="header-account-text">
+                        Mon compte
+                    </span>
+
+                    <span class="header-account-arrow" aria-hidden="true">
+                        ▾
+                    </span>
+                </button>
+
+                <div
+                    class="account-dropdown"
+                    id="account-menu"
+                    hidden
+                >
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
+                    </a>
+
+                    <button
+                        type="button"
+                        id="logout-button"
+                    >
+                        Se déconnecter
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         À PROPOS
+    ====================================================== -->
+
+    <main class="about-page">
+
+        <section class="about-hero">
+
+            <div class="section-container about-hero-container">
+
+                <div class="about-hero-content">
+
+                    <div class="about-hero-eyebrow">
+
+                        <img
+                            src="assets/icons/icone-feuille2.png"
+                            alt=""
+                            class="about-hero-eyebrow-icon"
+                        >
+
+                        <span>À propos de nous</span>
+
+                    </div>
+
+                    <h1>
+                        Une cuisine maison,<br>
+                        préparée chaque jour<br>
+                        avec <span class="about-title-green">passion</span>.
+                    </h1>
+
+                    <div class="about-title-separator">
+
+                        <span></span>
+
+                        <img
+                            src="assets/icons/icone-feuille2.png"
+                            alt=""
+                        >
+
+                        <span></span>
+
+                    </div>
+
+                    <p class="about-hero-text">
+                        Vite & Gourmand, c'est l'histoire de Julie et José,
+                        deux passionnés de cuisine qui ont décidé de mettre
+                        leur savoir-faire au service de votre quotidien.
+                    </p>
+
+                    <div class="about-hero-highlights">
+
+                        <div class="about-hero-highlight">
+
+                            <img
+                                src="assets/icons/icone-feuille2.png"
+                                alt=""
+                                class="about-hero-highlight-icon"
+                            >
+
+                            <div>
+                                <span>Fait maison</span>
+                                <small>Chaque jour</small>
+                            </div>
+
+                        </div>
+
+                        <div class="about-hero-highlight">
+
+                            <img
+                                src="assets/icons/icone-localisation.png"
+                                alt=""
+                                class="about-hero-highlight-icon"
+                            >
+
+                            <div>
+                                <span>Traiteur à</span>
+                                <small>Bordeaux</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="about-hero-image">
+                    <img
+                        src="assets/images/image-julie-jose-2.png"
+                        alt="Julie et José, fondateurs de Vite & Gourmand"
+                    >
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="about-story">
+
+            <div class="section-container about-story-container">
+
+                <div class="about-story-image">
+                    <img
+                        src="assets/images/image-jose-julie.png"
+                        alt="Julie et José dans leur cuisine"
+                    >
+                </div>
+
+                <div class="about-story-content">
+
+                    <div class="about-story-eyebrow">
+
+                        <img
+                            src="assets/icons/icone-feuille2.png"
+                            alt=""
+                        >
+
+                        <span>Notre histoire</span>
+
+                    </div>
+
+                    <h2>
+                        Tout commence dans notre
+                        petite cuisine bordelaise.
+                    </h2>
+
+                    <div class="about-story-text">
+
+                        <p>
+                            Tout a commencé dans notre petite cuisine bordelaise,
+                            avec l’envie simple de bien manger, sans passer des
+                            heures en cuisine.
+                        </p>
+
+                        <p>
+                            De cette envie est née Vite & Gourmand : des plats
+                            faits maison, équilibrés et savoureux, préparés chaque
+                            jour avec des produits frais et de saison.
+                        </p>
+
+                        <p>
+                            Aujourd’hui, nous mettons toute notre énergie et notre
+                            cœur pour vous faire gagner du temps, sans jamais faire
+                            de compromis sur le goût.
+                        </p>
+
+                    </div>
+
+                    <p class="about-story-signature">
+                        Julie et José
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="about-commitments">
+
+            <div class="section-container">
+
+                <div class="about-commitments-title">
+                    <span></span>
+
+                    <h2>Nos engagements</h2>
+
+                    <span></span>
+                </div>
+
+                <div class="about-commitments-grid">
+
+                    <div class="about-commitment">
+                        <img
+                            src="assets/icons/icone-feuille2.svg"
+                            alt=""
+                            class="about-commitment-icon"
+                        >
+
+                        <h3>Produits frais et de saison</h3>
+
+                        <p>
+                            Nous sélectionnons chaque jour des produits de qualité
+                            auprès de producteurs locaux.
+                        </p>
+                    </div>
+
+                    <div class="about-commitment">
+                        <img
+                            src="assets/icons/icone-menu-vide.svg"
+                            alt=""
+                            class="about-commitment-icon"
+                        >
+
+                        <h3>Fait maison</h3>
+
+                        <p>
+                            Tous nos plats sont préparés chaque jour dans notre cuisine,
+                            sans additifs ni conservateurs.
+                        </p>
+                    </div>
+
+                    <div class="about-commitment">
+                        <img
+                            src="assets/icons/icone-coeur.svg"
+                            alt=""
+                            class="about-commitment-icon"
+                        >
+
+                        <h3>Équilibre &amp; gourmandise</h3>
+
+                        <p>
+                            Des recettes équilibrées qui allient plaisir, fraîcheur
+                            et nutrition pour prendre soin de vous.
+                        </p>
+                    </div>
+
+                    <div class="about-commitment">
+                        <img
+                            src="assets/icons/icone-livraison.svg"
+                            alt=""
+                            class="about-commitment-icon"
+                        >
+
+                        <h3>Livraison</h3>
+
+                        <p>
+                            Livraison à domicile pour s’adapter à votre quotidien
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="about-gallery">
+
+            <div class="section-container about-gallery-container">
+
+                <h2>Une cuisine colorée et savoureuse</h2>
+
+                <div class="about-gallery-grid">
+
+                    <img src="assets/images/menu-healthy.jpg" alt="Plat préparé par Vite & Gourmand">
+
+                    <img src="assets/images/menu-tradition.jpg" alt="Plat préparé par Vite & Gourmand">
+
+                    <img src="assets/images/menu-vegetarien.png" alt="Bouchées apéritives Vite & Gourmand">
+
+                    <img src="assets/images/menu-mediterraneen.png" alt="Buffet préparé par Vite & Gourmand">
+
+                    <img src="assets/images/menu-evenement.jpg" alt="Plat frais et coloré Vite & Gourmand">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="about-cta">
+
+            <div class="section-container about-cta-container">
+
+                <div class="about-cta-icon">
+                    <img
+                        src="assets/icons/icone-feuille2.svg"
+                        alt=""
+                    >
+                </div>
+
+                <div class="about-cta-content">
+                    <h2>Envie de découvrir notre cuisine ?</h2>
+
+                    <p>
+                        Parcourez nos menus et régalez-vous dès aujourd’hui.
+                    </p>
+                </div>
+
+                <div class="about-cta-actions">
+
+                    <a href="menus.html" class="about-cta-primary">
+                        Voir nos menus
+                    </a>
+
+                    <a href="contact.html" class="about-cta-secondary">
+                        Nous contacter
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-content section-container">
+
+
+            <!-- MARQUE -->
+
+            <div class="footer-brand">
+
+                <img
+                    src="assets/images/etat-logo/logo-principal.png"
+                    alt="Vite & Gourmand"
+                >
+
+                <p>
+                    Traiteur événementiel à Bordeaux.
+                </p>
+
+                <p>
+                    Des menus frais, faits maison et de saison.
+                </p>
+
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <img src="assets/icons/icone-facebook.png"
+                        alt="Facebook">
+                    </a>
+
+                    <a href="#" aria-label="LinkedIn">
+                        <img src="assets/icons/icone-linkedin.png"
+                        alt="Linkedin">
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <img src="assets/icons/icone-instagram.png"
+                        alt="Instagram">
+                    </a>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Navigation
+                </h2>
+
+                <a href="index.html">
+                    Accueil
+                </a>
+
+                <a href="menus.html">
+                    Menus
+                </a>
+
+                <a href="apropos.html">
+                    À propos
+                </a>
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Informations
+                </h2>
+
+                <a href="mentions-legales.html">
+                    Mentions légales
+                </a>
+
+                <a href="cgv.html">
+                    CGV
+                </a>
+
+                <a href="#">
+                    Politique de confidentialité
+                </a>
+
+            </div>
+
+
+
+            <!-- CONTACT -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Contact
+                </h2>
+
+                <p>
+                    Bordeaux, France
+                </p>
+
+                <p>
+                    contact@vite-gourmand.fr
+                </p>
+
+                <a href="contact.html">
+                    Nous contacter
+                </a>
+
+            </div>
+
+
+
+            <!-- HORAIRES -->
+
+            <div class="footer-column">
+
+                <h2>
+                    Horaires
+                </h2>
+
+                <p>
+                    Lundi - Vendredi
+                </p>
+
+                <p>
+                    9h00 - 18h00
+                </p>
+
+                <p>
+                    Samedi sur rendez-vous
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom section-container">
+
+            <p>
+                © 2026 Vite & Gourmand — Tous droits réservés.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         MENU MOBILE
+    ====================================================== -->
+
+    <nav class="mobile-bottom-nav">
+        <a href="index.html">
+            <img src="assets/icons/icone-accueil.png" alt="">
+            <small>Accueil</small>
+        </a>
+
+        <a href="menus.html">
+            <img src="assets/icons/icone-menu.png" alt="">
+            <small>Menus</small>
+        </a>
+
+        <a href="apropos.html">
+            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+            <small>À propos</small>
+        </a>
+
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
+        </a>
+
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
+        </a>
+    </nav>
+
+    <script>
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".main-nav");
+
+
+        menuToggle.addEventListener("click", () => {
+
+            const menuIsOpen =
+                navigation.classList.toggle("is-open");
+
+
+            menuToggle.classList.toggle(
+                "is-open",
+                menuIsOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+        });
+
+
+        document
+            .querySelectorAll(".main-nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navigation.classList.remove("is-open");
+
+                    menuToggle.classList.remove("is-open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+
+    </script>
+
+    <script src="js/auth-ui.js"></script>
+
+</body>
+
+</html>

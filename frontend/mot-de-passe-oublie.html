@@ -112,7 +112,7 @@
                 </div>
 
 
-                <form class="login-form">
+                <form class="login-form" id="forgot-password-form">
 
                     <!-- EMAIL -->
 
@@ -142,6 +142,10 @@
                     >
                         Envoyer le lien
                     </button>
+
+                    <p id="forgot-password-message" hidden>
+                        Si cette adresse correspond à un compte, un lien de réinitialisation vous a été envoyé.
+                    </p>
 
 
                     <!-- RETOUR CONNEXION -->
@@ -350,6 +354,8 @@
             <small>Profil</small>
         </a>
     </nav>
+
+    <script src="js/mot-de-passe-oublie.js"></script>
 
 </body>
 
