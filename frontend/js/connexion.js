@@ -18,61 +18,69 @@ passwordToggle.addEventListener("click", () => {
 
 const loginForm = document.querySelector(".login-form");
 
-loginForm.addEventListener("submit", (event) => {
+loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const emailInput =
-        document.querySelector("#login-email");
+    const formData = new FormData(loginForm);
 
-    const passwordInput =
-        document.querySelector("#login-password");
+    try {
+        const response = await fetch("../backend/routes/login.php", {
+            method: "POST",
+            body: formData
+        });
 
-    const email =
-        emailInput.value.trim();
+        const data = await response.json();
 
-    const password =
-        passwordInput.value;
+        if (!response.ok || !data.success) {
+            alert(data.message || "Une erreur est survenue.");
+            return;
+        }
 
-    // Pour le moment, la connexion est simulée.
-    // La véritable authentification sera gérée avec le back-end.
+        const role = data.user.role;
 
-    if (
-        email === "employe@vite-gourmand.fr" &&
-        password === "Employe123!"
-    ) {
-        sessionStorage.setItem(
-            "viteGourmandEmployeeConnected",
-            "true"
+        // ADMIN
+        if (role === "admin") {
+            window.location.href = "espace-admin.html";
+            return;
+        }
+
+        // EMPLOYÉ
+        if (role === "employee") {
+            window.location.href = "espace-employe.html";
+            return;
+        }
+
+        // CLIENT
+        const pendingOrder =
+            sessionStorage.getItem("viteGourmandOrder");
+
+        const redirectAfterLogin =
+            sessionStorage.getItem(
+                "viteGourmandRedirectAfterLogin"
+            );
+
+        if (pendingOrder) {
+            sessionStorage.removeItem(
+                "viteGourmandRedirectAfterLogin"
+            );
+
+            window.location.href = "commande.html";
+
+        } else if (redirectAfterLogin) {
+            sessionStorage.removeItem(
+                "viteGourmandRedirectAfterLogin"
+            );
+
+            window.location.href = redirectAfterLogin;
+
+        } else {
+            window.location.href = "index.html";
+        }
+    } catch (error) {
+        console.error("Erreur de connexion :", error);
+
+        alert(
+            "Impossible de se connecter pour le moment."
         );
-
-        window.location.href =
-            "espace-employe.html";
-
-        return;
-    }
-
-    sessionStorage.setItem(
-        "viteGourmandUserConnected",
-        "true"
-    );
-
-    const pendingOrder = sessionStorage.getItem("viteGourmandOrder");
-
-    const redirectAfterLogin =
-        sessionStorage.getItem("viteGourmandRedirectAfterLogin");
-
-    if (pendingOrder) {
-
-        sessionStorage.removeItem("viteGourmandRedirectAfterLogin");
-        window.location.href = "commande.html";
-
-    } else if (redirectAfterLogin) {
-
-        sessionStorage.removeItem("viteGourmandRedirectAfterLogin");
-        window.location.href = redirectAfterLogin;
-
-    } else {
-
-        window.location.href = "index.html";
     }
 });

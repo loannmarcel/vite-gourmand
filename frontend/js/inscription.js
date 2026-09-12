@@ -35,10 +35,10 @@ passwordConfirmToggle.addEventListener("click", () => {
 
 const registerForm = document.querySelector(".login-form");
 
-registerForm.addEventListener("submit", (event) => {
+registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-   const passwordValue = passwordInput.value;
+    const passwordValue = passwordInput.value;
 
     const hasMinimumLength = passwordValue.length >= 10;
     const hasUppercase = /[A-Z]/.test(passwordValue);
@@ -64,20 +64,43 @@ registerForm.addEventListener("submit", (event) => {
         return;
     }
 
-    // Pour le moment, l'inscription est simulée.
-    // La création réelle du compte sera gérée avec le back-end.
+    const formData = new FormData(registerForm);
 
-    const user = {
-        lastname: lastnameInput.value.trim(),
-        firstname: firstnameInput.value.trim(),
-        email: emailInput.value.trim(),
-        phone: phoneInput.value.trim()
-    };
+    try {
+        const response = await fetch(
+            "../backend/routes/register.php",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
 
-    localStorage.setItem(
-        "viteGourmandUser",
-        JSON.stringify(user)
-    );
+        const result = await response.json();
 
-    window.location.href = "confirmation-inscription.html";
+        if (!response.ok) {
+            alert(result.message);
+            return;
+        }
+
+        const user = {
+            lastname: formData.get("lastname"),
+            firstname: formData.get("firstname"),
+            email: formData.get("email"),
+            phone: formData.get("phone")
+        };
+
+        localStorage.setItem(
+            "viteGourmandUser",
+            JSON.stringify(user)
+        );
+
+        window.location.href = "confirmation-inscription.html";
+
+    } catch (error) {
+        console.error(error);
+
+        alert(
+            "Une erreur est survenue lors de la création du compte."
+        );
+    }
 });
