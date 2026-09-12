@@ -8,10 +8,10 @@
 
     <meta
         name="description"
-        content="Espace employé Vite & Gourmand."
+        content="Vite & Gourmand, traiteur événementiel à Bordeaux depuis plus de 25 ans. Découvrez nos menus faits maison pour vos événements."
     >
 
-    <title>Espace employé - Vite & Gourmand</title>
+    <title>Vite & Gourmand</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,24 +63,34 @@
 
         <nav id="main-navigation" class="main-nav">
 
-            <a href="espace-employe.html" class="active">
-                Tableau de bord
+            <a href="index.html">
+                Accueil
             </a>
 
-            <a href="commandes-employe.html">
-                Commandes
-            </a>
-
-            <a href="gestion-menus.html">
+            <a href="menus.html">
                 Menus
             </a>
 
-            <a href="avis-employe.html">
-                Avis
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a href="apropos.html" id="header-about">
+                À propos
             </a>
 
-            <a href="horaires-employe.html">
-                Horaires
+            <!-- UTILISATEUR CONNECTÉ -->
+            <a
+                href="mes-commandes.html" class="active"
+                id="header-orders"
+                hidden
+            >
+                Mes commandes
+            </a>
+
+            <a href="contact.html">
+                Contact
+            </a>
+
+            <a href="connexion.html" class="mobile-login">
+                Connexion
             </a>
 
         </nav>
@@ -88,8 +98,22 @@
 
         <div class="header-actions">
 
-            <div class="header-account-wrapper" id="header-account">
+            <!-- VISITEUR NON CONNECTÉ -->
+            <a
+                href="connexion.html"
+                class="login-button"
+                id="header-login"
+            >
+                Connexion
+            </a>
 
+
+            <!-- UTILISATEUR CONNECTÉ -->
+            <div
+                class="header-account-wrapper"
+                id="header-account"
+                hidden
+            >
                 <button
                     type="button"
                     class="header-account"
@@ -98,11 +122,11 @@
                     aria-controls="account-menu"
                 >
                     <span class="header-account-avatar">
-                        E
+                        L
                     </span>
 
                     <span class="header-account-text">
-                        Espace employé
+                        Mon compte
                     </span>
 
                     <span class="header-account-arrow" aria-hidden="true">
@@ -110,14 +134,17 @@
                     </span>
                 </button>
 
-
                 <div
                     class="account-dropdown"
                     id="account-menu"
                     hidden
                 >
-                    <a href="espace-employe.html">
-                        Tableau de bord
+                    <a href="mon-compte.html">
+                        Mon compte
+                    </a>
+
+                    <a href="mes-commandes.html">
+                        Mes commandes
                     </a>
 
                     <button
@@ -127,157 +154,55 @@
                         Se déconnecter
                     </button>
                 </div>
-
             </div>
 
         </div>
 
     </header>
 
-    <script src="js/employee-header.js"></script>
-
+    <script src="js/auth-ui.js"></script>
 
     <!-- =====================================================
-        ESPACE EMPLOYÉ
+         DÉTAIL COMMANDE
     ====================================================== -->
 
-    <main class="employee-dashboard">
+    <main class="order-detail-page">
 
-        <section class="employee-dashboard-section section-container">
+        <section class="order-detail-section">
 
-            <div class="employee-dashboard-heading">
+            <div class="section-container order-detail-container">
 
-                <p class="employee-dashboard-eyebrow">
-                    Espace employé
-                </p>
+                <div class="order-detail-header">
 
-                <h1>
-                    Tableau de bord
-                </h1>
+                    <a
+                        href="mes-commandes.html"
+                        class="order-detail-back"
+                    >
+                        ← Retour à mes commandes
+                    </a>
 
-                <p>
-                    Gérez les commandes, les menus, les avis clients
-                    et les horaires de Vite & Gourmand.
-                </p>
+                    <p class="order-detail-eyebrow">
+                        Détail de la commande
+                    </p>
 
-            </div>
+                    <h1 id="order-detail-title">
+                        Commande
+                    </h1>
 
+                </div>
 
-            <div class="employee-dashboard-grid">
-
-                <a
-                    href="commandes-employe.html"
-                    class="employee-dashboard-card"
+                <div
+                    class="order-detail-content"
+                    id="order-detail-content"
                 >
-                    <div class="employee-dashboard-card-content">
-
-                        <span class="employee-dashboard-card-number">
-                            01
-                        </span>
-
-                        <h2>
-                            Commandes
-                        </h2>
-
-                        <p>
-                            Consultez les commandes, filtrez-les par statut
-                            ou par client et mettez à jour leur avancement.
-                        </p>
-
-                        <span class="employee-dashboard-card-link">
-                            Gérer les commandes →
-                        </span>
-
-                    </div>
-                </a>
-
-
-                <a
-                    href="gestion-menus.html"
-                    class="employee-dashboard-card"
-                >
-                    <div class="employee-dashboard-card-content">
-
-                        <span class="employee-dashboard-card-number">
-                            02
-                        </span>
-
-                        <h2>
-                            Menus & plats
-                        </h2>
-
-                        <p>
-                            Modifiez ou supprimez les menus et les plats
-                            proposés par Vite & Gourmand.
-                        </p>
-
-                        <span class="employee-dashboard-card-link">
-                            Gérer les menus →
-                        </span>
-
-                    </div>
-                </a>
-
-
-                <a
-                    href="avis-employe.html"
-                    class="employee-dashboard-card"
-                >
-                    <div class="employee-dashboard-card-content">
-
-                        <span class="employee-dashboard-card-number">
-                            03
-                        </span>
-
-                        <h2>
-                            Avis clients
-                        </h2>
-
-                        <p>
-                            Consultez les avis reçus et choisissez
-                            ceux qui peuvent être publiés sur l'accueil.
-                        </p>
-
-                        <span class="employee-dashboard-card-link">
-                            Gérer les avis →
-                        </span>
-
-                    </div>
-                </a>
-
-
-                <a
-                    href="horaires-employe.html"
-                    class="employee-dashboard-card"
-                >
-                    <div class="employee-dashboard-card-content">
-
-                        <span class="employee-dashboard-card-number">
-                            04
-                        </span>
-
-                        <h2>
-                            Horaires
-                        </h2>
-
-                        <p>
-                            Consultez et modifiez les horaires
-                            d'ouverture de l'entreprise.
-                        </p>
-
-                        <span class="employee-dashboard-card-link">
-                            Gérer les horaires →
-                        </span>
-
-                    </div>
-                </a>
+                    <!-- Le détail de la commande sera ajouté ici en JavaScript -->
+                </div>
 
             </div>
 
         </section>
 
     </main>
-
 
     <!-- =====================================================
          FOOTER
@@ -286,6 +211,7 @@
     <footer class="site-footer">
 
         <div class="footer-content section-container">
+
 
             <!-- MARQUE -->
 
@@ -304,23 +230,28 @@
                     Des menus frais, faits maison et de saison.
                 </p>
 
+
                 <div class="social-links">
 
                     <a href="#" aria-label="Facebook">
-                        <img src="assets/icons/icone-facebook.png" alt="Facebook">
+                        <img src="assets/icons/icone-facebook.png"
+                        alt="Facebook">
                     </a>
 
                     <a href="#" aria-label="LinkedIn">
-                        <img src="assets/icons/icone-linkedin.png" alt="Linkedin">
+                        <img src="assets/icons/icone-linkedin.png"
+                        alt="Linkedin">
                     </a>
 
                     <a href="#" aria-label="Instagram">
-                        <img src="assets/icons/icone-instagram.png" alt="Instagram">
+                        <img src="assets/icons/icone-instagram.png"
+                        alt="Instagram">
                     </a>
 
                 </div>
 
             </div>
+
 
 
             <!-- NAVIGATION -->
@@ -350,6 +281,7 @@
             </div>
 
 
+
             <!-- INFORMATIONS -->
 
             <div class="footer-column">
@@ -373,6 +305,7 @@
             </div>
 
 
+
             <!-- CONTACT -->
 
             <div class="footer-column">
@@ -394,6 +327,7 @@
                 </a>
 
             </div>
+
 
 
             <!-- HORAIRES -->
@@ -431,39 +365,34 @@
 
     </footer>
 
-
     <nav class="mobile-bottom-nav">
-
-        <a href="espace-employe.html">
+        <a href="index.html">
             <img src="assets/icons/icone-accueil.png" alt="">
-            <small>Dashboard</small>
+            <small>Accueil</small>
         </a>
 
-        <a href="gestion-menus.html">
+        <a href="menus.html">
             <img src="assets/icons/icone-menu.png" alt="">
             <small>Menus</small>
         </a>
 
-        <a href="commandes-employe.html">
-            <img
-                src="assets/icons/icone-commandes.svg"
-                alt=""
-                class="mobile-nav-icon-about"
-            >
-            <small>Commandes</small>
+        <a href="apropos.html">
+            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+            <small>À propos</small>
         </a>
 
-        <a href="avis-employe.html">
-            <img src="assets/icons/icone-etoile-avis.svg" alt="">
-            <small>Avis</small>
+        <a href="contact.html">
+            <img src="assets/icons/icone-contact.png" alt="">
+            <small>Contact</small>
         </a>
 
-        <a href="horaires-employe.html">
-            <img src="assets/icons/icone-horraire.svg" alt="">
-            <small>Horaires</small>
+        <a href="connexion.html">
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Profil</small>
         </a>
-
     </nav>
+
+    <script src="js/detail-commande.js"></script>
 
 </body>
 

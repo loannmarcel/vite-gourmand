@@ -417,5 +417,12 @@ orderButton.addEventListener("click", function () {
 
     console.log("Commande préparée :", orderData);
 
-    window.location.href = "connexion.html";
+    const userConnected =
+        sessionStorage.getItem("viteGourmandUserConnected");
+
+    if (userConnected === "true") {
+        window.location.href = "commande.html";
+    } else {
+        window.location.href = "connexion.html";
+    }
 });

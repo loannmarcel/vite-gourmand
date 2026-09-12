@@ -67,11 +67,13 @@ if (storedOrder) {
     // PRIX
     // ========================================
 
+    const deliveryPrice = 5;
+
     checkoutSubtotal.textContent =
         formatPrice(order.normalPrice);
 
     checkoutTotal.textContent =
-        formatPrice(order.totalPrice);
+        formatPrice(order.totalPrice + deliveryPrice);
 
 
     // ========================================
@@ -160,6 +162,9 @@ checkoutSubmit.addEventListener("click", function () {
         postalCode: postalCodeInput.value.trim(),
         city: cityInput.value.trim()
     };
+
+    order.deliveryPrice = 5;
+    order.finalPrice = order.totalPrice + order.deliveryPrice;
 
     sessionStorage.setItem(
         "viteGourmandOrder",

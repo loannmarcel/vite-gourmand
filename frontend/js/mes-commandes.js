@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="order-detail">
                     <span>Total</span>
                     <strong>
-                        ${formatPrice(order.totalPrice)}
+                        ${formatPrice(order.finalPrice)}
                     </strong>
                 </div>
 
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             actions.innerHTML = `
                 <a
-                    href="#"
+                    href="detail-commande.html?id=${order.id}"
                     class="order-secondary-button"
                 >
                     Voir le détail
