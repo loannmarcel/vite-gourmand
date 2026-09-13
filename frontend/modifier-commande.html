@@ -78,7 +78,7 @@
 
             <!-- UTILISATEUR CONNECTÉ -->
             <a
-                href="mes-commandes.html"
+                href="mes-commandes.html" class="active"
                 id="header-orders"
                 hidden
             >
@@ -163,274 +163,40 @@
     <script src="js/auth-ui.js"></script>
 
     <!-- =====================================================
-        MON COMPTE
+         MODIFIER COMMANDE
     ====================================================== -->
 
-    <main class="account-page">
+    <main class="order-detail-page">
 
-        <section class="account-section">
+        <section class="order-detail-section">
 
-            <div class="account-heading">
+            <div class="section-container order-detail-container">
 
-                <p class="account-eyebrow">
-                    Votre espace
-                </p>
+                <div class="order-detail-header">
 
-                <h1>
-                    Mon compte
-                </h1>
-
-                <p>
-                    Consultez et modifiez vos informations personnelles.
-                </p>
-
-            </div>
-
-
-            <!-- INFORMATIONS PERSONNELLES -->
-
-            <div class="account-block">
-
-                <div class="account-block-heading">
-
-                    <div>
-                        <h2>
-                            Mes informations
-                        </h2>
-
-                        <p>
-                            Informations associées à votre compte Vite & Gourmand.
-                        </p>
-                    </div>
-
-                    <button
-                        type="button"
-                        class="account-edit-button"
-                        id="account-edit-button"
+                    <a
+                        href="mes-commandes.html"
+                        class="order-detail-back"
                     >
-                        Modifier
-                    </button>
+                        ← Retour à mes commandes
+                    </a>
 
-                </div>
-
-
-                <div class="account-information">
-
-                    <div class="account-information-item">
-                        <span>Nom</span>
-                        <strong id="account-lastname">
-                            Marcel
-                        </strong>
-                    </div>
-
-                    <div class="account-information-item">
-                        <span>Prénom</span>
-                        <strong id="account-firstname">
-                            Loann
-                        </strong>
-                    </div>
-
-                    <div class="account-information-item">
-                        <span>Adresse e-mail</span>
-                        <strong id="account-email">
-                            loann@example.com
-                        </strong>
-                    </div>
-
-                    <div class="account-information-item">
-                        <span>Téléphone</span>
-                        <strong id="account-phone">
-                            Non renseigné
-                        </strong>
-                    </div>
-
-                    <div class="account-information-item">
-                        <span>Adresse</span>
-                        <strong id="account-address">
-                            Non renseignée
-                        </strong>
-                    </div>
-
-
-                    <div class="account-information-item">
-                        <span>Code postal</span>
-                        <strong id="account-postal-code">
-                            Non renseigné
-                        </strong>
-                    </div>
-
-
-                    <div class="account-information-item">
-                        <span>Ville</span>
-                        <strong id="account-city">
-                            Non renseignée
-                        </strong>
-                    </div>
-
-                </div>
-
-                <!-- FORMULAIRE DE MODIFICATION -->
-
-                <form
-                    class="account-edit-form"
-                    id="account-edit-form"
-                    hidden
-                >
-
-                    <div class="account-edit-fields">
-
-                        <div class="account-edit-field">
-                            <label for="edit-lastname">
-                                Nom
-                            </label>
-
-                            <input
-                                type="text"
-                                id="edit-lastname"
-                                name="lastname"
-                                autocomplete="family-name"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="account-edit-field">
-                            <label for="edit-firstname">
-                                Prénom
-                            </label>
-
-                            <input
-                                type="text"
-                                id="edit-firstname"
-                                name="firstname"
-                                autocomplete="given-name"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="account-edit-field">
-                            <label for="edit-email">
-                                Adresse e-mail
-                            </label>
-
-                            <input
-                                type="email"
-                                id="edit-email"
-                                name="email"
-                                autocomplete="email"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="account-edit-field">
-                            <label for="edit-phone">
-                                Téléphone
-                            </label>
-
-                            <input
-                                type="tel"
-                                id="edit-phone"
-                                name="phone"
-                                autocomplete="tel"
-                            >
-                        </div>
-
-
-                        <div class="account-edit-field">
-                            <label for="edit-address">
-                                Adresse
-                            </label>
-
-                            <input
-                                type="text"
-                                id="edit-address"
-                                name="address"
-                                autocomplete="street-address"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="account-edit-field">
-                            <label for="edit-postal-code">
-                                Code postal
-                            </label>
-
-                            <input
-                                type="text"
-                                id="edit-postal-code"
-                                name="postal_code"
-                                autocomplete="postal-code"
-                                required
-                            >
-                        </div>
-
-
-                        <div class="account-edit-field">
-                            <label for="edit-city">
-                                Ville
-                            </label>
-
-                            <input
-                                type="text"
-                                id="edit-city"
-                                name="city"
-                                autocomplete="address-level2"
-                                required
-                            >
-                        </div>
-
-                    </div>
-
-
-                    <div class="account-edit-actions">
-
-                        <button
-                            type="button"
-                            class="account-cancel-button"
-                            id="account-cancel-button"
-                        >
-                            Annuler
-                        </button>
-
-                        <button
-                            type="submit"
-                            class="account-save-button"
-                        >
-                            Enregistrer
-                        </button>
-
-                    </div>
-
-                </form>
-
-            </div>
-
-
-            <!-- COMMANDES -->
-
-            <div class="account-block account-orders">
-
-                <div>
-
-                    <h2>
-                        Mes commandes
-                    </h2>
-
-                    <p>
-                        Consultez vos commandes à venir et votre historique.
+                    <p class="order-detail-eyebrow">
+                        Modification de la commande
                     </p>
 
+                    <h1 id="order-edit-title">
+                        Modifier la commande
+                    </h1>
+
                 </div>
 
-                <a
-                    href="mes-commandes.html"
-                    class="account-orders-link"
+                <div
+                    class="order-detail-content"
+                    id="order-edit-content"
                 >
-                    Voir mes commandes
-                </a>
+                    <!-- Le formulaire sera ajouté ici en JavaScript -->
+                </div>
 
             </div>
 
@@ -626,7 +392,7 @@
         </a>
     </nav>
 
-    <script src="js/mon-compte.js"></script>
+    <script src="js/modifier-commande.js"></script>
 
 </body>
 

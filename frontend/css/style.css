@@ -4166,6 +4166,11 @@ select {
     color: #666666;
 }
 
+.order-status-cancelled {
+    background-color: #fdecec;
+    color: #b42318;
+}
+
 .order-card-details {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -7822,6 +7827,64 @@ padding-right: 48px;
     border-radius: 999px;
 }
 
+.order-detail-status-cancelled strong {
+    color: #b42318;
+    background-color: #fdecec;
+}
+
+/* ========================================
+   ACTIONS DÉTAIL COMMANDE
+======================================== */
+
+.order-detail-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 16px;
+
+    margin-top: 30px;
+    padding-top: 24px;
+
+    border-top: 1px solid #e5e5e5;
+}
+
+.order-edit-button,
+.order-cancel-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 12px 20px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.order-edit-button {
+    color: var(--white);
+
+    background-color: var(--green-dark);
+
+    border: 1px solid var(--green-dark);
+}
+
+.order-cancel-button {
+    color: #b42318;
+
+    background-color: transparent;
+
+    border: 1px solid #b42318;
+}
+
 .order-detail-row {
     display: flex;
     justify-content: space-between;
@@ -7855,6 +7918,115 @@ padding-right: 48px;
 
     color: var(--text-primary);
     text-align: right;
+}
+
+/* ========================================
+   MODIFICATION D'UNE COMMANDE
+======================================== */
+
+.order-edit-form {
+    width: 100%;
+}
+
+.order-edit-card {
+    width: 100%;
+    max-width: 820px;
+
+    margin-top: 28px;
+
+    padding: 32px;
+
+    background-color: var(--white);
+
+    border-radius: 16px;
+
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.order-edit-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 22px;
+}
+
+.order-edit-field label {
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.order-edit-field input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+
+    background-color: var(--white);
+
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+
+    outline: none;
+}
+
+.order-edit-field input:focus {
+    border-color: var(--green-dark);
+}
+
+.order-edit-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+.order-edit-cancel,
+.order-edit-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+
+    padding: 12px 20px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.order-edit-cancel {
+    color: var(--green-dark);
+
+    background-color: transparent;
+
+    border: 1px solid var(--green-dark);
+
+    text-decoration: none;
+}
+
+.order-edit-submit {
+    color: var(--white);
+
+    background-color: var(--green-dark);
+
+    border: 1px solid var(--green-dark);
 }
 
 /* =========================================================

@@ -1,12 +1,9 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const upcomingOrdersContainer =
         document.getElementById("upcoming-orders");
 
     const pastOrdersContainer =
         document.getElementById("past-orders");
-
-    const savedOrders =
-        JSON.parse(localStorage.getItem("viteGourmandOrders")) || [];
 
 
     function formatDate(dateString) {
@@ -24,10 +21,60 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    function formatTime(timeString) {
+        if (!timeString) {
+            return "Heure non renseignée";
+        }
+
+        return timeString.slice(0, 5);
+    }
+
+
     function formatPrice(price) {
         return `${Number(price)
             .toFixed(2)
             .replace(".", ",")} €`;
+    }
+
+
+    function getStatusText(status) {
+        switch (status) {
+            case "pending":
+                return "En attente";
+
+            case "accepted":
+                return "Acceptée";
+
+            case "preparing":
+                return "En préparation";
+
+            case "ready":
+                return "Prête";
+
+            case "delivered":
+                return "Livrée";
+
+            case "completed":
+                return "Terminée";
+
+            case "cancelled":
+                return "Annulée";
+
+            default:
+                return status;
+        }
+    }
+
+    function getStatusClass(status, isPast = false) {
+        if (status === "cancelled") {
+            return "order-status order-status-cancelled";
+        }
+
+        if (status === "completed" || isPast) {
+            return "order-status order-status-completed";
+        }
+
+        return "order-status";
     }
 
 
@@ -39,14 +86,8 @@ document.addEventListener("DOMContentLoaded", () => {
             : "order-card";
 
 
-        const statusClass = isPast
-            ? "order-status order-status-completed"
-            : "order-status";
-
-
-        const statusText = isPast
-            ? "Terminée"
-            : "Confirmée";
+        const statusClass =
+            getStatusClass(order.status, isPast);
 
 
         article.innerHTML = `
@@ -58,12 +99,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     </p>
 
                     <h3>
-                        ${order.menu}
+                        ${order.menu_name}
                     </h3>
                 </div>
 
                 <span class="${statusClass}">
-                    ${statusText}
+                    ${getStatusText(order.status)}
                 </span>
 
             </div>
@@ -74,14 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="order-detail">
                     <span>Date</span>
                     <strong>
-                        ${formatDate(order.deliveryDate)}
+                        ${formatDate(order.delivery_date)}
                     </strong>
                 </div>
 
                 <div class="order-detail">
                     <span>Heure</span>
                     <strong>
-                        ${order.deliveryTime}
+                        ${formatTime(order.delivery_time)}
                     </strong>
                 </div>
 
@@ -89,14 +130,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     <span>Nombre de personnes</span>
                     <strong>
                         ${order.people}
-                        ${order.people > 1 ? "personnes" : "personne"}
+                        ${Number(order.people) > 1
+                            ? "personnes"
+                            : "personne"}
                     </strong>
                 </div>
 
                 <div class="order-detail">
                     <span>Total</span>
                     <strong>
-                        ${formatPrice(order.finalPrice)}
+                        ${formatPrice(order.total_price)}
                     </strong>
                 </div>
 
@@ -105,9 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         if (!isPast) {
-            const actions = document.createElement("div");
+            const actions =
+                document.createElement("div");
 
-            actions.className = "order-card-actions";
+            actions.className =
+                "order-card-actions";
 
             actions.innerHTML = `
                 <a
@@ -126,58 +171,82 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    const now = new Date();
+    try {
+        const response = await fetch(
+            "../backend/routes/orders.php"
+        );
 
-    now.setHours(0, 0, 0, 0);
+        const data = await response.json();
 
 
-    const upcomingOrders = [];
-    const pastOrders = [];
-
-
-    savedOrders.forEach((order) => {
-        if (!order.deliveryDate) {
-            upcomingOrders.push(order);
-            return;
+        if (!response.ok || !data.success) {
+            throw new Error(
+                data.message ||
+                "Impossible de charger les commandes."
+            );
         }
 
-        const orderDate =
-            new Date(`${order.deliveryDate}T00:00:00`);
 
-        if (orderDate >= now) {
-            upcomingOrders.push(order);
+        const orders = data.orders;
+
+
+        const upcomingOrders = [];
+        const pastOrders = [];
+
+
+        orders.forEach((order) => {
+            if (order.status === "completed") {
+                pastOrders.push(order);
+            } else {
+                upcomingOrders.push(order);
+            }
+        });
+
+
+        if (upcomingOrders.length === 0) {
+            upcomingOrdersContainer.innerHTML = `
+                <p class="orders-empty">
+                    Vous n'avez aucune commande à venir.
+                </p>
+            `;
         } else {
-            pastOrders.push(order);
+            upcomingOrders.forEach((order) => {
+                upcomingOrdersContainer.appendChild(
+                    createOrderCard(order)
+                );
+            });
         }
-    });
 
 
-    if (upcomingOrders.length === 0) {
+        if (pastOrders.length === 0) {
+            pastOrdersContainer.innerHTML = `
+                <p class="orders-empty">
+                    Vous n'avez encore aucune commande terminée.
+                </p>
+            `;
+        } else {
+            pastOrders.forEach((order) => {
+                pastOrdersContainer.appendChild(
+                    createOrderCard(
+                        order,
+                        true
+                    )
+                );
+            });
+        }
+
+    } catch (error) {
+        console.error(
+            "Erreur lors du chargement des commandes :",
+            error
+        );
+
         upcomingOrdersContainer.innerHTML = `
             <p class="orders-empty">
-                Vous n'avez aucune commande à venir.
+                Impossible de charger vos commandes.
             </p>
         `;
-    } else {
-        upcomingOrders.forEach((order) => {
-            upcomingOrdersContainer.appendChild(
-                createOrderCard(order)
-            );
-        });
-    }
 
-
-    if (pastOrders.length === 0) {
-        pastOrdersContainer.innerHTML = `
-            <p class="orders-empty">
-                Vous n'avez encore aucune commande terminée.
-            </p>
-        `;
-    } else {
-        pastOrders.forEach((order) => {
-            pastOrdersContainer.appendChild(
-                createOrderCard(order, true)
-            );
-        });
+        pastOrdersContainer.innerHTML = "";
     }
 });

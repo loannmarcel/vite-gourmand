@@ -107,8 +107,36 @@ const addressInput = document.querySelector("#order-address");
 const postalCodeInput = document.querySelector("#order-postal-code");
 const cityInput = document.querySelector("#order-city");
 
+async function loadAccountAddress() {
+    try {
+        const response = await fetch(
+            "../backend/routes/account.php"
+        );
 
-checkoutSubmit.addEventListener("click", function () {
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            return;
+        }
+
+        const user = data.user;
+
+        addressInput.value = user.address || "";
+        postalCodeInput.value = user.postal_code || "";
+        cityInput.value = user.city || "";
+
+    } catch (error) {
+        console.error(
+            "Erreur lors du chargement de l'adresse :",
+            error
+        );
+    }
+}
+
+loadAccountAddress();
+
+
+checkoutSubmit.addEventListener("click", async function () {
 
     // Vérification de l'adresse
     if (!addressInput.value.trim()) {
@@ -149,29 +177,100 @@ checkoutSubmit.addEventListener("click", function () {
     cityInput.setCustomValidity("");
 
 
-    // ========================================
-    // AJOUT DE L'ADRESSE À LA COMMANDE
-    // ========================================
-
     const order = JSON.parse(
         sessionStorage.getItem("viteGourmandOrder")
     );
 
-    order.deliveryAddress = {
-        address: addressInput.value.trim(),
-        postalCode: postalCodeInput.value.trim(),
-        city: cityInput.value.trim()
-    };
 
-    order.deliveryPrice = 5;
-    order.finalPrice = order.totalPrice + order.deliveryPrice;
+    if (!order) {
+        alert("Aucune commande à enregistrer.");
+        return;
+    }
 
-    sessionStorage.setItem(
-        "viteGourmandOrder",
-        JSON.stringify(order)
+
+    const formData = new FormData();
+
+    formData.append(
+        "menu_id",
+        order.menuId
     );
 
-    console.log("Commande complète :", order);
+    formData.append(
+        "people",
+        order.people
+    );
 
-    window.location.href = "confirmation-commande.html";
+    formData.append(
+        "delivery_date",
+        order.deliveryDate
+    );
+
+    formData.append(
+        "delivery_time",
+        order.deliveryTime
+    );
+
+    formData.append(
+        "delivery_address",
+        addressInput.value.trim()
+    );
+
+    formData.append(
+        "delivery_postal_code",
+        postalCodeInput.value.trim()
+    );
+
+    formData.append(
+        "delivery_city",
+        cityInput.value.trim()
+    );
+
+
+    try {
+        const response = await fetch(
+            "../backend/routes/create-order.php",
+            {
+                method: "POST",
+                body: formData
+            }
+        );
+
+        const data = await response.json();
+
+
+        if (!response.ok || !data.success) {
+            alert(
+                data.message ||
+                "Impossible d'enregistrer la commande."
+            );
+
+            return;
+        }
+
+
+        sessionStorage.setItem(
+            "viteGourmandConfirmedOrder",
+            JSON.stringify(data.order)
+        );
+
+
+        sessionStorage.removeItem(
+            "viteGourmandOrder"
+        );
+
+
+        window.location.href =
+            "confirmation-commande.html";
+
+
+    } catch (error) {
+        console.error(
+            "Erreur lors de l'enregistrement de la commande :",
+            error
+        );
+
+        alert(
+            "Impossible d'enregistrer la commande pour le moment."
+        );
+    }
 });

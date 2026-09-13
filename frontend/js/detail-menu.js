@@ -339,7 +339,7 @@ updateDeliveryConstraints();
 
 const orderButton = document.querySelector("#order-button");
 
-orderButton.addEventListener("click", function () {
+orderButton.addEventListener("click", async function () {
 
     // Réinitialise les éventuels messages d'erreur
     dateInput.setCustomValidity("");
@@ -398,6 +398,7 @@ orderButton.addEventListener("click", function () {
 
 
     const orderData = {
+        menuId: Number(orderCard.dataset.menuId),
         menu: orderCard.dataset.menuName,
         people: people,
         deliveryDate: dateInput.value,
@@ -417,12 +418,30 @@ orderButton.addEventListener("click", function () {
 
     console.log("Commande préparée :", orderData);
 
-    const userConnected =
-        sessionStorage.getItem("viteGourmandUserConnected");
+    try {
+        const response = await fetch(
+            "../backend/routes/session.php"
+        );
 
-    if (userConnected === "true") {
-        window.location.href = "commande.html";
-    } else {
+        const data = await response.json();
+
+        if (
+            response.ok &&
+            data.success === true &&
+            data.authenticated === true
+        ) {
+            window.location.href = "commande.html";
+        } else {
+            window.location.href = "connexion.html";
+        }
+
+    } catch (error) {
+        console.error(
+            "Erreur lors de la vérification de session :",
+            error
+        );
+
         window.location.href = "connexion.html";
     }
+
 });

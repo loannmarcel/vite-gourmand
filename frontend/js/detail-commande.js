@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const orderDetailTitle =
         document.getElementById("order-detail-title");
 
@@ -10,15 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const orderId =
         params.get("id");
-
-    const savedOrders =
-        JSON.parse(localStorage.getItem("viteGourmandOrders")) || [];
-
-    const order =
-        savedOrders.find(
-            (savedOrder) =>
-                String(savedOrder.id) === String(orderId)
-        );
 
 
     function formatDate(dateString) {
@@ -35,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             year: "numeric"
         });
     }
+
 
     function formatCreatedAt(dateString) {
         if (!dateString) {
@@ -53,6 +45,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
+    function formatTime(timeString) {
+        if (!timeString) {
+            return "Non renseignée";
+        }
+
+        return timeString.slice(0, 5);
+    }
+
+
     function formatPrice(price) {
         return `${Number(price)
             .toFixed(2)
@@ -60,7 +61,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    if (!order) {
+    function getStatusText(status) {
+        switch (status) {
+            case "pending":
+                return "En attente";
+
+            case "accepted":
+                return "Acceptée";
+
+            case "preparing":
+                return "En préparation";
+
+            case "ready":
+                return "Prête";
+
+            case "delivered":
+                return "Livrée";
+
+            case "completed":
+                return "Terminée";
+
+            case "cancelled":
+                return "Annulée";
+
+            default:
+                return status;
+        }
+    }
+
+
+    function getStatusClass(status) {
+        switch (status) {
+            case "cancelled":
+                return "order-detail-status order-detail-status-cancelled";
+
+            case "completed":
+                return "order-detail-status order-detail-status-completed";
+
+            default:
+                return "order-detail-status";
+        }
+    }
+
+
+    if (!orderId) {
         orderDetailTitle.textContent =
             "Commande introuvable";
 
@@ -75,95 +119,226 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    orderDetailTitle.textContent =
-        `Commande #${order.id}`;
+    try {
+        const response = await fetch(
+            `../backend/routes/order-detail.php?id=${encodeURIComponent(orderId)}`
+        );
+
+        const data = await response.json();
 
 
-    orderDetailContent.innerHTML = `
-        <div class="order-detail-card">
+        if (!response.ok || !data.success) {
+            orderDetailTitle.textContent =
+                "Commande introuvable";
 
-            <div class="order-detail-status">
-                <span>Statut de la commande</span>
+            orderDetailContent.innerHTML = `
+                <p class="orders-empty">
+                    Cette commande n'existe pas
+                    ou n'est plus disponible.
+                </p>
+            `;
 
-                <strong>
-                    ${order.status || "Confirmée"}
-                </strong>
-            </div>
+            return;
+        }
 
-            <div class="order-detail-row">
-                <span>Commande passée le</span>
-                <strong>
-                    ${formatCreatedAt(order.createdAt)}
-                </strong>
-            </div>
 
-            <div class="order-detail-row">
-                <span>Menu</span>
-                <strong>${order.menu}</strong>
-            </div>
+        const order = data.order;
 
-            <div class="order-detail-row">
-                <span>Date de prestation</span>
-                <strong>
-                    ${formatDate(order.deliveryDate)}
-                </strong>
-            </div>
 
-            <div class="order-detail-row">
-                <span>Heure</span>
-                <strong>
-                    ${order.deliveryTime || "Non renseignée"}
-                </strong>
-            </div>
+        orderDetailTitle.textContent =
+            `Commande #${order.id}`;
 
-            <div class="order-detail-row">
-                <span>Adresse de livraison</span>
 
-                <strong>
-                    ${order.deliveryAddress
-                        ? `${order.deliveryAddress.address}, ${order.deliveryAddress.postalCode} ${order.deliveryAddress.city}`
-                        : "Non renseignée"}
-                </strong>
-            </div>
+        orderDetailContent.innerHTML = `
+            <div class="order-detail-card">
 
-            <div class="order-detail-row">
-                <span>Nombre de personnes</span>
-                <strong>
-                    ${order.people}
-                    ${order.people > 1 ? "personnes" : "personne"}
-                </strong>
-            </div>
+                <div class="${getStatusClass(order.status)}">
+                    <span>Statut de la commande</span>
 
-            <div class="order-detail-row">
-                <span>Prix avant réduction</span>
-                <strong>
-                    ${formatPrice(order.normalPrice)}
-                </strong>
-            </div>
-
-            ${order.discountApplied ? `
-                <div class="order-detail-row">
-                    <span>Réduction groupe</span>
                     <strong>
-                        - ${formatPrice(order.normalPrice - order.totalPrice)}
+                        ${getStatusText(order.status)}
                     </strong>
                 </div>
-            ` : ""}
 
-            <div class="order-detail-row">
-                <span>Livraison</span>
-                <strong>
-                    ${formatPrice(order.deliveryPrice)}
-                </strong>
+                <div class="order-detail-row">
+                    <span>Commande passée le</span>
+                    <strong>
+                        ${formatCreatedAt(order.created_at)}
+                    </strong>
+                </div>
+
+                <div class="order-detail-row">
+                    <span>Menu</span>
+                    <strong>
+                        ${order.menu_name}
+                    </strong>
+                </div>
+
+                <div class="order-detail-row">
+                    <span>Date de prestation</span>
+                    <strong>
+                        ${formatDate(order.delivery_date)}
+                    </strong>
+                </div>
+
+                <div class="order-detail-row">
+                    <span>Heure</span>
+                    <strong>
+                        ${formatTime(order.delivery_time)}
+                    </strong>
+                </div>
+
+                <div class="order-detail-row">
+                    <span>Adresse de livraison</span>
+
+                    <strong>
+                        ${order.delivery_address},
+                        ${order.delivery_postal_code}
+                        ${order.delivery_city}
+                    </strong>
+                </div>
+
+                <div class="order-detail-row">
+                    <span>Nombre de personnes</span>
+                    <strong>
+                        ${order.people}
+                        ${Number(order.people) > 1
+                            ? "personnes"
+                            : "personne"}
+                    </strong>
+                </div>
+
+                <div class="order-detail-row">
+                    <span>Prix avant réduction</span>
+                    <strong>
+                        ${formatPrice(order.menu_price)}
+                    </strong>
+                </div>
+
+                ${Number(order.discount_amount) > 0 ? `
+                    <div class="order-detail-row">
+                        <span>Réduction groupe</span>
+                        <strong>
+                            - ${formatPrice(order.discount_amount)}
+                        </strong>
+                    </div>
+                ` : ""}
+
+                <div class="order-detail-row">
+                    <span>Livraison</span>
+                    <strong>
+                        ${formatPrice(order.delivery_price)}
+                    </strong>
+                </div>
+
+                <div class="order-detail-row">
+                    <span>Total</span>
+                    <strong>
+                        ${formatPrice(order.total_price)}
+                    </strong>
+                </div>
+
+                ${order.status === "pending" ? `
+                    <div class="order-detail-actions">
+
+                        <a
+                            href="modifier-commande.html?id=${order.id}"
+                            class="order-edit-button"
+                        >
+                            Modifier la commande
+                        </a>
+
+                        <button
+                            type="button"
+                            class="order-cancel-button"
+                            id="order-cancel-button"
+                        >
+                            Annuler la commande
+                        </button>
+
+                    </div>
+                ` : ""}
+
             </div>
+        `;
 
-            <div class="order-detail-row">
-                <span>Total</span>
-                <strong>
-                    ${formatPrice(order.finalPrice)}
-                </strong>
-            </div>
 
-        </div>
-    `;
+        const cancelButton =
+            document.getElementById("order-cancel-button");
+
+
+        if (cancelButton) {
+            cancelButton.addEventListener("click", async () => {
+
+                const confirmed = window.confirm(
+                    "Voulez-vous vraiment annuler cette commande ?"
+                );
+
+
+                if (!confirmed) {
+                    return;
+                }
+
+
+                const formData = new FormData();
+
+                formData.append(
+                    "order_id",
+                    order.id
+                );
+
+
+                try {
+                    const response = await fetch(
+                        "../backend/routes/cancel-order.php",
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+                    const data = await response.json();
+
+
+                    if (!response.ok || !data.success) {
+                        alert(
+                            data.message ||
+                            "Impossible d'annuler la commande."
+                        );
+
+                        return;
+                    }
+
+
+                    window.location.reload();
+
+                } catch (error) {
+                    console.error(
+                        "Erreur lors de l'annulation de la commande :",
+                        error
+                    );
+
+                    alert(
+                        "Impossible d'annuler la commande pour le moment."
+                    );
+                }
+            });
+        }
+
+
+    } catch (error) {
+        console.error(
+            "Erreur lors du chargement de la commande :",
+            error
+        );
+
+        orderDetailTitle.textContent =
+            "Erreur";
+
+        orderDetailContent.innerHTML = `
+            <p class="orders-empty">
+                Impossible de charger cette commande.
+            </p>
+        `;
+    }
 });
