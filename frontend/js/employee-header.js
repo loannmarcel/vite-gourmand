@@ -5,13 +5,41 @@
 
 /* PROTECTION DES PAGES EMPLOYÉ */
 
-const employeeConnected =
-    sessionStorage.getItem("viteGourmandEmployeeConnected");
+async function protectEmployeePage() {
+    try {
+        const response = await fetch(
+            "../backend/routes/session.php"
+        );
 
-if (employeeConnected !== "true") {
-    window.location.href =
-        "connexion.html";
+        const data = await response.json();
+
+        if (
+            !response.ok ||
+            !data.success ||
+            !data.authenticated ||
+            (
+                data.user.role !== "employee" &&
+                data.user.role !== "admin"
+            )
+        ) {
+            window.location.href =
+                "connexion.html";
+
+            return;
+        }
+
+    } catch (error) {
+        console.error(
+            "Erreur de vérification de session :",
+            error
+        );
+
+        window.location.href =
+            "connexion.html";
+    }
 }
+
+protectEmployeePage();
 
 
 /* MENU DU COMPTE EMPLOYÉ */
@@ -53,11 +81,18 @@ if (
 
 if (logoutButton) {
 
-    logoutButton.addEventListener("click", () => {
+    logoutButton.addEventListener("click", async () => {
 
-        sessionStorage.removeItem(
-            "viteGourmandEmployeeConnected"
-        );
+        try {
+            await fetch(
+                "../backend/routes/logout.php"
+            );
+        } catch (error) {
+            console.error(
+                "Erreur de déconnexion :",
+                error
+            );
+        }
 
         window.location.href =
             "connexion.html";
@@ -65,3 +100,4 @@ if (logoutButton) {
     });
 
 }
+

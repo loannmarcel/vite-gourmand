@@ -5596,6 +5596,8 @@ select {
 }
 
 .employee-menu-edit-field label {
+    min-height: 36px;
+
     font-size: 14px;
     font-weight: 600;
     color: var(--text-primary);

@@ -1,3 +1,413 @@
+async function loadEmployeeMenus() {
+    try {
+        const response = await fetch("../backend/routes/employee-menus.php");
+        const data = await response.json();
+
+        if (!data.success) {
+            console.error("Impossible de récupérer les menus.");
+            return;
+        }
+
+        const menuSlugById = {
+            1: "healthy",
+            2: "tradition",
+            3: "evenement",
+            4: "vegetarien",
+            5: "mediterraneen",
+            6: "brunch"
+        };
+
+        data.menus.forEach((menu) => {
+            const menuSlug =
+                menuSlugById[menu.id] ?? `menu-${menu.id}`;
+
+            let card = document.querySelector(
+                `.employee-menu-card[data-menu-id="${menuSlug}"]`
+            );
+
+            if (!card) {
+
+                const templateCard =
+                    document.querySelector(".employee-menu-card");
+
+                if (!templateCard) {
+                    return;
+                }
+
+                const templateSlug =
+                    templateCard.dataset.menuId;
+
+                card =
+                    templateCard.cloneNode(true);
+
+                card.dataset.menuId =
+                    menuSlug;
+
+                card.dataset.dbId =
+                    menu.id;
+
+                card.dataset.name =
+                    menu.name.toLowerCase();
+
+                card.dataset.theme =
+                    menu.theme;
+
+                card.querySelectorAll("[id]").forEach((element) => {
+
+                    if (
+                        element.id.startsWith(
+                            `${templateSlug}-`
+                        )
+                    ) {
+                        element.id =
+                            element.id.replace(
+                                `${templateSlug}-`,
+                                `${menuSlug}-`
+                            );
+                    }
+
+                });
+
+                card.querySelectorAll("[for]").forEach((element) => {
+
+                    const value =
+                        element.getAttribute("for");
+
+                    if (
+                        value &&
+                        value.startsWith(
+                            `${templateSlug}-`
+                        )
+                    ) {
+                        element.setAttribute(
+                            "for",
+                            value.replace(
+                                `${templateSlug}-`,
+                                `${menuSlug}-`
+                            )
+                        );
+                    }
+
+                });
+
+                employeeMenusList.appendChild(card);
+            }
+
+            card.dataset.dbId = menu.id;
+
+            const cardImage =
+                card.querySelector(
+                    ".employee-menu-thumbnail img"
+                );
+
+            const currentImage =
+                card.querySelector(
+                    ".employee-menu-current-image img"
+                );
+
+            if (menu.image_path) {
+
+                const imageUrl =
+                    `../${menu.image_path}`;
+
+                if (cardImage) {
+                    cardImage.src = imageUrl;
+                    cardImage.alt = menu.name;
+                }
+
+                if (currentImage) {
+                    currentImage.src = imageUrl;
+                    currentImage.alt =
+                        `Image actuelle de ${menu.name}`;
+                }
+
+            } else if (menuSlug.startsWith("menu-")) {
+
+                if (cardImage) {
+                    cardImage.removeAttribute("src");
+                    cardImage.alt = "";
+                }
+
+                if (currentImage) {
+                    currentImage.removeAttribute("src");
+                    currentImage.alt = "";
+                }
+            }
+
+            const stockInput =
+                card.querySelector(`#${menuSlug}-stock`);
+
+            if (stockInput) {
+                stockInput.value = menu.stock_quantity;
+            }
+
+            const informationValues =
+                card.querySelectorAll(
+                    ".employee-menu-information strong"
+                );
+
+            if (informationValues[4]) {
+                informationValues[4].textContent =
+                    `${menu.stock_quantity} commandes`;
+            }
+
+            const nameInput =
+                card.querySelector(`#${menuSlug}-name`);
+
+            if (nameInput) {
+                nameInput.value = menu.name;
+            }
+
+            const menuTitle =
+                card.querySelector("h2");
+
+            if (menuTitle) {
+                menuTitle.textContent = menu.name;
+            }
+
+            const descriptionInput =
+                card.querySelector(`#${menuSlug}-description`);
+
+            if (descriptionInput) {
+                descriptionInput.value = menu.description;
+            }
+
+            const menuDescription =
+                card.querySelector(
+                    ".employee-menu-card-header p"
+                );
+
+            if (menuDescription) {
+                menuDescription.textContent =
+                    menu.description;
+            }
+
+            const themeInput =
+                card.querySelector(`#${menuSlug}-theme`);
+
+            if (themeInput) {
+                themeInput.value = menu.theme;
+            }
+
+            if (informationValues[0]) {
+                informationValues[0].textContent =
+                    themeInput?.options[
+                        themeInput.selectedIndex
+                    ]?.text ?? menu.theme;
+            }
+
+            const regimeInput =
+                card.querySelector(`#${menuSlug}-regime`);
+
+            if (regimeInput) {
+                regimeInput.value = menu.diet;
+            }
+
+            if (informationValues[1]) {
+                informationValues[1].textContent =
+                    menu.diet;
+            }
+
+            const minimumInput =
+                card.querySelector(`#${menuSlug}-minimum`);
+
+            if (minimumInput) {
+                minimumInput.value = menu.min_people;
+            }
+
+            if (informationValues[2]) {
+                informationValues[2].textContent =
+                    `${menu.min_people} personnes`;
+            }
+
+            const priceInput =
+                card.querySelector(`#${menuSlug}-price`);
+
+            if (priceInput) {
+                priceInput.value = menu.base_price;
+            }
+
+            if (informationValues[3]) {
+                informationValues[3].textContent =
+                    `${Number(menu.base_price)
+                        .toFixed(2)
+                        .replace(".", ",")} €`;
+            }
+
+            const conditionsInput =
+                card.querySelector(`#${menuSlug}-conditions`);
+
+            if (conditionsInput) {
+                conditionsInput.value =
+                    menu.conditions ?? "";
+            }
+
+            const dishesList =
+                card.querySelector(`#${menuSlug}-dishes-list`);
+
+            if (dishesList) {
+                const dishItems =
+                    dishesList.querySelectorAll(
+                        ".employee-menu-dish-item"
+                    );
+
+                menu.dishes.forEach((dish, index) => {
+
+                    let dishItem = dishItems[index];
+
+                    if (!dishItem) {
+                        dishItem = document.createElement("div");
+
+                        dishItem.className =
+                            "employee-menu-dish-item";
+
+                        dishItem.dataset.dishId =
+                            `${menuSlug}-dish-${dish.id}`;
+
+                        dishesList.appendChild(dishItem);
+
+                        dishItem.innerHTML = `
+                            <div class="employee-menu-dish-content">
+                                <span class="employee-menu-dish-type"></span>
+                                <strong></strong>
+                            </div>
+
+                            <div class="employee-menu-dish-actions">
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-edit"
+                                    aria-expanded="false"
+                                >
+                                    Modifier
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="employee-menu-dish-delete"
+                                >
+                                    Supprimer
+                                </button>
+                            </div>
+
+                            <div
+                                class="employee-menu-dish-edit-panel"
+                                hidden
+                            >
+                                <div class="employee-menu-dish-edit-field">
+                                    <label>Type</label>
+
+                                    <select>
+                                        <option value="entree">Entrée</option>
+                                        <option value="plat">Plat</option>
+                                        <option value="dessert">Dessert</option>
+                                    </select>
+                                </div>
+
+                                <div class="employee-menu-dish-edit-field">
+                                    <label>Nom du plat</label>
+
+                                    <input type="text">
+                                </div>
+
+                                <div class="employee-menu-dish-edit-actions">
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit-cancel"
+                                    >
+                                        Annuler
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        class="employee-menu-dish-edit-save"
+                                    >
+                                        Enregistrer
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+
+                    }
+
+                    dishItem.dataset.dbId = dish.id;
+                    
+                    const dishTypeLabels = {
+                        starter: "Entrée",
+                        main: "Plat",
+                        dessert: "Dessert"
+                    };
+
+                    const dishType =
+                        dishItem.querySelector(
+                            ".employee-menu-dish-type"
+                        );
+
+                    const dishName =
+                        dishItem.querySelector(
+                            ".employee-menu-dish-content strong"
+                        );
+
+                    if (dishType) {
+                        dishType.textContent =
+                            dishTypeLabels[dish.category] ??
+                            dish.category;
+                    }
+
+                    if (dishName) {
+                        dishName.textContent = dish.name;
+                    }
+
+                    const categoryValues = {
+                        starter: "entree",
+                        main: "plat",
+                        dessert: "dessert"
+                    };
+
+                    const dishEditPanel =
+                        dishItem.querySelector(
+                            ".employee-menu-dish-edit-panel"
+                        );
+
+                    if (dishEditPanel) {
+                        const dishTypeInput =
+                            dishEditPanel.querySelector("select");
+
+                        const dishNameInput =
+                            dishEditPanel.querySelector(
+                                'input[type="text"]'
+                            );
+
+                        if (dishTypeInput) {
+                            dishTypeInput.value =
+                                categoryValues[dish.category] ??
+                                "";
+                        }
+
+                        if (dishNameInput) {
+                            dishNameInput.value = dish.name;
+                        }
+                    }
+
+                });
+
+                dishItems.forEach((dishItem, index) => {
+                    if (index >= menu.dishes.length) {
+                        dishItem.remove();
+                    }
+                });
+            }
+
+        });
+
+        console.log("6 menus reliés à MySQL :", data.menus);
+    } catch (error) {
+        console.error(
+            "Erreur lors du chargement des menus :",
+            error
+        );
+    }
+}
+
 const menuSearchInput =
     document.querySelector("#employee-menu-search");
 
@@ -75,7 +485,7 @@ const employeeMenusList =
    MODIFIER UN MENU
 ===================================================== */
 
-employeeMenusList.addEventListener("click", (event) => {
+employeeMenusList.addEventListener("click", async (event) => {
 
     const editButton =
         event.target.closest(".employee-menu-edit-button");
@@ -157,6 +567,8 @@ employeeMenusList.addEventListener("click", (event) => {
         const menuId =
             card.dataset.menuId;
 
+        const dbId =
+            card.dataset.dbId;    
 
         const nameInput =
             card.querySelector(`#${menuId}-name`);
@@ -187,6 +599,110 @@ employeeMenusList.addEventListener("click", (event) => {
         
         const cardImage =
             card.querySelector(".employee-menu-thumbnail img");
+
+            /* ENREGISTREMENT DANS MYSQL */
+
+            if (!dbId) {
+                console.error("ID MySQL du menu introuvable.");
+                return;
+            }
+
+            try {
+                const response = await fetch(
+                    "../backend/routes/update-menu-employee.php",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            menu_id: Number(dbId),
+                            name: nameInput.value.trim(),
+                            description: descriptionInput.value.trim(),
+                            theme: themeInput.value,
+                            diet: regimeInput.value.trim(),
+                            min_people: Number(minimumInput.value),
+                            base_price: Number(priceInput.value),
+                            stock_quantity: Number(stockInput.value),
+                            conditions:
+                                card.querySelector(
+                                    `#${menuId}-conditions`
+                                )?.value.trim() ?? ""
+                        })
+                    }
+                );
+
+                const data = await response.json();
+
+                if (!response.ok || !data.success) {
+                    alert(
+                        data.message ||
+                        "Impossible de modifier le menu."
+                    );
+
+                    return;
+                }
+
+                console.log(
+                    "Menu enregistré dans MySQL :",
+                    data
+                );
+
+                if (
+                    imagesInput &&
+                    imagesInput.files.length > 0
+                ) {
+                    const imageFormData =
+                        new FormData();
+
+                    imageFormData.append(
+                        "menu_id",
+                        dbId
+                    );
+
+                    imageFormData.append(
+                        "image",
+                        imagesInput.files[0]
+                    );
+
+                    const imageResponse = await fetch(
+                        "../backend/routes/upload-menu-image.php",
+                        {
+                            method: "POST",
+                            body: imageFormData
+                        }
+                    );
+
+                    const imageData =
+                        await imageResponse.json();
+
+                    if (!imageResponse.ok || !imageData.success) {
+                        alert(
+                            imageData.message ||
+                            "Le menu a été modifié, mais l'image n'a pas pu être enregistrée."
+                        );
+
+                        return;
+                    }
+
+                    console.log(
+                        "Image du menu enregistrée :",
+                        imageData
+                    );
+                }
+
+            } catch (error) {
+                console.error(
+                    "Erreur lors de la modification du menu :",
+                    error
+                );
+
+                alert(
+                    "Une erreur est survenue lors de l'enregistrement."
+                );
+
+                return;
+            }
          
             if (
                 imagesInput &&
@@ -278,7 +794,7 @@ employeeMenusList.addEventListener("click", (event) => {
    SUPPRIMER UN MENU
 ===================================================== */
 
-employeeMenusList.addEventListener("click", (event) => {
+employeeMenusList.addEventListener("click", async (event) => {
 
     const deleteButton =
         event.target.closest(".employee-menu-delete-button");
@@ -304,6 +820,58 @@ employeeMenusList.addEventListener("click", (event) => {
 
     const deletedTheme =
         card.dataset.theme;
+
+        const menuDbId =
+            card.dataset.dbId;
+
+        if (!menuDbId) {
+            alert(
+                "Impossible de supprimer ce menu : identifiant manquant."
+            );
+
+            return;
+        }
+
+        try {
+
+            const response = await fetch(
+                "../backend/routes/delete-menu-employee.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        menu_id: Number(menuDbId)
+                    })
+                }
+            );
+
+            const data =
+                await response.json();
+
+            if (!response.ok || !data.success) {
+                alert(
+                    data.message ||
+                    "Impossible de supprimer le menu."
+                );
+
+                return;
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Erreur lors de la suppression du menu :",
+                error
+            );
+
+            alert(
+                "Une erreur est survenue lors de la suppression."
+            );
+
+            return;
+        }
 
     card.remove();
 
@@ -593,7 +1161,7 @@ const addMenuSaveButton =
     document.querySelector("#employee-menu-add-save");
 
 
-addMenuSaveButton.addEventListener("click", () => {
+addMenuSaveButton.addEventListener("click", async () => {
 
     const nameInput =
         document.querySelector("#new-menu-name");
@@ -726,6 +1294,134 @@ addMenuSaveButton.addEventListener("click", () => {
     ) {
         window.alert(
             "Merci de remplir les informations principales du menu."
+        );
+
+        return;
+    }
+
+    let data;
+
+    try {
+        const response = await fetch(
+            "../backend/routes/add-menu-employee.php",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: menuName,
+                    description: menuDescription,
+                    theme: menuTheme,
+                    diet: menuRegime,
+                    min_people: Number(menuMinimum),
+                    base_price: Number(menuPrice),
+                    stock_quantity: Number(menuStock),
+                    conditions: menuConditions
+                })
+            }
+        );
+
+        data = await response.json();
+
+        if (!response.ok || !data.success) {
+            alert(
+                data.message ||
+                "Impossible d'ajouter le menu."
+            );
+            return;
+        }
+
+        console.log(
+            "Menu ajouté dans MySQL :",
+            data
+        );
+
+        const categoryByType = {
+            "Entrée": "starter",
+            "Plat": "main",
+            "Dessert": "dessert"
+        };
+
+        for (const dish of menuDishes) {
+
+            const dishResponse = await fetch(
+                "../backend/routes/add-dish-employee.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        menu_id: data.menu_id,
+                        name: dish.name,
+                        category: categoryByType[dish.type]
+                    })
+                }
+            );
+
+            const dishData =
+                await dishResponse.json();
+
+            if (!dishResponse.ok || !dishData.success) {
+                alert(
+                    dishData.message ||
+                    "Le menu a été créé, mais un plat n'a pas pu être enregistré."
+                );
+
+                return;
+            }
+        }
+
+        if (
+            imagesInput &&
+            imagesInput.files.length > 0
+        ) {
+            const imageFormData =
+                new FormData();
+
+            imageFormData.append(
+                "menu_id",
+                data.menu_id
+            );
+
+            imageFormData.append(
+                "image",
+                imagesInput.files[0]
+            );
+
+            const imageResponse = await fetch(
+                "../backend/routes/upload-menu-image.php",
+                {
+                    method: "POST",
+                    body: imageFormData
+                }
+            );
+
+            const imageData =
+                await imageResponse.json();
+
+            if (
+                !imageResponse.ok ||
+                !imageData.success
+            ) {
+                alert(
+                    imageData.message ||
+                    "Le menu a été créé, mais l'image n'a pas pu être enregistrée."
+                );
+
+                return;
+            }
+        }
+
+    } catch (error) {
+        console.error(
+            "Erreur lors de l'ajout du menu :",
+            error
+        );
+
+        alert(
+            "Une erreur est survenue lors de l'ajout."
         );
 
         return;
@@ -946,6 +1642,9 @@ addMenuSaveButton.addEventListener("click", () => {
 
     newCard.dataset.theme =
         menuTheme;
+
+    newCard.dataset.menuId =
+        menuId;
 
 
     newCard.innerHTML = `
@@ -1439,7 +2138,7 @@ addMenuSaveButton.addEventListener("click", () => {
    PLATS DES MENUS - SUPPRESSION
 ===================================================== */
 
-employeeMenusList.addEventListener("click", (event) => {
+employeeMenusList.addEventListener("click", async (event) => {
 
     const deleteDishButton =
         event.target.closest(".employee-menu-dish-delete");
@@ -1450,6 +2149,9 @@ employeeMenusList.addEventListener("click", (event) => {
 
     const dishItem =
         deleteDishButton.closest(".employee-menu-dish-item");
+
+    const dishDbId =
+        dishItem.dataset.dbId;
 
     const dishName =
         dishItem.querySelector("strong").textContent.trim();
@@ -1463,6 +2165,52 @@ employeeMenusList.addEventListener("click", (event) => {
         return;
     }
 
+    if (!dishDbId) {
+        console.error("ID MySQL du plat introuvable.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "../backend/routes/delete-dish-employee.php",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    dish_id: Number(dishDbId)
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+            alert(
+                data.message ||
+                "Impossible de supprimer le plat."
+            );
+            return;
+        }
+
+        console.log(
+            "Plat supprimé de MySQL :",
+            data
+        );
+    } catch (error) {
+        console.error(
+            "Erreur lors de la suppression du plat :",
+            error
+        );
+
+        alert(
+            "Une erreur est survenue lors de la suppression."
+        );
+
+        return;
+    }
+
     dishItem.remove();
 
 });
@@ -1471,7 +2219,7 @@ employeeMenusList.addEventListener("click", (event) => {
    PLATS DES MENUS - MODIFICATION
 ===================================================== */
 
-employeeMenusList.addEventListener("click", (event) => {
+employeeMenusList.addEventListener("click", async (event) => {
 
     const editDishButton =
         event.target.closest(".employee-menu-dish-edit");
@@ -1547,6 +2295,14 @@ employeeMenusList.addEventListener("click", (event) => {
         const dishItem =
             saveDishButton.closest(".employee-menu-dish-item");
 
+        const dishDbId = dishItem.dataset.dbId;
+
+        const categoryByValue = {
+            entree: "starter",
+            plat: "main",
+            dessert: "dessert"
+        };
+
         const typeInput =
             dishItem.querySelector(
                 ".employee-menu-dish-edit-field select"
@@ -1570,6 +2326,55 @@ employeeMenusList.addEventListener("click", (event) => {
 
         const editButton =
             dishItem.querySelector(".employee-menu-dish-edit");
+
+        if (!dishDbId) {
+            console.error("ID MySQL du plat introuvable.");
+            return;
+        }
+
+        try {
+            const response = await fetch(
+                "../backend/routes/update-dish-employee.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        dish_id: Number(dishDbId),
+                        name: nameInput.value.trim(),
+                        category:
+                            categoryByValue[typeInput.value]
+                    })
+                }
+            );
+
+            const data = await response.json();
+
+            if (!response.ok || !data.success) {
+                alert(
+                    data.message ||
+                    "Impossible de modifier le plat."
+                );
+                return;
+            }
+
+            console.log(
+                "Plat enregistré dans MySQL :",
+                data
+            );
+        } catch (error) {
+            console.error(
+                "Erreur lors de la modification du plat :",
+                error
+            );
+
+            alert(
+                "Une erreur est survenue lors de l'enregistrement."
+            );
+
+            return;
+        }
 
 
         dishType.textContent =
@@ -1597,7 +2402,7 @@ employeeMenusList.addEventListener("click", (event) => {
 
 /* PLATS DES MENUS - AJOUT */
 
-employeeMenusList.addEventListener("click", (event) => {
+employeeMenusList.addEventListener("click", async (event) => {
 
     const addDishButton =
         event.target.closest(".employee-menu-dish-add");
@@ -1680,6 +2485,15 @@ employeeMenusList.addEventListener("click", (event) => {
         const menuCard =
             saveAddDishButton.closest(".employee-menu-card");
 
+        const menuDbId =
+            menuCard.dataset.dbId;
+
+        const categoryByValue = {
+            entree: "starter",
+            plat: "main",
+            dessert: "dessert"
+        };
+
         const addPanel =
             saveAddDishButton.closest(".employee-menu-dish-add-panel");
 
@@ -1711,6 +2525,57 @@ employeeMenusList.addEventListener("click", (event) => {
                 typeInput.selectedIndex
             ].text;
 
+        if (!menuDbId) {
+            console.error("ID MySQL du menu introuvable.");
+            return;
+        }
+
+        let data;
+
+        try {
+            const response = await fetch(
+                "../backend/routes/add-dish-employee.php",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        menu_id: Number(menuDbId),
+                        name: dishName,
+                        category:
+                            categoryByValue[typeInput.value]
+                    })
+                }
+            );
+
+            data = await response.json();
+
+            if (!response.ok || !data.success) {
+                alert(
+                    data.message ||
+                    "Impossible d'ajouter le plat."
+                );
+                return;
+            }
+
+            console.log(
+                "Plat ajouté dans MySQL :",
+                data
+            );
+        } catch (error) {
+            console.error(
+                "Erreur lors de l'ajout du plat :",
+                error
+            );
+
+            alert(
+                "Une erreur est survenue lors de l'ajout."
+            );
+
+            return;
+        }
+
         const dishId =
             `dish-${Date.now()}`;
 
@@ -1722,6 +2587,9 @@ employeeMenusList.addEventListener("click", (event) => {
 
         dishItem.dataset.dishId =
             dishId;
+
+        dishItem.dataset.dbId =
+            data.dish_id;
 
         dishItem.innerHTML = `
             <div class="employee-menu-dish-content">
@@ -1847,3 +2715,5 @@ employeeMenusList.addEventListener("click", (event) => {
             "Ajouter un plat";
     }
 });
+
+loadEmployeeMenus();
