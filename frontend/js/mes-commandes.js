@@ -147,24 +147,22 @@ document.addEventListener("DOMContentLoaded", async () => {
         `;
 
 
-        if (!isPast) {
-            const actions =
-                document.createElement("div");
+        const actions =
+            document.createElement("div");
 
-            actions.className =
-                "order-card-actions";
+        actions.className =
+            "order-card-actions";
 
-            actions.innerHTML = `
-                <a
-                    href="detail-commande.html?id=${order.id}"
-                    class="order-secondary-button"
-                >
-                    Voir le détail
-                </a>
-            `;
+        actions.innerHTML = `
+            <a
+                href="detail-commande.html?id=${order.id}"
+                class="order-secondary-button"
+            >
+                Voir le détail
+            </a>
+        `;
 
-            article.appendChild(actions);
-        }
+        article.appendChild(actions);
 
 
         return article;

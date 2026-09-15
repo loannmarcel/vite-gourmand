@@ -1854,6 +1854,11 @@ select {
     font-size: 11px;
 }
 
+.menu-card-detailed .review-count {
+    color: #777777;
+    font-size: 11px;
+    font-weight: 400;
+}
 
 /* ==========================================
    DESCRIPTION
@@ -7920,6 +7925,135 @@ padding-right: 48px;
 
     color: var(--text-primary);
     text-align: right;
+}
+
+/* =====================================================
+   AVIS UTILISATEUR - DÉTAIL COMMANDE
+===================================================== */
+
+.order-review {
+    margin-top: 32px;
+    padding-top: 28px;
+
+    border-top: 1px solid #e5e5e5;
+
+    font-family: "Inter", sans-serif;
+}
+
+.order-review h2 {
+    margin: 0 0 24px;
+
+    font-size: 22px;
+    line-height: 1.3;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.order-review-field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.order-review-field label {
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--text-primary);
+}
+
+.order-review-field select,
+.order-review-field textarea {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+
+    color: var(--text-primary);
+    background-color: var(--white);
+
+    border: 1px solid #d8d8d8;
+    border-radius: 8px;
+}
+
+.order-review-field select {
+    width: calc(100% - 16px);
+    min-height: 46px;
+}
+
+.order-review-field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.order-review-field select:focus,
+.order-review-field textarea:focus {
+    outline: none;
+    border-color: var(--green-dark);
+}
+
+.order-review-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 46px;
+    padding: 12px 20px;
+
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--white);
+    background-color: var(--green-dark);
+
+    border: 1px solid var(--green-dark);
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.order-review-stars {
+    margin-bottom: 14px;
+
+    font-size: 22px;
+    letter-spacing: 2px;
+
+    color: var(--green-dark);
+}
+
+.order-review-comment {
+    margin: 0 0 16px;
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    color: var(--text-primary);
+}
+
+.order-review-status {
+    display: inline-block;
+
+    margin: 0;
+    padding: 8px 12px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--green-dark);
+    background-color: #eef4ec;
+
+    border-radius: 999px;
+}
+
+.order-review-status-rejected {
+    color: #b42318;
+    background-color: #fdecec;
 }
 
 /* ========================================

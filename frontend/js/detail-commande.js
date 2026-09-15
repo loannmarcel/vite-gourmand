@@ -259,8 +259,154 @@ document.addEventListener("DOMContentLoaded", async () => {
                     </div>
                 ` : ""}
 
+                ${order.status === "completed" && !data.review ? `
+                <div class="order-review">
+                    <h2>Laisser un avis</h2>
+
+                    <form id="review-form">
+                        <div class="order-review-field">
+                            <label for="review-rating">
+                                Votre note *
+                            </label>
+
+                            <select id="review-rating" required>
+                                <option value="">
+                                    Choisissez une note
+                                </option>
+                                <option value="1">1 étoile</option>
+                                <option value="2">2 étoiles</option>
+                                <option value="3">3 étoiles</option>
+                                <option value="4">4 étoiles</option>
+                                <option value="5">5 étoiles</option>
+                            </select>
+                        </div>
+
+                        <div class="order-review-field">
+                            <label for="review-comment">
+                                Votre commentaire *
+                            </label>
+
+                            <textarea
+                                id="review-comment"
+                                rows="5"
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="order-review-submit"
+                        >
+                            Envoyer mon avis
+                        </button>
+                    </form>
+                </div>
+                ` : ""}
+
+                ${order.status === "completed" && data.review ? `
+                    <div class="order-review order-review-existing">
+
+                        <h2>Votre avis</h2>
+
+                        <div class="order-review-stars">
+                            ${"★".repeat(Number(data.review.rating))}
+                            ${"☆".repeat(5 - Number(data.review.rating))}
+                        </div>
+
+                        <p class="order-review-comment">
+                            ${data.review.comment}
+                        </p>
+
+                        <p class="order-review-status order-review-status-${data.review.status}">
+                            ${
+                                data.review.status === "approved"
+                                    ? "Votre avis a été validé."
+                                    : data.review.status === "rejected"
+                                        ? "Votre avis n'a pas été retenu."
+                                        : "Votre avis est en attente de validation."
+                            }
+                        </p>
+
+                    </div>
+                ` : ""}
+
             </div>
         `;
+
+
+        // ===== AVIS UTILISATEUR =====
+
+        const reviewForm =
+            document.getElementById("review-form");
+
+        if (reviewForm) {
+            reviewForm.addEventListener(
+                "submit",
+                async (event) => {
+                    event.preventDefault();
+
+                    const rating =
+                        document.getElementById(
+                            "review-rating"
+                        ).value;
+
+                    const comment =
+                        document.getElementById(
+                            "review-comment"
+                        ).value.trim();
+
+                    try {
+                        const response = await fetch(
+                            "../backend/routes/create-review.php",
+                            {
+                                method: "POST",
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+                                body: JSON.stringify({
+                                    order_id: order.id,
+                                    rating: Number(rating),
+                                    comment: comment
+                                })
+                            }
+                        );
+
+                        const result =
+                            await response.json();
+
+                        if (
+                            !response.ok ||
+                            !result.success
+                        ) {
+                            alert(
+                                result.message ||
+                                "Impossible d'envoyer votre avis."
+                            );
+
+                            return;
+                        }
+
+                        alert(result.message);
+
+                        window.location.reload();
+
+                    } catch (error) {
+                        console.error(
+                            "Erreur lors de l'envoi de l'avis :",
+                            error
+                        );
+
+                        alert(
+                            "Une erreur est survenue lors de l'envoi de votre avis."
+                        );
+                    }
+                }
+            );
+        }
+
+
+        // ===== ANNULATION DE LA COMMANDE =====
 
 
         const cancelButton =

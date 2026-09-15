@@ -79,8 +79,29 @@ if (!$order) {
     exit;
 }
 
+$reviewStmt = $pdo->prepare(
+    'SELECT
+        id,
+        rating,
+        comment,
+        status
+     FROM reviews
+     WHERE order_id = :order_id
+       AND user_id = :user_id
+     LIMIT 1'
+);
+
+$reviewStmt->execute([
+    'order_id' => $orderId,
+    'user_id' => $_SESSION['user_id']
+]);
+
+$review =
+    $reviewStmt->fetch(PDO::FETCH_ASSOC);
+
 
 echo json_encode([
     'success' => true,
-    'order' => $order
+    'order' => $order,
+    'review' => $review ?: null
 ]);
