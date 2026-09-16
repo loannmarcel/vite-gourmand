@@ -11,3 +11,9 @@ vendor/
 
 # Logs
 *.log
+
+# Fichiers uploadés
+backend/uploads/*
+!backend/uploads/menus/
+backend/uploads/menus/*
+!backend/uploads/menus/.gitkeep

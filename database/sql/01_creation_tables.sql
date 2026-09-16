@@ -10,13 +10,12 @@
 
 CREATE TABLE users (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
-    phone VARCHAR(20) NOT NULL,
-    email VARCHAR(190) NOT NULL UNIQUE,
-    address VARCHAR(255) NOT NULL,
-    postal_code VARCHAR(20) NOT NULL,
-    city VARCHAR(100) NOT NULL,
+    first_name VARCHAR(100) NULL,
+    last_name VARCHAR(100) NULL,
+    phone VARCHAR(20) NULL,
+    address VARCHAR(255) NULL,
+    postal_code VARCHAR(20) NULL,
+    city VARCHAR(100) NULL,
     password_hash VARCHAR(255) NOT NULL,
     role ENUM('user', 'employee', 'admin') NOT NULL DEFAULT 'user',
     is_active BOOLEAN NOT NULL DEFAULT TRUE,
@@ -34,6 +33,11 @@ CREATE TABLE menus (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(150) NOT NULL,
     description TEXT NOT NULL,
+    presentation_title VARCHAR(255) NULL,
+    presentation_text_1 TEXT NULL,
+    presentation_text_2 TEXT NULL,
+    highlight_title VARCHAR(255) NULL,
+    highlight_text TEXT NULL,
     theme VARCHAR(100) NOT NULL,
     diet VARCHAR(100) NOT NULL,
     min_people INT UNSIGNED NOT NULL,
@@ -133,6 +137,30 @@ CREATE TABLE orders (
     CONSTRAINT fk_orders_menu
         FOREIGN KEY (menu_id)
         REFERENCES menus(id)
+);
+
+
+-- ============================================================
+-- ANNULATIONS DE COMMANDES
+-- ============================================================
+
+CREATE TABLE order_cancellations (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    order_id INT UNSIGNED NOT NULL UNIQUE,
+    cancelled_by INT UNSIGNED NOT NULL,
+    contact_method ENUM('phone', 'email') NOT NULL,
+    reason TEXT NOT NULL,
+    cancelled_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_order_cancellations_order
+        FOREIGN KEY (order_id)
+        REFERENCES orders(id)
+        ON DELETE CASCADE,
+
+    CONSTRAINT fk_order_cancellations_user
+        FOREIGN KEY (cancelled_by)
+        REFERENCES users(id)
+        ON DELETE RESTRICT
 );
 
 

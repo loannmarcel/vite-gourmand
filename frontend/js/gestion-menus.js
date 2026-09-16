@@ -447,6 +447,17 @@ async function loadEmployeeMenus() {
                                     <input type="text">
                                 </div>
 
+                                <div class="employee-menu-dish-edit-field">
+
+                                    <label>Allergènes</label>
+
+                                    <input
+                                        type="text"
+                                        class="employee-menu-dish-allergens"
+                                    >
+
+                                </div>
+
                                 <div class="employee-menu-dish-edit-actions">
                                     <button
                                         type="button"
@@ -468,6 +479,57 @@ async function loadEmployeeMenus() {
                     }
 
                     dishItem.dataset.dbId = dish.id;
+
+                    let dishAllergensInput =
+                        dishItem.querySelector(
+                            ".employee-menu-dish-allergens"
+                        );
+
+                    if (!dishAllergensInput) {
+
+                        const dishEditPanel =
+                            dishItem.querySelector(
+                                ".employee-menu-dish-edit-panel"
+                            );
+
+                        const dishEditActions =
+                            dishItem.querySelector(
+                                ".employee-menu-dish-edit-actions"
+                            );
+
+                        if (dishEditPanel && dishEditActions) {
+
+                            const allergensField =
+                                document.createElement("div");
+
+                            allergensField.className =
+                                "employee-menu-dish-edit-field";
+
+                            allergensField.innerHTML = `
+                                <label>Allergènes</label>
+
+                                <input
+                                    type="text"
+                                    class="employee-menu-dish-allergens"
+                                >
+                            `;
+
+                            dishEditPanel.insertBefore(
+                                allergensField,
+                                dishEditActions
+                            );
+
+                            dishAllergensInput =
+                                allergensField.querySelector(
+                                    ".employee-menu-dish-allergens"
+                                );
+                        }
+                    }
+
+                    if (dishAllergensInput) {
+                        dishAllergensInput.value =
+                            dish.allergens ?? "";
+                    }
                     
                     const dishTypeLabels = {
                         starter: "Entrée",
@@ -1821,6 +1883,20 @@ addMenuSaveButton.addEventListener("click", async () => {
 
                     </div>
 
+                    <div class="employee-menu-dish-edit-field">
+
+                        <label>
+                            Allergènes
+                        </label>
+
+                        <input
+                            type="text"
+                            class="employee-menu-dish-allergens"
+                            value="${safeAllergens}"
+                        >
+
+                    </div>
+
                     <div class="employee-menu-dish-edit-actions">
 
                         <button
@@ -2615,9 +2691,14 @@ employeeMenusList.addEventListener("click", async (event) => {
             );
 
         const nameInput =
-            dishItem.querySelector(
-                ".employee-menu-dish-edit-field input"
-            );
+        dishItem.querySelector(
+            '.employee-menu-dish-edit-field input:not(.employee-menu-dish-allergens)'
+        );
+
+        const allergensInput =
+        dishItem.querySelector(
+            ".employee-menu-dish-allergens"
+        );
 
         const dishType =
             dishItem.querySelector(".employee-menu-dish-type");
@@ -2650,7 +2731,8 @@ employeeMenusList.addEventListener("click", async (event) => {
                         dish_id: Number(dishDbId),
                         name: nameInput.value.trim(),
                         category:
-                            categoryByValue[typeInput.value]
+                            categoryByValue[typeInput.value],
+                        allergens: allergensInput?.value.trim() ?? ""
                     })
                 }
             );
@@ -2979,6 +3061,19 @@ employeeMenusList.addEventListener("click", async (event) => {
                     <input
                         type="text"
                         value="${dishName}"
+                    >
+
+                </div>
+
+                <div class="employee-menu-dish-edit-field">
+
+                    <label>
+                        Allergènes
+                    </label>
+
+                    <input
+                        type="text"
+                        class="employee-menu-dish-allergens"
                     >
 
                 </div>

@@ -1,3 +1,104 @@
+async function loadEmployees() {
+
+    try {
+        const response = await fetch(
+            "../backend/routes/admin-employees.php"
+        );
+
+        const data = await response.json();
+
+        if (!response.ok || data.success !== true) {
+            throw new Error(
+                data.message ||
+                "Impossible de récupérer les employés."
+            );
+        }
+
+        console.log(
+            "Employés récupérés depuis MySQL :",
+            data.employees
+        );
+
+        employeesList.innerHTML = "";
+
+        data.employees.forEach((employee) => {
+
+            const employeeCard =
+                document.createElement("article");
+
+            const isActive =
+                Number(employee.is_active) === 1;
+
+            employeeCard.className =
+                "admin-employee-card";
+
+            employeeCard.dataset.employeeId =
+                employee.id;
+
+            employeeCard.dataset.status =
+                isActive ? "active" : "inactive";
+
+            employeeCard.innerHTML = `
+                <div class="admin-employee-info">
+
+                    <div class="admin-employee-avatar">
+                        E
+                    </div>
+
+                    <div>
+                        <h2></h2>
+
+                        <p>
+                            ${
+                                employee.first_name && employee.last_name
+                                    ? `${employee.first_name} ${employee.last_name} — `
+                                    : ""
+                            }Compte employé
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="admin-employee-status">
+
+                    <span
+                        class="admin-employee-status-badge ${
+                            isActive ? "active" : "inactive"
+                        }"
+                    >
+                        ${isActive ? "Actif" : "Désactivé"}
+                    </span>
+
+                    <button
+                        type="button"
+                        class="admin-employee-toggle"
+                    >
+                        ${
+                            isActive
+                                ? "Désactiver le compte"
+                                : "Réactiver le compte"
+                        }
+                    </button>
+
+                </div>
+            `;
+
+            employeeCard.querySelector("h2").textContent =
+                employee.email;
+
+            employeesList.appendChild(
+                employeeCard
+            );
+        });
+
+    } catch (error) {
+        console.error(
+            "Erreur lors du chargement des employés :",
+            error
+        );
+    }
+}
+
 const addEmployeeButton = document.getElementById("admin-employees-add-button");
 const employeeCreatePanel = document.getElementById("admin-employee-create");
 
@@ -21,62 +122,67 @@ cancelEmployeeButton.addEventListener("click", () => {
     employeePasswordInput.value = "";
 });
 
-saveEmployeeButton.addEventListener("click", () => {
+saveEmployeeButton.addEventListener("click", async () => {
 
-    const email = employeeEmailInput.value.trim();
-    const password = employeePasswordInput.value;
+    const email =
+        employeeEmailInput.value.trim();
+
+    const password =
+        employeePasswordInput.value;
 
     if (email === "" || password === "") {
-        alert("Veuillez renseigner une adresse e-mail et un mot de passe.");
+        alert(
+            "Veuillez renseigner une adresse e-mail et un mot de passe."
+        );
+
         return;
     }
 
-    const employeeCard = document.createElement("article");
+    try {
+        const response = await fetch(
+            "../backend/routes/create-employee-admin.php",
+            {
+                method: "POST",
 
-    employeeCard.className = "admin-employee-card";
-    employeeCard.dataset.status = "active";
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-    employeeCard.innerHTML = `
-        <div class="admin-employee-info">
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                })
+            }
+        );
 
-            <div class="admin-employee-avatar">
-                E
-            </div>
+        const data = await response.json();
 
-            <div>
-                <h2>
-                    ${email}
-                </h2>
+        if (!response.ok || data.success !== true) {
+            throw new Error(
+                data.message ||
+                "Impossible de créer le compte employé."
+            );
+        }
 
-                <p>
-                    Compte employé
-                </p>
-            </div>
+        employeeEmailInput.value = "";
+        employeePasswordInput.value = "";
 
-        </div>
+        employeeCreatePanel.hidden = true;
 
-        <div class="admin-employee-status">
+        await loadEmployees();
 
-            <span class="admin-employee-status-badge active">
-                Actif
-            </span>
+        alert(
+            "Compte employé créé avec succès."
+        );
 
-            <button
-                type="button"
-                class="admin-employee-toggle"
-            >
-                Désactiver le compte
-            </button>
+    } catch (error) {
+        alert(error.message);
 
-        </div>
-    `;
-
-    employeesList.appendChild(employeeCard);
-
-    employeeEmailInput.value = "";
-    employeePasswordInput.value = "";
-
-    employeeCreatePanel.hidden = true;
+        console.error(
+            "Erreur lors de la création de l'employé :",
+            error
+        );
+    }
 });
 
 employeePasswordToggle.addEventListener("click", () => {
@@ -93,39 +199,67 @@ employeePasswordToggle.addEventListener("click", () => {
     );
 });
 
-employeesList.addEventListener("click", (event) => {
+employeesList.addEventListener("click", async (event) => {
 
-    const toggleButton = event.target.closest(".admin-employee-toggle");
+    const toggleButton =
+        event.target.closest(
+            ".admin-employee-toggle"
+        );
 
     if (!toggleButton) {
         return;
     }
 
-    const employeeCard = toggleButton.closest(".admin-employee-card");
-    const statusBadge = employeeCard.querySelector(
-        ".admin-employee-status-badge"
-    );
+    const employeeCard =
+        toggleButton.closest(
+            ".admin-employee-card"
+        );
 
-    const isActive = employeeCard.dataset.status === "active";
+    const employeeId =
+        Number(employeeCard.dataset.employeeId);
 
-    if (isActive) {
+    const isCurrentlyActive =
+        employeeCard.dataset.status === "active";
 
-        employeeCard.dataset.status = "inactive";
+    const newStatus =
+        !isCurrentlyActive;
 
-        statusBadge.textContent = "Désactivé";
-        statusBadge.classList.remove("active");
-        statusBadge.classList.add("inactive");
+    try {
+        const response = await fetch(
+            "../backend/routes/toggle-employee-status.php",
+            {
+                method: "POST",
 
-        toggleButton.textContent = "Réactiver le compte";
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-    } else {
+                body: JSON.stringify({
+                    employee_id: employeeId,
+                    is_active: newStatus
+                })
+            }
+        );
 
-        employeeCard.dataset.status = "active";
+        const data = await response.json();
 
-        statusBadge.textContent = "Actif";
-        statusBadge.classList.remove("inactive");
-        statusBadge.classList.add("active");
+        if (!response.ok || data.success !== true) {
+            throw new Error(
+                data.message ||
+                "Impossible de modifier le compte employé."
+            );
+        }
 
-        toggleButton.textContent = "Désactiver le compte";
+        await loadEmployees();
+
+    } catch (error) {
+        alert(error.message);
+
+        console.error(
+            "Erreur lors de la modification du compte employé :",
+            error
+        );
     }
 });
+
+loadEmployees();
