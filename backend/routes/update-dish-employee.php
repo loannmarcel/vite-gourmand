@@ -50,6 +50,7 @@ $data = json_decode(
 $dishId = (int) ($data["dish_id"] ?? 0);
 $name = trim($data["name"] ?? "");
 $category = trim($data["category"] ?? "");
+$allergens = trim($data["allergens"] ?? "");
 
 $allowedCategories = [
     "starter",
@@ -115,13 +116,15 @@ try {
     $updateStatement = $pdo->prepare(
         "UPDATE dishes
         SET name = :name,
-            category = :category
+            category = :category,
+            allergens = :allergens
         WHERE id = :dish_id"
     );
 
     $updateStatement->execute([
         "name" => $name,
         "category" => $category,
+        "allergens" => $allergens !== "" ? $allergens : null,
         "dish_id" => $dishId
     ]);
 

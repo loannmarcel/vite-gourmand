@@ -5940,9 +5940,9 @@ select {
 
     position: absolute;
     right: 16px;
-    top: 50%;
+    bottom: 28px;
 
-    transform: translateY(10%);
+    transform: translateY(50%);    
 
     font-size: 18px;
     line-height: 1;
@@ -8163,6 +8163,66 @@ padding-right: 48px;
     background-color: var(--green-dark);
 
     border: 1px solid var(--green-dark);
+}
+
+/* ========================================
+   HISTORIQUE DES COMMANDES - EMPLOYÉ
+======================================== */
+
+.employee-order-history {
+    margin-top: 28px;
+}
+
+.employee-order-history h3 {
+    margin: 0 0 20px;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.employee-order-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 520px;
+}
+
+.employee-order-history-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+
+    padding: 12px 0 12px 28px;
+
+    font-size: 14px;
+}
+
+.employee-order-history-item::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 50%;
+
+    width: 9px;
+    height: 9px;
+
+    border-radius: 50%;
+    background: var(--green-dark);
+
+    transform: translateY(-50%);
+}
+
+.employee-order-history-item span {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.employee-order-history-item strong {
+    font-size: 13px;
+    font-weight: 500;
+    color: #6b6b6b;
 }
 
 /* =========================================================

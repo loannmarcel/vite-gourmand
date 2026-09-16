@@ -172,6 +172,126 @@ async function loadEmployeeMenus() {
                 descriptionInput.value = menu.description;
             }
 
+            if (
+                descriptionInput &&
+                !card.querySelector(`#${menuSlug}-presentation-title`)
+            ) {
+                const descriptionField =
+                    descriptionInput.closest(
+                        ".employee-menu-edit-field"
+                    );
+
+                descriptionField.insertAdjacentHTML(
+                    "afterend",
+                    `
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="${menuSlug}-presentation-title">
+                                Titre de présentation
+                            </label>
+
+                            <input
+                                type="text"
+                                id="${menuSlug}-presentation-title"
+                            >
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="${menuSlug}-presentation-text-1">
+                                Premier texte de présentation
+                            </label>
+
+                            <textarea
+                                id="${menuSlug}-presentation-text-1"
+                                rows="4"
+                            ></textarea>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="${menuSlug}-presentation-text-2">
+                                Deuxième texte de présentation
+                            </label>
+
+                            <textarea
+                                id="${menuSlug}-presentation-text-2"
+                                rows="4"
+                            ></textarea>
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="${menuSlug}-highlight-title">
+                                Titre de mise en avant
+                            </label>
+
+                            <input
+                                type="text"
+                                id="${menuSlug}-highlight-title"
+                            >
+
+                        </div>
+
+                        <div class="employee-menu-edit-field employee-menu-edit-field-full">
+
+                            <label for="${menuSlug}-highlight-text">
+                                Texte de mise en avant
+                            </label>
+
+                            <textarea
+                                id="${menuSlug}-highlight-text"
+                                rows="4"
+                            ></textarea>
+
+                        </div>
+                    `
+                );
+            }
+
+            const presentationTitleInput =
+                card.querySelector(`#${menuSlug}-presentation-title`);
+
+            if (presentationTitleInput) {
+                presentationTitleInput.value =
+                    menu.presentation_title ?? "";
+            }
+
+            const presentationText1Input =
+                card.querySelector(`#${menuSlug}-presentation-text-1`);
+
+            if (presentationText1Input) {
+                presentationText1Input.value =
+                    menu.presentation_text_1 ?? "";
+            }
+
+            const presentationText2Input =
+                card.querySelector(`#${menuSlug}-presentation-text-2`);
+
+            if (presentationText2Input) {
+                presentationText2Input.value =
+                    menu.presentation_text_2 ?? "";
+            }
+
+            const highlightTitleInput =
+                card.querySelector(`#${menuSlug}-highlight-title`);
+
+            if (highlightTitleInput) {
+                highlightTitleInput.value =
+                    menu.highlight_title ?? "";
+            }
+
+            const highlightTextInput =
+                card.querySelector(`#${menuSlug}-highlight-text`);
+
+            if (highlightTextInput) {
+                highlightTextInput.value =
+                    menu.highlight_text ?? "";
+            }
+
             const menuDescription =
                 card.querySelector(
                     ".employee-menu-card-header p"
@@ -186,6 +306,24 @@ async function loadEmployeeMenus() {
                 card.querySelector(`#${menuSlug}-theme`);
 
             if (themeInput) {
+
+                const themeOptionExists =
+                    Array.from(themeInput.options).some(
+                        (option) => option.value === menu.theme
+                    );
+
+                if (!themeOptionExists) {
+                    const newThemeOption =
+                        document.createElement("option");
+
+                    newThemeOption.value = menu.theme;
+                    newThemeOption.textContent =
+                        menu.theme.charAt(0).toUpperCase() +
+                        menu.theme.slice(1);
+
+                    themeInput.appendChild(newThemeOption);
+                }
+
                 themeInput.value = menu.theme;
             }
 
@@ -591,6 +729,21 @@ employeeMenusList.addEventListener("click", async (event) => {
         const descriptionInput =
             card.querySelector(`#${menuId}-description`);
 
+        const presentationTitleInput =
+            card.querySelector(`#${menuId}-presentation-title`);
+
+        const presentationText1Input =
+            card.querySelector(`#${menuId}-presentation-text-1`);
+
+        const presentationText2Input =
+            card.querySelector(`#${menuId}-presentation-text-2`);
+
+        const highlightTitleInput =
+            card.querySelector(`#${menuId}-highlight-title`);
+
+        const highlightTextInput =
+            card.querySelector(`#${menuId}-highlight-text`);
+
         const imagesInput =
             card.querySelector(`#${menuId}-images`);
 
@@ -618,6 +771,20 @@ employeeMenusList.addEventListener("click", async (event) => {
                         body: JSON.stringify({
                             menu_id: Number(dbId),
                             name: nameInput.value.trim(),
+                            presentation_title:
+                                presentationTitleInput?.value.trim() ?? "",
+
+                            presentation_text_1:
+                                presentationText1Input?.value.trim() ?? "",
+
+                            presentation_text_2:
+                                presentationText2Input?.value.trim() ?? "",
+
+                            highlight_title:
+                                highlightTitleInput?.value.trim() ?? "",
+
+                            highlight_text:
+                                highlightTextInput?.value.trim() ?? "",
                             description: descriptionInput.value.trim(),
                             theme: themeInput.value,
                             diet: regimeInput.value.trim(),
@@ -1184,6 +1351,21 @@ addMenuSaveButton.addEventListener("click", async () => {
     const descriptionInput =
         document.querySelector("#new-menu-description");
 
+    const presentationTitleInput =
+        document.querySelector("#new-menu-presentation-title");
+
+    const presentationText1Input =
+        document.querySelector("#new-menu-presentation-text-1");
+
+    const presentationText2Input =
+        document.querySelector("#new-menu-presentation-text-2");
+
+    const highlightTitleInput =
+        document.querySelector("#new-menu-highlight-title");
+
+    const highlightTextInput =
+        document.querySelector("#new-menu-highlight-text");
+
     const conditionsInput =
         document.querySelector("#new-menu-conditions");
 
@@ -1251,6 +1433,21 @@ addMenuSaveButton.addEventListener("click", async () => {
     const menuDescription =
         descriptionInput.value.trim();
 
+    const menuPresentationTitle =
+        presentationTitleInput.value.trim();
+
+    const menuPresentationText1 =
+        presentationText1Input.value.trim();
+
+    const menuPresentationText2 =
+        presentationText2Input.value.trim();
+
+    const menuHighlightTitle =
+        highlightTitleInput.value.trim();
+
+    const menuHighlightText =
+        highlightTextInput.value.trim();
+
     const menuConditions =
         conditionsInput.value.trim();
 
@@ -1312,12 +1509,18 @@ addMenuSaveButton.addEventListener("click", async () => {
                 body: JSON.stringify({
                     name: menuName,
                     description: menuDescription,
+                    presentation_title: menuPresentationTitle,
+                    presentation_text_1: menuPresentationText1,
+                    presentation_text_2: menuPresentationText2,
+                    highlight_title: menuHighlightTitle,
+                    highlight_text: menuHighlightText,
                     theme: menuTheme,
                     diet: menuRegime,
                     min_people: Number(menuMinimum),
                     base_price: Number(menuPrice),
                     stock_quantity: Number(menuStock),
-                    conditions: menuConditions
+                    conditions: menuConditions,
+                    allergens: menuAllergens
                 })
             }
         );
@@ -1352,10 +1555,12 @@ addMenuSaveButton.addEventListener("click", async () => {
                     headers: {
                         "Content-Type": "application/json"
                     },
+                    
                     body: JSON.stringify({
                         menu_id: data.menu_id,
                         name: dish.name,
-                        category: categoryByType[dish.type]
+                        category: categoryByType[dish.type],
+                        allergens: menuAllergens
                     })
                 }
             );
@@ -1492,6 +1697,21 @@ addMenuSaveButton.addEventListener("click", async () => {
 
     const safeDescription =
         escapeHTML(menuDescription);
+
+    const safePresentationTitle =
+        escapeHTML(menuPresentationTitle);
+
+    const safePresentationText1 =
+        escapeHTML(menuPresentationText1);
+
+    const safePresentationText2 =
+        escapeHTML(menuPresentationText2);
+
+    const safeHighlightTitle =
+        escapeHTML(menuHighlightTitle);
+
+    const safeHighlightText =
+        escapeHTML(menuHighlightText);
 
     const safeConditions =
         escapeHTML(menuConditions);
@@ -1882,6 +2102,92 @@ addMenuSaveButton.addEventListener("click", async () => {
                     id="${menuId}-description"
                     rows="4"
                 >${safeDescription}</textarea>
+
+            </div>
+
+              <div
+                class="employee-menu-edit-field
+                       employee-menu-edit-field-full"
+            >
+
+                <label for="${menuId}-presentation-title">
+                    Titre de présentation
+                </label>
+
+                <input
+                    type="text"
+                    id="${menuId}-presentation-title"
+                    value="${safePresentationTitle}"
+                >
+
+            </div>
+
+
+            <div
+                class="employee-menu-edit-field
+                       employee-menu-edit-field-full"
+            >
+
+                <label for="${menuId}-presentation-text-1">
+                    Premier texte de présentation
+                </label>
+
+                <textarea
+                    id="${menuId}-presentation-text-1"
+                    rows="4"
+                >${safePresentationText1}</textarea>
+
+            </div>
+
+
+            <div
+                class="employee-menu-edit-field
+                       employee-menu-edit-field-full"
+            >
+
+                <label for="${menuId}-presentation-text-2">
+                    Deuxième texte de présentation
+                </label>
+
+                <textarea
+                    id="${menuId}-presentation-text-2"
+                    rows="4"
+                >${safePresentationText2}</textarea>
+
+            </div>
+
+
+            <div
+                class="employee-menu-edit-field
+                       employee-menu-edit-field-full"
+            >
+
+                <label for="${menuId}-highlight-title">
+                    Titre de mise en avant
+                </label>
+
+                <input
+                    type="text"
+                    id="${menuId}-highlight-title"
+                    value="${safeHighlightTitle}"
+                >
+
+            </div>
+
+
+            <div
+                class="employee-menu-edit-field
+                       employee-menu-edit-field-full"
+            >
+
+                <label for="${menuId}-highlight-text">
+                    Texte de mise en avant
+                </label>
+
+                <textarea
+                    id="${menuId}-highlight-text"
+                    rows="4"
+                >${safeHighlightText}</textarea>
 
             </div>
 

@@ -50,6 +50,7 @@ $data = json_decode(
 $menuId = (int) ($data["menu_id"] ?? 0);
 $name = trim($data["name"] ?? "");
 $category = trim($data["category"] ?? "");
+$allergens = trim($data["allergens"] ?? "");
 
 $allowedCategories = [
     "starter",
@@ -117,17 +118,20 @@ try {
     $dishStatement = $pdo->prepare(
         "INSERT INTO dishes (
             name,
-            category
+            category,
+            allergens
         )
         VALUES (
             :name,
-            :category
+            :category,
+            :allergens
         )"
     );
 
     $dishStatement->execute([
         "name" => $name,
-        "category" => $category
+        "category" => $category,
+        "allergens" => $allergens !== "" ? $allergens : null
     ]);
 
     $dishId = (int) $pdo->lastInsertId();

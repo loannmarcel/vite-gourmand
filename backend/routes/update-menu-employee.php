@@ -59,6 +59,11 @@ $menuId = filter_var(
 
 $name = trim($input['name'] ?? '');
 $description = trim($input['description'] ?? '');
+$presentationTitle = trim($input['presentation_title'] ?? '');
+$presentationText1 = trim($input['presentation_text_1'] ?? '');
+$presentationText2 = trim($input['presentation_text_2'] ?? '');
+$highlightTitle = trim($input['highlight_title'] ?? '');
+$highlightText = trim($input['highlight_text'] ?? '');
 $theme = trim($input['theme'] ?? '');
 $diet = trim($input['diet'] ?? '');
 
@@ -127,6 +132,11 @@ try {
         SET
             name = ?,
             description = ?,
+            presentation_title = ?,
+            presentation_text_1 = ?,
+            presentation_text_2 = ?,
+            highlight_title = ?,
+            highlight_text = ?,
             theme = ?,
             diet = ?,
             min_people = ?,
@@ -139,6 +149,11 @@ try {
     $stmt->execute([
         $name,
         $description,
+        $presentationTitle !== '' ? $presentationTitle : null,
+        $presentationText1 !== '' ? $presentationText1 : null,
+        $presentationText2 !== '' ? $presentationText2 : null,
+        $highlightTitle !== '' ? $highlightTitle : null,
+        $highlightText !== '' ? $highlightText : null,
         $theme,
         $diet,
         $minPeople,

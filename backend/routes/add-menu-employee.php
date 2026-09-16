@@ -49,6 +49,13 @@ $data = json_decode(
 
 $name = trim($data["name"] ?? "");
 $description = trim($data["description"] ?? "");
+
+$presentationTitle = trim($data["presentation_title"] ?? "");
+$presentationText1 = trim($data["presentation_text_1"] ?? "");
+$presentationText2 = trim($data["presentation_text_2"] ?? "");
+$highlightTitle = trim($data["highlight_title"] ?? "");
+$highlightText = trim($data["highlight_text"] ?? "");
+
 $theme = trim($data["theme"] ?? "");
 $diet = trim($data["diet"] ?? "");
 $minPeople = (int) ($data["min_people"] ?? 0);
@@ -104,6 +111,11 @@ try {
         "INSERT INTO menus (
             name,
             description,
+            presentation_title,
+            presentation_text_1,
+            presentation_text_2,
+            highlight_title,
+            highlight_text,
             theme,
             diet,
             min_people,
@@ -116,6 +128,11 @@ try {
         VALUES (
             :name,
             :description,
+            :presentation_title,
+            :presentation_text_1,
+            :presentation_text_2,
+            :highlight_title,
+            :highlight_text,
             :theme,
             :diet,
             :min_people,
@@ -130,6 +147,11 @@ try {
     $statement->execute([
         "name" => $name,
         "description" => $description,
+        "presentation_title" => $presentationTitle !== "" ? $presentationTitle : null,
+        "presentation_text_1" => $presentationText1 !== "" ? $presentationText1 : null,
+        "presentation_text_2" => $presentationText2 !== "" ? $presentationText2 : null,
+        "highlight_title" => $highlightTitle !== "" ? $highlightTitle : null,
+        "highlight_text" => $highlightText !== "" ? $highlightText : null,
         "theme" => $theme,
         "diet" => $diet,
         "min_people" => $minPeople,

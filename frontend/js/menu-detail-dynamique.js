@@ -207,6 +207,11 @@ async function chargerMenu() {
         menuOrderPrice.dataset.minPeople = menu.min_people;
         menuOrderPrice.dataset.minPrice = menu.base_price;
 
+        const orderPeopleInput = document.querySelector("#order-people");
+
+        orderPeopleInput.value = menu.min_people;
+        orderPeopleInput.min = menu.min_people;
+
         console.log(
             "Plats du menu :",
             menu.dishes
@@ -280,6 +285,109 @@ async function chargerMenu() {
             span.textContent = allergen;
 
             menuAllergens.appendChild(span);
+        });
+
+        const menuRecommendationsGrid = document.querySelector(
+            "#menu-recommendations-grid"
+        );
+
+        const recommendedMenus = data.menus
+        .filter(function (recommendedMenu) {
+            return Number(recommendedMenu.id) !== Number(menu.id);
+        })
+        .slice(0, 2);
+
+        const recommendationsButton =
+        menuRecommendationsGrid.querySelector(
+            ".menu-recommendations-button"
+        );
+
+        recommendedMenus.forEach(function (recommendedMenu) {
+            const article = document.createElement("article");
+
+            article.className = "menu-recommendation-card";
+
+            const imageContainer = document.createElement("div");
+
+            imageContainer.className = "menu-recommendation-image";
+
+            const image = document.createElement("img");
+
+            image.src = recommendedMenu.image_path.startsWith("frontend/")
+                ? "../" + recommendedMenu.image_path
+                : "../" + recommendedMenu.image_path;
+
+            image.alt = recommendedMenu.name;
+
+            imageContainer.appendChild(image);
+            article.appendChild(imageContainer);
+
+            const content = document.createElement("div");
+
+            content.className = "menu-recommendation-content";
+
+            const title = document.createElement("h3");
+
+            title.textContent = recommendedMenu.name;
+
+            content.appendChild(title);
+
+            const price = document.createElement("p");
+
+            price.className = "menu-recommendation-price";
+
+            price.appendChild(
+                document.createTextNode(
+                    Number(recommendedMenu.base_price)
+                        .toFixed(2)
+                        .replace(".", ",") + " € "
+                )
+            );
+
+            const priceLabel = document.createElement("span");
+
+            priceLabel.textContent = "/ menu";
+
+            price.appendChild(priceLabel);
+            content.appendChild(price);
+
+            const status = document.createElement("span");
+
+            status.className = "menu-recommendation-status";
+            status.textContent = "Disponible";
+
+            content.appendChild(status);
+
+            const minimum = document.createElement("p");
+
+            minimum.className = "menu-recommendation-minimum";
+
+            minimum.textContent =
+                "Pour " +
+                recommendedMenu.min_people +
+                " personnes minimum";
+
+            content.appendChild(minimum);
+
+            const link = document.createElement("a");
+
+            link.className = "menu-recommendation-link";
+            link.href = "detail-menu.html?id=" + recommendedMenu.id;
+            link.setAttribute(
+                "aria-label",
+                "Voir le détail du " + recommendedMenu.name
+            );
+            link.textContent = "→";
+
+            content.appendChild(link);
+
+            article.appendChild(content);
+
+            menuRecommendationsGrid.insertBefore(
+                article,
+                recommendationsButton
+            );
+
         });
 
         const detailMenuScript = document.createElement(
