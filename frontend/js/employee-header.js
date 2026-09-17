@@ -28,6 +28,47 @@ async function protectEmployeePage() {
             return;
         }
 
+        if (data.user.role === "admin") {
+
+            const dashboardLinks =
+                document.querySelectorAll(
+                    'a[href="espace-employe.html"]'
+                );
+
+            dashboardLinks.forEach((link) => {
+                link.href = "espace-admin.html";
+            });
+
+            const roleLabel =
+                document.querySelector(
+                    "[data-role-label]"
+                );
+
+            if (roleLabel) {
+                roleLabel.textContent =
+                    "Espace administrateur";
+            }
+
+            const accountAvatar =
+                document.querySelector(
+                    ".header-account-avatar"
+                );
+
+            const accountText =
+                document.querySelector(
+                    ".header-account-text"
+                );
+
+            if (accountAvatar) {
+                accountAvatar.textContent = "A";
+            }
+
+            if (accountText) {
+                accountText.textContent =
+                    "Espace administrateur";
+            }
+        }
+
     } catch (error) {
         console.error(
             "Erreur de vérification de session :",

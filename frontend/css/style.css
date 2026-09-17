@@ -6789,13 +6789,38 @@ select {
     min-width: 0;
 }
 
+.admin-chart-item > span {
+    min-height: 38px;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    text-align: center;
+}
+
 .admin-chart-bar-wrapper {
+    position: relative;
+
     display: flex;
     align-items: flex-end;
 
     width: 100%;
     max-width: 48px;
     height: 200px;
+}
+
+.admin-chart-value {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin-bottom: 6px;
+
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--green-dark);
 }
 
 .admin-chart-bar {
