@@ -116,6 +116,7 @@ if (
 $stmt = $pdo->prepare(
     'SELECT
         orders.id,
+        orders.menu_id,
         orders.status,
         users.first_name,
         users.last_name,
@@ -233,6 +234,20 @@ try {
         'status' => 'cancelled'
     ]);
 
+    // ========================================
+    // RESTAURATION DU STOCK
+    // ========================================
+
+    $stmt = $pdo->prepare(
+        'UPDATE menus
+        SET stock_quantity = stock_quantity + 1,
+            is_available = 1
+        WHERE id = :menu_id'
+    );
+
+    $stmt->execute([
+        'menu_id' => $order['menu_id']
+    ]);
 
     $pdo->commit();
 

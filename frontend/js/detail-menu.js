@@ -101,6 +101,13 @@ const timeInput = document.querySelector("#order-time");
 
 // Temps de préparation propre au menu
 const preparationHours = Number(orderCard.dataset.preparationHours);
+const conditions = orderCard.dataset.conditions || "";
+
+const orderDelayMatch = conditions.match(/(\d+)\s*h/i);
+
+const orderDelayHours = orderDelayMatch
+    ? Number(orderDelayMatch[1])
+    : preparationHours;
 
 // Horaires actuels de Vite & Gourmand
 const openingHour = 9;
@@ -161,7 +168,7 @@ function getEarliestDeliveryMoment() {
 
     // Ajout du temps de préparation
     earliestDelivery.setHours(
-        earliestDelivery.getHours() + preparationHours
+        earliestDelivery.getHours() + orderDelayHours
     );
 
     // Samedi ou dimanche

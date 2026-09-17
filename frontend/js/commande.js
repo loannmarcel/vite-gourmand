@@ -106,6 +106,7 @@ const checkoutSubmit = document.querySelector("#checkout-submit");
 const addressInput = document.querySelector("#order-address");
 const postalCodeInput = document.querySelector("#order-postal-code");
 const cityInput = document.querySelector("#order-city");
+const phoneInput = document.querySelector("#order-phone");
 
 async function loadAccountAddress() {
     try {
@@ -124,6 +125,7 @@ async function loadAccountAddress() {
         addressInput.value = user.address || "";
         postalCodeInput.value = user.postal_code || "";
         cityInput.value = user.city || "";
+        phoneInput.value = user.phone || "";
 
     } catch (error) {
         console.error(

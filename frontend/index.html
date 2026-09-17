@@ -34,6 +34,10 @@
 
 <body>
 
+    <a href="#main-content" class="skip-link">
+        Aller au contenu principal
+    </a>
+
     <!-- =====================================================
          HEADER
     ====================================================== -->
@@ -64,7 +68,11 @@
 
         <nav id="main-navigation" class="main-nav">
 
-            <a href="index.html" class="active">
+            <a
+                href="index.html"
+                class="active"
+                aria-current="page"
+            >
                 Accueil
             </a>
 
@@ -166,7 +174,7 @@
          CONTENU PRINCIPAL
     ====================================================== -->
 
-    <main>
+    <main id="main-content">
 
 
         <!-- =================================================
@@ -231,7 +239,7 @@
 
                 <img
                     src="assets/images/image-hero.png"
-                    alt="Plat préparé par Vite & Gourmand"
+                    alt="Assiette composée de viandes, légumes et accompagnements"
                 >
 
             </div>
@@ -655,26 +663,6 @@
                     Des menus frais, faits maison et de saison.
                 </p>
 
-
-                <div class="social-links">
-
-                    <a href="#" aria-label="Facebook">
-                        <img src="assets/icons/icone-facebook.png"
-                        alt="Facebook">
-                    </a>
-
-                    <a href="#" aria-label="LinkedIn">
-                        <img src="assets/icons/icone-linkedin.png"
-                        alt="Linkedin">
-                    </a>
-
-                    <a href="#" aria-label="Instagram">
-                        <img src="assets/icons/icone-instagram.png"
-                        alt="Instagram">
-                    </a>
-
-                </div>
-
             </div>
 
 
@@ -723,7 +711,7 @@
                     CGV
                 </a>
 
-                <a href="#">
+                <a href="politique-confidentialite.html">
                     Politique de confidentialité
                 </a>
 
@@ -773,6 +761,10 @@
 
                 <p>
                     Samedi sur rendez-vous
+                </p>
+
+                <p>
+                    Dimanche : fermé
                 </p>
 
             </div>

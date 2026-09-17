@@ -53,6 +53,7 @@ if ($orderId <= 0) {
 $stmt = $pdo->prepare(
     'SELECT
         id,
+        menu_id,
         status
      FROM orders
      WHERE id = :order_id
@@ -136,6 +137,21 @@ try {
     $stmt->execute([
         'order_id' => $orderId,
         'status' => 'cancelled'
+    ]);
+
+    // ========================================
+    // RESTAURATION DU STOCK
+    // ========================================
+
+    $stmt = $pdo->prepare(
+        'UPDATE menus
+        SET stock_quantity = stock_quantity + 1,
+            is_available = 1
+        WHERE id = :menu_id'
+    );
+
+    $stmt->execute([
+        'menu_id' => $order['menu_id']
     ]);
 
 

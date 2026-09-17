@@ -102,6 +102,8 @@ $stmt = $pdo->prepare(
         name,
         min_people,
         base_price,
+        conditions,
+        stock_quantity,
         is_available
      FROM menus
      WHERE id = :id
@@ -138,6 +140,23 @@ if (!(bool) $menu['is_available']) {
     exit;
 }
 
+// ========================================
+// STOCK DISPONIBLE
+// ========================================
+
+$stockQuantity = (int) $menu['stock_quantity'];
+
+if ($stockQuantity <= 0) {
+    http_response_code(409);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Ce menu est actuellement en rupture de stock.'
+    ]);
+
+    exit;
+}
+
 
 // ========================================
 // NOMBRE MINIMUM DE PERSONNES
@@ -156,6 +175,123 @@ if ($people < $minPeople) {
     exit;
 }
 
+// ========================================
+// VALIDATION DE LA DATE ET DE L'HEURE
+// ========================================
+
+$deliveryDateTime = DateTime::createFromFormat(
+    'Y-m-d H:i',
+    $deliveryDate . ' ' . $deliveryTime
+);
+
+if (!$deliveryDateTime) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'La date ou l’heure de livraison est invalide.'
+    ]);
+
+    exit;
+}
+
+$now = new DateTime();
+
+if ($deliveryDateTime <= $now) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'La date de livraison doit être dans le futur.'
+    ]);
+
+    exit;
+}
+
+$orderDelayHours = 0;
+
+if (
+    preg_match(
+        '/(\d+)\s*h/i',
+        (string) $menu['conditions'],
+        $matches
+    )
+) {
+    $orderDelayHours = (int) $matches[1];
+}
+
+$minimumDeliveryDateTime = clone $now;
+$minimumDeliveryDateTime->modify(
+    '+' . $orderDelayHours . ' hours'
+);
+
+if ($deliveryDateTime < $minimumDeliveryDateTime) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Le délai minimum de commande pour ce menu n’est pas respecté.'
+    ]);
+
+    exit;
+}
+
+$dayOfWeek = (int) $deliveryDateTime->format('N');
+
+$stmt = $pdo->prepare(
+    'SELECT
+        opening_time,
+        closing_time,
+        is_closed,
+        is_by_appointment
+     FROM opening_hours
+     WHERE day_of_week = :day_of_week
+     LIMIT 1'
+);
+
+$stmt->execute([
+    'day_of_week' => $dayOfWeek
+]);
+
+$openingHours = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$openingHours || (bool) $openingHours['is_closed']) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Aucune livraison n’est possible à cette date.'
+    ]);
+
+    exit;
+}
+
+if ((bool) $openingHours['is_by_appointment']) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Les livraisons sur rendez-vous ne peuvent pas être réservées en ligne.'
+    ]);
+
+    exit;
+}
+
+$deliveryTimeOnly = $deliveryDateTime->format('H:i:s');
+
+if (
+    $deliveryTimeOnly < $openingHours['opening_time'] ||
+    $deliveryTimeOnly > $openingHours['closing_time']
+) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'L’heure de livraison doit respecter les horaires d’ouverture.'
+    ]);
+
+    exit;
+}
 
 // ========================================
 // CALCUL DU PRIX CÔTÉ SERVEUR
@@ -283,6 +419,30 @@ try {
         'status' => 'pending'
     ]);
 
+    // ========================================
+    // MISE À JOUR DU STOCK
+    // ========================================
+
+    $stmt = $pdo->prepare(
+        'UPDATE menus
+        SET stock_quantity = stock_quantity - 1,
+            is_available = CASE
+                WHEN stock_quantity - 1 <= 0 THEN 0
+                ELSE is_available
+            END
+        WHERE id = :menu_id
+        AND stock_quantity > 0'
+    );
+
+    $stmt->execute([
+        'menu_id' => $menuId
+    ]);
+
+    if ($stmt->rowCount() !== 1) {
+        throw new RuntimeException(
+            'Le stock de ce menu n’est plus disponible.'
+        );
+    }
 
     $pdo->commit();
 

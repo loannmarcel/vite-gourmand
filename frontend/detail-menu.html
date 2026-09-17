@@ -503,6 +503,8 @@
                             <div class="important-info-block">
                                 <h2>Informations importantes</h2>
 
+                                <p id="menu-detail-conditions"></p>
+
                                 <p>
                                     Si vous ou l’un de vos invités avez des allergies ou des restrictions
                                     alimentaires, merci de nous en informer lors de votre commande.
@@ -786,26 +788,6 @@
                     Des menus frais, faits maison et de saison.
                 </p>
 
-
-                <div class="social-links">
-
-                    <a href="#" aria-label="Facebook">
-                        <img src="assets/icons/icone-facebook.png"
-                        alt="Facebook">
-                    </a>
-
-                    <a href="#" aria-label="LinkedIn">
-                        <img src="assets/icons/icone-linkedin.png"
-                        alt="Linkedin">
-                    </a>
-
-                    <a href="#" aria-label="Instagram">
-                        <img src="assets/icons/icone-instagram.png"
-                        alt="Instagram">
-                    </a>
-
-                </div>
-
             </div>
 
 
@@ -854,7 +836,7 @@
                     CGV
                 </a>
 
-                <a href="#">
+                <a href="politique-confidentialite.html">
                     Politique de confidentialité
                 </a>
 
@@ -906,6 +888,10 @@
                     Samedi sur rendez-vous
                 </p>
 
+                <p>
+                    Dimanche : fermé
+                </p>
+
             </div>
 
         </div>
@@ -947,6 +933,53 @@
             <small>Profil</small>
         </a>
     </nav>
+
+    <script>
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".main-nav");
+
+
+        menuToggle.addEventListener("click", () => {
+
+            const menuIsOpen =
+                navigation.classList.toggle("is-open");
+
+
+            menuToggle.classList.toggle(
+                "is-open",
+                menuIsOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+        });
+
+
+        document
+            .querySelectorAll(".main-nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navigation.classList.remove("is-open");
+
+                    menuToggle.classList.remove("is-open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+
+    </script>
 
     <script src="js/menu-detail-dynamique.js"></script>
 

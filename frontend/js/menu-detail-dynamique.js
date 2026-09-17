@@ -77,6 +77,13 @@ async function chargerMenu() {
         menuPreparation.textContent =
             menu.preparation_time;
 
+        const menuConditions = document.querySelector(
+            "#menu-detail-conditions"
+        );
+
+        menuConditions.textContent =
+            menu.conditions;
+
         const menuAvailability = document.querySelector(
             "#menu-detail-availability"
         );
@@ -190,6 +197,7 @@ async function chargerMenu() {
         menuOrderCard.dataset.menuName = menu.name;
         menuOrderCard.dataset.basePrice = menu.base_price;
         menuOrderCard.dataset.minPeople = menu.min_people;
+        menuOrderCard.dataset.conditions = menu.conditions || "";
 
         const preparationMatch = String(
             menu.preparation_time
@@ -259,32 +267,36 @@ async function chargerMenu() {
             "#menu-detail-allergens"
         );
 
-        const allergens = new Set();
-
-        menu.dishes.forEach(function (dish) {
-            if (dish.allergens) {
-                dish.allergens
-                    .split(",")
-                    .map(function (allergen) {
-                        return allergen.trim();
-                    })
-                    .filter(Boolean)
-                    .forEach(function (allergen) {
-                        allergens.add(allergen);
-                    });
-            }
-        });
-
         menuAllergens.innerHTML = "";
 
-        allergens.forEach(function (allergen) {
-            const span = document.createElement(
-                "span"
-            );
+        const categoryLabels = {
+            starter: "Entrée",
+            main: "Plat",
+            dessert: "Dessert"
+        };
 
-            span.textContent = allergen;
+        menu.dishes.forEach(function (dish) {
+            if (!dish.allergens) {
+                return;
+            }
 
-            menuAllergens.appendChild(span);
+            dish.allergens
+                .split(",")
+                .map(function (allergen) {
+                    return allergen.trim();
+                })
+                .filter(Boolean)
+                .forEach(function (allergen) {
+                    const span = document.createElement("span");
+
+                    const category =
+                        categoryLabels[dish.category] || dish.category;
+
+                    span.textContent =
+                        `${category} : ${allergen}`;
+
+                    menuAllergens.appendChild(span);
+                });
         });
 
         const menuRecommendationsGrid = document.querySelector(

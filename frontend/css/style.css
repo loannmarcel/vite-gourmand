@@ -52,6 +52,25 @@ body {
     overflow-x: hidden;
 }
 
+/* LIEN D'ÉVITEMENT ACCESSIBILITÉ */
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 20px;
+    z-index: 9999;
+
+    padding: 12px 18px;
+
+    background-color: var(--white);
+    color: var(--text);
+
+    font-weight: 700;
+}
+
+.skip-link:focus {
+    top: 20px;
+}
 
 img {
     max-width: 100%;
@@ -1366,20 +1385,25 @@ select {
 
     appearance: none;
     -webkit-appearance: none;
+}
 
-    background-image:
-        linear-gradient(45deg, transparent 50%, #667066 50%),
-        linear-gradient(135deg, #667066 50%, transparent 50%);
 
-    background-position:
-        calc(100% - 19px) 50%,
-        calc(100% - 14px) 50%;
+.filter-group:has(select)::after {
+    content: "";
 
-    background-size:
-        5px 5px,
-        5px 5px;
+    position: absolute;
+    right: 16px;
+    bottom: 21px;
 
-    background-repeat: no-repeat;
+    width: 7px;
+    height: 7px;
+
+    border-right: 1.5px solid #667066;
+    border-bottom: 1.5px solid #667066;
+
+    transform: translateY(50%) rotate(45deg);
+
+    pointer-events: none;
 }
 
 /* NOMBRE DE PERSONNES */

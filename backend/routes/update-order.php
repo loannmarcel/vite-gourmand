@@ -5,6 +5,7 @@ session_start();
 header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../services/DeliveryService.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -72,7 +73,8 @@ $stmt = $pdo->prepare(
         orders.menu_id,
         orders.status,
         menus.min_people,
-        menus.base_price
+        menus.base_price,
+        menus.conditions
      FROM orders
      INNER JOIN menus
         ON menus.id = orders.menu_id
@@ -136,6 +138,125 @@ if ($people < $minPeople) {
     exit;
 }
 
+// ========================================
+// VALIDATION DE LA DATE ET DE L'HEURE
+// ========================================
+
+$deliveryDateTime = DateTime::createFromFormat(
+    'Y-m-d H:i',
+    $deliveryDate . ' ' . $deliveryTime
+);
+
+if (!$deliveryDateTime) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'La date ou l’heure de livraison est invalide.'
+    ]);
+
+    exit;
+}
+
+$now = new DateTime();
+
+if ($deliveryDateTime <= $now) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'La date de livraison doit être dans le futur.'
+    ]);
+
+    exit;
+}
+
+$orderDelayHours = 0;
+
+if (
+    preg_match(
+        '/(\d+)\s*h/i',
+        (string) $order['conditions'],
+        $matches
+    )
+) {
+    $orderDelayHours = (int) $matches[1];
+}
+
+$minimumDeliveryDateTime = clone $now;
+
+$minimumDeliveryDateTime->modify(
+    '+' . $orderDelayHours . ' hours'
+);
+
+if ($deliveryDateTime < $minimumDeliveryDateTime) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Le délai minimum de commande pour ce menu n’est pas respecté.'
+    ]);
+
+    exit;
+}
+
+$dayOfWeek = (int) $deliveryDateTime->format('N');
+
+$stmt = $pdo->prepare(
+    'SELECT
+        opening_time,
+        closing_time,
+        is_closed,
+        is_by_appointment
+     FROM opening_hours
+     WHERE day_of_week = :day_of_week
+     LIMIT 1'
+);
+
+$stmt->execute([
+    'day_of_week' => $dayOfWeek
+]);
+
+$openingHours = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$openingHours || (bool) $openingHours['is_closed']) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Aucune livraison n’est possible à cette date.'
+    ]);
+
+    exit;
+}
+
+if ((bool) $openingHours['is_by_appointment']) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Les livraisons sur rendez-vous ne peuvent pas être réservées en ligne.'
+    ]);
+
+    exit;
+}
+
+$deliveryTimeOnly = $deliveryDateTime->format('H:i:s');
+
+if (
+    $deliveryTimeOnly < $openingHours['opening_time'] ||
+    $deliveryTimeOnly > $openingHours['closing_time']
+) {
+    http_response_code(422);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'L’heure de livraison doit respecter les horaires d’ouverture.'
+    ]);
+
+    exit;
+}
+
 
 // ========================================
 // RECALCUL DU PRIX
@@ -166,7 +287,13 @@ if ($people >= $discountThreshold) {
 }
 
 
-$deliveryPrice = 5.00;
+$deliveryService = new DeliveryService();
+
+$deliveryPrice = $deliveryService->calculateDeliveryPrice(
+    $deliveryAddress,
+    $deliveryPostalCode,
+    $deliveryCity
+);
 
 $totalPrice = round(
     $menuPrice
