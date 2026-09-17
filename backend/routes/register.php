@@ -3,6 +3,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../services/MailerService.php';
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
@@ -159,6 +160,17 @@ $stmt->execute([
     'password_hash' => $passwordHash,
     'role' => 'user'
 ]);
+
+MailerService::send(
+    $email,
+    $firstname . ' ' . $lastname,
+    'Bienvenue chez Vite & Gourmand',
+    '<h1>Bienvenue chez Vite & Gourmand !</h1>
+    <p>Bonjour ' . htmlspecialchars($firstname, ENT_QUOTES, 'UTF-8') . ',</p>
+    <p>Votre compte a bien été créé.</p>
+    <p>Vous pouvez désormais vous connecter et profiter des services de Vite & Gourmand.</p>
+    <p>À bientôt,<br>L’équipe Vite & Gourmand</p>'
+);
 
 http_response_code(201);
 

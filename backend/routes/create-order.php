@@ -5,6 +5,8 @@ session_start();
 header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../services/MailerService.php';
+require_once __DIR__ . '/../services/DeliveryService.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -56,6 +58,34 @@ if (
     echo json_encode([
         'success' => false,
         'message' => 'Toutes les informations de la commande sont obligatoires.'
+    ]);
+
+    exit;
+}
+
+// ========================================
+// RÉCUPÉRATION DU CLIENT
+// ========================================
+
+$stmt = $pdo->prepare(
+    'SELECT first_name, last_name, email
+     FROM users
+     WHERE id = :id
+     LIMIT 1'
+);
+
+$stmt->execute([
+    'id' => $_SESSION['user_id']
+]);
+
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$user) {
+    http_response_code(404);
+
+    echo json_encode([
+        'success' => false,
+        'message' => 'Utilisateur introuvable.'
     ]);
 
     exit;
@@ -156,7 +186,13 @@ if ($people >= $discountThreshold) {
 }
 
 
-$deliveryPrice = 5.00;
+$deliveryService = new DeliveryService();
+
+$deliveryPrice = $deliveryService->calculateDeliveryPrice(
+    $deliveryAddress,
+    $deliveryPostalCode,
+    $deliveryCity
+);
 
 $totalPrice = round(
     $menuPrice
@@ -250,6 +286,22 @@ try {
 
     $pdo->commit();
 
+    MailerService::send(
+        $user['email'],
+        $user['first_name'] . ' ' . $user['last_name'],
+        'Confirmation de votre commande Vite & Gourmand',
+        '<h1>Commande confirmée</h1>
+        <p>Bonjour ' . htmlspecialchars($user['first_name'], ENT_QUOTES, 'UTF-8') . ',</p>
+        <p>Votre commande n°' . $orderId . ' a bien été enregistrée.</p>
+        <p><strong>Menu :</strong> ' . htmlspecialchars($menu['name'], ENT_QUOTES, 'UTF-8') . '</p>
+        <p><strong>Nombre de personnes :</strong> ' . $people . '</p>
+        <p><strong>Date de livraison :</strong> ' . htmlspecialchars($deliveryDate, ENT_QUOTES, 'UTF-8') . '</p>
+        <p><strong>Heure de livraison :</strong> ' . htmlspecialchars($deliveryTime, ENT_QUOTES, 'UTF-8') . '</p>
+        <p><strong>Montant total :</strong> ' . number_format($totalPrice, 2, ',', ' ') . ' €</p>
+        <p>Merci pour votre commande.</p>
+        <p>À bientôt,<br>L’équipe Vite & Gourmand</p>'
+    );
+
 
     echo json_encode([
         'success' => true,
@@ -258,6 +310,8 @@ try {
             'id' => $orderId,
             'menu' => $menu['name'],
             'people' => $people,
+            'delivery_date' => $deliveryDate,
+            'delivery_time' => $deliveryTime,
             'menu_price' => $menuPrice,
             'discount_amount' => $discountAmount,
             'delivery_price' => $deliveryPrice,

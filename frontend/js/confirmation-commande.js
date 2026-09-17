@@ -32,17 +32,16 @@ document.addEventListener("DOMContentLoaded", () => {
         `${order.people} ${order.people > 1 ? "personnes" : "personne"}`;
 
 
-    if (order.deliveryDate) {
+    if (order.delivery_date) {
         const [year, month, day] =
-            order.deliveryDate.split("-");
+            order.delivery_date.split("-");
 
         dateElement.textContent =
             `${day}/${month}/${year}`;
     }
 
-
     timeElement.textContent =
-        order.deliveryTime;
+        order.delivery_time;
 
 
     totalElement.textContent =

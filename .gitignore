@@ -17,3 +17,6 @@ backend/uploads/*
 !backend/uploads/menus/
 backend/uploads/menus/*
 !backend/uploads/menus/.gitkeep
+
+# Clés API privées
+backend/config/openrouteservice.php

@@ -5,6 +5,7 @@ session_start();
 header("Content-Type: application/json; charset=utf-8");
 
 require_once __DIR__ . "/../config/database.php";
+require_once __DIR__ . "/../services/MailerService.php";
 
 if (!isset($_SESSION["user_id"], $_SESSION["user_role"])) {
     http_response_code(401);
@@ -135,6 +136,18 @@ try {
         "email" => $email,
         "password_hash" => $passwordHash
     ]);
+
+    MailerService::send(
+        $email,
+        'Employé Vite & Gourmand',
+        'Création de votre compte employé - Vite & Gourmand',
+        '<h1>Votre compte employé a été créé</h1>
+        <p>Bonjour,</p>
+        <p>Un compte employé Vite & Gourmand a été créé avec cette adresse e-mail.</p>
+        <p>Vous pouvez désormais vous connecter à l’espace employé avec vos identifiants.</p>
+        <p>Pour des raisons de sécurité, votre mot de passe n’est pas communiqué dans cet e-mail.</p>
+        <p>À bientôt,<br>L’équipe Vite & Gourmand</p>'
+    );
 
     http_response_code(201);
 

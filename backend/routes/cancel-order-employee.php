@@ -5,6 +5,7 @@ session_start();
 header('Content-Type: application/json; charset=utf-8');
 
 require_once __DIR__ . '/../config/database.php';
+require_once __DIR__ . '/../services/MailerService.php';
 
 
 /* =====================================================
@@ -113,9 +114,16 @@ if (
 ===================================================== */
 
 $stmt = $pdo->prepare(
-    'SELECT id, status
+    'SELECT
+        orders.id,
+        orders.status,
+        users.first_name,
+        users.last_name,
+        users.email
      FROM orders
-     WHERE id = :id
+     INNER JOIN users
+        ON users.id = orders.user_id
+     WHERE orders.id = :id
      LIMIT 1'
 );
 
@@ -227,6 +235,19 @@ try {
 
 
     $pdo->commit();
+
+    MailerService::send(
+        $order['email'],
+        $order['first_name'] . ' ' . $order['last_name'],
+        'Commande annulée - Vite & Gourmand',
+        '<h1>Votre commande a été annulée</h1>
+        <p>Bonjour ' . htmlspecialchars($order['first_name'], ENT_QUOTES, 'UTF-8') . ',</p>
+        <p>Nous vous informons que votre commande n°' . $orderId . ' a été annulée.</p>
+        <p><strong>Motif de l’annulation :</strong></p>
+        <p>' . nl2br(htmlspecialchars($reason, ENT_QUOTES, 'UTF-8')) . '</p>
+        <p>Si vous souhaitez obtenir davantage d’informations, vous pouvez contacter Vite & Gourmand.</p>
+        <p>À bientôt,<br>L’équipe Vite & Gourmand</p>'
+    );
 
 
     echo json_encode([
