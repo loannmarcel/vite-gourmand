@@ -227,6 +227,8 @@ checkoutSubmit.addEventListener("click", async function () {
         cityInput.value.trim()
     );
 
+    checkoutSubmit.disabled = true;
+    checkoutSubmit.textContent = "Commande en cours...";
 
     try {
         const response = await fetch(
@@ -245,6 +247,9 @@ checkoutSubmit.addEventListener("click", async function () {
                 data.message ||
                 "Impossible d'enregistrer la commande."
             );
+
+            checkoutSubmit.disabled = false;
+            checkoutSubmit.textContent = "Confirmer la commande";
 
             return;
         }
@@ -274,5 +279,8 @@ checkoutSubmit.addEventListener("click", async function () {
         alert(
             "Impossible d'enregistrer la commande pour le moment."
         );
+
+        checkoutSubmit.disabled = false;
+        checkoutSubmit.textContent = "Confirmer la commande";
     }
 });
