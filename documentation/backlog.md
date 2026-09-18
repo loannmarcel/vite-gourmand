@@ -1,80 +1,51 @@
-# Backlog projet - Vite & Gourmand
+# Documentation de gestion de projet
 
-## Priorité 1 - Socle du projet
-- Créer l'arborescence du projet
-- Créer le dépôt GitHub
-- Créer le tableau Trello / Notion
-- Analyser le cahier des charges
-- Définir les rôles utilisateurs
-- Définir les pages principales
+## Outil utilisé
 
-## Priorité 2 - Maquettage
-- Wireframe page accueil desktop
-- Wireframe page menus desktop
-- Wireframe page commande desktop
-- Wireframe page accueil mobile
-- Wireframe page menus mobile
-- Wireframe page commande mobile
-- Mockup final desktop
-- Mockup final mobile
-- Charte graphique
+La gestion du projet Vite & Gourmand est suivie avec **GitHub Projects**, directement associé au dépôt GitHub de l'application.
 
-## Priorité 3 - Front-end statique
-- Page accueil
-- Page liste des menus
-- Page détail menu
-- Page connexion
-- Page inscription
-- Page contact
-- Footer avec horaires, mentions légales et CGV
-- Responsive design
+Lien vers le projet GitHub :
 
-## Priorité 4 - Front-end dynamique
-- Filtres dynamiques des menus
-- Validation des formulaires
-- Calcul du prix de commande
-- Affichage dynamique du récapitulatif
-- Messages d'erreur utilisateur
+https://github.com/users/loannmarcel/projects/1/views/1
 
-## Priorité 5 - Base de données
-- Modèle conceptuel de données
-- Script de création SQL
-- Script d'insertion de données
-- Base MongoDB pour statistiques
+## Méthode utilisée
 
-## Priorité 6 - Back-end
-- Inscription utilisateur
-- Connexion utilisateur
-- Mot de passe oublié
-- Gestion des rôles
-- Gestion des menus
-- Gestion des plats
-- Gestion des commandes
-- Gestion des avis
-- Emails automatiques
+Le projet est organisé avec une méthode **Kanban**. Les grandes étapes du développement sont représentées par des issues GitHub intégrées au tableau de suivi.
 
-## Priorité 7 - Administration
-- Espace employé
-- Espace administrateur
-- Création employé
-- Désactivation employé
-- Graphique commandes par menu
-- Chiffre d'affaires par menu
+Les tâches couvrent notamment :
+- l'analyse du cahier des charges ;
+- le maquettage et la charte graphique ;
+- le développement front-end ;
+- le développement back-end ;
+- les bases de données MySQL et MongoDB ;
+- la sécurité et l'accessibilité ;
+- le déploiement ;
+- les tests fonctionnels ;
+- la documentation et les livrables ECF.
 
-## Priorité 8 - Sécurité et conformité
-- Hash des mots de passe
-- Protection injections SQL
-- Validation serveur
-- Protection XSS
-- Gestion des sessions
-- Documentation RGPD
-- Accessibilité RGAA
+## Organisation des tâches
 
-## Priorité 9 - Déploiement et dossier
-- Déploiement application
-- README complet
-- Manuel utilisateur PDF
-- Charte graphique PDF
-- Documentation technique PDF
-- Documentation gestion de projet PDF
-- Captures d'écran
+Chaque élément du tableau correspond à une issue du dépôt GitHub. Les tâches sont déplacées dans le tableau selon leur état d'avancement.
+
+## Statuts utilisés
+
+Le modèle Kanban de GitHub Projects utilise les statuts suivants :
+- **Backlog** : tâche identifiée mais non commencée ;
+- **Ready** : tâche prête à être traitée ;
+- **In progress** : tâche en cours de réalisation ;
+- **In review** : tâche terminée techniquement et en cours de vérification ;
+- **Done** : tâche terminée et validée.
+
+## Suivi du projet
+
+Le tableau permet de visualiser l'avancement global du projet.
+
+Les fonctionnalités principales développées et testées sont placées dans **Done**, tandis que les travaux de finalisation restent dans **In progress**.
+
+Le dépôt Git est organisé autour des branches `main`, `development` et de branches `feature/*`. Les fonctionnalités sont développées sur une branche dédiée avant leur intégration dans `development`, puis dans `main` pour la mise en production.
+
+## Justification
+
+GitHub Projects a été choisi afin de centraliser le code source, les issues et le suivi du projet dans le même environnement.
+
+La méthode Kanban permet de visualiser rapidement les tâches à réaliser, celles en cours et celles terminées, tout en conservant une trace de l'avancement du projet.

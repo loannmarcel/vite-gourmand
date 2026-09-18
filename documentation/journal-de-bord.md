@@ -500,3 +500,31 @@ Bilan :
 Cette journée a permis d'avancer significativement sur la partie "utilisateur" du projet. La structure générale de l'application est désormais bien définie et la navigation entre les différentes interfaces devient cohérente et fonctionnelle.
 
 ----------------------------------------------------------------------------------------
+
+### Date 19/09/2026
+
+Travaux réalisés :
+
+- Finalisation du développement front-end et back-end de l'application Vite & Gourmand.
+- Mise en place et validation des espaces utilisateur, employé et administrateur.
+- Finalisation de la gestion des menus, plats, allergènes, horaires et commandes.
+- Mise en place du calcul des frais de livraison avec OpenRouteService.
+- Mise en place de la remise de 10 % selon le nombre de personnes commandé.
+- Mise en place du suivi des différents statuts d'une commande.
+- Mise en place de l'envoi des e-mails transactionnels avec l'API Brevo.
+- Finalisation de la réinitialisation du mot de passe et du formulaire de contact.
+- Mise en place du système d'avis client et de modération par les employés.
+- Mise en place des statistiques administrateur avec MongoDB.
+- Déploiement de l'application sur Railway avec une base MySQL de production.
+- Mise en place de MongoDB Atlas pour la base NoSQL de production.
+- Réalisation de tests fonctionnels directement sur l'environnement de production.
+- Validation du parcours complet d'une commande, de sa création jusqu'à sa finalisation et au dépôt d'un avis.
+- Mise à jour de la documentation technique et de la configuration de déploiement.
+- Mise en place du tableau de suivi du projet avec GitHub Projects.
+- Organisation du dépôt Git avec les branches `main`, `development` et les branches `feature`.
+
+Bilan :
+
+Cette phase a permis de finaliser les principales fonctionnalités demandées dans le cahier des charges et de valider leur fonctionnement dans l'environnement de production. Le projet est désormais dans sa phase finale, consacrée aux derniers contrôles de sécurité et d'accessibilité, à la finalisation des maquettes et de la charte graphique ainsi qu'à la préparation des livrables ECF.
+
+----------------------------------------------------------------------------------------
