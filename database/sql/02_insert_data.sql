@@ -35,6 +35,8 @@ INSERT INTO menus (
     min_people,
     base_price,
     preparation_time,
+    conditions,
+    stock_quantity,
     is_available
 ) VALUES (
     'Menu Healthy',
@@ -44,6 +46,8 @@ INSERT INTO menus (
     2,
     89.00,
     '1 à 2 h',
+    'Commande à effectuer au moins 24 h à l''avance.',
+    4,
     TRUE
 );
 
@@ -55,6 +59,8 @@ INSERT INTO menus (
     min_people,
     base_price,
     preparation_time,
+    conditions,
+    stock_quantity,
     is_available
 ) VALUES
 (
@@ -65,6 +71,8 @@ INSERT INTO menus (
     2,
     65.00,
     '1 à 2 h',
+    'Commande à effectuer au moins 24 h à l''avance.',
+    5,
     TRUE
 ),
 (
@@ -75,6 +83,8 @@ INSERT INTO menus (
     6,
     160.00,
     '24 h',
+    'Commande à effectuer au moins 48 h à l''avance.',
+    5,
     TRUE
 ),
 (
@@ -85,6 +95,8 @@ INSERT INTO menus (
     2,
     75.00,
     '1 à 2 h',
+    'Commande à effectuer au moins 24 h à l''avance.',
+    5,
     TRUE
 ),
 (
@@ -95,6 +107,8 @@ INSERT INTO menus (
     2,
     95.00,
     '2 h',
+    'Commande à effectuer au moins 24 h à l''avance.',
+    1,
     TRUE
 ),
 (
@@ -105,5 +119,7 @@ INSERT INTO menus (
     2,
     55.00,
     '30 à 60 min',
+    'Commande à effectuer au moins 24 h à l''avance.',
+    5,
     TRUE
 );
