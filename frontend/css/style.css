@@ -7976,6 +7976,45 @@ padding-right: 48px;
     text-align: right;
 }
 
+/* ================================
+   SUIVI DE LA COMMANDE
+================================ */
+
+.order-status-history {
+    margin: 24px 0;
+    padding: 24px 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.order-status-history h2 {
+    margin: 0 0 18px;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.order-status-history-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    padding: 10px 0;
+    font-family: "Inter", sans-serif;
+}
+
+.order-status-history-row span {
+    font-size: 14px;
+    color: #666666;
+}
+
+.order-status-history-row strong {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: right;
+}
+
 /* =====================================================
    AVIS UTILISATEUR - DÉTAIL COMMANDE
 ===================================================== */

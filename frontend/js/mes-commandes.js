@@ -193,7 +193,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
         orders.forEach((order) => {
-            if (order.status === "completed") {
+            if (
+                order.status === "completed" ||
+                order.status === "cancelled"
+            ) {
                 pastOrders.push(order);
             } else {
                 upcomingOrders.push(order);

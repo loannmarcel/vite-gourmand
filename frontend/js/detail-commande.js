@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             case "accepted":
                 return "Acceptée";
 
-            case "preparing":
+            case "preparation":
                 return "En préparation";
 
             case "ready":
@@ -143,10 +143,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
         const order = data.order;
+        const statusHistory = data.status_history || [];
 
 
         orderDetailTitle.textContent =
             `Commande #${order.id}`;
+
 
 
         orderDetailContent.innerHTML = `
@@ -159,6 +161,19 @@ document.addEventListener("DOMContentLoaded", async () => {
                         ${getStatusText(order.status)}
                     </strong>
                 </div>
+
+                ${statusHistory.length > 0 ? `
+                    <div class="order-status-history">
+                        <h2>Suivi de la commande</h2>
+
+                        ${statusHistory.map(history => `
+                            <div class="order-status-history-row">
+                                <span>${getStatusText(history.status)}</span>
+                                <strong>${formatCreatedAt(history.changed_at)}</strong>
+                            </div>
+                        `).join("")}
+                    </div>
+                ` : ""}
 
                 <div class="order-detail-row">
                     <span>Commande passée le</span>

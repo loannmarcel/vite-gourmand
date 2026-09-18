@@ -88,6 +88,20 @@ try {
 
     $pdo->beginTransaction();
 
+    $getDishIdsStatement = $pdo->prepare(
+        "SELECT dish_id
+        FROM menu_dishes
+        WHERE menu_id = :menu_id"
+    );
+
+    $getDishIdsStatement->execute([
+        "menu_id" => $menuId
+    ]);
+
+    $dishIds = $getDishIdsStatement->fetchAll(
+        PDO::FETCH_COLUMN
+    );
+
     $deleteLinksStatement = $pdo->prepare(
         "DELETE FROM menu_dishes
          WHERE menu_id = :menu_id"
@@ -105,6 +119,22 @@ try {
     $deleteMenuStatement->execute([
         "menu_id" => $menuId
     ]);
+
+    $deleteOrphanDishStatement = $pdo->prepare(
+        "DELETE FROM dishes
+        WHERE id = :dish_id
+        AND NOT EXISTS (
+            SELECT 1
+            FROM menu_dishes
+            WHERE menu_dishes.dish_id = dishes.id
+        )"
+    );
+
+    foreach ($dishIds as $dishId) {
+        $deleteOrphanDishStatement->execute([
+            "dish_id" => (int) $dishId
+        ]);
+    }
 
     $pdo->commit();
 

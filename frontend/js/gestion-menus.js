@@ -599,7 +599,6 @@ async function loadEmployeeMenus() {
 
         });
 
-        console.log("6 menus reliés à MySQL :", data.menus);
     } catch (error) {
         console.error(
             "Erreur lors du chargement des menus :",
@@ -872,11 +871,6 @@ employeeMenusList.addEventListener("click", async (event) => {
                     return;
                 }
 
-                console.log(
-                    "Menu enregistré dans MySQL :",
-                    data
-                );
-
                 if (
                     imagesInput &&
                     imagesInput.files.length > 0
@@ -914,10 +908,6 @@ employeeMenusList.addEventListener("click", async (event) => {
                         return;
                     }
 
-                    console.log(
-                        "Image du menu enregistrée :",
-                        imageData
-                    );
                 }
 
             } catch (error) {
@@ -1212,6 +1202,9 @@ const newMenuDishType =
 const newMenuDishName =
     document.querySelector("#new-menu-dish-name");
 
+const newMenuDishAllergens =
+    document.querySelector("#new-menu-dish-allergens");
+
 const newMenuDishesList =
     document.querySelector("#new-menu-dishes-list");
 
@@ -1248,6 +1241,7 @@ newMenuDishAddCancel.addEventListener("click", () => {
 
     newMenuDishType.value = "entree";
     newMenuDishName.value = "";
+    newMenuDishAllergens.value = "";
 
 });
 
@@ -1256,6 +1250,9 @@ newMenuDishAddSave.addEventListener("click", () => {
 
     const dishName =
         newMenuDishName.value.trim();
+
+    const dishAllergens =
+    newMenuDishAllergens.value.trim();
 
     if (!dishName) {
         newMenuDishName.focus();
@@ -1270,6 +1267,38 @@ newMenuDishAddSave.addEventListener("click", () => {
             newMenuDishType.selectedIndex
         ].text;
 
+    if (newMenuDishBeingEdited) {
+
+        newMenuDishBeingEdited
+            .querySelector(".employee-menu-dish-type")
+            .textContent = dishTypeText;
+
+        newMenuDishBeingEdited
+            .querySelector("strong")
+            .textContent = dishName;
+
+        newMenuDishBeingEdited.dataset.allergens =
+            dishAllergens;
+
+        newMenuDishBeingEdited = null;
+
+        newMenuDishType.value = "entree";
+        newMenuDishName.value = "";
+        newMenuDishAllergens.value = "";
+
+        newMenuDishAddPanel.hidden = true;
+
+        newMenuDishAddButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        newMenuDishAddButton.textContent =
+            "Ajouter un plat";
+
+        return;
+    }
+
     const dishItem =
         document.createElement("div");
 
@@ -1278,6 +1307,9 @@ newMenuDishAddSave.addEventListener("click", () => {
 
     dishItem.dataset.dishId =
         `new-dish-${Date.now()}`;
+
+    dishItem.dataset.allergens =
+        dishAllergens;
 
     dishItem.innerHTML = `
         <div class="employee-menu-dish-content">
@@ -1291,6 +1323,13 @@ newMenuDishAddSave.addEventListener("click", () => {
         </div>
 
         <div class="employee-menu-dish-actions">
+
+            <button
+                type="button"
+                class="employee-menu-dish-edit"
+            >
+                Modifier
+            </button>
 
             <button
                 type="button"
@@ -1309,6 +1348,7 @@ newMenuDishAddSave.addEventListener("click", () => {
 
     newMenuDishType.value = "entree";
     newMenuDishName.value = "";
+    newMenuDishAllergens.value = "";
 
     newMenuDishAddPanel.hidden = true;
 
@@ -1324,7 +1364,51 @@ newMenuDishAddSave.addEventListener("click", () => {
 
 /* SUPPRESSION D'UN PLAT DU NOUVEAU MENU */
 
+let newMenuDishBeingEdited = null;
+
 newMenuDishesList.addEventListener("click", (event) => {
+
+     const editDishButton =
+        event.target.closest(".employee-menu-dish-edit");
+
+    if (editDishButton) {
+
+        const dishItem =
+            editDishButton.closest(".employee-menu-dish-item");
+
+        newMenuDishBeingEdited = dishItem;
+
+        const dishName =
+            dishItem.querySelector("strong").textContent.trim();
+
+        const dishType =
+            dishItem.querySelector(".employee-menu-dish-type").textContent.trim();
+
+        const dishAllergens =
+            dishItem.dataset.allergens || "";
+
+        newMenuDishName.value = dishName;
+        newMenuDishAllergens.value = dishAllergens;
+
+        if (dishType === "Entrée") {
+            newMenuDishType.value = "entree";
+        } else if (dishType === "Plat") {
+            newMenuDishType.value = "plat";
+        } else if (dishType === "Dessert") {
+            newMenuDishType.value = "dessert";
+        }
+
+        newMenuDishAddPanel.hidden = false;
+
+        newMenuDishAddButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        newMenuDishAddButton.textContent = "Fermer";
+
+        return;
+    }
 
     const deleteDishButton =
         event.target.closest(".employee-menu-dish-delete");
@@ -1533,7 +1617,8 @@ addMenuSaveButton.addEventListener("click", async () => {
 
         return {
             type,
-            name
+            name,
+            allergens: dishItem.dataset.allergens || ""
         };
 
     });
@@ -1597,11 +1682,6 @@ addMenuSaveButton.addEventListener("click", async () => {
             return;
         }
 
-        console.log(
-            "Menu ajouté dans MySQL :",
-            data
-        );
-
         const categoryByType = {
             "Entrée": "starter",
             "Plat": "main",
@@ -1622,7 +1702,7 @@ addMenuSaveButton.addEventListener("click", async () => {
                         menu_id: data.menu_id,
                         name: dish.name,
                         category: categoryByType[dish.type],
-                        allergens: menuAllergens
+                        allergens: dish.allergens
                     })
                 }
             );
@@ -1930,8 +2010,8 @@ addMenuSaveButton.addEventListener("click", async () => {
     newCard.className =
         "employee-menu-card";
 
-    newCard.dataset.menuId =
-        menuId;
+    newCard.dataset.dbId =
+        data.menu_id;
 
     newCard.dataset.name =
         menuName.toLowerCase();
@@ -2576,10 +2656,6 @@ employeeMenusList.addEventListener("click", async (event) => {
             return;
         }
 
-        console.log(
-            "Plat supprimé de MySQL :",
-            data
-        );
     } catch (error) {
         console.error(
             "Erreur lors de la suppression du plat :",
@@ -2747,10 +2823,6 @@ employeeMenusList.addEventListener("click", async (event) => {
                 return;
             }
 
-            console.log(
-                "Plat enregistré dans MySQL :",
-                data
-            );
         } catch (error) {
             console.error(
                 "Erreur lors de la modification du plat :",
@@ -2897,8 +2969,14 @@ employeeMenusList.addEventListener("click", async (event) => {
         const nameInput =
             addPanel.querySelector('input[type="text"]');
 
+        const allergensInput =
+            addPanel.querySelectorAll('input[type="text"]')[1];
+
         const dishName =
             nameInput.value.trim();
+
+        const dishAllergens =
+            allergensInput.value.trim();
 
         if (!dishName) {
             nameInput.focus();
@@ -2932,7 +3010,8 @@ employeeMenusList.addEventListener("click", async (event) => {
                         menu_id: Number(menuDbId),
                         name: dishName,
                         category:
-                            categoryByValue[typeInput.value]
+                            categoryByValue[typeInput.value],
+                        allergens: dishAllergens
                     })
                 }
             );
@@ -2947,10 +3026,6 @@ employeeMenusList.addEventListener("click", async (event) => {
                 return;
             }
 
-            console.log(
-                "Plat ajouté dans MySQL :",
-                data
-            );
         } catch (error) {
             console.error(
                 "Erreur lors de l'ajout du plat :",
@@ -3074,6 +3149,7 @@ employeeMenusList.addEventListener("click", async (event) => {
                     <input
                         type="text"
                         class="employee-menu-dish-allergens"
+                        value="${dishAllergens}"
                     >
 
                 </div>
@@ -3104,6 +3180,7 @@ employeeMenusList.addEventListener("click", async (event) => {
 
         typeInput.value = "entree";
         nameInput.value = "";
+        allergensInput.value = "";
 
         addPanel.hidden = true;
 

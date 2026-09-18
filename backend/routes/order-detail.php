@@ -99,9 +99,26 @@ $reviewStmt->execute([
 $review =
     $reviewStmt->fetch(PDO::FETCH_ASSOC);
 
+$historyStmt = $pdo->prepare(
+    'SELECT
+        status,
+        changed_at
+     FROM order_status_history
+     WHERE order_id = :order_id
+     ORDER BY changed_at ASC'
+);
+
+$historyStmt->execute([
+    'order_id' => $orderId
+]);
+
+$statusHistory =
+    $historyStmt->fetchAll(PDO::FETCH_ASSOC);
+
 
 echo json_encode([
     'success' => true,
     'order' => $order,
-    'review' => $review ?: null
+    'review' => $review ?: null,
+    'status_history' => $statusHistory
 ]);
