@@ -207,3 +207,33 @@ Des filtres permettent d'afficher les statistiques sur différentes périodes.
 Lorsqu'un utilisateur a terminé sa session, il peut utiliser la fonction de déconnexion afin de fermer sa session.
 
 Pour les tests avec plusieurs rôles, il est recommandé de se déconnecter avant de se connecter avec un autre compte de démonstration.
+
+## 13. Problèmes courants
+
+### Mot de passe oublié
+
+Depuis la page de connexion, utiliser le lien « Mot de passe oublié » et suivre les instructions reçues par e-mail.
+
+### Commande impossible
+
+Vérifier que :
+- l'utilisateur est connecté ;
+- le nombre de personnes respecte le minimum du menu ;
+- la date et l'heure choisies sont disponibles ;
+- les informations de livraison sont correctement renseignées.
+
+### Avis non visible
+
+Un avis déposé après une commande terminée doit être validé par un employé avant d'être affiché publiquement.
+
+### Problème d'affichage
+
+En cas de problème d'affichage, vérifier que le navigateur est à jour et actualiser la page.
+
+---
+
+## 14. Fin de session
+
+Après utilisation de l'application, il est recommandé de se déconnecter afin de fermer correctement la session utilisateur.
+
+Les comptes de démonstration sont réservés aux tests et à la présentation de l'application.
