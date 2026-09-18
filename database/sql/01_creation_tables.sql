@@ -13,6 +13,7 @@ CREATE TABLE users (
     first_name VARCHAR(100) NULL,
     last_name VARCHAR(100) NULL,
     phone VARCHAR(20) NULL,
+    email VARCHAR(190) NOT NULL UNIQUE,
     address VARCHAR(255) NULL,
     postal_code VARCHAR(20) NULL,
     city VARCHAR(100) NULL,
