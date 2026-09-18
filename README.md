@@ -115,6 +115,9 @@ SMTP_PORT=
 SMTP_USERNAME=
 SMTP_PASSWORD=
 SMTP_FROM_EMAIL=
+MONGODB_URI=
+APP_URL=
+ORS_API_KEY=
 ```
 
 Ne jamais versionner les identifiants ou mots de passe réels.
