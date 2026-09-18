@@ -11,7 +11,17 @@ class DeliveryService
 
     public function __construct()
     {
-        $this->config = require __DIR__ . '/../config/openrouteservice.php';
+        $apiKey = $_ENV['ORS_API_KEY'] ?? '';
+
+        if ($apiKey === '') {
+            throw new RuntimeException(
+                'La clé OpenRouteService est manquante.'
+            );
+        }
+
+        $this->config = [
+            'api_key' => $apiKey
+        ];
     }
 
     public function calculateDeliveryPrice(
