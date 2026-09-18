@@ -45,13 +45,14 @@ Vite & Gourmand est une application de traiteur permettant aux visiteurs de cons
 ### Back-end
 - PHP
 - PDO
+- cURL
 
 ### Bases de données
 - MySQL : données relationnelles de l'application
 - MongoDB : statistiques administrateur
 
 ### Dépendances PHP
-- PHPMailer `^7.1`
+- Brevo API : envoi des emails transactionnels via HTTPS/cURL
 - vlucas/phpdotenv `^5.7`
 - Extension PHP MongoDB
 
@@ -64,6 +65,7 @@ Avant de lancer le projet en local, installer :
 - MySQL
 - MongoDB
 - Extension PHP `mongodb`
+- Extension PHP `curl`
 
 ## Installation locale
 
@@ -110,11 +112,8 @@ DB_NAME=vite_gourmand
 DB_USER=
 DB_PASSWORD=
 
-SMTP_HOST=
-SMTP_PORT=
-SMTP_USERNAME=
-SMTP_PASSWORD=
 SMTP_FROM_EMAIL=
+BREVO_API_KEY=
 MONGODB_URI=
 APP_URL=
 ORS_API_KEY=

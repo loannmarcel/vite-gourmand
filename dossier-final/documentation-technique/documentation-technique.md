@@ -38,7 +38,7 @@ Les différentes fonctionnalités sont organisées en routes et services. Les é
 
 Le projet utilise également **Composer** pour gérer certaines dépendances PHP, notamment :
 
-- **PHPMailer** pour l'envoi des e-mails ;
+- **API Brevo via HTTPS/cURL** pour l'envoi des e-mails transactionnels ;
 - **vlucas/phpdotenv** pour le chargement des variables d'environnement.
 
 ### 2.3 Base de données relationnelle
@@ -72,7 +72,7 @@ L'application communique avec MongoDB grâce à l'extension PHP **mongodb**.
 
 ### 2.5 Envoi des e-mails
 
-Les e-mails applicatifs sont envoyés avec **PHPMailer** en utilisant un serveur SMTP **Brevo**.
+Les e-mails applicatifs sont envoyés via l'**API Brevo**, appelée en HTTPS avec **cURL** depuis le back-end PHP.
 
 Ils sont notamment utilisés pour :
 
@@ -83,7 +83,7 @@ Ils sont notamment utilisés pour :
 - l'annulation d'une commande ;
 - l'information concernant la restitution du matériel prêté.
 
-Les identifiants SMTP ne sont pas enregistrés dans le dépôt Git et sont fournis à l'application par des variables d'environnement.
+La clé d'API Brevo et l'adresse d'expédition ne sont pas enregistrées dans le dépôt Git. Elles sont fournies à l'application par les variables d'environnement `BREVO_API_KEY` et `SMTP_FROM_EMAIL`.f
 
 ### 2.6 Calcul des frais de livraison
 
@@ -157,7 +157,7 @@ Le fichier `.env` contient les valeurs propres à l'environnement d'exécution, 
 Les principales variables utilisées sont :
 
 - `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` ;
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_FROM_EMAIL` ;
+- `SMTP_FROM_EMAIL`, `BREVO_API_KEY` ;
 - `MONGODB_URI` ;
 - `APP_URL` ;
 - `ORS_API_KEY`.
@@ -445,7 +445,7 @@ Un compte employé peut également être désactivé par l'administrateur.
 
 ### 5.5 Protection des informations sensibles
 
-Les identifiants de bases de données, identifiants SMTP et clés d'API sont stockés dans des variables d'environnement.
+Les identifiants de bases de données, la clé d'API Brevo, la clé OpenRouteService et les autres informations sensibles sont stockés dans des variables d'environnement.
 
 Le fichier `.env` est exclu du dépôt Git. Le fichier `.env.example` permet uniquement de documenter les variables nécessaires sans publier leurs valeurs.
 
@@ -501,7 +501,7 @@ MongoDB est utilisé pour les statistiques de l'espace administrateur. La collec
 Les principales variables configurées pour la production sont :
 
 - `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` ;
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USERNAME`, `SMTP_PASSWORD`, `SMTP_FROM_EMAIL` ;
+- `SMTP_FROM_EMAIL`, `BREVO_API_KEY` ;
 - `MONGODB_URI` ;
 - `APP_URL` ;
 - `ORS_API_KEY`.
@@ -512,7 +512,7 @@ Ces valeurs sont configurées directement dans l'environnement Railway et ne son
 
 Le déploiement utilise également :
 
-- **Brevo** pour l'envoi des e-mails SMTP ;
+- **Brevo** pour l'envoi des e-mails transactionnels via son API HTTPS ;
 - **OpenRouteService** pour le calcul des distances de livraison ;
 - **MongoDB Atlas** pour la base NoSQL.
 
@@ -526,17 +526,26 @@ La variable `APP_URL` contient l'adresse publique de l'application et permet not
 
 ### 6.7 Vérifications après déploiement
 
-Après le déploiement final, un test fonctionnel doit être réalisé sur l'environnement de production afin de vérifier notamment :
+Après le déploiement sur Railway, des tests fonctionnels ont été réalisés directement sur l'environnement de production.
 
-- l'accès aux pages publiques ;
-- l'inscription et la connexion ;
-- la consultation et le filtrage des menus ;
-- la création et le suivi d'une commande ;
-- le calcul des frais de livraison ;
-- l'envoi des e-mails ;
-- les fonctionnalités employé et administrateur ;
-- la connexion MySQL ;
-- la connexion MongoDB et l'affichage des statistiques.
+Les vérifications ont notamment porté sur :
+
+- l'accès aux pages publiques et aux six menus ;
+- l'inscription, la connexion et la réinitialisation du mot de passe ;
+- la consultation des menus et de leurs informations détaillées ;
+- la création d'une commande avec contrôle du nombre minimum de personnes ;
+- l'application de la remise de 10 % lorsque le seuil prévu est atteint ;
+- le calcul des frais de livraison hors Bordeaux avec OpenRouteService ;
+- le suivi complet d'une commande jusqu'au statut `completed` ;
+- l'envoi des e-mails transactionnels avec l'API Brevo ;
+- la restitution du matériel et l'information concernant le délai de 10 jours ouvrés et les 600 € de frais ;
+- le dépôt, la modération et l'affichage d'un avis client ;
+- les fonctionnalités des espaces employé et administrateur ;
+- la connexion à la base MySQL de production ;
+- la connexion à MongoDB Atlas et l'affichage des statistiques administrateur ;
+- la prise en compte du chiffre d'affaires et du nombre de commandes terminées dans les statistiques.
+
+Ces tests ont permis de valider le fonctionnement du parcours principal de l'application dans l'environnement de production.
 
 ## 7. Conclusion technique
 
