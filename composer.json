@@ -2,6 +2,8 @@
     "require": {
         "phpmailer/phpmailer": "^7.1",
         "vlucas/phpdotenv": "^5.7",
-        "ext-mongodb": "*"
+        "ext-mongodb": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*"
     }
 }
