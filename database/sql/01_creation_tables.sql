@@ -13,6 +13,7 @@ CREATE TABLE users (
     first_name VARCHAR(100) NULL,
     last_name VARCHAR(100) NULL,
     phone VARCHAR(20) NULL,
+    email VARCHAR(190) NOT NULL UNIQUE,
     address VARCHAR(255) NULL,
     postal_code VARCHAR(20) NULL,
     city VARCHAR(100) NULL,
@@ -22,6 +23,26 @@ CREATE TABLE users (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
         ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- =====================================================
+-- RÉINITIALISATION DES MOTS DE PASSE
+-- =====================================================
+
+CREATE TABLE password_reset_tokens (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    user_id INT UNSIGNED NOT NULL,
+    token_hash VARCHAR(255) NOT NULL,
+    expires_at DATETIME NOT NULL,
+    used_at DATETIME DEFAULT NULL,
+    created_at TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+
+    UNIQUE KEY unique_token_hash (token_hash),
+
+    CONSTRAINT fk_password_reset_user
+        FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE
 );
 
 

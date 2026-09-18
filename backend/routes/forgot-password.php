@@ -89,8 +89,13 @@ if ($user) {
         'expires_at' => $expiresAt
     ]);
 
+    $appUrl = rtrim(
+        $_ENV['APP_URL'] ?? 'http://localhost:8000',
+        '/'
+    );
+
     $resetLink =
-        'http://localhost:8000/frontend/reinitialiser-mot-de-passe.html?token='
+        $appUrl . '/frontend/reinitialiser-mot-de-passe.html?token='
         . urlencode($token);
 
     MailerService::send(
