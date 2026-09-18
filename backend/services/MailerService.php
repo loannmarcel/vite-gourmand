@@ -20,15 +20,15 @@ class MailerService
 
         try {
             $mail->isSMTP();
-            $mail->Host = $_ENV['SMTP_HOST'];
+            $mail->Host = getenv('SMTP_HOST');
             $mail->SMTPAuth = true;
-            $mail->Username = $_ENV['SMTP_USERNAME'];
-            $mail->Password = $_ENV['SMTP_PASSWORD'];
+            $mail->Username = getenv('SMTP_USERNAME');
+            $mail->Password = getenv('SMTP_PASSWORD');
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-            $mail->Port = (int) $_ENV['SMTP_PORT'];
+            $mail->Port = (int) getenv('SMTP_PORT');
             $mail->CharSet = 'UTF-8';
-            
-            $mail->setFrom($_ENV['SMTP_FROM_EMAIL'], 'Vite & Gourmand');
+
+            $mail->setFrom(getenv('SMTP_FROM_EMAIL'), 'Vite & Gourmand');
             $mail->addAddress($toEmail, $toName);
 
             $mail->isHTML(true);

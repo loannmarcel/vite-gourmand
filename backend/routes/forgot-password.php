@@ -90,7 +90,7 @@ if ($user) {
     ]);
 
     $appUrl = rtrim(
-        $_ENV['APP_URL'] ?? 'http://localhost:8000',
+        getenv('APP_URL') ?: 'http://localhost:8000',
         '/'
     );
 

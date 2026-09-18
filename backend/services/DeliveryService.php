@@ -11,7 +11,7 @@ class DeliveryService
 
     public function __construct()
     {
-        $apiKey = $_ENV['ORS_API_KEY'] ?? '';
+        $apiKey = getenv('ORS_API_KEY') ?: '';
 
         if ($apiKey === '') {
             throw new RuntimeException(
