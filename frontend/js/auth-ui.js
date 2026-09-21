@@ -30,6 +30,18 @@ const logoutButton =
 const accountAvatar =
     document.querySelector(".header-account-avatar");
 
+const mobileAboutLink =
+    document.getElementById("mobile-nav-about");
+
+const mobileOrdersLink =
+    document.getElementById("mobile-nav-orders");
+
+const mobileProfileLink =
+    document.getElementById("mobile-nav-profile");
+
+const mobileAccountLink =
+    document.getElementById("mobile-nav-account");
+
 async function checkSession() {
     try {
         const response = await fetch(
@@ -86,6 +98,22 @@ function updateHeader(userConnected, user = null) {
             accountLink.hidden = false;
         }
 
+        if (mobileAboutLink) {
+            mobileAboutLink.hidden = true;
+        }
+
+        if (mobileOrdersLink) {
+            mobileOrdersLink.hidden = false;
+        }
+
+        if (mobileProfileLink) {
+            mobileProfileLink.hidden = true;
+        }
+
+        if (mobileAccountLink) {
+            mobileAccountLink.hidden = false;
+        }
+
         if (
             accountAvatar &&
             user &&
@@ -113,6 +141,22 @@ function updateHeader(userConnected, user = null) {
 
         if (accountLink) {
             accountLink.hidden = true;
+        }
+
+        if (mobileAboutLink) {
+            mobileAboutLink.hidden = false;
+        }
+
+        if (mobileOrdersLink) {
+            mobileOrdersLink.hidden = true;
+        }
+
+        if (mobileProfileLink) {
+            mobileProfileLink.hidden = false;
+        }
+
+        if (mobileAccountLink) {
+            mobileAccountLink.hidden = true;
         }
     }
 }

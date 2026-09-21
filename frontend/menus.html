@@ -667,6 +667,7 @@
     ====================================================== -->
 
     <nav class="mobile-bottom-nav">
+
         <a href="index.html">
             <img src="assets/icons/icone-accueil.png" alt="">
             <small>Accueil</small>
@@ -677,9 +678,24 @@
             <small>Menus</small>
         </a>
 
-        <a href="apropos.html">
-            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+        <!-- VISITEUR NON CONNECTÉ -->
+        <a href="apropos.html" id="mobile-nav-about">
+            <img
+                src="assets/icons/icone-personnes.png"
+                alt=""
+                class="mobile-nav-icon-about"
+            >
             <small>À propos</small>
+        </a>
+
+        <!-- UTILISATEUR CONNECTÉ -->
+        <a
+            href="mes-commandes.html"
+            id="mobile-nav-orders"
+            hidden
+        >
+            <img src="assets/icons/icone-personnes.png" alt="">
+            <small>Mes commandes</small>
         </a>
 
         <a href="contact.html">
@@ -687,10 +703,22 @@
             <small>Contact</small>
         </a>
 
-        <a href="connexion.html">
+        <!-- VISITEUR NON CONNECTÉ -->
+        <a href="connexion.html" id="mobile-nav-profile">
             <img src="assets/icons/icone-profil.png" alt="">
             <small>Profil</small>
         </a>
+
+        <!-- UTILISATEUR CONNECTÉ -->
+        <a
+            href="mon-compte.html"
+            id="mobile-nav-account"
+            hidden
+        >
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Mon compte</small>
+        </a>
+
     </nav>
 
     <script>

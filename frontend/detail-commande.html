@@ -298,7 +298,7 @@
                     CGV
                 </a>
 
-                <a href="#">
+                <a href="politique-confidentialite.html">
                     Politique de confidentialité
                 </a>
 
@@ -350,6 +350,10 @@
                     Samedi sur rendez-vous
                 </p>
 
+                <p>
+                    Dimanche : fermé
+                </p>
+
             </div>
 
         </div>
@@ -367,18 +371,18 @@
 
     <nav class="mobile-bottom-nav">
         <a href="index.html">
-            <img src="assets/icons/icone-accueil.png" alt="">
+            <img src="assets/icons/icone-accueil.svg" alt="">
             <small>Accueil</small>
         </a>
 
         <a href="menus.html">
-            <img src="assets/icons/icone-menu.png" alt="">
+            <img src="assets/icons/icone-menu.svg" alt="">
             <small>Menus</small>
         </a>
 
-        <a href="apropos.html">
-            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
-            <small>À propos</small>
+        <a href="mes-commandes.html">
+            <img src="assets/icons/icone-personnes.png" alt="">
+            <small>Mes commandes</small>
         </a>
 
         <a href="contact.html">
@@ -386,11 +390,52 @@
             <small>Contact</small>
         </a>
 
-        <a href="connexion.html">
+        <a href="mon-compte.html">
             <img src="assets/icons/icone-profil.png" alt="">
-            <small>Profil</small>
+            <small>Mon compte</small>
         </a>
     </nav>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".main-nav");
+
+        menuToggle.addEventListener("click", () => {
+
+            const menuIsOpen =
+                navigation.classList.toggle("is-open");
+
+            menuToggle.classList.toggle(
+                "is-open",
+                menuIsOpen
+            );
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+        });
+
+        document
+            .querySelectorAll(".main-nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navigation.classList.remove("is-open");
+
+                    menuToggle.classList.remove("is-open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+    </script>
 
     <script src="js/detail-commande.js"></script>
 

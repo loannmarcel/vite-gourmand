@@ -2,6 +2,59 @@
    HEADER ESPACE ADMINISTRATEUR
 ===================================================== */
 
+/* MENU BURGER */
+
+const menuToggle =
+    document.querySelector(".menu-toggle");
+
+const navigation =
+    document.querySelector(".main-nav");
+
+
+if (
+    menuToggle &&
+    navigation
+) {
+
+    menuToggle.addEventListener("click", () => {
+
+        const menuIsOpen =
+            navigation.classList.toggle("is-open");
+
+        menuToggle.classList.toggle(
+            "is-open",
+            menuIsOpen
+        );
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            String(menuIsOpen)
+        );
+
+    });
+
+
+    navigation
+        .querySelectorAll("a")
+        .forEach((link) => {
+
+            link.addEventListener("click", () => {
+
+                navigation.classList.remove("is-open");
+
+                menuToggle.classList.remove("is-open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            });
+
+        });
+
+}
+
 
 /* MENU DU COMPTE ADMINISTRATEUR */
 

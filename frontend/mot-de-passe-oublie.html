@@ -261,7 +261,7 @@
                     CGV
                 </a>
 
-                <a href="#">
+                <a href="politique-confidentialite.html">
                     Politique de confidentialité
                 </a>
 
@@ -313,6 +313,10 @@
                     Samedi sur rendez-vous
                 </p>
 
+                <p>
+                    Dimanche : fermé
+                </p>
+
             </div>
 
         </div>
@@ -354,6 +358,53 @@
             <small>Profil</small>
         </a>
     </nav>
+
+    <script>
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".main-nav");
+
+
+        menuToggle.addEventListener("click", () => {
+
+            const menuIsOpen =
+                navigation.classList.toggle("is-open");
+
+
+            menuToggle.classList.toggle(
+                "is-open",
+                menuIsOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+        });
+
+
+        document
+            .querySelectorAll(".main-nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navigation.classList.remove("is-open");
+
+                    menuToggle.classList.remove("is-open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+
+    </script>
 
     <script src="js/mot-de-passe-oublie.js"></script>
 

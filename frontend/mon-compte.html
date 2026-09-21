@@ -532,7 +532,7 @@
                     CGV
                 </a>
 
-                <a href="#">
+                <a href="politique-confidentialite.html">
                     Politique de confidentialité
                 </a>
 
@@ -584,6 +584,10 @@
                     Samedi sur rendez-vous
                 </p>
 
+                <p>
+                    Dimanche : fermé 
+                </p>
+
             </div>
 
         </div>
@@ -599,7 +603,8 @@
 
     </footer>
 
-    <nav class="mobile-bottom-nav">
+     <nav class="mobile-bottom-nav">
+
         <a href="index.html">
             <img src="assets/icons/icone-accueil.png" alt="">
             <small>Accueil</small>
@@ -610,9 +615,24 @@
             <small>Menus</small>
         </a>
 
-        <a href="apropos.html">
-            <img src="assets/icons/icone-personnes.png" alt="" class="mobile-nav-icon-about">
+        <!-- VISITEUR NON CONNECTÉ -->
+        <a href="apropos.html" id="mobile-nav-about">
+            <img
+                src="assets/icons/icone-personnes.png"
+                alt=""
+                class="mobile-nav-icon-about"
+            >
             <small>À propos</small>
+        </a>
+
+        <!-- UTILISATEUR CONNECTÉ -->
+        <a
+            href="mes-commandes.html"
+            id="mobile-nav-orders"
+            hidden
+        >
+            <img src="assets/icons/icone-personnes.png" alt="">
+            <small>Mes commandes</small>
         </a>
 
         <a href="contact.html">
@@ -620,11 +640,70 @@
             <small>Contact</small>
         </a>
 
-        <a href="connexion.html">
+        <!-- VISITEUR NON CONNECTÉ -->
+        <a href="connexion.html" id="mobile-nav-profile">
             <img src="assets/icons/icone-profil.png" alt="">
             <small>Profil</small>
         </a>
+
+        <!-- UTILISATEUR CONNECTÉ -->
+        <a
+            href="mon-compte.html"
+            id="mobile-nav-account"
+            hidden
+        >
+            <img src="assets/icons/icone-profil.png" alt="">
+            <small>Mon compte</small>
+        </a>
+
     </nav>
+
+    <script>
+
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navigation = document.querySelector(".main-nav");
+
+
+        menuToggle.addEventListener("click", () => {
+
+            const menuIsOpen =
+                navigation.classList.toggle("is-open");
+
+
+            menuToggle.classList.toggle(
+                "is-open",
+                menuIsOpen
+            );
+
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                menuIsOpen
+            );
+
+        });
+
+
+        document
+            .querySelectorAll(".main-nav a")
+            .forEach(link => {
+
+                link.addEventListener("click", () => {
+
+                    navigation.classList.remove("is-open");
+
+                    menuToggle.classList.remove("is-open");
+
+                    menuToggle.setAttribute(
+                        "aria-expanded",
+                        "false"
+                    );
+
+                });
+
+            });
+
+    </script>
 
     <script src="js/mon-compte.js"></script>
 
