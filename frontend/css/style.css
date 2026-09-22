@@ -9653,7 +9653,7 @@ padding-right: 48px;
     }
 
     /* =========================
-   NAVIGATION MOBILE BASSE
+    NAVIGATION MOBILE BASSE
     ========================= */
 
     .site-footer {
@@ -9711,6 +9711,7 @@ padding-right: 48px;
         font-family: "Inter", sans-serif;
         font-size: 10px;
         line-height: 14px;
+        white-space: nowrap;
     }
 
     .mobile-bottom-nav a:hover,
